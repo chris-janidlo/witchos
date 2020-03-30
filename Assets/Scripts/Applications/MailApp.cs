@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mail : MonoBehaviour
+public class MailApp : MonoBehaviour
 {
     public Window Window;
     public Sprite ReadIcon, UnreadIcon;
