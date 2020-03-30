@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 7109075061365067390
     second: mail unread
+  - first:
+      213: -7628152326963423257
+    second: letter
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -148,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4892ac7a1ebc457eb12db98289f1da6
+      spriteID: d27ad7ba7bf504f209f306188768a8b1
       internalID: -2978653956524333172
       vertices: []
       indices: 
@@ -169,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22ab7d02a1234426ca88636084f7f147
+      spriteID: 6931d9eb898774bac851d7b2a1ac6a67
       internalID: -299690340437171572
       vertices: []
       indices: 
@@ -190,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74edde01374ff4382b7b6933cea43746
+      spriteID: 9866eb8567d8e4d15a43f969e92bf92d
       internalID: -1290855366162983238
       vertices: []
       indices: 
@@ -211,8 +214,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f816ab8c08d04df3bdc0255c623dc6b
+      spriteID: 19a8f40e9d825486d80d7e03d689ed9e
       internalID: 7109075061365067390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: letter
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69bb0f762acbe4d6cb85a99fd902691a
+      internalID: -7628152326963423257
       vertices: []
       indices: 
       edges: []

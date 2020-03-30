@@ -762,6 +762,14 @@ MonoBehaviour:
     Subject: love potion pleasse
     Body: OMG Steve is like rlyyy cute pls make him fall in love with me :))))
     Read: 0
+  - SenderAddress: blah at blah
+    Subject: not a love potion
+    Body: aldsjkfhasjkldghaskjgfdh
+    Read: 0
+  - SenderAddress: adksfjh
+    Subject: kasjdfghasjk
+    Body: akdjfhasdjkflaskdjfh
+    Read: 0
 --- !u!1 &1460007531
 GameObject:
   m_ObjectHideFlags: 0

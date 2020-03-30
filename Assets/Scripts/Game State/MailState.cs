@@ -13,6 +13,11 @@ public class MailState : Singleton<MailState>
     {
         public string SenderAddress, Subject, Body;
         public bool Read;
+
+        public override int GetHashCode ()
+        {
+            return (SenderAddress + Subject + Body).GetHashCode();
+        }
     }
 
     public List<PlaceholderMailMessage> Messages;

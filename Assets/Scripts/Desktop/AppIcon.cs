@@ -9,6 +9,13 @@ public class AppIcon : MonoBehaviour
 
     public void LaunchApplication ()
     {
-        WindowFactory.Instance.CreateWindowWithTaskbarButton(WindowPrefab, OnlyOpenOnce);
+        if (OnlyOpenOnce)
+        {
+            WindowFactory.Instance.CreateSingletonWindowWithTaskbarButton(WindowPrefab);
+        }
+        else
+        {
+            WindowFactory.Instance.CreateWindowWithTaskbarButton(WindowPrefab);
+        }
     }
 }

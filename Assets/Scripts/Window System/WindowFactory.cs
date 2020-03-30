@@ -13,18 +13,8 @@ public class WindowFactory : Singleton<WindowFactory>
         SingletonOverwriteInstance(this);
     }
 
-    public void CreateWindowWithTaskbarButton (Window prefab, bool persistent)
+    public Window CreateWindowWithTaskbarButton (Window prefab)
     {
-        if (persistent)
-        {
-            var other = GameObject.Find(prefab.name + "(Clone)");
-            if (other != null)
-            {
-                other.GetComponent<Window>().Focus();
-                return;
-            }
-        }
-
         var window = Instantiate(prefab, WindowParent);
         var button = Instantiate(TaskBarButtonPrefab);
 
@@ -34,5 +24,27 @@ public class WindowFactory : Singleton<WindowFactory>
         TaskBar.Instance.AddButton(button);
 
         window.Focus();
+
+        return window;
+    }
+
+    public Window CreateSingletonWindowWithTaskbarButton (Window prefab, string name)
+    {
+        Window window = GameObject.Find(name)?.GetComponent<Window>();
+
+        if (window != null)
+        {
+            window.Focus();
+            return window;
+        }
+
+        window = CreateWindowWithTaskbarButton(prefab);
+        window.name = name;
+        return window;
+    }
+
+    public Window CreateSingletonWindowWithTaskbarButton (Window prefab)
+    {
+        return CreateSingletonWindowWithTaskbarButton(prefab, prefab.name);
     }
 }
