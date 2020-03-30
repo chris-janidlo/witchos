@@ -5,9 +5,10 @@ using UnityEngine;
 public class AppIcon : MonoBehaviour
 {
     public Window WindowPrefab;
+    public bool OnlyOpenOnce;
 
     public void LaunchApplication ()
     {
-        WindowFactory.Instance.CreateWindowWithTaskbarButton(WindowPrefab);
+        WindowFactory.Instance.CreateWindowWithTaskbarButton(WindowPrefab, OnlyOpenOnce);
     }
 }
