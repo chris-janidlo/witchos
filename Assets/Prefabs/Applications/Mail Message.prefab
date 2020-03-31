@@ -183,11 +183,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7628152326963423257, guid: b314bc8182610482aa06bf0d35d2de65,
         type: 3}
-    - target: {fileID: 1707194481748681855, guid: 587c7c42945c442eea5e2ea5f06e92b1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 127
-      objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: Icon
