@@ -11,6 +11,8 @@ public class Window : MonoBehaviour, IPointerDownHandler
 {
     public static Window FocusedWindow { get; private set; }
 
+    public event Action DidFocus;
+
     public bool Minimized { get; private set; }
     public bool Focused => FocusedWindow == this;
 
@@ -94,6 +96,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     {
         transform.SetAsLastSibling(); // bring to front
         FocusedWindow = this;
+        DidFocus?.Invoke();
     }
 
 	public void OnPointerDown (PointerEventData eventData)
