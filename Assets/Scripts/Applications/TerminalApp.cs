@@ -12,14 +12,14 @@ public partial class TerminalApp : MonoBehaviour
         IEnumerator Evaluate (string[] arguments);
     }
 
+    public static List<string> History = new List<string>();
+
     public bool Evaluating { get; private set; }
 
     public Window Window;
     public TMP_InputField CommandInput;
 
     public TextMeshProUGUI Prompt, HistoryText;
-
-    public static List<string> History = new List<string>();
 
     void Start ()
     {
@@ -53,7 +53,7 @@ public partial class TerminalApp : MonoBehaviour
         Prompt.enabled = false;
         CommandInput.enabled = false;
 
-        History.Add(Prompt.text + " " + input); // echo
+        History.Add(Prompt.text + input); // echo
 
         input = input.Trim();
 
