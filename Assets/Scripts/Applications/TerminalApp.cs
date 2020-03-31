@@ -23,9 +23,11 @@ public partial class TerminalApp : MonoBehaviour
 
     void Start ()
     {
-        Window.DidFocus += CommandInput.Select;
+        Window.DidFocus += FocusInput;
 
         CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
+
+        FocusInput();
     }
 
     void Update ()
@@ -53,22 +55,43 @@ public partial class TerminalApp : MonoBehaviour
 
         History.Add(Prompt.text + " " + input); // echo
 
+        input = input.Trim();
+
         Evaluating = true;
 
-        string[] arguments = input.Split();
-        if (Commands.ContainsKey(arguments[0]))
+        string[] commands = input.Split(';');
+
+        foreach (string command in commands)
         {
-            yield return Commands[arguments[0]].Evaluate(arguments);
-        }
-        else
-        {
-            History.Add("command not recognized: " + arguments[0]);
+            if (command == "")
+            {
+                continue;
+            }
+
+            string[] arguments = command.Split();
+
+            if (Commands.ContainsKey(arguments[0]))
+            {
+                yield return Commands[arguments[0]].Evaluate(arguments);
+            }
+            else
+            {
+                History.Add("command not recognized: " + arguments[0]);
+            }
         }
 
         Evaluating = false;
 
         Prompt.enabled = true;
         CommandInput.enabled = true;
+
+        if (Window.Focused) FocusInput();
+    }
+
+    public void FocusInput ()
+    {
+        CommandInput.ActivateInputField();
+        CommandInput.Select();
     }
 
     static void println (string line)
