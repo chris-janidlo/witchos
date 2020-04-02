@@ -9,6 +9,7 @@ public partial class TerminalApp : MonoBehaviour
 {
     interface Command
     {
+        string[] HelpOutput { get; }
         IEnumerator Evaluate (TerminalApp term, string[] arguments);
     }
 
@@ -84,7 +85,7 @@ public partial class TerminalApp : MonoBehaviour
             }
             else
             {
-                History.Add("command not recognized: " + arguments[0]);
+                println("command not recognized: " + arguments[0]);
             }
         }
 

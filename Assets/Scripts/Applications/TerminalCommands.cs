@@ -10,22 +10,47 @@ public partial class TerminalApp : MonoBehaviour
 {
 	class Chelp : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"displays help information for commands"
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
-			yield return new WaitForSeconds(1);
-
-			term.println("this is a test");
-
-			foreach (string arg in arguments)
+			if (arguments.Length == 1)
 			{
-				yield return new WaitForSeconds(.1f);
-				term.println(arg);
+				term.println("available commands:");
+				term.println(" " + String.Join(" ", Commands.Keys));
+				term.println("enter 'help' followed by a command name to learn more");
 			}
+			else
+			{
+				string com = arguments[1];
+				if (Commands.ContainsKey(com))
+				{
+					foreach (var line in Commands[com].HelpOutput)
+					{
+						term.println(line);
+					}
+				}
+				else
+				{
+					term.println($"help: can't find any command named '{com}'");
+				}
+			}
+
+			yield return null;
 		}
 	}
 
 	class Ctn : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"for discovering the True Name of an individual",
+			"input can be given as either 'tn firstname lastname' or 'tn fullname'. for example, 'tn john smith' or 'tn johnsmith'. capitalization is unimportant."
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
 			if (arguments.Length == 1)
@@ -36,13 +61,20 @@ public partial class TerminalApp : MonoBehaviour
 
 			yield return new WaitForSeconds(.5f); // pretend to process something
 
-			string trueName = TrueName.FromName(String.Join(" ", arguments.Skip(1)));
+			string trueName = TrueName.FromName(String.Join("", arguments.Skip(1)));
 			term.println(trueName);
 		}
 	}
 
 	class Cset : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"lets you set environment variables",
+			"environment variables are just a way of storing values by name so other commands/programs can access them",
+			"for example, if you enter 'set aura null', any other command that wants to know what the current value of 'aura' is would see that it is 'null'"
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
 			// TODO: allow for other argument styles like 'set a = b', 'set a=b', etc
@@ -60,6 +92,14 @@ public partial class TerminalApp : MonoBehaviour
 
 	class Cshow : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"displays values of environment variables",
+			"if this isn't given any arguments, it simply displays every environment variable that currently has a value",
+			"otherwise, the command tries to display the current value for every argument",
+			"(see 'help set' for more information on environment variables)"
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
 			var env = TerminalState.Instance.EnvironmentVariables;
@@ -91,9 +131,15 @@ public partial class TerminalApp : MonoBehaviour
 
 	class Cseance : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"for communing with the spirits of the dead",
+			"given a person's name, seance tunes in to the spirit world and finds that persons ancestors, so that the user can read their chanting"
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
-			string name = String.Join(" ", arguments.Skip(1));
+			string name = String.Join("", arguments.Skip(1));
 
 			term.println("connecting to spirit world...");
 			yield return new WaitForSeconds(3);
@@ -121,6 +167,14 @@ public partial class TerminalApp : MonoBehaviour
 
 	class Cxing : Command
 	{
+		public string[] HelpOutput => new string[]
+		{
+			"aligns mischievous imps toward a target",
+			"xing is useful for spells that utilize imps for hacking devices or human brains",
+			"it takes either an IP address (for devices) or a person's true name as an argument",
+			"while active, any spell that needs imps can effect xing's current target."
+		};
+
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
 			if (TerminalState.Instance.XingLock)
