@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750f3c3e83eb8400c9df26a178d2aeee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseTitle: spe//
   Window: {fileID: 3869046463147635246}
   CommandInput: {fileID: 4779047884363211016}
   Prompt: {fileID: 2046572684048575151}

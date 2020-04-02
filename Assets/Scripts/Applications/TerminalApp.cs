@@ -9,12 +9,15 @@ public partial class TerminalApp : MonoBehaviour
 {
     interface Command
     {
-        IEnumerator Evaluate (string[] arguments);
+        IEnumerator Evaluate (TerminalApp term, string[] arguments);
     }
 
-    public static List<string> History = new List<string>();
-
     public bool Evaluating { get; private set; }
+    public bool SIGINT { get; private set; }
+
+    public string BaseTitle;
+
+    public List<string> History = new List<string>();
 
     public Window Window;
     public TMP_InputField CommandInput;
@@ -32,6 +35,9 @@ public partial class TerminalApp : MonoBehaviour
 
     void Update ()
     {
+        SIGINT = false;
+        if (Window.Focused && Input.GetKey(KeyCode.Escape)) SIGINT = true;
+
         string hist = "";
 
         foreach (string line in History)
@@ -72,7 +78,9 @@ public partial class TerminalApp : MonoBehaviour
 
             if (Commands.ContainsKey(arguments[0]))
             {
-                yield return Commands[arguments[0]].Evaluate(arguments);
+                Window.Title = BaseTitle + " - " + arguments[0];
+                yield return Commands[arguments[0]].Evaluate(this, arguments);
+                Window.Title = BaseTitle;
             }
             else
             {
@@ -94,7 +102,7 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.Select();
     }
 
-    static void println (string line)
+    void println (string line)
     {
         History.Add(line);
     }

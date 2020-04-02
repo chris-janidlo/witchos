@@ -7,6 +7,8 @@ using crass;
 public class TerminalState : Singleton<TerminalState>
 {
     public Dictionary<string, string> EnvironmentVariables = new Dictionary<string, string>();
+    public bool XingLock;
+    public string XingTarget;
 
     void Awake ()
     {

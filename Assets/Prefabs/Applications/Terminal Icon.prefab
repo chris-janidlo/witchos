@@ -13,11 +13,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3869046463147635246, guid: eb56c78e8109f4710987a88cccdbbf37,
         type: 3}
-    - target: {fileID: 970688834052717789, guid: 1c0ec5871a0a64445b3a7ed4f206ac94,
-        type: 3}
-      propertyPath: OnlyOpenOnce
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4586838452941467945, guid: 1c0ec5871a0a64445b3a7ed4f206ac94,
         type: 3}
       propertyPath: Icon
