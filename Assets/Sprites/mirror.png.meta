@@ -1,31 +1,22 @@
 fileFormatVersion: 2
-guid: b314bc8182610482aa06bf0d35d2de65
+guid: 177922870d21945c9bbd66ca3aa4c5b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2978653956524333172
-    second: chest
+      213: 768411698520879103
+    second: intact
   - first:
-      213: -299690340437171572
-    second: moon phase
+      213: -1131138314681361803
+    second: depleted
   - first:
-      213: -1290855366162983238
-    second: mail read
+      213: -9162993137599089106
+    second: broken_0
   - first:
-      213: 7109075061365067390
-    second: mail unread
+      213: -484225596321338514
+    second: broken_1
   - first:
-      213: -7628152326963423257
-    second: letter
-  - first:
-      213: 868221832246287368
-    second: terminal
-  - first:
-      213: 3937396354249366081
-    second: mirror
-  - first:
-      213: 582448398262224985
-    second: help
+      213: 5519385307108177953
+    second: broken_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -146,160 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chest
+      name: intact
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d27ad7ba7bf504f209f306188768a8b1
-      internalID: -2978653956524333172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moon phase
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6931d9eb898774bac851d7b2a1ac6a67
-      internalID: -299690340437171572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mail read
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9866eb8567d8e4d15a43f969e92bf92d
-      internalID: -1290855366162983238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mail unread
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19a8f40e9d825486d80d7e03d689ed9e
-      internalID: 7109075061365067390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69bb0f762acbe4d6cb85a99fd902691a
-      internalID: -7628152326963423257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terminal
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bca696185587468385bc86281e44b94
-      internalID: 868221832246287368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mirror
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0dce430bad2548de9d8dc69b180734d
-      internalID: 3937396354249366081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: help
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 0
-        width: 12
-        height: 12
+        width: 40
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,8 +151,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e831930fa9324cae8036a2f3ea05705
-      internalID: 582448398262224985
+      spriteID: 2096888ad42314eac8607ecf51f926da
+      internalID: 768411698520879103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: depleted
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 40
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b21cfea2600b4847acf1189c2a722c2
+      internalID: -1131138314681361803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: broken_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94fe05f24afea4cb38702864528223ed
+      internalID: -9162993137599089106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: broken_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b15fd2c45e649f880a10cd6f76a4e4
+      internalID: -484225596321338514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: broken_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf4e742755aa43739f67f4d663a2c64
+      internalID: 5519385307108177953
       vertices: []
       indices: 
       edges: []
@@ -316,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4dc2750415b5f4660ac5b2214d73474e
+    spriteID: 327ee754dabce440aae0f320e2290773
     internalID: 0
     vertices: []
     indices: 

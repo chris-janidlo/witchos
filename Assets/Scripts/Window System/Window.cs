@@ -60,7 +60,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
             trueLocation = transform.position;
         }
 
-        doMinimizeAnimation();
+        if (taskBarButton != null) doMinimizeAnimation();
     }
 
     public void SetTaskBarButton (TaskBarButton taskBarButton)
@@ -70,7 +70,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     public void Minimize ()
     {
-        if (Minimized) return;
+        if (Minimized || taskBarButton == null) return;
 
         MinimizeTransition.StartTransitionTo(0);
 
@@ -89,7 +89,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     public void Close ()
     {
         Destroy(gameObject);
-        Destroy(taskBarButton.gameObject);
+        if (taskBarButton != null) Destroy(taskBarButton.gameObject);
     }
 
     public void Focus ()

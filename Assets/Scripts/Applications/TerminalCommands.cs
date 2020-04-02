@@ -93,6 +93,6 @@ public partial class TerminalApp : MonoBehaviour
 		{ "help", new Chelp() },
 		{ "tn", new Ctn() },
 		{ "set", new Cset() },
-		{ "show", new Cshow() }
+		{ "show", new Cshow() },
 	};
 }
