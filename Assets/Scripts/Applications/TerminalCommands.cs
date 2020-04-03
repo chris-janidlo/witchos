@@ -20,7 +20,7 @@ public partial class TerminalApp : MonoBehaviour
 			if (arguments.Length == 1)
 			{
 				term.println("available commands:");
-				term.println(" " + String.Join(" ", Commands.Keys));
+				term.println(" " + String.Join(" ", Commands.Keys.OrderBy(c => c)));
 				term.println("enter 'help' followed by a command name to learn more");
 			}
 			else
