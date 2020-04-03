@@ -16,11 +16,13 @@ public class TimeState : Singleton<TimeState>
 
     public DateTime DateTime { get; private set; } = INITIAL_DATE.AddHours(DAY_START_HOUR);
 
-    public event Action DayStarted;
+    public event Action DayStarted, HourStarted;
 
     public float InGameSecondsPerRealtimeSeconds;
     [TextArea]
     public string DateTimeFormatString;
+
+    int hourTicker;
 
     void Awake ()
     {
@@ -36,6 +38,12 @@ public class TimeState : Singleton<TimeState>
         {
             Time.timeScale = 0;
             DaySummaryScreen.Instance.ShowSummary();
+        }
+
+        if (DateTime.Hour > hourTicker)
+        {
+            hourTicker = DateTime.Hour;
+            HourStarted?.Invoke();
         }
     }
 

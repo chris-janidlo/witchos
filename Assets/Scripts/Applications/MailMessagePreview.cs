@@ -10,7 +10,7 @@ public class MailMessagePreview : MonoBehaviour
     public Button Button;
     public TextMeshProUGUI Label;
 
-    MailState.PlaceholderMailMessage message;
+    EMail message;
 
     void Start ()
     {
@@ -22,7 +22,7 @@ public class MailMessagePreview : MonoBehaviour
         Label.text = (message.Read ? "" : "* ") + message.SenderAddress + " - " + message.Subject;
     }
 
-    public void SetMessage (MailState.PlaceholderMailMessage message)
+    public void SetMessage (EMail message)
     {
         this.message = message;
     }

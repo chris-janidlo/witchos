@@ -2034,19 +2034,184 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348df3ae504e54d7a96490288bce1116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Messages:
-  - SenderAddress: annie@t.com
-    Subject: love potion pleasse
-    Body: OMG Steve is like rlyyy cute pls make him fall in love with me :))))
-    Read: 0
-  - SenderAddress: blah at blah
-    Subject: not a love potion
-    Body: aldsjkfhasjkldghaskjgfdh
-    Read: 0
-  - SenderAddress: adksfjh
-    Subject: kasjdfghasjk
-    Body: akdjfhasdjkflaskdjfh
-    Read: 0
+  PossibleEMails:
+    Items:
+    - RequestedSpell:
+        Type: 0
+        TargetName: Leia Hodgson
+      SenderAddress: caramelized_cristina@hotmail.com
+      Subject: Curse Request
+      Body: I'm going up for a promotion and I want to make sure my coworker doesn't
+        get it instead of me. She completely does not deserve it.
+      Read: 0
+    - RequestedSpell:
+        Type: 0
+        TargetName: Drew Guy
+      SenderAddress: nikos.meyer@mail.ru
+      Subject: really annoying
+      Body: there's this guy in my french class and he really sucks, he's so annoying.
+        I can't wait to see the look on his face when I tell him he's cursed
+      Read: 0
+    - RequestedSpell:
+        Type: 0
+        TargetName: Susan Sharples
+      SenderAddress: sebastia.likes.art@rocketmail.com
+      Subject: Revenge
+      Body: This Susan lady who lives next door to me trashed my yard for no reason.
+        I hate her stupid face and her stupid yappy dog.
+      Read: 0
+    - RequestedSpell:
+        Type: 0
+        TargetName: Maisey Rowe
+      SenderAddress: abandonedpetra@sky.com
+      Subject: Curse Request
+      Body: Maisey is my best friend and has been for years. We're pretty much inseparable
+        and she's helped me through really tough times. Yesterday I found her in bed
+        with my boyfriend of 3 years. Do your worst.
+      Read: 0
+    - RequestedSpell:
+        Type: 1
+        TargetName: Pheobe Morrison
+      SenderAddress: julianathebanana@gmail.com
+      Subject: Curse Request PLEASE READ
+      Body: 'Hi :)
+
+        I want to prank my friend so please don''t make the curse too bad just like
+        make her stub her toe or something'
+      Read: 0
+    - RequestedSpell:
+        Type: 1
+        TargetName: Jarrod Ramsey
+      SenderAddress: gorka.morales@aol.com
+      Subject: Make him HURT
+      Body: This tryhard asshole ruined the fucking flag football league with his
+        shit
+      Read: 0
+    - RequestedSpell:
+        Type: 1
+        TargetName: Tristan Stamp
+      SenderAddress: brainlessbarry@me.com
+      Subject: Gift for my best friend
+      Body: Tristan's birthday is tomorrow and I want him to know that I'm thinking
+        about him
+      Read: 0
+    - RequestedSpell:
+        Type: 1
+        TargetName: Daniel Woodcock
+      SenderAddress: martygibson@hotmail.co.uk
+      Subject: Daniel Woodcock
+      Body: My maths professor is named Daniel Woodcock. This is ridiculous. He can't
+        just go around with a name like that
+      Read: 0
+    - RequestedSpell:
+        Type: 2
+        TargetName: Scarlett-Rose Beattie
+      SenderAddress: sebastian.ryanne.oquinn@juno.com
+      Subject: Curse Request
+      Body: 'To Whom It May Concern,
+
+
+        Ms Beattie is, you could say, somewhat akin to a rival of mine. She is presenting
+        at a prestigious conference tomorrow. It would be a real shame if something
+        were to make her less presentable...'
+      Read: 0
+    - RequestedSpell:
+        Type: 2
+        TargetName: Robin Andrew
+      SenderAddress: dreamy_stephanie@gmail.com
+      Subject: MORTAL ENEMY
+      Body: My MORTAL ENEMY is dancing for the talent show again but this time I won't
+        lose :)
+      Read: 0
+    - RequestedSpell:
+        Type: 2
+        TargetName: Archibald Blake
+      SenderAddress: mialynch@yahoo.com
+      Subject: Curse Request
+      Body: Archie thought he could get away with stealing my prized bitch a month
+        last year's Westminster show, but boy oh boy did I see right through him.
+        Well, he has a date tonight, his first in years, so let's see how much he
+        likes being humiliated.
+      Read: 0
+    - RequestedSpell:
+        Type: 2
+        TargetName: Terri Swift
+      SenderAddress: bad.leondrea@aol.com
+      Subject: get her :)
+      Body: me and my girl Terri have this thing where we prank each other LOL and
+        this seemed pretty funny
+      Read: 0
+    - RequestedSpell:
+        Type: 3
+        TargetName: Shanon Conner
+      SenderAddress: angrytim@skynet.be
+      Subject: Curse Request
+      Body: My grandma keeps posting all these apocolyptic robot stories on her Facebook.
+        Short of terminating her account, I figured making it impossible for her to
+        login would work too
+      Read: 0
+    - RequestedSpell:
+        Type: 3
+        TargetName: Allan Robbins
+      SenderAddress: blind_drunk_tam@hotmail.com
+      Subject: he's a CHEATER and a
+      Body: LIAR and a fucking scummy person. he goes on these cheat your wife websites
+        and I hate him so much
+      Read: 0
+    - RequestedSpell:
+        Type: 3
+        TargetName: Aaliyah Wolf
+      SenderAddress: sophie_martin_nguyen@aol.com
+      Subject: Curse Request
+      Body: Aaliyah got me with one of your curses so I wanna pay her back >:)
+      Read: 0
+    - RequestedSpell:
+        Type: 3
+        TargetName: Andrea Bain
+      SenderAddress: buffed_martine@cox.net
+      Subject: whore removal service
+      Body: this stripper SLUT slept with MY HUSBAND. make it so she can't open her
+        fucking bank account
+      Read: 0
+    - RequestedSpell:
+        Type: 4
+        TargetName: Thelma Morales
+      SenderAddress: edwardaodohertycanada@hotmail.com
+      Subject: Curse Request
+      Body: I think my wife hates me after I threw out one of her stupid crochet things.
+        If you make her post something weird on the internet, and then she gets made
+        fun of in response, I can win her back by comforting her.
+      Read: 0
+    - RequestedSpell:
+        Type: 4
+        TargetName: Edith Werner
+      SenderAddress: concentrated_philip@orange.fr
+      Subject: Mother In Law
+      Body: My mother in law is always getting on arguments on Twitter and I hate
+        it. Maybe if she posts some cringey stuff and loses subscribers she'll stop?
+      Read: 0
+    - RequestedSpell:
+        Type: 4
+        TargetName: Branden Pickett
+      SenderAddress: abject_julia@gmail.com
+      Subject: ruinn mny Ex
+      Body: i cnna't even come up with words to dersicbe how much ri HATE him
+      Read: 0
+    - RequestedSpell:
+        Type: 4
+        TargetName: Jamie Sweet
+      SenderAddress: genie_the_zucchini@aol.com
+      Subject: Prank time
+      Body: ok Maybe this is a little mean but my cousin Jamie is so proud of his
+        Instagram and I just want to see it all come crashing down
+      Read: 0
+    AvoidRepeats: 1
+    Type: 0
+    LocalSeed: 0
+  NewEMailsPerDayRange: {x: 3, y: 4}
+  NewEMailPerHourChance: 0.1
+  MaxEMails: 10
+  CurrentMessages: []
 --- !u!114 &1352642453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2059,6 +2224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e24107af53f94a6da4585280051a1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XingLock: 0
+  XingTarget: 
 --- !u!114 &1352642454
 MonoBehaviour:
   m_ObjectHideFlags: 0

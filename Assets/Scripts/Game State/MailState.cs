@@ -9,23 +9,62 @@ using crass;
 public class MailState : Singleton<MailState>
 {
     [Serializable]
-    public class PlaceholderMailMessage
-    {
-        public string SenderAddress, Subject, Body;
-        public bool Read;
+    public class MailBag : BagRandomizer<EMail> {}
 
-        public override int GetHashCode ()
-        {
-            return (SenderAddress + Subject + Body).GetHashCode();
-        }
-    }
+    public MailBag PossibleEMails;
+    public Vector2Int NewEMailsPerDayRange;
+    [Range(0, 1)]
+    public float NewEMailPerHourChance;
+    public int MaxEMails;
 
-    public List<PlaceholderMailMessage> Messages;
+    public List<EMail> CurrentMessages;
 
-    public int UnreadMessageCount => Messages.Where(m => !m.Read).Count();
+    public int UnreadMessageCount => CurrentMessages.Where(m => !m.Read).Count();
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
+    }
+
+    void Start ()
+    {
+        TimeState.Instance.DayStarted += resetInbox;
+        TimeState.Instance.HourStarted += onHourStarted;
+
+        resetInbox();
+    }
+
+    void resetInbox ()
+    {
+        CurrentMessages = new List<EMail>();
+
+        for (int i = 0; i < RandomExtra.Range(NewEMailsPerDayRange); i++)
+        {
+            CurrentMessages.Add(PossibleEMails.GetNext());
+        }
+    }
+
+    void onHourStarted ()
+    {
+        if (CurrentMessages.Count < MaxEMails && RandomExtra.Chance(NewEMailPerHourChance))
+        {
+            CurrentMessages.Add(PossibleEMails.GetNext());
+        }
+    }
+}
+
+[Serializable]
+public class EMail
+{
+    public Spell RequestedSpell;
+    public string SenderAddress, Subject;
+    [TextArea]
+    public string Body;
+
+    public bool Read;
+
+    public override int GetHashCode ()
+    {
+        return (SenderAddress + Subject + Body).GetHashCode();
     }
 }
