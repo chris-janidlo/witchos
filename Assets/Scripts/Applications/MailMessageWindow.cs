@@ -22,5 +22,7 @@ public class MailMessageWindow : MonoBehaviour
     public void SetMessage (EMail message)
     {
         this.message = message;
+        message.Completed += Window.Close;
+        TimeState.Instance.DayStarted += Window.Close;
     }
 }

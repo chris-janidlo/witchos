@@ -31,6 +31,8 @@ public class MailState : Singleton<MailState>
         TimeState.Instance.DayStarted += resetInbox;
         TimeState.Instance.HourStarted += onHourStarted;
 
+        SpellWatcher.Instance.SpellCast += onSpellCast;
+
         resetInbox();
     }
 
@@ -51,11 +53,28 @@ public class MailState : Singleton<MailState>
             CurrentMessages.Add(PossibleEMails.GetNext());
         }
     }
+
+    void onSpellCast (Spell spell)
+    {
+        Debug.Log(spell);
+		for (int i = CurrentMessages.Count - 1; i >= 0; i--)
+        {
+            var message = CurrentMessages[i];
+            if (message.RequestedSpell == spell)
+            {
+                Alert.Instance.ShowMessage($"successfully completed order '{message.Subject}' from {message.SenderAddress}! now removing it from your inbox...");
+                CurrentMessages.RemoveAt(i);
+                message.Complete();
+            }
+        }
+    }
 }
 
 [Serializable]
 public class EMail
 {
+    public event Action Completed;
+
     public Spell RequestedSpell;
     public string SenderAddress, Subject;
     [TextArea]
@@ -66,5 +85,10 @@ public class EMail
     public override int GetHashCode ()
     {
         return (SenderAddress + Subject + Body).GetHashCode();
+    }
+
+    public void Complete ()
+    {
+        Completed?.Invoke();
     }
 }
