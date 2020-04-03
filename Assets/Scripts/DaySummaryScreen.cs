@@ -8,7 +8,7 @@ using crass;
 public class DaySummaryScreen : Singleton<DaySummaryScreen>
 {
     public RectTransform Container;
-    public TextMeshProUGUI TasksCompleted, Revenue, Expenses, Total;
+    public TextMeshProUGUI TasksCompleted, TotalTasks, SuccessRate;
     public Button DoneButton;
 
     void Awake ()
@@ -21,10 +21,11 @@ public class DaySummaryScreen : Singleton<DaySummaryScreen>
 
     public void ShowSummary ()
     {
-        // TODO:
-        // TasksCompleted.text = 
-        // Revenue.text = 
-        // Total.text = 
+        int complete = MailState.Instance.TasksCompleted, total = MailState.Instance.TotalTasks;
+
+        TasksCompleted.text = complete.ToString();
+        TotalTasks.text = total.ToString();
+        SuccessRate.text = ((float) complete / total).ToString("P2");
 
         Container.gameObject.SetActive(true);
     }

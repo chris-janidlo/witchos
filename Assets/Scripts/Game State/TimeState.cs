@@ -22,7 +22,11 @@ public class TimeState : Singleton<TimeState>
     [TextArea]
     public string DateTimeFormatString;
 
+    public string TimeWarningOneText, TimeWarningTwoText;
+    public int MinutesBeforeEndOfDayForWarningOne, MinutesBeforeEndOfDayForWarningTwo;
+
     int hourTicker;
+    bool warnedOnce, warnedTwice;
 
     void Awake ()
     {
@@ -45,6 +49,28 @@ public class TimeState : Singleton<TimeState>
             hourTicker = DateTime.Hour;
             HourStarted?.Invoke();
         }
+
+        DateTime endOfDay = new DateTime
+        (
+            DateTime.Year,
+            DateTime.Month,
+            DateTime.Day,
+            DAY_END_HOUR,
+            0,
+            0
+        );
+
+        if (!warnedOnce && (endOfDay - DateTime).TotalMinutes <= MinutesBeforeEndOfDayForWarningOne)
+        {
+            warnedOnce = true;
+            Alert.Instance.ShowMessageNext(TimeWarningOneText);
+        }
+
+        if (!warnedTwice && (endOfDay - DateTime).TotalMinutes <= MinutesBeforeEndOfDayForWarningTwo)
+        {
+            warnedTwice = true;
+            Alert.Instance.ShowMessageNext(TimeWarningTwoText);
+        }
     }
 
     public void StartNewDay ()
@@ -52,6 +78,11 @@ public class TimeState : Singleton<TimeState>
         DateTime = DateTime.AddDays(1);
         DateTime = DateTime.AddHours(DAY_START_HOUR - DAY_END_HOUR);
         Time.timeScale = 1;
+
+        hourTicker = 0;
+        warnedOnce = false;
+        warnedTwice = false;
+    
         DayStarted?.Invoke();
     }
 

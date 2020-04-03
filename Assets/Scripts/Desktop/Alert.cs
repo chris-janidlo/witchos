@@ -23,6 +23,8 @@ public class Alert : Singleton<Alert>
 
     IEnumerator Start ()
     {
+        TimeState.Instance.DayStarted += messages.Clear;
+
         while (true)
         {
             while (messages.Count != 0)

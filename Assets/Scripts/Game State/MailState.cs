@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
-// TODO: this is just mock-level stuff to prove out the mail application. need to sit down and actually design the backend mail system
 public class MailState : Singleton<MailState>
 {
     [Serializable]
@@ -16,6 +15,8 @@ public class MailState : Singleton<MailState>
     [Range(0, 1)]
     public float NewEMailPerHourChance;
     public int MaxEMails;
+
+    public int TasksCompleted, TotalTasks;
 
     public List<EMail> CurrentMessages;
 
@@ -38,11 +39,15 @@ public class MailState : Singleton<MailState>
 
     void resetInbox ()
     {
+        TasksCompleted = 0;
+        TotalTasks = 0;
+
         CurrentMessages = new List<EMail>();
 
         for (int i = 0; i < RandomExtra.Range(NewEMailsPerDayRange); i++)
         {
             CurrentMessages.Add(PossibleEMails.GetNext());
+            TotalTasks++;
         }
     }
 
@@ -51,6 +56,7 @@ public class MailState : Singleton<MailState>
         if (CurrentMessages.Count < MaxEMails && RandomExtra.Chance(NewEMailPerHourChance))
         {
             CurrentMessages.Add(PossibleEMails.GetNext());
+            TotalTasks++;
         }
     }
 
@@ -65,6 +71,7 @@ public class MailState : Singleton<MailState>
                 Alert.Instance.ShowMessage($"successfully completed order '{message.Subject}' from {message.SenderAddress}! now removing it from your inbox...");
                 CurrentMessages.RemoveAt(i);
                 message.Complete();
+                TasksCompleted++;
             }
         }
     }
