@@ -84,9 +84,10 @@ public partial class TerminalApp : MonoBehaviour
 				yield break;
 			}
 
-			TerminalState.Instance.EnvironmentVariables[arguments[1]] = arguments[2];
+			string value = String.Join(" ", arguments.Skip(2));
 
-			term.println(arguments[1] + " = " + arguments[2]);
+			TerminalState.Instance.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
+			term.println(arguments[1] + " = " + value);
 		}
 	}
 
