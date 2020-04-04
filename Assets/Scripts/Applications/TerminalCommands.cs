@@ -404,7 +404,7 @@ public partial class TerminalApp : MonoBehaviour
 			if (!TerminalState.Instance.XingLock) return false;
 			if (MirrorState.Instance.NumberIntact() == 0) return false;
 
-			string name = String.Join(" ", incantation.Skip(1));
+			string name = String.Join(" ", incantation.Skip(2));
 			string website = TerminalState.Instance.XingTarget;
 
 			SpellWatcher.Instance.CastSpell
