@@ -18,12 +18,15 @@ public partial class TerminalApp : MonoBehaviour
 
     public string BaseTitle;
 
-    public List<string> History = new List<string>();
+    public List<string> InputHistory = new List<string>();
+    public List<string> OutputHistory = new List<string>();
 
     public Window Window;
     public TMP_InputField CommandInput;
 
     public TextMeshProUGUI Prompt, HistoryText;
+
+    int posInHistory;
 
     void Start ()
     {
@@ -39,9 +42,12 @@ public partial class TerminalApp : MonoBehaviour
         SIGINT = false;
         if (Window.Focused && Input.GetKey(KeyCode.Escape)) SIGINT = true;
 
+        if (Window.Focused && Input.GetKey(KeyCode.UpArrow)) incrementPosInHistory(-1);
+        else if (Window.Focused && Input.GetKey(KeyCode.DownArrow)) incrementPosInHistory(1);
+
         string hist = "";
 
-        foreach (string line in History)
+        foreach (string line in OutputHistory)
         {
             hist += line + "\n";
         }
@@ -60,7 +66,10 @@ public partial class TerminalApp : MonoBehaviour
         Prompt.enabled = false;
         CommandInput.enabled = false;
 
-        History.Add(Prompt.text + input); // echo
+        InputHistory.Add(input);
+        OutputHistory.Add(Prompt.text + input); // echo
+
+        posInHistory = InputHistory.Count;
 
         input = input.Trim();
 
@@ -105,6 +114,15 @@ public partial class TerminalApp : MonoBehaviour
 
     void println (string line)
     {
-        History.Add(line);
+        OutputHistory.Add(line);
+    }
+
+    void incrementPosInHistory (int dir)
+    {
+        posInHistory = Mathf.Clamp(posInHistory + (int) Mathf.Sign(dir), 0, InputHistory.Count);
+
+        CommandInput.text = (posInHistory == InputHistory.Count)
+            ? ""
+            : InputHistory[posInHistory];
     }
 }
