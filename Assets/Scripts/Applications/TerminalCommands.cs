@@ -161,8 +161,8 @@ public partial class TerminalApp : MonoBehaviour
 
 			while (!term.SIGINT)
 			{
-				term.println(laments.Current);
 				laments.MoveNext();
+				term.println(laments.Current);
 
 				// roll our own weird WaitForSeconds so that we can immediately break if any key is indeed pressed
 				float timer = UnityEngine.Random.Range(.5f, 3);
