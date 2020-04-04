@@ -311,7 +311,7 @@ PrefabInstance:
         command ''incant'' in spe//)
 
 
-        Enjoy~
+        Enjoy!
 
         Giles Corey'
       objectReference: {fileID: 0}
@@ -1415,8 +1415,7 @@ PrefabInstance:
       propertyPath: Pages.Array.data[4]
       value: "here's a charm that causes people to post embarrassing statuses online:\n\nnote
         that this spell REQUIRES at least one (1) unbroken mirror in order to work\n\n-
-        'xing <target site IP>\n   - some common site's IPs are: Facebook - 1.5.12.7;
-        Twitter - 5.45.48.123; Instagram - 564.6587.63\n\n- in a new spe// window,
+        'xing <target website>\n\n- in a new spe// window,
         'incant facies libel <target name>'"
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
