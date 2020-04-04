@@ -42,8 +42,8 @@ public partial class TerminalApp : MonoBehaviour
         SIGINT = false;
         if (Window.Focused && Input.GetKey(KeyCode.Escape)) SIGINT = true;
 
-        if (Window.Focused && Input.GetKey(KeyCode.UpArrow)) incrementPosInHistory(-1);
-        else if (Window.Focused && Input.GetKey(KeyCode.DownArrow)) incrementPosInHistory(1);
+        if (Window.Focused && Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
+        else if (Window.Focused && Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
 
         string hist = "";
 
