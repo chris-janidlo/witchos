@@ -33,6 +33,7 @@ public static class Seance
             if (otherBullshitCounter < otherBullshitMax && RandomExtra.Chance(otherBullshitChance))
             {
                 yield return otherBullshit.GetNext();
+                otherBullshitCounter++;
             }
             else
             {
