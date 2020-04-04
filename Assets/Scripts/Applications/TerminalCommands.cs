@@ -317,7 +317,7 @@ public partial class TerminalApp : MonoBehaviour
 
 					return true;
 
-				case MoonPhase.NewMoon:
+				case MoonPhase.FullMoon:
 					if (incantation.Length == 1 || aura != "lux")
 						return false;
 					
