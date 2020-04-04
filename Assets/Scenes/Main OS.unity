@@ -1405,7 +1405,7 @@ PrefabInstance:
       value: "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors
         in Mirrors\n\n- commands are entered in the spe// application\n\n- any time
         an instruction uses <>, replace everything inside the brackets including the
-        brackets\n   - for example: if you are told to enter 'tn <name>' and the name
+        brackets\n   - for example: if you are told to enter 'tn <target name>' and the name
         is 'John Smith', enter 'tn John Smith'\n\n- 'incant' is the most important
         command - it's how you cast the final spell\n\n- make sure to check out the
         'help' command for more info"
@@ -1413,18 +1413,82 @@ PrefabInstance:
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
       propertyPath: Pages.Array.data[4]
-      value: 
+      value: "here's a charm that causes people to post embarrassing statuses online:\n\nnote
+        that this spell REQUIRES at least one (1) unbroken mirror in order to work\n\n-
+        'xing <target site IP>\n   - some common site's IPs are: Facebook - 1.5.12.7;
+        Twitter - 5.45.48.123; Instagram - 564.6587.63\n\n- in a new spe// window, 'incant facies libel <target name>'"
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
       propertyPath: Pages.Array.data[5]
       value: "a curse for moderate ill fortune, lasting of a week\n\n- commune with
-        the aggrieved ancestors of the accursed, using command 'seance <name>'\n   -
+        the aggrieved ancestors of the accursed, using command 'seance <target name>'\n   -
         take note of their most frequent chant\n- break a mirror\n- run 'set aura
-        negative'\n\nfinally, 'incant' the following formula:\n'malam <name> fortunam
+        negative'\n\nfinally, 'incant' the following formula:\n'malam <target name> fortunam
         <most frequent chant> horret'\n\nfor example, suppose the accursed is named
         John Smith and the most frequent chant from his ancestors was \"beware\";
         then the command would become 'incant malam John Smith fortunum beware horret'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
+        type: 3}
+      propertyPath: Pages.Array.data[1]
+      value: 'for temporary hair loss:
+
+
+        - run command ''set aura null''
+
+        - break a mirror, and if the moon is waning, break a second mirror
+
+        - ''incant <target name> borealeo'''
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
+        type: 3}
+      propertyPath: Pages.Array.data[2]
+      value: 'simple spell to set every password to the word ''password''
+
+
+        - run command ''xing <target name>''
+
+        - while that is running, open a new spe// window
+
+        - in the new window, run command ''set target <target name>''
+
+        - run commadn ''incant piratica non grata'''
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
+        type: 3}
+      propertyPath: Pages.Array.data[3]
+      value: 'a hex for causing minor bodily injury, on the order of a stubbed toe
+
+
+        if the moon is Gibbous (waxing or waning, no difference):
+
+        - ''set aura nox''
+
+        - ''set target <target name>''
+
+        - ''incant subgicatrix''
+
+
+        if the moon is Crescent:
+
+        - ''set target <target name>''
+
+        - ''incant subgicatrix''
+
+
+        if the moon is Full:
+
+        - ''set aura lux''
+
+        - ''incant subgicatrix <target name>''
+
+
+        if the moon is any other phase not mentioned above:
+
+        - simply ''incant subgicatrix <target name backward>''
+
+        DO NOT FORGET to reverse the name'
       objectReference: {fileID: 0}
     - target: {fileID: 6947452801411427745, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
@@ -2391,7 +2455,7 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Thelma Morales
+        TargetName: Thelma Morales on Facebook
       SenderAddress: edwardaodohertycanada@hotmail.com
       Subject: Curse Request
       Body: I think my wife hates me after I threw out one of her stupid crochet things.
@@ -2400,7 +2464,7 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Edith Werner
+        TargetName: Edith Werner on Twitter
       SenderAddress: concentrated_philip@orange.fr
       Subject: Mother In Law
       Body: My mother in law is always getting on arguments on Twitter and I hate
@@ -2408,14 +2472,14 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Branden Pickett
+        TargetName: Branden Pickett on Facebook
       SenderAddress: abject_julia@gmail.com
       Subject: ruinn mny Ex
       Body: i cnna't even come up with words to dersicbe how much ri HATE him
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Jamie Sweet
+        TargetName: Jamie Sweet on Instagram
       SenderAddress: genie_the_zucchini@aol.com
       Subject: Prank time
       Body: ok Maybe this is a little mean but my cousin Jamie is so proud of his

@@ -14,4 +14,11 @@ public class TerminalState : Singleton<TerminalState>
     {
         SingletonOverwriteInstance(this);
     }
+
+    public string GetEnvironmentVariable (string variable)
+    {
+        return (EnvironmentVariables.ContainsKey(variable))
+            ? EnvironmentVariables[variable]
+            : "";
+    }
 }

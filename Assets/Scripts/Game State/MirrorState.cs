@@ -86,4 +86,14 @@ public class MirrorState : Singleton<MirrorState>
 
 		return false;
 	}
+
+	public int NumberIntact ()
+	{
+		return Mirrors.Where(m => m.State == State.Intact).Count();
+	}
+
+	public int NumberBroken ()
+	{
+		return Mirrors.Where(m => m.State == State.Broken).Count();
+	}
 }

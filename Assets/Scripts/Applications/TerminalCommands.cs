@@ -115,9 +115,10 @@ public partial class TerminalApp : MonoBehaviour
 			{
 				foreach (var key in arguments.Skip(1))
 				{
-					if (env.ContainsKey(key))
+					string result;
+					if (!env.TryGetValue(key, out result))
 					{
-						term.println(key + " = " + env[key]);
+						term.println(key + " = " + result);
 					}
 					else
 					{
@@ -139,7 +140,13 @@ public partial class TerminalApp : MonoBehaviour
 
 		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
 		{
-			string name = String.Join("", arguments.Skip(1));
+			if (arguments.Length == 1)
+			{
+				term.println("usage: seance name");
+				yield break;
+			}
+
+			string name = String.Join(" ", arguments.Skip(1));
 
 			term.println("connecting to spirit world...");
 			yield return new WaitForSeconds(3);
@@ -147,12 +154,14 @@ public partial class TerminalApp : MonoBehaviour
 			term.println("connection succeeded.");
 			term.println("now echoing the laments of the dead. press escape to stop.");
 
+			var laments = Seance.GetChants(name);
+
 			yield return new WaitForSeconds(3);
 
 			while (!term.SIGINT)
 			{
-				// TODO: get the proper chants to put down here
-				term.println("oooooo plaaaaceeehoooooldeeer");
+				term.println(laments.Current);
+				laments.MoveNext();
 
 				// roll our own weird WaitForSeconds so that we can immediately break if any key is indeed pressed
 				float timer = UnityEngine.Random.Range(.5f, 3);
@@ -216,6 +225,227 @@ public partial class TerminalApp : MonoBehaviour
 				term.println("error - bad argument format. xing requires either an IP address for an electronic target or a truename for a human target (see command 'tn')");
 				yield break;
 			}
+		}
+	}
+
+	class Cincant : Command
+	{
+		public string[] HelpOutput => new string[]
+		{
+			"invoke the ancient magicks and cast a spell or curse"
+		};
+
+		public IEnumerator Evaluate (TerminalApp term, string[] arguments)
+		{
+			if (arguments.Length < 2)
+			{
+				term.println("usage: incant spell");
+				yield break;
+			}
+
+			var incantation = arguments.Skip(1).ToArray();
+
+			bool spellFound = false, spellSucceeded = false;
+
+			switch (arguments[1])
+			{
+				case "malam":
+					spellFound = true;
+					spellSucceeded = badLuck(term, incantation);
+					break;
+				case "piratica":
+					spellFound = true;
+					spellSucceeded = password(term, incantation);
+					break;
+				case "facies":
+					spellFound = true;
+					spellSucceeded = social(term, incantation);
+					break;
+				case "subgicatrix":
+					spellFound = true;
+					spellSucceeded = stub(term, incantation);
+					break;
+			}
+
+			if (!spellFound && incantation.Contains("borealeo"))
+			{
+				spellFound = true;
+				spellSucceeded = hair(term, incantation);
+			}
+
+			if (!spellFound)
+			{
+				term.println("unable to hook into the weave - double check the spelling of your incantation");
+				yield break;
+			}
+
+			term.println
+			(
+				spellSucceeded
+					? "spell successfully cast"
+					: "the arcane aether fizzled out - something was missing in your spell"
+			);
+		}
+
+		bool stub (TerminalApp term, string[] incantation)
+		{
+			string target = TerminalState.Instance.GetEnvironmentVariable("target");
+			string aura = TerminalState.Instance.GetEnvironmentVariable("aura");
+
+			switch (TimeState.Instance.GetTodaysMoonPhase())
+			{
+				case MoonPhase.WaxingCrescent:
+				case MoonPhase.WaningCrescent:
+					if (incantation.Length != 1 || target == "")
+						return false;
+					
+					SpellWatcher.Instance.CastSpell
+					(
+						SpellType.Stub,
+						target
+					);
+					
+					return true;
+				
+				case MoonPhase.WaxingGibbous:
+				case MoonPhase.WaningGibbous:
+					if (incantation.Length != 1 || target == "" || aura != "nox")
+						return false;
+					
+					SpellWatcher.Instance.CastSpell
+					(
+						SpellType.Stub,
+						target
+					);
+
+					return true;
+
+				case MoonPhase.NewMoon:
+					if (incantation.Length == 1 || aura != "lux")
+						return false;
+					
+					SpellWatcher.Instance.CastSpell
+					(
+						SpellType.Stub,
+						string.Join(" ", incantation.Skip(1))
+					);
+
+					return true;
+				
+				default:
+					if (incantation.Length == 1)
+						return false;
+					
+					SpellWatcher.Instance.CastSpell
+					(
+						SpellType.Stub,
+						new String(string.Join(" ", incantation.Skip(1)).Reverse().ToArray())
+					);
+
+					return true;
+			}
+		}
+
+		bool badLuck (TerminalApp term, string[] incantation)
+		{
+			if (incantation.Length != 5 || TerminalState.Instance.GetEnvironmentVariable("aura") != "negative") return false;
+
+			int mirrorCount = TimeState.Instance.GetTodaysMoonPhase().GetPhaseChange() == MoonPhaseChange.Waxing ? 2 : 1;
+			if (MirrorState.Instance.NumberBroken() < mirrorCount) return false;
+
+			List<string> nameBits = new List<string>();
+			int i;
+			for (i = 1; i < incantation.Length; i++)
+			{
+				if (incantation[i] == "fortunam") break;
+				nameBits.Add(incantation[i]);
+			}
+
+			if (incantation.Length - i < 2) return false;
+
+			string name = String.Join(" ", nameBits);
+
+			if (incantation[i + 1] != Seance.TrueChant(name) || incantation[i + 2] != "horret") return false;
+
+			for (i = 0; i < mirrorCount; i++)
+			{
+				if (!MirrorState.Instance.TryConsumeMagic()) throw new Exception("wtf");
+			}
+
+			SpellWatcher.Instance.CastSpell
+			(
+				SpellType.BadLuck,
+				name
+			);
+
+			return true;
+		}
+
+		bool password (TerminalApp term, string[] incantation)
+		{
+			if (String.Join(" ", incantation) != "piratica non grata") return false;
+			if (!TerminalState.Instance.XingLock) return false;
+
+			string target = TerminalState.Instance.GetEnvironmentVariable("target");
+			if (target == "" || target != TerminalState.Instance.XingTarget) return false;
+
+			SpellWatcher.Instance.CastSpell
+			(
+				SpellType.Password,
+				target
+			);
+
+			return true;
+		}
+
+		bool social (TerminalApp term, string[] incantation)
+		{
+			if (incantation[1] != "libel") return false;
+			if (!TerminalState.Instance.XingLock) return false;
+			if (MirrorState.Instance.NumberIntact() == 0) return false;
+
+			string name = String.Join(" ", incantation.Skip(1));
+
+			string xingTarget = TerminalState.Instance.XingTarget;
+			string website;
+			if (!IPTable.IPs.Reverse.TryGetValue(xingTarget, out website)) return false;
+
+			SpellWatcher.Instance.CastSpell
+			(
+				SpellType.SocialMedia,
+				name + " on " + website
+			);
+
+			return true;
+		}
+
+		bool hair (TerminalApp term, string[] incantation)
+		{
+			if (incantation[incantation.Length - 1] != "borealeo") return false;
+
+			if (TerminalState.Instance.GetEnvironmentVariable("aura") != "null") return false;
+
+			int mirrorCount = TimeState.Instance.GetTodaysMoonPhase().GetPhaseChange() == MoonPhaseChange.Waning ? 2 : 1;
+			if (MirrorState.Instance.NumberBroken() < mirrorCount) return false;
+
+			string name = incantation[0];
+			for (int i = 1; i < incantation.Length - 1; i++)
+			{
+				name += " " + incantation[i];
+			}
+
+			SpellWatcher.Instance.CastSpell
+			(
+				SpellType.HairLoss,
+				name
+			);
+
+			for (int i = 0; i < mirrorCount; i++)
+			{
+				if (!MirrorState.Instance.TryConsumeMagic()) throw new Exception("wtf");
+			}
+
+			return true;
 		}
 	}
 
