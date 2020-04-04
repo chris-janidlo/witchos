@@ -457,5 +457,6 @@ public partial class TerminalApp : MonoBehaviour
 		{ "show", new Cshow() },
 		{ "seance", new Cseance() },
 		{ "xing", new Cxing() },
+		{ "incant", new Cincant() },
 	};
 }
