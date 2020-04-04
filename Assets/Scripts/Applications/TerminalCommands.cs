@@ -274,6 +274,8 @@ public partial class TerminalApp : MonoBehaviour
 				yield break;
 			}
 
+			yield return new WaitForSeconds(.3f);
+
 			term.println
 			(
 				spellSucceeded
