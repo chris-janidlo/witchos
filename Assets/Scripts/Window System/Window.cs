@@ -44,6 +44,8 @@ public class Window : MonoBehaviour, IPointerDownHandler
             () => { if (Closable) Close(); }
         );
 
+        TimeState.Instance.DayEnded += Close;
+
         MinimizeTransition.AttachMonoBehaviour(this);
     }
 
@@ -88,6 +90,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     public void Close ()
     {
+        TimeState.Instance.DayEnded -= Close;
         Destroy(gameObject);
         if (taskBarButton != null) Destroy(taskBarButton.gameObject);
     }

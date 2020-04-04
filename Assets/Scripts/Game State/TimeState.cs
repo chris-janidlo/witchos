@@ -16,7 +16,7 @@ public class TimeState : Singleton<TimeState>
 
     public DateTime DateTime { get; private set; } = INITIAL_DATE.AddHours(DAY_START_HOUR);
 
-    public event Action DayStarted, HourStarted;
+    public event Action DayStarted, DayEnded, HourStarted;
 
     public float InGameSecondsPerRealtimeSeconds;
     [TextArea]
@@ -27,6 +27,7 @@ public class TimeState : Singleton<TimeState>
 
     int hourTicker;
     bool warnedOnce, warnedTwice;
+    bool dayEnded;
 
     void Awake ()
     {
@@ -37,11 +38,13 @@ public class TimeState : Singleton<TimeState>
     {
         DateTime = DateTime.AddSeconds(InGameSecondsPerRealtimeSeconds * Time.deltaTime);
 
-        // TODO: add warning before abruptly ending
-        if (DateTime.Hour >= DAY_END_HOUR)
+        if (DateTime.Hour >= DAY_END_HOUR && !dayEnded)
         {
             Time.timeScale = 0;
             DaySummaryScreen.Instance.ShowSummary();
+            DayEnded?.Invoke();
+            dayEnded = true;
+            return;
         }
 
         if (DateTime.Hour > hourTicker)
