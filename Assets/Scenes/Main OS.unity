@@ -2456,7 +2456,7 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Thelma Morales on Facebook
+        TargetName: Thelma Morales on facebook.com
       SenderAddress: edwardaodohertycanada@hotmail.com
       Subject: Curse Request
       Body: I think my wife hates me after I threw out one of her stupid crochet things.
@@ -2465,7 +2465,7 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Edith Werner on Twitter
+        TargetName: Edith Werner on twitter.com
       SenderAddress: concentrated_philip@orange.fr
       Subject: Mother In Law
       Body: My mother in law is always getting on arguments on Twitter and I hate
@@ -2473,14 +2473,14 @@ MonoBehaviour:
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Branden Pickett on Facebook
+        TargetName: Branden Pickett on facebook.com
       SenderAddress: abject_julia@gmail.com
       Subject: ruinn mny Ex
       Body: i cnna't even come up with words to dersicbe how much ri HATE him
       Read: 0
     - RequestedSpell:
         Type: 4
-        TargetName: Jamie Sweet on Instagram
+        TargetName: Jamie Sweet on instagram.com
       SenderAddress: genie_the_zucchini@aol.com
       Subject: Prank time
       Body: ok Maybe this is a little mean but my cousin Jamie is so proud of his
@@ -2489,8 +2489,8 @@ MonoBehaviour:
     AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
-  NewEMailsPerDayRange: {x: 3, y: 4}
-  NewEMailPerHourChance: 0.1
+  NewEMailsPerDayRange: {x: 10, y: 11}
+  NewEMailPerHourChance: 0.5
   MaxEMails: 10
   TasksCompleted: 0
   TotalTasks: 0

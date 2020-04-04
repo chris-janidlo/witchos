@@ -195,19 +195,22 @@ public partial class TerminalApp : MonoBehaviour
 
 			if (arguments.Length < 2)
 			{
-				term.println("usage: xing ip|name");
+				term.println("usage: xing website|name");
 				yield break;
 			}
 
-			IPAddress address;
-			bool isIP = IPAddress.TryParse(arguments[1], out address);
-
-			string target = isIP ? address.ToString() : String.Join(" ", arguments.Skip(1));
+			string target = String.Join(" ", arguments.Skip(1));
 
 			TerminalState.Instance.XingLock = true;
 
-			term.println($"pointing imps toward {target} (this may take some time)...");
-			yield return new WaitForSeconds(UnityEngine.Random.Range(10, 20));
+			term.println($"pointing imps toward {target}... (press ESC to cancel if desired. this may take some time)");
+
+			float timer = UnityEngine.Random.Range(10, 20);
+			while (!term.SIGINT && timer >= 0)
+			{
+				yield return null;
+				timer -= Time.deltaTime;
+			}
 
 			TerminalState.Instance.XingTarget = target;
 			term.println("done. now entering stability mode.");
@@ -402,10 +405,7 @@ public partial class TerminalApp : MonoBehaviour
 			if (MirrorState.Instance.NumberIntact() == 0) return false;
 
 			string name = String.Join(" ", incantation.Skip(1));
-
-			string xingTarget = TerminalState.Instance.XingTarget;
-			string website;
-			if (!IPTable.IPs.Reverse.TryGetValue(xingTarget, out website)) return false;
+			string website = TerminalState.Instance.XingTarget;
 
 			SpellWatcher.Instance.CastSpell
 			(
