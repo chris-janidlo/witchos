@@ -193,39 +193,33 @@ public partial class TerminalApp : MonoBehaviour
 				yield break;
 			}
 
-			if (arguments.Length != 2)
+			if (arguments.Length < 2)
 			{
-				term.println("usage: xing ip|true_name");
+				term.println("usage: xing ip|name");
 				yield break;
 			}
 
 			IPAddress address;
 			bool isIP = IPAddress.TryParse(arguments[1], out address);
 
-			if (isIP || TrueName.IsTrueName(arguments[1]))
+			string target = isIP ? address.ToString() : String.Join(" ", arguments.Skip(1));
+
+			TerminalState.Instance.XingLock = true;
+
+			term.println($"pointing imps toward {target} (this may take some time)...");
+			yield return new WaitForSeconds(UnityEngine.Random.Range(10, 20));
+
+			TerminalState.Instance.XingTarget = target;
+			term.println("done. now entering stability mode.");
+			term.println("");
+			term.println("press escape at any time to exit and RELEASE the imps from their current target.");
+
+			while (!term.SIGINT)
 			{
-				TerminalState.Instance.XingLock = true;
-
-				term.println($"pointing imps toward {(isIP ? address.ToString() : arguments[1])} (this may take some time)...");
-				yield return new WaitForSeconds(UnityEngine.Random.Range(10, 20));
-
-				TerminalState.Instance.XingTarget = arguments[1];
-				term.println("done. now entering stability mode.");
-				term.println("");
-				term.println("press escape at any time to exit and RELEASE the imps from their current target.");
-
-				while (!term.SIGINT)
-				{
-					yield return null;
-				}
-
-				TerminalState.Instance.XingLock = false;
+				yield return null;
 			}
-			else
-			{
-				term.println("error - bad argument format. xing requires either an IP address for an electronic target or a truename for a human target (see command 'tn')");
-				yield break;
-			}
+
+			TerminalState.Instance.XingLock = false;
 		}
 	}
 
