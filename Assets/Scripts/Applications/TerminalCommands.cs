@@ -348,7 +348,7 @@ public partial class TerminalApp : MonoBehaviour
 
 		bool badLuck (TerminalApp term, string[] incantation)
 		{
-			if (incantation.Length != 5 || TerminalState.Instance.GetEnvironmentVariable("aura") != "negative") return false;
+			if (incantation.Length < 5 || TerminalState.Instance.GetEnvironmentVariable("aura") != "negative") return false;
 
 			int mirrorCount = TimeState.Instance.GetTodaysMoonPhase().GetPhaseChange() == MoonPhaseChange.Waxing ? 2 : 1;
 			if (MirrorState.Instance.NumberBroken() < mirrorCount) return false;
