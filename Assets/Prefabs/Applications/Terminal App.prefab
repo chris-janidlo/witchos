@@ -348,7 +348,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 16, y: 2}
-  m_SizeDelta: {x: 292, y: 8}
+  m_SizeDelta: {x: 282, y: 8}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4808680743334337074
 CanvasRenderer:
@@ -467,6 +467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseTitle: spe//
+  InputHistory: []
+  OutputHistory: []
   Window: {fileID: 3869046463147635246}
   CommandInput: {fileID: 4779047884363211016}
   Prompt: {fileID: 2046572684048575151}
