@@ -1405,10 +1405,10 @@ PrefabInstance:
       value: "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors
         in Mirrors\n\n- commands are entered in the spe// application\n\n- any time
         an instruction uses <>, replace everything inside the brackets including the
-        brackets\n   - for example: if you are told to enter 'tn <target name>' and the name
-        is 'John Smith', enter 'tn John Smith'\n\n- 'incant' is the most important
-        command - it's how you cast the final spell\n\n- make sure to check out the
-        'help' command for more info"
+        brackets\n   - for example: if you are told to enter 'tn <target name>' and
+        the name is 'John Smith', enter 'tn John Smith'\n\n- 'incant' is the most
+        important command - it's how you cast the final spell\n\n- make sure to check
+        out the 'help' command for more info"
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
@@ -1416,17 +1416,18 @@ PrefabInstance:
       value: "here's a charm that causes people to post embarrassing statuses online:\n\nnote
         that this spell REQUIRES at least one (1) unbroken mirror in order to work\n\n-
         'xing <target site IP>\n   - some common site's IPs are: Facebook - 1.5.12.7;
-        Twitter - 5.45.48.123; Instagram - 564.6587.63\n\n- in a new spe// window, 'incant facies libel <target name>'"
+        Twitter - 5.45.48.123; Instagram - 564.6587.63\n\n- in a new spe// window,
+        'incant facies libel <target name>'"
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
       propertyPath: Pages.Array.data[5]
       value: "a curse for moderate ill fortune, lasting of a week\n\n- commune with
-        the aggrieved ancestors of the accursed, using command 'seance <target name>'\n   -
-        take note of their most frequent chant\n- break a mirror\n- run 'set aura
-        negative'\n\nfinally, 'incant' the following formula:\n'malam <target name> fortunam
-        <most frequent chant> horret'\n\nfor example, suppose the accursed is named
-        John Smith and the most frequent chant from his ancestors was \"beware\";
+        the aggrieved ancestors of the accursed, using command 'seance <target name>'\n
+        \  - take note of their most frequent chant\n- break a mirror\n- run 'set
+        aura negative'\n\nfinally, 'incant' the following formula:\n'malam <target
+        name> fortunam <most frequent chant> horret'\n\nfor example, suppose the accursed
+        is named John Smith and the most frequent chant from his ancestors was \"beware\";
         then the command would become 'incant malam John Smith fortunum beware horret'"
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
@@ -1903,8 +1904,8 @@ CanvasGroup:
   m_GameObject: {fileID: 928421101}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &943053674
 GameObject:
