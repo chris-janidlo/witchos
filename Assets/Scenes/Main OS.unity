@@ -1453,7 +1453,7 @@ PrefabInstance:
 
         - in the new window, run command ''set target <target name>''
 
-        - run commadn ''incant piratica non grata'''
+        - run command ''incant piratica non grata'''
       objectReference: {fileID: 0}
     - target: {fileID: 1256481295114689928, guid: 010f057168b324778aee5c57d4890d8c,
         type: 3}
