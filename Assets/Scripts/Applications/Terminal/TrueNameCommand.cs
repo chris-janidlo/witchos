@@ -10,7 +10,7 @@ public class TrueNameCommand : TerminalCommand
 	{
 		if (arguments.Length == 1)
 		{
-			term.PrintLine("usage: tn name");
+			printUsage(term);
 			yield break;
 		}
 

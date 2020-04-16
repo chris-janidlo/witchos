@@ -16,7 +16,7 @@ public class XingCommand : TerminalCommand
 
 		if (arguments.Length < 2)
 		{
-			term.PrintLine("usage: xing website|name");
+			printUsage(term);
 			yield break;
 		}
 

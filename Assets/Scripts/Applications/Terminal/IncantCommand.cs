@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class IncantCommand : TerminalCommand
 {
+	public string SpellNotFound, SpellFailed, SpellSucceeded;
+
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
 	{
 		if (arguments.Length < 2)
 		{
-			term.PrintLine("usage: incant spell");
+			printUsage(term);
 			yield break;
 		}
 
@@ -46,18 +48,13 @@ public class IncantCommand : TerminalCommand
 
 		if (!spellFound)
 		{
-			term.PrintLine("unable to hook into the weave - double check the spelling of your incantation");
+			term.PrintLine(SpellNotFound);
 			yield break;
 		}
 
 		yield return new WaitForSeconds(.3f);
 
-		term.PrintLine
-		(
-			spellSucceeded
-				? "spell successfully cast"
-				: "the arcane aether fizzled out - something was missing in your spell"
-		);
+		term.PrintLine(spellSucceeded ? SpellSucceeded : SpellFailed);
 	}
 
 	bool stub (TerminalApp term, string[] incantation)

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TrueNameCommand
   m_EditorClassIdentifier: 
   Name: tn
+  ArgumentList: name
   HelpOutput: 'for discovering the True Name of an individual
 
     input can be given as either ''tn firstname lastname'' or ''tn fullname''. for

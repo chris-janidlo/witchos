@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: XingCommand
   m_EditorClassIdentifier: 
   Name: xing
+  ArgumentList: name|website
   HelpOutput: 'aligns mischievous imps toward a target
 
     xing is useful for spells that utilize imps for hacking devices or human brains

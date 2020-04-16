@@ -10,7 +10,7 @@ public class SeanceCommand : TerminalCommand
 	{
 		if (arguments.Length == 1)
 		{
-			term.PrintLine("usage: seance name");
+			printUsage(term);
 			yield break;
 		}
 
@@ -31,7 +31,7 @@ public class SeanceCommand : TerminalCommand
 			laments.MoveNext();
 			term.PrintLine(laments.Current);
 
-			// roll our own weird WaitForSeconds so that we can immediately break if any key is indeed pressed
+			// roll our own weird WaitForSeconds so that we can immediately break if escape key is pressed
 			float timer = UnityEngine.Random.Range(.5f, 3);
 			while (!term.SIGINT && timer >= 0)
 			{
