@@ -9,7 +9,7 @@ public class SetCommand : TerminalCommand
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
 	{
 		// TODO: allow for other argument styles like 'set a = b', 'set a=b', etc
-		if (arguments.Length != 3)
+		if (arguments.Length < 3)
 		{
 			printUsage(term);
 			yield break;
