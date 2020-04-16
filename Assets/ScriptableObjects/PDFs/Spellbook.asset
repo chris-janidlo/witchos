@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafdf2d92ba3f4969b89c57ad8e935af, type: 3}
+  m_Name: Spellbook
+  m_EditorClassIdentifier: 
+  Title: spellbook.txt
+  Pages:
+  - "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors in Mirrors\n\n-
+    commands are entered in the spe// application\n\n- any time an instruction uses
+    <>, replace everything inside the brackets including the brackets\n   - for example:
+    if you are told to enter 'tn <target name>' and the name is 'John Smith', enter
+    'tn John Smith'\n\n- 'incant' is the most important command - it's how you cast
+    the final spell\n\n- make sure to check out the 'help' command for more info"
+  - 'for temporary hair loss:
+
+
+
+    - run command ''set aura null''
+
+
+    - break a mirror, and if the moon is waning, break a second mirror
+
+
+    - ''incant <target name> borealeo'''
+  - 'simple spell to set every password to the word ''password''
+
+
+
+    - run command ''xing <target name>''
+
+
+    - while that is running, open a new spe// window
+
+
+    - in the new window, run command ''set target <target name>''
+
+
+    - run command ''incant piratica non grata'''
+  - 'a hex for causing minor bodily injury, on the order of a stubbed toe
+
+
+    if the moon is Gibbous (waxing or waning, no difference):
+
+    - ''set aura nox''
+
+    - ''set target <target name>''
+
+    - ''incant subgicatrix''
+
+
+    if the moon is Crescent:
+
+    - ''set target <target name>''
+
+    - ''incant subgicatrix''
+
+
+    if the moon is Full:
+
+    - ''set aura lux''
+
+    - ''incant subgicatrix <target name>''
+
+
+    if the moon is any other phase not mentioned above:
+
+    - simply ''incant subgicatrix <target name backward>'' (make sure to reverse the
+    name!)'
+  - "a curse for moderate ill fortune, lasting of a week\n\n- commune with the aggrieved
+    ancestors of the accursed, using command 'seance <target name>'\n   - take note
+    of their most frequent chant\n- break a mirror\n- run 'set aura negative'\n\nfinally,
+    'incant' the following formula:\n'malam <target name> fortunam <most frequent
+    chant> horret'\n\nfor example, suppose the accursed is named John Smith and the
+    most frequent chant from his ancestors was \"beware\"; then the command would
+    become 'incant malam John Smith fortunum beware horret'"
+  - 'here''s a charm that causes people to post embarrassing statuses online:
+
+
+    note that this spell REQUIRES at least one (1) unbroken mirror in order to work
+
+
+    - ''xing <target website>
+
+
+    - in a new spe// window, ''incant facies libel <target name>'''

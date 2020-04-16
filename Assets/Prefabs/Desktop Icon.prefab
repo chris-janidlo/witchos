@@ -260,7 +260,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
   Label: 
-  OnClick:
+  ApplicationPrefab: {fileID: 0}
+  ApplicationData: {fileID: 0}
+  OpenSingleInstance: 0
+  OnApplicationOpened:
     m_PersistentCalls:
       m_Calls: []
   IconImage: {fileID: 1637483633571634754}

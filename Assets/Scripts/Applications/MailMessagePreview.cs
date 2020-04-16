@@ -32,7 +32,7 @@ public class MailMessagePreview : MonoBehaviour
         message.Read = true;
 
         WindowFactory.Instance
-            .CreateSingletonWindowWithTaskbarButton(MessageWindowPrefab, "mail message " + message.GetHashCode().ToString())
+            .OpenWindow(MessageWindowPrefab, "mail message " + message.GetHashCode().ToString(), WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton)
             .GetComponent<MailMessageWindow>().SetMessage(message);
     }
 }

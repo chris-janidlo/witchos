@@ -29,11 +29,7 @@ public partial class TerminalApp : MonoBehaviour
 
     void Start ()
     {
-        Window.DidFocus += FocusInput;
-
         CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
-
-        FocusInput();
     }
 
     void Update ()

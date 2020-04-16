@@ -6,6 +6,8 @@ using TMPro;
 
 public class TextViewerApp : MonoBehaviour
 {
+    public Window Window;
+
     public TextMeshProUGUI ContentText, PageNumberIndicator;
 
     public Button NextPage, PreviousPage;
@@ -19,9 +21,13 @@ public class TextViewerApp : MonoBehaviour
         PreviousPage.onClick.AddListener(() => incrementPage(-1));
     }
 
-    public void SetPages (List<string> pages)
+    public void SetData ()
     {
-        this.pages = pages;
+        var pdf = Window.AppData as TextPDF;
+
+        Window.Title = pdf.Title + " (readonly)";
+        pages = pdf.Pages;
+
         setPage(1);
     }
 

@@ -20,6 +20,6 @@ public class MirrorsApp : MonoBehaviour
 			Instantiate(MirrorInfoPrefab, MirrorInfoParent).SetMirrorState(mirror);
 		}
 
-		HelpButton.onClick.AddListener(() => WindowFactory.Instance.CreateSingletonWindow(HelpWindowPrefab));
+		HelpButton.onClick.AddListener(() => WindowFactory.Instance.OpenWindow(HelpWindowPrefab, WindowFactory.Options.Singleton));
 	}
 }

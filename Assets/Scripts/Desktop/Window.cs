@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -11,16 +12,17 @@ public class Window : MonoBehaviour, IPointerDownHandler
 {
     public static Window FocusedWindow { get; private set; }
 
-    public event Action DidFocus;
-
     public bool Minimized { get; private set; }
     public bool Focused => FocusedWindow == this;
 
     [Header("Data")]
     public string Title;
     public Sprite Icon;
+    public ScriptableObject AppData;
     public bool Minimizable = true, Closable = true;
     public TransitionableFloat MinimizeTransition;
+
+    public UnityEvent DidOpen, DidFocus;
 
     [Header("References")]
     public TextMeshProUGUI TitleText;
@@ -47,6 +49,8 @@ public class Window : MonoBehaviour, IPointerDownHandler
         TimeState.Instance.DayEnded += Close;
 
         MinimizeTransition.AttachMonoBehaviour(this);
+
+        DidOpen.Invoke();
     }
 
     void Update ()
@@ -99,7 +103,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     {
         transform.SetAsLastSibling(); // bring to front
         FocusedWindow = this;
-        DidFocus?.Invoke();
+        DidFocus.Invoke();
     }
 
 	public void OnPointerDown (PointerEventData eventData)
