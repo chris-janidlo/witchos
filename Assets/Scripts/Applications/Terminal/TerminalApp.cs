@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -7,14 +8,12 @@ using TMPro;
 // TODO: add history scrolling w up/down keys
 public partial class TerminalApp : MonoBehaviour
 {
-    interface Command
-    {
-        string[] HelpOutput { get; }
-        IEnumerator Evaluate (TerminalApp term, string[] arguments);
-    }
-
     public bool Evaluating { get; private set; }
     public bool SIGINT { get; private set; }
+
+    public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
+
+    public List<TerminalCommand> Commands;
 
     public string BaseTitle;
 
@@ -86,15 +85,15 @@ public partial class TerminalApp : MonoBehaviour
 
             string[] arguments = command.Split();
 
-            if (Commands.ContainsKey(arguments[0]))
+            if (CommandDict.ContainsKey(arguments[0]))
             {
                 Window.Title = BaseTitle + " - " + arguments[0];
-                yield return Commands[arguments[0]].Evaluate(this, arguments);
+                yield return CommandDict[arguments[0]].Evaluate(this, arguments);
                 Window.Title = BaseTitle;
             }
             else
             {
-                println("command not recognized: " + arguments[0]);
+                PrintLine("command not recognized: " + arguments[0]);
             }
         }
 
@@ -112,7 +111,14 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.Select();
     }
 
-    void println (string line)
+    public void Print (string output)
+    {
+        foreach (string line in output.Split('\n', '\r'))
+        {
+            PrintLine(line);
+        }
+    }
+    public void PrintLine (string line)
     {
         OutputHistory.Add(line);
     }

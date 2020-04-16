@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976d0a50ae9a64a798afd6080f2b2938, type: 3}
+  m_Name: XingCommand
+  m_EditorClassIdentifier: 
+  Name: xing
+  HelpOutput: 'aligns mischievous imps toward a target
+
+    xing is useful for spells that utilize imps for hacking devices or human brains
+
+    it takes either an IP address (for devices) or a person''s true name as an argument
+
+    while active, any spell that needs imps can effect xing''s current target.'

@@ -62,7 +62,6 @@ public class MailState : Singleton<MailState>
 
     void onSpellCast (Spell spell)
     {
-        Debug.Log(spell);
 		for (int i = CurrentMessages.Count - 1; i >= 0; i--)
         {
             var message = CurrentMessages[i];

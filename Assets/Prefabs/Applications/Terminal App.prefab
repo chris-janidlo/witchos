@@ -466,6 +466,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750f3c3e83eb8400c9df26a178d2aeee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Commands:
+  - {fileID: 11400000, guid: d164580be966c4a5db8cf71dc9a369cf, type: 2}
+  - {fileID: 11400000, guid: d9c96b63218be43fd88b2f4c92f96482, type: 2}
+  - {fileID: 11400000, guid: dcad8a6fb0cfe4b09b0242cd9f7f3c7d, type: 2}
+  - {fileID: 11400000, guid: a3d6773613b084546b11cbceaad02fce, type: 2}
+  - {fileID: 11400000, guid: bdc634f8d0a78476ea02ec231920407d, type: 2}
+  - {fileID: 11400000, guid: 13ac7d6f72dc44e72b78798b6d0ba5c3, type: 2}
+  - {fileID: 11400000, guid: 177744f67285947daa06d56815273645, type: 2}
   BaseTitle: spe//
   InputHistory: []
   OutputHistory: []
