@@ -33,16 +33,24 @@ public class XingCommand : TerminalCommand
 			timer -= Time.deltaTime;
 		}
 
-		TerminalState.Instance.XingTarget = target;
-		term.PrintLine("done. now entering stability mode.");
-		term.PrintLine("");
-		term.PrintLine("press escape at any time to exit and RELEASE the imps from their current target.");
+		if (!term.SIGINT)
+		{
+			TerminalState.Instance.XingTarget = target;
+			term.PrintLine("done. now entering stability mode.");
+			term.PrintLine("");
+			term.PrintLine("press escape at any time to exit and RELEASE the imps from their current target.");
+		}
 
 		while (!term.SIGINT)
 		{
 			yield return null;
 		}
 
+		TerminalState.Instance.XingLock = false;
+	}
+
+	public override void CleanUpEarly (TerminalApp term)
+	{
 		TerminalState.Instance.XingLock = false;
 	}
 }

@@ -1,11 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// everything except for the command list goes here
-// TODO: add history scrolling w up/down keys
 public partial class TerminalApp : MonoBehaviour
 {
     public bool Evaluating { get; private set; }
@@ -24,6 +23,8 @@ public partial class TerminalApp : MonoBehaviour
     public TMP_InputField CommandInput;
 
     public TextMeshProUGUI Prompt, HistoryText;
+
+    TerminalCommand currentCommand;
 
     int posInHistory;
 
@@ -47,9 +48,33 @@ public partial class TerminalApp : MonoBehaviour
             hist += line + "\n";
         }
 
-        if (!Evaluating) hist += " ";
+        if (!Evaluating) hist += " "; // empty additional line so that the history doesn't overlap the prompt
 
         HistoryText.text = hist;
+    }
+
+    void OnDestroy ()
+    {
+        if (Evaluating) currentCommand.CleanUpEarly(this);
+    }
+
+    public void FocusInput ()
+    {
+        CommandInput.ActivateInputField();
+        CommandInput.Select();
+    }
+
+    public void Print (string output)
+    {
+        foreach (string line in output.Split('\n', '\r'))
+        {
+            PrintLine(line);
+        }
+    }
+
+    public void PrintLine (string line)
+    {
+        OutputHistory.Add(line);
     }
 
     IEnumerator evaluateCommand (string input)
@@ -84,7 +109,10 @@ public partial class TerminalApp : MonoBehaviour
             if (CommandDict.ContainsKey(arguments[0]))
             {
                 Window.Title = BaseTitle + " - " + arguments[0];
-                yield return CommandDict[arguments[0]].Evaluate(this, arguments);
+
+                currentCommand = CommandDict[arguments[0]];
+                yield return currentCommand.Evaluate(this, arguments);
+
                 Window.Title = BaseTitle;
             }
             else
@@ -99,24 +127,6 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.enabled = true;
 
         if (Window.Focused) FocusInput();
-    }
-
-    public void FocusInput ()
-    {
-        CommandInput.ActivateInputField();
-        CommandInput.Select();
-    }
-
-    public void Print (string output)
-    {
-        foreach (string line in output.Split('\n', '\r'))
-        {
-            PrintLine(line);
-        }
-    }
-    public void PrintLine (string line)
-    {
-        OutputHistory.Add(line);
     }
 
     void incrementPosInHistory (int dir)
