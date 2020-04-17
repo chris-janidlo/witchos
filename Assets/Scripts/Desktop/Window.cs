@@ -61,12 +61,14 @@ public class Window : MonoBehaviour, IPointerDownHandler
         TitleText.text = Title;
         IconImage.sprite = Icon;
 
-        if (MinimizeTransition.Value == 1)
-        {
-            trueLocation = transform.position;
-        }
+        if (MinimizeTransition.Transitioning && taskBarButton != null)
+            doMinimizeAnimation();
 
-        if (taskBarButton != null) doMinimizeAnimation();
+        bool fullyUnMinimized = MinimizeTransition.Value == 1;
+
+        if (fullyUnMinimized) trueLocation = transform.position;
+
+        GetComponent<ClampToParent>().enabled = fullyUnMinimized;
     }
 
     public void SetTaskBarButton (TaskBarButton taskBarButton)
