@@ -1,0 +1,20 @@
+==== in order of priority ====
+
+fix minimize weirdness
+
+add 24-px icon set
+	probably have an SO container for an icon with 12, 24 px values
+
+change small font (find 6-height font)?
+
+tutorial system
+
+move emails to ScriptableObject
+
+gussy up spell casting:
+	cool effects when a valid spell is loaded up in the terminal
+	cool effects when a spell fizzes out or is cast
+
+change email UI to an invoice UI
+
+audio player app
