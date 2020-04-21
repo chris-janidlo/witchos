@@ -1,0 +1,49 @@
+fileFormatVersion: 2
+guid: f27a3209fbf0f4a848342c45afede4cd
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Off
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 0; To: 0"
+  - animationName: On
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 26; To: 43"
+  - animationName: On to Off
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 44; To: 47"
+  - animationName: Off to Highlighted
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 1; To: 4"
+  - animationName: Highlighted
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 5; To: 13"
+  - animationName: Highlighted to Off
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 14; To: 16"
+  - animationName: Highlighted to On
+    loopTime: 1
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 17; To: 25"
+  atlas: {fileID: -8328923581568760697, guid: f27a3209fbf0f4a848342c45afede4cd, type: 3}
+  importType: 0
+  bindToImage: 1

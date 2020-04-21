@@ -9,13 +9,18 @@ public class Minimizer : MonoBehaviour
 
     public RectTransform MinimizeTarget;
     public TransitionableFloat Transition;
+    public bool MinimizedAtStart;
 
     Vector2 unminimizedLocation;
 
     void Start ()
     {
+        unminimizedLocation = transform.position;
+
+        Minimized = MinimizedAtStart;
+
         Transition.AttachMonoBehaviour(this);
-        Transition.Value = 1;
+        Transition.Value = Minimized ? 0 : 1;
     }
 
     // Update is called once per frame
