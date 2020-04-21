@@ -30,9 +30,9 @@ public class TaskBarButton : MonoBehaviour
 
     void onClick ()
     {
-        if (window.Minimized)
+        if (window.Minimizer.Minimized)
         {
-            window.UnMinimize();
+            window.Minimizer.UnMinimize();
             window.Focus();
         }
         else if (!window.Focused)
@@ -41,7 +41,7 @@ public class TaskBarButton : MonoBehaviour
         }
         else
         {
-            window.Minimize();
+            window.Minimizer.Minimize();
         }
     }
 }

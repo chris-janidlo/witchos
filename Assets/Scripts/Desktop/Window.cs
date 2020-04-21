@@ -12,7 +12,6 @@ public class Window : MonoBehaviour, IPointerDownHandler
 {
     public static Window FocusedWindow { get; private set; }
 
-    public bool Minimized { get; private set; }
     public bool Focused => FocusedWindow == this;
 
     [Header("Data")]
@@ -20,7 +19,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     public Sprite Icon;
     public ScriptableObject AppData;
     public bool Minimizable = true, Closable = true;
-    public TransitionableFloat MinimizeTransition;
+    public Minimizer Minimizer;
 
     public UnityEvent DidOpen, DidFocus;
 
@@ -30,7 +29,6 @@ public class Window : MonoBehaviour, IPointerDownHandler
     public Button MinimizeButton, CloseButton;
 
     TaskBarButton taskBarButton;
-    Vector2 trueLocation;
 
     void Start ()
     {
@@ -38,7 +36,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
         MinimizeButton.onClick.AddListener
         (
-            () => { if (Minimizable) Minimize(); }
+            () => { if (Minimizable) Minimizer.Minimize(); }
         );
 
         CloseButton.onClick.AddListener
@@ -47,8 +45,6 @@ public class Window : MonoBehaviour, IPointerDownHandler
         );
 
         TimeState.Instance.DayEnded += Close;
-
-        MinimizeTransition.AttachMonoBehaviour(this);
 
         DidOpen.Invoke();
     }
@@ -60,38 +56,12 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
         TitleText.text = Title;
         IconImage.sprite = Icon;
-
-        if (MinimizeTransition.Transitioning && taskBarButton != null)
-            doMinimizeAnimation();
-
-        bool fullyUnMinimized = MinimizeTransition.Value == 1;
-
-        if (fullyUnMinimized) trueLocation = transform.position;
-
-        GetComponent<ClampToParent>().enabled = fullyUnMinimized;
     }
 
     public void SetTaskBarButton (TaskBarButton taskBarButton)
     {
         this.taskBarButton = taskBarButton;
-    }
-
-    public void Minimize ()
-    {
-        if (Minimized || taskBarButton == null) return;
-
-        MinimizeTransition.StartTransitionTo(0);
-
-        Minimized = true;
-    }
-
-    public void UnMinimize ()
-    {
-        if (!Minimized) return;
-
-        MinimizeTransition.StartTransitionTo(1);
-
-        Minimized = false;
+        Minimizer.MinimizeTarget = taskBarButton.transform as RectTransform;
     }
 
     public void Close ()
@@ -112,17 +82,4 @@ public class Window : MonoBehaviour, IPointerDownHandler
 	{
         Focus();
 	}
-
-    void doMinimizeAnimation ()
-    {
-        float scalar = MinimizeTransition.Value;
-
-        transform.localScale = Vector2.one * scalar;
-        transform.position = Vector2.Lerp
-        (
-            taskBarButton.transform.position,
-            trueLocation,
-            scalar
-        );
-    }
 }

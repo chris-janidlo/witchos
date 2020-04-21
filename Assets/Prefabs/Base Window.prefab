@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 1663822154457220154}
   - component: {fileID: 1663822154457220156}
   - component: {fileID: 1663822154457220157}
+  - component: {fileID: -4289245575048167558}
   - component: {fileID: 6708227311930432702}
   m_Layer: 5
   m_Name: Base Window
@@ -293,16 +294,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: 
   Icon: {fileID: 0}
+  AppData: {fileID: 0}
   Minimizable: 1
   Closable: 1
-  MinimizeTransition:
-    value: 1
-    Time: 0.3
-    Ease: 10
+  Minimizer: {fileID: -4289245575048167558}
+  DidOpen:
+    m_PersistentCalls:
+      m_Calls: []
+  DidFocus:
+    m_PersistentCalls:
+      m_Calls: []
   TitleText: {fileID: 1663822154304569155}
   IconImage: {fileID: 1663822154315919475}
   MinimizeButton: {fileID: 1663822155470079065}
   CloseButton: {fileID: 1663822155594725271}
+--- !u!114 &-4289245575048167558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663822154457220155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d1794e13d1c4d44ae4506ed6b18ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinimizeTarget: {fileID: 0}
+  Transition:
+    value: 1
+    Time: 0.3
+    Ease: 10
 --- !u!114 &6708227311930432702
 MonoBehaviour:
   m_ObjectHideFlags: 0
