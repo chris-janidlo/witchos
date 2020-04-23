@@ -3,4 +3,4 @@
 	url = https://github.com/crassSandwich/spellbook-unity
 [submodule "Assets/unity-aseprite-importer"]
 	path = Assets/unity-aseprite-importer
-	url = https://github.com/martinhodler/unity-aseprite-importer.git
+	url = https://github.com/crassSandwich/unity-aseprite-importer.git
