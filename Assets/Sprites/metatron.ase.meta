@@ -28,10 +28,10 @@ ScriptedImporter:
     about: "Animation Type:\tForward\nAnimation:\tFrom: 0; To: 0"
   - animationName: On
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 26; To: 43"
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 27; To: 44"
   - animationName: On to Off
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 44; To: 47"
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 45; To: 49"
   - animationName: Off to Highlighted
     loopTime: 1
     about: "Animation Type:\tForward\nAnimation:\tFrom: 1; To: 4"
@@ -40,10 +40,10 @@ ScriptedImporter:
     about: "Animation Type:\tForward\nAnimation:\tFrom: 5; To: 13"
   - animationName: Highlighted to Off
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 14; To: 16"
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 14; To: 17"
   - animationName: Highlighted to On
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 17; To: 25"
+    about: "Animation Type:\tForward\nAnimation:\tFrom: 18; To: 26"
   atlas: {fileID: -8328923581568760697, guid: f27a3209fbf0f4a848342c45afede4cd, type: 3}
   importType: 0
-  bindToImage: 1
+  bindType: 1
