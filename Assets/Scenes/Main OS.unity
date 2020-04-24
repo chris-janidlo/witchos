@@ -2607,12 +2607,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b45cc5259a94bb8b3074819067b42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InGameSecondsPerRealtimeSeconds: 60
-  DateTimeFormatString: 
-  TimeWarningOneText: System will shut down for bed time in 1 hour
-  TimeWarningTwoText: System will shut down for bed time in 30 minutes
-  MinutesBeforeEndOfDayForWarningOne: 60
-  MinutesBeforeEndOfDayForWarningTwo: 30
+  DayStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1352642456}
+        m_MethodName: StartDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1352642452}
+        m_MethodName: StartDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DayEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828990832}
+        m_MethodName: ShowSummary
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1352642456}
+        m_MethodName: EndDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 928421103}
+        m_MethodName: ClearMessages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1352642451
 Transform:
   m_ObjectHideFlags: 0
@@ -2813,9 +2868,8 @@ MonoBehaviour:
     AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
-  NewEMailsPerDayRange: {x: 10, y: 11}
-  NewEMailPerHourChance: 0.5
   MaxEMails: 10
+  NewEMailsPerDayRange: {x: 7, y: 8}
   TasksCompleted: 0
   TotalTasks: 0
   CurrentMessages: []

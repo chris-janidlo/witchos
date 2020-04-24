@@ -36,12 +36,14 @@ public class MagicSource : Singleton<MagicSource>
         SingletonOverwriteInstance(this);
     }
 
-    void Start ()
+    public void StartDay ()
     {
-        TimeState.Instance.DayStarted += () => {
-            StopAllCoroutines();
-            CurrentState = State.Off;
-        };
+        CurrentState = State.Off;
+    }
+
+    public void EndDay ()
+    {
+        StopAllCoroutines();
     }
 
     public void TurnOn ()

@@ -11,10 +11,8 @@ public class MailState : Singleton<MailState>
     public class MailBag : BagRandomizer<EMail> {}
 
     public MailBag PossibleEMails;
-    public Vector2Int NewEMailsPerDayRange;
-    [Range(0, 1)]
-    public float NewEMailPerHourChance;
     public int MaxEMails;
+    public Vector2Int NewEMailsPerDayRange;
 
     public int TasksCompleted, TotalTasks;
 
@@ -29,35 +27,21 @@ public class MailState : Singleton<MailState>
 
     void Start ()
     {
-        TimeState.Instance.DayStarted += resetInbox;
-        TimeState.Instance.HourStarted += onHourStarted;
-
         SpellWatcher.Instance.SpellCast += onSpellCast;
-
-        resetInbox();
     }
 
-    void resetInbox ()
+    public void StartDay ()
     {
         TasksCompleted = 0;
-        TotalTasks = 0;
 
-        CurrentMessages = new List<EMail>();
+        int maxToAdd = RandomExtra.Range(NewEMailsPerDayRange);
 
-        for (int i = 0; i < RandomExtra.Range(NewEMailsPerDayRange); i++)
+        while (CurrentMessages.Count < MaxEMails && maxToAdd-- > 0)
         {
             CurrentMessages.Add(PossibleEMails.GetNext());
-            TotalTasks++;
         }
-    }
 
-    void onHourStarted ()
-    {
-        if (CurrentMessages.Count < MaxEMails && RandomExtra.Chance(NewEMailPerHourChance))
-        {
-            CurrentMessages.Add(PossibleEMails.GetNext());
-            TotalTasks++;
-        }
+        TotalTasks = CurrentMessages.Count;
     }
 
     void onSpellCast (Spell spell)
