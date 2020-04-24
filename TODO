@@ -2,9 +2,6 @@ FIXME:
 
 TODO:
 tutorial system
-	polish metatron UI
-		magicy UI particles (blue highlight effect) coming from access button and source button when moused over
-		golden rays of light coming from the same when magic is on
 	change time system to not use hours/minutes at all, just days that can be manually advanced
 	add system button on bottom left of taskbar for end of day shutdown
 
@@ -24,6 +21,10 @@ alt-tab style switching
 gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
 	cool effects when a spell fizzes out or is cast
+
+polish metatron UI
+	magicy UI particles (blue highlight effect) coming from access button and source button when moused over
+	golden rays of light coming from the same when magic is on
 
 additional desktops
 
