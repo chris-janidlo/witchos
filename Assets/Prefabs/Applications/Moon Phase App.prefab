@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3127476678659469886, guid: 9cebeae511e2a40459dca2f1f843b2f7,
+  m_Sprite: {fileID: -3127476678659469886, guid: e3432d279c6574545aa091030309cc5f,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1558,14 +1558,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhaseIcons:
-  - {fileID: 6222907331838571421, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: 4050773957863324295, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: 5208285983005379031, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: -5495617985964876610, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: -4934401296284950527, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: 7793818205612961671, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: -3127476678659469886, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
-  - {fileID: 701083449008445193, guid: 9cebeae511e2a40459dca2f1f843b2f7, type: 3}
+  - {fileID: 6222907331838571421, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: 4050773957863324295, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: 5208285983005379031, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: -5495617985964876610, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: -4934401296284950527, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: 7793818205612961671, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: -3127476678659469886, guid: e3432d279c6574545aa091030309cc5f, type: 3}
+  - {fileID: 701083449008445193, guid: e3432d279c6574545aa091030309cc5f, type: 3}
   PhaseIconImage: {fileID: 2208366325603935559}
   WaxingText: {fileID: 8967506615232171314}
   WaningText: {fileID: 459569150130325161}
@@ -1582,7 +1582,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -299690340437171572, guid: b314bc8182610482aa06bf0d35d2de65,
+      objectReference: {fileID: -114862837380195033, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
     - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
@@ -1613,7 +1613,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -299690340437171572, guid: b314bc8182610482aa06bf0d35d2de65,
+      objectReference: {fileID: -114862837380195033, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
     - target: {fileID: 1707194482673688324, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}

@@ -325,6 +325,7 @@ MonoBehaviour:
     value: 1
     Time: 0.3
     Ease: 10
+  MinimizedAtStart: 0
 --- !u!114 &6708227311930432702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6341556251540281146, guid: df3fc0366c49e4bd997fb9a011493457,
+  m_Sprite: {fileID: -6341556251540281146, guid: 64425d2b3ff7e4268b16ebaa748f38d4,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -798,7 +799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2907457994080437361, guid: df3fc0366c49e4bd997fb9a011493457,
+  m_Sprite: {fileID: 2907457994080437361, guid: 64425d2b3ff7e4268b16ebaa748f38d4,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0

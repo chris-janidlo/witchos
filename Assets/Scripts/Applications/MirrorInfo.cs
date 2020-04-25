@@ -5,20 +5,15 @@ using TMPro;
 
 public class MirrorInfo : MonoBehaviour
 {
-	public Sprite IntactSprite, DepletedSprite;
-	public List<Sprite> BrokenSprites;
-	public float BrokenAnimationFPS;
+	public Animator IconAnimator;
+	public string AnimatorStateIntegerName;
 
-	public Image Icon;
 	public TextMeshProUGUI StateLabel;
 
 	public Button BreakButton;
 	public TextMeshProUGUI BreakButtonLabel;
 
 	MirrorState.Mirror mirror;
-
-	int frameTicker;
-	public float frameTimer;
 
 	void Update ()
 	{
@@ -27,37 +22,24 @@ public class MirrorInfo : MonoBehaviour
 		BreakButton.interactable = mirror.State == MirrorState.State.Intact;
 		BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "BREAK" : "";
 
-		int time;
+		int time = (int) mirror.Timer;
 
 		switch (mirror.State)
 		{
 			case MirrorState.State.Intact:
 				StateLabel.text = "Intact";
-				Icon.sprite = IntactSprite;
-				return;
+				break;
 
 			case MirrorState.State.Broken:
-				time = (int) mirror.Timer;
-				StateLabel.text = $"Broken {time} minute{(time != 1 ? "s" : "")} ago";
-
-				Icon.sprite = BrokenSprites[frameTicker];
-
-				frameTimer -= Time.deltaTime;
-				if (frameTimer <= 0)
-				{
-					frameTicker = (frameTicker + 1) % BrokenSprites.Count;
-					frameTimer = 1 / BrokenAnimationFPS;
-				}
-
-				return;
+				StateLabel.text = $"Broken {time} seconds{(time != 1 ? "s" : "")} ago";
+				break;
 
 			case MirrorState.State.Depleted:
-				time = (int) mirror.Timer;
-				StateLabel.text = $"Depleted. {time} minute{(time != 1 ? "s" : "")} until repaired";
-
-				Icon.sprite = DepletedSprite;
-				return;
+				StateLabel.text = $"Depleted. {time} seconds{(time != 1 ? "s" : "")} until repaired";
+				break;
 		}
+
+		IconAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
 	}
 
 	public void SetMirrorState (MirrorState.Mirror mirror)
