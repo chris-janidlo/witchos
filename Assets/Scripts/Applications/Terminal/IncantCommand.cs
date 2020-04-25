@@ -6,13 +6,20 @@ using UnityEngine;
 
 public class IncantCommand : TerminalCommand
 {
-	public string SpellNotFound, SpellFailed, SpellSucceeded;
+	[TextArea]
+	public string MagicOff, SpellNotFound, SpellFailed, SpellSucceeded;
 
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
 	{
 		if (arguments.Length < 2)
 		{
 			printUsage(term);
+			yield break;
+		}
+
+		if (!MagicSource.Instance.On)
+		{
+			term.PrintLine(MagicOff);
 			yield break;
 		}
 

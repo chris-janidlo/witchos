@@ -475,6 +475,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13ac7d6f72dc44e72b78798b6d0ba5c3, type: 2}
   - {fileID: 11400000, guid: 177744f67285947daa06d56815273645, type: 2}
   BaseTitle: spe//
+  NoMagicWarning: 'Occuloscope err_5: incompatible source
+
+    This usually means magic is not activated. Make sure to turn it on before attempting
+    to cast any spells.'
   InputHistory: []
   OutputHistory: []
   Window: {fileID: 3869046463147635246}

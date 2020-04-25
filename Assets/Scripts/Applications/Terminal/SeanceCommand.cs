@@ -14,6 +14,12 @@ public class SeanceCommand : TerminalCommand
 			yield break;
 		}
 
+		if (!MagicSource.Instance.On)
+		{
+			term.PrintLine("cannot connect to the spirit world while magic is off");
+			yield break;
+		}
+
 		string name = String.Join(" ", arguments.Skip(1));
 
 		term.PrintLine("connecting to spirit world...");

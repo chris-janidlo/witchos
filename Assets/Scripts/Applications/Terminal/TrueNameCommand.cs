@@ -14,6 +14,12 @@ public class TrueNameCommand : TerminalCommand
 			yield break;
 		}
 
+		if (!MagicSource.Instance.On)
+		{
+			term.PrintLine("cannot calculate a true name when magic is off");
+			yield break;
+		}
+
 		yield return new WaitForSeconds(.5f); // pretend to process something
 
 		string trueName = TrueName.FromName(String.Join("", arguments.Skip(1)));

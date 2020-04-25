@@ -20,6 +20,12 @@ public class XingCommand : TerminalCommand
 			yield break;
 		}
 
+		if (!MagicSource.Instance.On)
+		{
+			term.PrintLine("error - unable to contact the imps unless magic is on");
+			yield break;
+		}
+
 		string target = String.Join(" ", arguments.Skip(1));
 
 		TerminalState.Instance.XingLock = true;

@@ -16,6 +16,9 @@ public partial class TerminalApp : MonoBehaviour
 
     public string BaseTitle;
 
+    [TextArea]
+    public string NoMagicWarning;
+
     public List<string> InputHistory = new List<string>();
     public List<string> OutputHistory = new List<string>();
 
@@ -31,6 +34,8 @@ public partial class TerminalApp : MonoBehaviour
     void Start ()
     {
         CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
+
+        if (!MagicSource.Instance.On) Print(NoMagicWarning);
     }
 
     void Update ()

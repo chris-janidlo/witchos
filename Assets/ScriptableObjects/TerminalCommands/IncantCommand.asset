@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: incant
   ArgumentList: spell
   HelpOutput: invoke the ancient magicks and cast a spell or curse
+  MagicOff: magic is off, unable to cast any spells
   SpellNotFound: unable to hook into the weave - double check the spelling of your
     incantation
   SpellFailed: the arcane aether fizzled out - something was missing in your spell
