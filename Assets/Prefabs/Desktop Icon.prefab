@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 1637483633814612782}
   - component: {fileID: 1637483633814612781}
   - component: {fileID: 9083543981002978778}
+  - component: {fileID: 6294277228163364057}
   - component: {fileID: 1637483633814612780}
   - component: {fileID: 1637483633814612783}
   m_Layer: 5
@@ -268,6 +269,25 @@ MonoBehaviour:
       m_Calls: []
   IconImage: {fileID: 1637483633571634754}
   LabelText: {fileID: 1637483633865795129}
+  Button: {fileID: 1637483633686424612}
+--- !u!114 &6294277228163364057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637483633814612769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78da692d8b3634e8ab44869f3db9c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplicationPrefab: {fileID: 0}
+  ApplicationData: {fileID: 0}
+  OpenSingleInstance: 0
+  OnApplicationOpened:
+    m_PersistentCalls:
+      m_Calls: []
   Button: {fileID: 1637483633686424612}
 --- !u!114 &1637483633814612780
 MonoBehaviour:
