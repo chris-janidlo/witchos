@@ -1898,6 +1898,7 @@ MonoBehaviour:
   Animator: {fileID: 375469718}
   HighlightBool: Highlighted
   OnBool: On
+  OffAnimation: metatron_Off
 --- !u!1 &390271307
 GameObject:
   m_ObjectHideFlags: 0

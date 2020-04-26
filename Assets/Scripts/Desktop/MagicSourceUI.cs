@@ -6,9 +6,16 @@ using UnityEngine.EventSystems;
 public class MagicSourceUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Animator Animator;
-    public string HighlightBool, OnBool;
+    public string HighlightBool, OnBool, OffAnimation;
 
     bool mouseOver;
+
+    void Start ()
+    {
+        TimeState.Instance.DayEnded.AddListener(() => {
+            Animator.Play(OffAnimation);
+        });
+    }
 
     void Update ()
     {
