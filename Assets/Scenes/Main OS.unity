@@ -4505,8 +4505,8 @@ MonoBehaviour:
     AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
-  MaxEMails: 10
-  NewEMailsPerDayRange: {x: 7, y: 8}
+  MaxEMails: 15
+  NewEMailsPerDayRange: {x: 15, y: 15}
   TasksCompleted: 0
   TotalTasks: 0
   CurrentMessages: []
