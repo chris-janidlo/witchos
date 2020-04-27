@@ -4094,7 +4094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OffLabel: 'Magic: OFF'
   OnLabel: 'Magic: ON '
-  DepletedLabel: 'Magic: depleted for today'
+  DepletedLabel: 'Magic: depleted'
   StateDisplay: {fileID: 419713}
 --- !u!1 &1271401359
 GameObject:
