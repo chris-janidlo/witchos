@@ -11,14 +11,16 @@ public class MailState : Singleton<MailState>
     public class MailBag : BagRandomizer<Invoice> {}
 
     public MailBag PossibleEMails;
-    public int MaxEMails;
-    public Vector2Int NewEMailsPerDayRange;
+    public AnimationCurve EMailsToSpawnByDifficulty;
+    public int CurrentDifficultyLevel; // the highest level of difficulty that has been completed in one day
 
     public int TasksCompleted, TotalTasks;
 
     public List<Invoice> CurrentMessages;
 
     public int UnreadMessageCount => CurrentMessages.Where(m => !m.Read).Count();
+
+    int difficulty => (int) EMailsToSpawnByDifficulty.Evaluate(CurrentDifficultyLevel);
 
     void Awake ()
     {
@@ -32,16 +34,18 @@ public class MailState : Singleton<MailState>
 
     public void StartDay ()
     {
-        TasksCompleted = 0;
+        if (TasksCompleted == difficulty)
+        {
+            CurrentDifficultyLevel++;
+        }
 
-        int maxToAdd = RandomExtra.Range(NewEMailsPerDayRange);
-
-        while (CurrentMessages.Count < MaxEMails && maxToAdd-- > 0)
+        while (CurrentMessages.Count < difficulty)
         {
             CurrentMessages.Add(PossibleEMails.GetNext());
         }
 
-        TotalTasks = CurrentMessages.Count;
+        TasksCompleted = 0;
+        TotalTasks = difficulty;
     }
 
     void onSpellCast (Spell spell)
