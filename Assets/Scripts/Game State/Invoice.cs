@@ -13,7 +13,7 @@ public class Invoice : ScriptableObject
     [TextArea]
     public string Justification;
 
-    public bool Read;
+    public bool Read { get; private set; }
 
     public override int GetHashCode ()
     {
