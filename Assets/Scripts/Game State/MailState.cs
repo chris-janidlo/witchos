@@ -8,7 +8,7 @@ using crass;
 public class MailState : Singleton<MailState>
 {
     [Serializable]
-    public class MailBag : BagRandomizer<EMail> {}
+    public class MailBag : BagRandomizer<Invoice> {}
 
     public MailBag PossibleEMails;
     public int MaxEMails;
@@ -16,7 +16,7 @@ public class MailState : Singleton<MailState>
 
     public int TasksCompleted, TotalTasks;
 
-    public List<EMail> CurrentMessages;
+    public List<Invoice> CurrentMessages;
 
     public int UnreadMessageCount => CurrentMessages.Where(m => !m.Read).Count();
 
@@ -51,34 +51,11 @@ public class MailState : Singleton<MailState>
             var message = CurrentMessages[i];
             if (message.RequestedSpell == spell)
             {
-                Alert.Instance.ShowMessage($"successfully completed order '{message.Subject}' from {message.SenderAddress}! now removing it from your inbox...");
+                Alert.Instance.ShowMessage($"successfully completed order '{message.EmailSubjectLine}' from {message.BuyerAddress}! now removing it from your inbox...");
                 CurrentMessages.RemoveAt(i);
-                message.Complete();
+                message.Completed.Invoke();
                 TasksCompleted++;
             }
         }
-    }
-}
-
-[Serializable]
-public class EMail
-{
-    public event Action Completed;
-
-    public Spell RequestedSpell;
-    public string SenderAddress, Subject;
-    [TextArea]
-    public string Body;
-
-    public bool Read;
-
-    public override int GetHashCode ()
-    {
-        return (SenderAddress + Subject + Body).GetHashCode();
-    }
-
-    public void Complete ()
-    {
-        Completed?.Invoke();
     }
 }

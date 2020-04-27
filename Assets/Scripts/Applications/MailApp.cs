@@ -34,7 +34,7 @@ public class MailApp : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (EMail message in MailState.Instance.CurrentMessages)
+        foreach (Invoice message in MailState.Instance.CurrentMessages)
         {
             Instantiate(PreviewPrefab, InboxContainer.transform).SetMessage(message);
         }

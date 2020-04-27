@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e002e1d8607ec41cf91786979c2b28e5, type: 3}
+  m_Name: Stub 1
+  m_EditorClassIdentifier: 
+  Completed:
+    m_PersistentCalls:
+      m_Calls: []
+  RequestedSpell:
+    Type: 1
+    TargetName: Phoebe Morrison
+  BuyerAddress: julianathebanana@gmail.com
+  EmailSubjectLine: Curse Request PLEASE READ
+  Justification: 'Hi :)
+
+    I want to prank my friend so please don''t make the curse too bad just like make
+    her stub her toe or something'
+  Read: 0

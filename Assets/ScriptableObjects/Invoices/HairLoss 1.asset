@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e002e1d8607ec41cf91786979c2b28e5, type: 3}
+  m_Name: HairLoss 1
+  m_EditorClassIdentifier: 
+  Completed:
+    m_PersistentCalls:
+      m_Calls: []
+  RequestedSpell:
+    Type: 2
+    TargetName: Scarlett-Rose Beattie
+  BuyerAddress: sebastian.ryanne.oquinn@juno.com
+  EmailSubjectLine: Curse Request
+  Justification: 'To Whom It May Concern,
+
+
+    Ms Beattie is, you could say, somewhat akin to a rival of mine. She is presenting
+    at a prestigious conference tomorrow. It would be a real shame if something were
+    to make her less presentable...'
+  Read: 0
