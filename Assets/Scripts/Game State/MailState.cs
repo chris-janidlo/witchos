@@ -55,7 +55,7 @@ public class MailState : Singleton<MailState>
             var message = CurrentMessages[i];
             if (message.RequestedSpell == spell)
             {
-                Alert.Instance.ShowMessage($"successfully completed order '{message.EmailSubjectLine}' from {message.BuyerAddress}! now removing it from your inbox...");
+                Alert.Instance.ShowMessage($"you completed an order! it's been removed from your inbox.");
                 CurrentMessages.RemoveAt(i);
                 message.Completed.Invoke();
                 TasksCompleted++;
