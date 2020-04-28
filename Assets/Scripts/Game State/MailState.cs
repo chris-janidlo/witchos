@@ -41,7 +41,9 @@ public class MailState : Singleton<MailState>
 
         while (CurrentMessages.Count < difficulty)
         {
-            CurrentMessages.Add(PossibleEMails.GetNext());
+            // kind of a kludge right now. all of the emails we currently have are repeatable filler emails that the player can and will see more than once. we want to preserve the unread state of the email across in-game days and across mail app sessions, and the only real way to do that is by storing the read state in the email object itself. that said, we don't want to store it on the ScriptableObject instance, since that preserves the read state across repeats of the same email, which is totally undesired behavior. so we create a copy of the email to add and add the copy. this is definitely not how we want to handle conversations or other one-off emails in the future
+            var newMessageClone = Instantiate(PossibleEMails.GetNext());
+            CurrentMessages.Add(newMessageClone);
         }
 
         TasksCompleted = 0;
