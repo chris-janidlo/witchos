@@ -304,7 +304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -114862837380195033, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: -8966291207900065841, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -472,7 +472,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -114862837380195033, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: -8966291207900065841, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -1964,7 +1964,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9146624860600714641, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 5733582621490860007, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -2133,7 +2133,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -9146624860600714641, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 5733582621490860007, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -2910,7 +2910,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -737955314123901978, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 8683868670794159994, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -3067,7 +3067,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -737955314123901978, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 8683868670794159994, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -4416,7 +4416,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  CurrentDifficultyLevel: 10
+  CurrentDifficultyLevel: 0
   TasksCompleted: 0
   TotalTasks: 0
   CurrentMessages: []
@@ -6410,7 +6410,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9146624860600714641, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 5733582621490860007, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -6589,7 +6589,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -9146624860600714641, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 5733582621490860007, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -6871,7 +6871,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5469508495120736827, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: -3733317002035555814, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -7028,7 +7028,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -5469508495120736827, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: -3733317002035555814, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -7055,7 +7055,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8412338869911505578, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 7063333095426570485, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 1637483633814612769, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
@@ -7212,7 +7212,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: -8412338869911505578, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+      objectReference: {fileID: 7063333095426570485, guid: dda44003e95174fbbb53b23f194d963d,
         type: 3}
     - target: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
         type: 3}
