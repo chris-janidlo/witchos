@@ -9,6 +9,7 @@ public class TextViewerApp : MonoBehaviour
     public Window Window;
 
     public TextMeshProUGUI ContentText, PageNumberIndicator;
+    public ScrollRect ScrollRect;
 
     public Button NextPage, PreviousPage;
 
@@ -25,7 +26,7 @@ public class TextViewerApp : MonoBehaviour
     {
         var pdf = Window.AppData as TextPDF;
 
-        Window.Title = pdf.Title + " (readonly)";
+        Window.Title = pdf.Title;
         pages = pdf.Pages;
 
         setPage(1);
@@ -33,6 +34,7 @@ public class TextViewerApp : MonoBehaviour
 
     void incrementPage (int direction)
     {
+        ScrollRect.verticalNormalizedPosition = 1;
         setPage(pageNum + (int) Mathf.Sign(direction));
     }
 

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: spellbook.txt
   Pages:
+  - "contents\n\n1...\tthis page\n2...\thints\n3...\thair loss\n4...\tpassword\n5...\tstub\n6...\tbad
+    luck\n7...\tsocial media"
   - "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors in Mirrors\n\n-
     commands are entered in the spe// application\n\n- any time an instruction uses
     <>, replace everything inside the brackets including the brackets\n   - for example:
