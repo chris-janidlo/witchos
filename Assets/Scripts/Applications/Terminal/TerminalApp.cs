@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public partial class TerminalApp : MonoBehaviour
@@ -26,6 +27,8 @@ public partial class TerminalApp : MonoBehaviour
     public TMP_InputField CommandInput;
 
     public TextMeshProUGUI Prompt, HistoryText;
+
+    public ScrollRect ScrollRect;
 
     TerminalCommand currentCommand;
 
@@ -82,6 +85,11 @@ public partial class TerminalApp : MonoBehaviour
         OutputHistory.Add(line);
     }
 
+    public void ScrollToBottom ()
+    {
+        ScrollRect.verticalNormalizedPosition = 0;
+    }
+
     IEnumerator evaluateCommand (string input)
     {
         if (Input.GetKey("escape")) yield break;
@@ -95,6 +103,7 @@ public partial class TerminalApp : MonoBehaviour
         OutputHistory.Add(Prompt.text + input); // echo
 
         posInHistory = InputHistory.Count;
+        ScrollToBottom();
 
         input = input.Trim();
 
@@ -143,5 +152,6 @@ public partial class TerminalApp : MonoBehaviour
             : InputHistory[posInHistory];
         
         CommandInput.caretPosition = CommandInput.text.Length;
+        ScrollToBottom();
     }
 }
