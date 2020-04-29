@@ -10,17 +10,20 @@ window resizing
 
 change email UI to an invoice UI
 
-alt-tab style switching
-
-truer moon phase calculation using aasharp
-
 gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
 	cool effects when a spell fizzes out or is cast
 
+regex-based spell resolution
+	with additional fuzzy matching for closest match
+
 polish metatron UI
 	magicy UI particles (blue highlight effect) coming from access button and source button when moused over
 	golden rays of light coming from the same when magic is on
+
+alt-tab style switching
+
+truer moon phase calculation using aasharp
 
 additional desktops
 
