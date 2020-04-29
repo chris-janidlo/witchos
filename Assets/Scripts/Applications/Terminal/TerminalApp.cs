@@ -141,5 +141,7 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.text = (posInHistory == InputHistory.Count)
             ? ""
             : InputHistory[posInHistory];
+        
+        CommandInput.caretPosition = CommandInput.text.Length;
     }
 }
