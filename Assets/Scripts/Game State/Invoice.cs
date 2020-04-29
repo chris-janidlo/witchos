@@ -10,7 +10,7 @@ public class Invoice : ScriptableObject
 
     public Spell RequestedSpell;
     public string BuyerAddress, EmailSubjectLine;
-    [TextArea]
+    [TextArea(5, 100)]
     public string Justification;
 
     public bool Read { get; set; }
