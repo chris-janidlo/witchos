@@ -28,8 +28,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad, type: 2}
-  m_sharedMaterial: {fileID: 294586611673679250, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad,
+  m_fontAsset: {fileID: 11400000, guid: 4e0dafea182fe4a55a47d76ab26510d0, type: 2}
+  m_sharedMaterial: {fileID: 6994504606233315000, guid: 4e0dafea182fe4a55a47d76ab26510d0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -55,8 +55,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -148,6 +148,11 @@ PrefabInstance:
     - target: {fileID: 74975559698707482, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 74975559698707482, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3717843139155825335, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
