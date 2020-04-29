@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 132}
+  m_SizeDelta: {x: 80, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8424887829606750654
 MonoBehaviour:
@@ -56,7 +56,6 @@ MonoBehaviour:
   StateLabel: {fileID: 1442570613386654724}
   BreakButton: {fileID: 4085624987080178336}
   BreakButtonLabel: {fileID: 1030486470451834204}
-  frameTimer: 0
 --- !u!1 &6675948726052550326
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +90,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20.1}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &999481660566311789
 CanvasRenderer:
@@ -122,8 +121,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Broken, but still inauspicious. Holding magic for 10 minutes
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad, type: 2}
-  m_sharedMaterial: {fileID: 294586611673679250, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad,
+  m_fontAsset: {fileID: 11400000, guid: 4e0dafea182fe4a55a47d76ab26510d0, type: 2}
+  m_sharedMaterial: {fileID: 6994504606233315000, guid: 4e0dafea182fe4a55a47d76ab26510d0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -149,14 +148,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -169,7 +168,7 @@ MonoBehaviour:
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
+  m_isTextTruncated: 1
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
@@ -190,10 +189,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1442570613386654724}
-    characterCount: 60
+    characterCount: 50
     spriteCount: 0
-    spaceCount: 8
-    wordCount: 9
+    spaceCount: 7
+    wordCount: 7
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -344,7 +343,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -96}
-  m_SizeDelta: {x: 28, y: 10}
+  m_SizeDelta: {x: 30, y: 14}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2691697209768961181
 CanvasRenderer:
@@ -489,10 +488,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BREAK
+  m_text: Break
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad, type: 2}
-  m_sharedMaterial: {fileID: 294586611673679250, guid: 3ef53fc65ae5f4fcbaebb82cddcf11ad,
+  m_fontAsset: {fileID: 11400000, guid: 4e0dafea182fe4a55a47d76ab26510d0, type: 2}
+  m_sharedMaterial: {fileID: 6994504606233315000, guid: 4e0dafea182fe4a55a47d76ab26510d0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -518,8 +517,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

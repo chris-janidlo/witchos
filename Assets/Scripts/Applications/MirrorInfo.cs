@@ -20,7 +20,7 @@ public class MirrorInfo : MonoBehaviour
 		if (mirror == null) return;
 
 		BreakButton.interactable = mirror.State == MirrorState.State.Intact;
-		BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "BREAK" : "";
+		BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "Break" : "";
 
 		int time = (int) mirror.Timer;
 
@@ -31,11 +31,11 @@ public class MirrorInfo : MonoBehaviour
 				break;
 
 			case MirrorState.State.Broken:
-				StateLabel.text = $"Broken {time} seconds{(time != 1 ? "s" : "")} ago";
+				StateLabel.text = $"Broken {time} second{(time != 1 ? "s" : "")} ago";
 				break;
 
 			case MirrorState.State.Depleted:
-				StateLabel.text = $"Depleted. {time} seconds{(time != 1 ? "s" : "")} until repaired";
+				StateLabel.text = $"Depleted. {time} second{(time != 1 ? "s" : "")} until repaired";
 				break;
 		}
 

@@ -73,6 +73,7 @@ public class MirrorState : Singleton<MirrorState>
 		}
 	}
 
+	[ContextMenu("Try Deplete")]
 	public bool TryConsumeMagic ()
 	{
 		foreach (var mirror in Mirrors.OrderByDescending(m => m.Timer))
