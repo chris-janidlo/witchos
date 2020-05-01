@@ -4356,66 +4356,7 @@ MonoBehaviour:
     AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
-  EMailsToSpawnByDifficulty:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 3
-      inSlope: 0
-      outSlope: 2
-      tangentMode: 65
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 5
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 2
-      value: 7
-      inSlope: 2
-      outSlope: 3
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3
-      value: 10
-      inSlope: 3
-      outSlope: 5
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 4
-      value: 15
-      inSlope: 5
-      outSlope: 5
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 5
-      value: 20
-      inSlope: 5
-      outSlope: 5
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  EMailsToSpawnByDifficulty: 03000000070000000f00000014000000
   CurrentDifficultyLevel: 0
   TasksCompleted: 0
   TotalTasks: 0
