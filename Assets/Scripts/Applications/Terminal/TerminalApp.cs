@@ -48,17 +48,6 @@ public partial class TerminalApp : MonoBehaviour
 
         if (Window.Focused && Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
         else if (Window.Focused && Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
-
-        string hist = "";
-
-        foreach (string line in OutputHistory)
-        {
-            hist += line + "\n";
-        }
-
-        if (!Evaluating) hist += " "; // empty additional line so that the history doesn't overlap the prompt
-
-        HistoryText.text = hist;
     }
 
     void OnDestroy ()
@@ -78,11 +67,14 @@ public partial class TerminalApp : MonoBehaviour
         {
             PrintLine(line);
         }
+
+        paintOutputHistoryText();
     }
 
     public void PrintLine (string line)
     {
         OutputHistory.Add(line);
+        paintOutputHistoryText();
     }
 
     public void ScrollToBottom ()
@@ -108,6 +100,9 @@ public partial class TerminalApp : MonoBehaviour
         input = input.Trim();
 
         Evaluating = true;
+
+        // remove empty prompt line in history text
+        paintOutputHistoryText();
 
         string[] commands = input.Split(';');
 
@@ -140,6 +135,9 @@ public partial class TerminalApp : MonoBehaviour
         Prompt.enabled = true;
         CommandInput.enabled = true;
 
+        // restore empty prompt line in history text
+        paintOutputHistoryText();
+
         if (Window.Focused) FocusInput();
     }
 
@@ -153,5 +151,19 @@ public partial class TerminalApp : MonoBehaviour
         
         CommandInput.caretPosition = CommandInput.text.Length;
         ScrollToBottom();
+    }
+
+    void paintOutputHistoryText ()
+    {
+        string hist = "";
+
+        foreach (string line in OutputHistory)
+        {
+            hist += line + "\n";
+        }
+
+        if (!Evaluating) hist += " "; // empty additional line so that the history doesn't overlap the prompt
+
+        HistoryText.text = hist;
     }
 }
