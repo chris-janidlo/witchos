@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections;
@@ -35,7 +35,7 @@ public class TermComAutoAssetCreator : MonoBehaviour
             needToSave = true;
         }
 
-        // note: due to a known issue, this throws an error in play mode
+        // note: due to a known issue, the SaveAssets call throws an error in play mode
         // see https://issuetracker.unity3d.com/issues/assetdatabase-dot-saveassets-throws-an-exception-the-specified-path-is-not-of-a-legal-form-empty-while-in-play-mode
         if (needToSave) AssetDatabase.SaveAssets();
     }
