@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ public partial class TerminalApp : MonoBehaviour
     TerminalCommand currentCommand;
 
     int posInHistory;
+
+    StringBuilder paintTextBuilder = new StringBuilder();
 
     void Start ()
     {
@@ -155,15 +158,16 @@ public partial class TerminalApp : MonoBehaviour
 
     void paintOutputHistoryText ()
     {
-        string hist = "";
+        paintTextBuilder.Clear();
 
         foreach (string line in OutputHistory)
         {
-            hist += line + "\n";
+            paintTextBuilder.Append(line);
+            paintTextBuilder.Append("\n");
         }
 
-        if (!Evaluating) hist += " "; // empty additional line so that the history doesn't overlap the prompt
+        if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
 
-        HistoryText.text = hist;
+        HistoryText.text = paintTextBuilder.ToString();
     }
 }
