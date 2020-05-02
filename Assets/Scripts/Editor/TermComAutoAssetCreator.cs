@@ -1,10 +1,7 @@
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEditor;
+using crass;
 
 public class TermComAutoAssetCreator : MonoBehaviour
 {
@@ -14,18 +11,11 @@ public class TermComAutoAssetCreator : MonoBehaviour
     [UnityEditor.Callbacks.DidReloadScripts] // automatic trigger every compilation
     public static void GenerateAllTerminalCommands ()
     {
-        var types = Assembly.GetAssembly(typeof(TerminalCommand))
-            .GetTypes()
-            .Where
-            (
-                myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(TerminalCommand))
-            );
-
         bool needToSave = false;
 
         var assetFolders = new[] { ASSET_PATH };
 
-        foreach (Type type in types)
+        foreach (Type type in Reflection.GetImplementations<TerminalCommand>())
         {
             if (AssetDatabase.FindAssets(type.Name, assetFolders).Length != 0) continue;
 
