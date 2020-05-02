@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +32,6 @@ public static class MoonPhaseExtensions
         }
     }
 
-    // TODO: make new/full moon phase change depend on time of day?
     public static MoonPhaseChange GetPhaseChange (this MoonPhase phase)
     {
         switch (phase)
