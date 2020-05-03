@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Linq;
 using System.Collections;
@@ -47,10 +47,15 @@ public partial class TerminalApp : MonoBehaviour
     void Update ()
     {
         SIGINT = false;
-        if (Window.Focused && Input.GetKey(KeyCode.Escape)) SIGINT = true;
 
-        if (Window.Focused && Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
-        else if (Window.Focused && Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
+        if (!Window.Focused) return;
+
+        if (Input.GetKey(KeyCode.Escape)) SIGINT = true;
+
+        if (Evaluating) return;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
     }
 
     void OnDestroy ()
