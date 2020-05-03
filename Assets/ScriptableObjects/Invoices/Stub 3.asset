@@ -19,6 +19,6 @@ MonoBehaviour:
     Type: 1
     TargetName: Tristan Stamp
   BuyerAddress: brainlessbarry@me.com
-  EmailSubjectLine: Gift for my best friend
-  Justification: Tristan's birthday is tomorrow and I want him to know that I'm thinking
-    about him
+  EmailSubjectLine: Gift for my buddy
+  Justification: Tristan's birthday is tomorrow, I want him to know I'm thinking about
+    him
