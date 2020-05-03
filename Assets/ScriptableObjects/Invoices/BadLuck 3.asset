@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 0
     TargetName: Susan Sharples
   BuyerAddress: sebastia.likes.art@rocketmail.com

@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 4
     TargetName: Jamie Sweet on instagram.com
   BuyerAddress: genie_the_zucchini@aol.com

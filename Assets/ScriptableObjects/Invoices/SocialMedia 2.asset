@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 4
     TargetName: Edith Werner on twitter.com
   BuyerAddress: concentrated_philip@orange.fr

@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 0
     TargetName: Leia Hodgson
   BuyerAddress: caramelized_cristina@hotmail.com

@@ -43,7 +43,7 @@ public class XingCommand : TerminalCommand
 		{
 			TerminalState.Instance.XingTarget = target;
 			term.PrintLine("done. now entering stability mode.");
-			term.PrintLine("");
+			term.PrintEmptyLine();
 			term.PrintLine("press escape at any time to exit and RELEASE the imps from their current target.");
 		}
 
@@ -57,6 +57,7 @@ public class XingCommand : TerminalCommand
 
 	public override void CleanUpEarly (TerminalApp term)
 	{
+		// FIXME: throws exception if this is called as terminal object is destroyed
 		TerminalState.Instance.XingLock = false;
 	}
 }

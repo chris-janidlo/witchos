@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,5 +47,15 @@ public static class MoonPhaseExtensions
 
             default: throw new ArgumentException($"unexpected MoonPhase {phase}");
         }
+    }
+
+    public static bool IsWaxing (this MoonPhase phase)
+    {
+        return phase.GetPhaseChange() == MoonPhaseChange.Waxing;
+    }
+
+    public static bool IsWaning (this MoonPhase phase)
+    {
+        return phase.GetPhaseChange() == MoonPhaseChange.Waning;
     }
 }

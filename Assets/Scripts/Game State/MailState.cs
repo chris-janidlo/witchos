@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -50,12 +50,12 @@ public class MailState : Singleton<MailState>
         TotalTasks = spawnCount;
     }
 
-    void onSpellCast (Spell spell)
+    void onSpellCast (Casting casting)
     {
 		for (int i = CurrentMessages.Count - 1; i >= 0; i--)
         {
             var message = CurrentMessages[i];
-            if (message.RequestedSpell == spell)
+            if (message.SpellRequest == casting)
             {
                 Alert.Instance.ShowMessage($"you completed an order! it's been removed from your inbox.");
                 CurrentMessages.RemoveAt(i);

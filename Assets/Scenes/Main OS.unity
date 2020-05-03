@@ -4357,7 +4357,7 @@ MonoBehaviour:
     Type: 0
     LocalSeed: 0
   EMailsToSpawnByDifficulty: 03000000070000000f00000014000000
-  CurrentDifficultyLevel: 0
+  CurrentDifficultyLevel: 3
   TasksCompleted: 0
   TotalTasks: 0
   CurrentMessages: []

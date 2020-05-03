@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using System.Linq;
 using System.Collections;
@@ -13,6 +13,12 @@ public partial class TerminalApp : MonoBehaviour
     public bool SIGINT { get; private set; }
 
     public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
+
+    public string LastOutputLine
+    {
+        get => OutputHistory[OutputHistory.Count - 1];
+        set => OutputHistory[OutputHistory.Count - 1] = value;
+    }
 
     public List<TerminalCommand> Commands;
 
@@ -42,6 +48,7 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
 
         if (!MagicSource.Instance.On) Print(NoMagicWarning);
+        else PaintOutputHistoryText(); // paint anyway
     }
 
     void Update ()
@@ -76,18 +83,38 @@ public partial class TerminalApp : MonoBehaviour
             PrintLine(line);
         }
 
-        paintOutputHistoryText();
+        PaintOutputHistoryText();
     }
 
     public void PrintLine (string line)
     {
         OutputHistory.Add(line);
-        paintOutputHistoryText();
+        PaintOutputHistoryText();
+    }
+
+    public void PrintEmptyLine ()
+    {
+        PrintLine("");
     }
 
     public void ScrollToBottom ()
     {
         ScrollRect.verticalNormalizedPosition = 0;
+    }
+
+    public void PaintOutputHistoryText ()
+    {
+        paintTextBuilder.Clear();
+
+        foreach (string line in OutputHistory)
+        {
+            paintTextBuilder.Append(line);
+            paintTextBuilder.Append("\n");
+        }
+
+        if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
+
+        HistoryText.text = paintTextBuilder.ToString();
     }
 
     IEnumerator evaluateCommand (string input)
@@ -110,7 +137,7 @@ public partial class TerminalApp : MonoBehaviour
         Evaluating = true;
 
         // remove empty prompt line in history text
-        paintOutputHistoryText();
+        PaintOutputHistoryText();
 
         string[] commands = input.Split(';');
 
@@ -144,7 +171,7 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.enabled = true;
 
         // restore empty prompt line in history text
-        paintOutputHistoryText();
+        PaintOutputHistoryText();
 
         if (Window.Focused) FocusInput();
     }
@@ -159,20 +186,5 @@ public partial class TerminalApp : MonoBehaviour
         
         CommandInput.caretPosition = CommandInput.text.Length;
         ScrollToBottom();
-    }
-
-    void paintOutputHistoryText ()
-    {
-        paintTextBuilder.Clear();
-
-        foreach (string line in OutputHistory)
-        {
-            paintTextBuilder.Append(line);
-            paintTextBuilder.Append("\n");
-        }
-
-        if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
-
-        HistoryText.text = paintTextBuilder.ToString();
     }
 }

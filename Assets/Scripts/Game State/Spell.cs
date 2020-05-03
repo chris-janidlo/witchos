@@ -1,50 +1,50 @@
-﻿using System;
+﻿using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using crass;
 
-[Serializable]
-public struct Spell
+public abstract class Spell
 {
-    public SpellType Type;
-    public string TargetName;
-    public string TargetTrueName => TrueName.FromName(TargetName);
+    protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
 
-    public static bool operator == (Spell a, Spell b)
+    public abstract SpellType Type { get; }
+
+    // determine the regular expression that incant uses to disambiguate spells
+    // should generally only do whole string matches, ie ^<some-regex>$
+    // unless there's a good reason otherwise, all regexes should be instantiated with REGEX_OPTIONS as the second argument to the constructor
+    public abstract Regex GetRegex ();
+
+    // check for other spell conditions beside incantation, such as mirrors or moon phase
+    // incantation is the entire argument list to `incant`, excluding the word `incant`
+    public abstract bool ConditionsAreMet (IList<string> incantation);
+
+    // anything that should happen when this spell is cast
+    public abstract IEnumerator CastBehavior (TerminalApp term, IList<string> incantation);
+
+    // for DRYness
+    protected void castAt (string target)
     {
-        return a.Type == b.Type && a.TargetName.Equals(b.TargetName, StringComparison.InvariantCultureIgnoreCase);
+        SpellWatcher.Instance.CastSpell(Type, target);
     }
 
-    public static bool operator != (Spell a, Spell b)
+    // for spooky effects
+    protected string randomAscii (int length, bool includeSpace = true)
     {
-        return !(a == b);
-    }
+        Vector2Int printableCharacterRange = new Vector2Int
+        (
+            32 + (includeSpace ? 0 : 1),
+            127 // don't include delete (random is exclusive)
+        );
 
-    public Spell (SpellType type, string targetTrueName)
-    {
-        Type = type;
-        TargetName = targetTrueName;
-    }
+        StringBuilder sb = new StringBuilder();
 
-    public override bool Equals (object obj)
-    {
-        if (obj == null || GetType() != obj.GetType()) return false;
+        for (int i = 0; i < length; i++)
+        {
+            sb.Append((char) RandomExtra.Range(printableCharacterRange));
+        }
 
-        return this == (Spell) obj;
+        return sb.ToString();
     }
-    
-    public override int GetHashCode ()
-    {
-        return new Tuple<SpellType, string>(Type, TargetName).GetHashCode();
-    }
-
-    public override string ToString ()
-    {
-        return Type.ToString() + " " + TargetName;
-    }
-}
-
-public enum SpellType
-{
-    BadLuck, Stub, HairLoss, Password, SocialMedia
 }

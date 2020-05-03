@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 1
     TargetName: Daniel Woodcock
   BuyerAddress: martygibson@hotmail.co.uk

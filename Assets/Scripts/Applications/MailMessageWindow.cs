@@ -14,8 +14,8 @@ public class MailMessageWindow : MonoBehaviour
     {
         Window.Title = message.EmailSubjectLine;
         ContentText.text = "Subject: " + message.EmailSubjectLine +
-            "\n-------------\nCurse: " + message.RequestedSpell.Type +
-            "\n-------------\nTarget: " + message.RequestedSpell.TargetName +
+            "\n-------------\nCurse: " + message.SpellRequest.Type +
+            "\n-------------\nTarget: " + message.SpellRequest.TargetName +
             "\n-------------\n\n" + message.Justification;
     }
 

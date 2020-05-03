@@ -9,9 +9,6 @@ gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
 	cool effects when a spell fizzes out or is cast
 
-regex-based spell resolution
-	with additional fuzzy matching for closest match
-
 polish metatron UI
 	magicy UI particles (blue highlight effect) coming from access button and source button when moused over
 	golden rays of light coming from the same when magic is on
@@ -25,6 +22,8 @@ additional desktops
 expand text area of text viewer app to hide the paging area if there's only one page
 
 break mirrors by clicking on their icons directly
+
+fuzzy matching for closest match on spell regex
 
 audio player app
 

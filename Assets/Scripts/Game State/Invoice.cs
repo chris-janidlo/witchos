@@ -8,7 +8,7 @@ public class Invoice : ScriptableObject
 {
     public UnityEvent Completed;
 
-    public Spell RequestedSpell;
+    public Casting SpellRequest;
     public string BuyerAddress, EmailSubjectLine;
     [TextArea(5, 100)]
     public string Justification;
@@ -17,6 +17,6 @@ public class Invoice : ScriptableObject
 
     public override int GetHashCode ()
     {
-        return (BuyerAddress + RequestedSpell.ToString() + Justification).GetHashCode();
+        return (BuyerAddress + SpellRequest.ToString() + Justification).GetHashCode();
     }
 }

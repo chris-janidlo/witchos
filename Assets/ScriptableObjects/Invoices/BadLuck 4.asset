@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 0
     TargetName: Maisey Rowe
   BuyerAddress: abandonedpetra@sky.com

@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 2
     TargetName: Robin Andrew
   BuyerAddress: dreamy_stephanie@gmail.com

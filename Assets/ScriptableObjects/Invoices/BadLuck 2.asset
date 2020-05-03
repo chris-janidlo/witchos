@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 0
     TargetName: Drew Guy
   BuyerAddress: nikos.meyer@mail.ru

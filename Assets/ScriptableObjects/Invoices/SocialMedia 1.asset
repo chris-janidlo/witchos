@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 4
     TargetName: Thelma Morales on facebook.com
   BuyerAddress: edwardaodohertycanada@hotmail.com

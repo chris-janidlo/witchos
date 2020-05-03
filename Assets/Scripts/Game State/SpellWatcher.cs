@@ -6,20 +6,20 @@ using crass;
 
 public class SpellWatcher : Singleton<SpellWatcher>
 {
-    public event Action<Spell> SpellCast;
+    public event Action<Casting> SpellCast;
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
     }
 
-    public void CastSpell (Spell spell)
+    public void CastSpell (Casting casting)
     {
-        SpellCast?.Invoke(spell);
+        SpellCast?.Invoke(casting);
     }
 
     public void CastSpell (SpellType type, string targetTrueName)
     {
-        CastSpell(new Spell(type, targetTrueName));
+        CastSpell(new Casting(type, targetTrueName));
     }
 }

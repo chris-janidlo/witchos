@@ -15,7 +15,7 @@ MonoBehaviour:
   Completed:
     m_PersistentCalls:
       m_Calls: []
-  RequestedSpell:
+  SpellRequest:
     Type: 2
     TargetName: Terri Swift
   BuyerAddress: bad.leondrea@aol.com
