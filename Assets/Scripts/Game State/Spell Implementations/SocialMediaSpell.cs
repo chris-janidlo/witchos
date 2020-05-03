@@ -17,7 +17,7 @@ public class SocialMediaSpell : Spell
 	public override bool ConditionsAreMet (IList<string> incantation)
 	{
 		return
-			MirrorState.Instance.NumberBroken() >= 1 &&
+			MirrorState.Instance.NumberIntact() >= 1 &&
 			TerminalState.Instance.XingLock &&
 			!String.IsNullOrEmpty(TerminalState.Instance.XingTarget);
 	}
