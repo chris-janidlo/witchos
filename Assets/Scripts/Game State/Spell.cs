@@ -40,9 +40,32 @@ public abstract class Spell
 
         StringBuilder sb = new StringBuilder();
 
+        bool colorAdded = false;
+
         for (int i = 0; i < length; i++)
         {
+            if (!colorAdded && RandomExtra.Chance(.02f))
+            {
+                // green to purple (no red or yellow), upper half of saturation, only max lightness
+                var color = Random.ColorHSV(.25f, .85f, .5f, 1, 1, 1);
+
+                sb.Append($"<#{ColorUtility.ToHtmlStringRGB(color)}>");
+                colorAdded = true;
+            }
+
             sb.Append((char) RandomExtra.Range(printableCharacterRange));
+
+            if (colorAdded && RandomExtra.Chance(.07f))
+            {
+                sb.Append("</color>");
+                colorAdded = false;
+            }
+        }
+
+        if (colorAdded)
+        {
+            sb.Append("</color>");
+            colorAdded = false;
         }
 
         return sb.ToString();
