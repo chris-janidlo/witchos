@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ public class MailState : Singleton<MailState>
 
     public void StartDay ()
     {
-        if (TasksCompleted == spawnCount)
+        if (TasksCompleted == spawnCount && CurrentDifficultyLevel < EMailsToSpawnByDifficulty.Count- 1)
         {
             CurrentDifficultyLevel++;
         }
