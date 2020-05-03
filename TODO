@@ -7,7 +7,7 @@ window resizing
 switch unity-aseprite-importer submodule url back to original project
 	delete the crass-sandwich version off of github while you're at
 
-change email UI to an invoice UI
+move spell requests to an invoice UI
 
 gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
@@ -21,9 +21,13 @@ polish metatron UI
 
 alt-tab style switching
 
-truer moon phase calculation using aasharp
-
 additional desktops
+
+move tutorial stuff to email
+	get an email explaining new desktop functionality as you progress through the days
+	have desktop email icon flash if you have an unread email
+
+truer moon phase calculation using aasharp
 
 expand text area of text viewer app to hide the paging area if there's only one page
 
@@ -31,8 +35,8 @@ break mirrors by clicking on their icons directly
 
 fuzzy matching for closest match on spell regex
 
+saveable window layout
+
 audio player app
 
 window auto tiling
-
-saveable window layout
