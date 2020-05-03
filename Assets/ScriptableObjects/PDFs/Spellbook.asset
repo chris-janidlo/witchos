@@ -14,25 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: spellbook.txt
   Pages:
-  - "contents\n\n1...\tthis page\n2...\thints\n3...\thair loss\n4...\tpassword\n5...\tstub\n6...\tbad
-    luck\n7...\tsocial media"
+  - "Contents\n\n1...\tthis page\n2...\ttips\n3...\thair loss spell\n4...\tpassword
+    spell\n5...\tstub spell\n6...\tbad luck spell\n7...\tsocial media spell"
   - "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors in Mirrors\n\n-
     commands are entered in the spe// application\n\n- any time an instruction uses
     <>, replace everything inside the brackets including the brackets\n   - for example:
-    if you are told to enter 'tn <target name>' and the name is 'John Smith', enter
-    'tn John Smith'\n\n- 'incant' is the most important command - it's how you cast
-    the final spell\n\n- make sure to check out the 'help' command for more info"
-  - 'for temporary hair loss:
-
-
-
-    - run command ''set aura null''
-
-
-    - break a mirror, and if the moon is waning, break a second mirror
-
-
-    - ''incant <target name> borealeo'''
+    if you are told to enter 'tn <target name>' and the name is 'John Dee', enter
+    'tn John Dee'\n\n- make sure to check out the 'help' command for more info"
   - 'simple spell to set every password to the word ''password''
 
 
@@ -40,54 +28,43 @@ MonoBehaviour:
     - run command ''xing <target name>''
 
 
-    - while that is running, open a new spe// window
+    - while that''s running, open a new spe// window
 
 
     - in the new window, run command ''set target <target name>''
 
 
-    - run command ''incant piratica non grata'''
-  - 'a hex for causing minor bodily injury, on the order of a stubbed toe
+    - also in the new window, run command ''incant signum salis'''
+  - 'Sometimes called the "borealeo curse," this is a simple hex that leads to temporary
+    degradation of hair follicles in the target. Hair falls out swiftly as a result,
+    but the effects usually subside in about 3 days.
 
 
-    if the moon is Gibbous (waxing or waning, no difference):
-
-    - ''set aura nox''
-
-    - ''set target <target name>''
-
-    - ''incant subgicatrix''
+    1. Run command ''set aura null''.
 
 
-    if the moon is Crescent:
-
-    - ''set target <target name>''
-
-    - ''incant subgicatrix''
+    2. Break a mirror. If the moon is waning, break an additional mirror.
 
 
-    if the moon is Full:
-
-    - ''set aura lux''
-
-    - ''incant subgicatrix <target name>''
-
-
-    if the moon is any other phase not mentioned above:
-
-    - simply ''incant subgicatrix <target name backward>'' (make sure to reverse the
-    name!)'
-  - "a curse for moderate ill fortune, lasting of a week\n\n- commune with the aggrieved
-    ancestors of the accursed, using command 'seance <target name>'\n   - take note
-    of their most frequent chant\n- break a mirror\n- run 'set aura negative'\n\nfinally,
-    'incant' the following formula:\n'malam <target name> fortunam <most frequent
-    chant> horret'\n\nfor example, suppose the accursed is named John Smith and the
-    most frequent chant from his ancestors was \"beware\"; then the command would
-    become 'incant malam John Smith fortunum beware horret'"
-  - 'here''s a charm that causes people to post embarrassing statuses online:
+    3. Run command ''incant <target name> borealeo''. The hex is now cast.'
+  - "a hex that makes victims stub their toes:\n\nif the moon is Gibbous (waxing or
+    waning, no difference):\n- 'set aura nox'\n- 'set target <target name>'\n- 'incant
+    subgicatrix'\n\nif the moon is Crescent:\n- 'set target <target name>'\n- 'incant
+    subgicatrix'\n\nif the moon is Full:\n- 'set aura lux'\n- 'incant <target name>
+    subgicatrix'\n\nif the moon is in any other phase:\n- 'incant subgicatrix <target
+    name backward>'\n  - Make sure to reverse the name!"
+  - "A Curse for moderate Ill Fortune, with a common Duration of one Week.\n\n* Commune
+    with the aggrieved Ancestors of the Accursed, using the command 'seance <target
+    name>'.\n   * Take note of their most Frequent Chant.\n* Break a Mirror.\n* Run
+    'set aura negative'.\n\nFinally, 'incant' the following Formula:\n* 'malam <target
+    name> fortunam <most frequent chant> horret'\n\nFor example, suppose the Accursed
+    is named Robert Smythe and the most frequent chant from his ancestors was \"beware\";
+    then the Command would become 'incant malam Robert Smythe fortunum beware horret'."
+  - 'here''s a (not very charming) charm that causes people to post embarrassing statuses
+    online:
 
 
-    note that this spell REQUIRES at least one (1) unbroken mirror in order to work
+    (note that this spell REQUIRES at least one unbroken mirror or it doesn''t work)
 
 
     - ''xing <target website>

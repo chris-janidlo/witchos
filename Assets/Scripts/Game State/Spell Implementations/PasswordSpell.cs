@@ -15,7 +15,7 @@ public class PasswordSpell : Spell
 
 	public override Regex GetRegex ()
 	{
-		return new Regex(@"^piratica\s+non\s+grata$", REGEX_OPTIONS);
+		return new Regex(@"^signus\s+salis$", REGEX_OPTIONS);
 	}
 
 	public override bool ConditionsAreMet (IList<string> incantation)

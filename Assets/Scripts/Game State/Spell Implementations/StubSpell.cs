@@ -15,10 +15,12 @@ public class StubSpell : Spell
 		{
 			case MoonPhase.WaxingCrescent:
 			case MoonPhase.WaningCrescent:
+				return new Regex(@"^subgicatrix$", REGEX_OPTIONS);
+
 			case MoonPhase.WaxingGibbous:
 			case MoonPhase.WaningGibbous:
-				return new Regex(@"^subgicatrix$", REGEX_OPTIONS);
-			
+				return new Regex(@"^.+\s+subgicatrix", REGEX_OPTIONS);
+
 			default:
 				// every other phase is either `subgicatrix target_name` or `subgicatrix target_name_backward`, which are the same regex
 				return new Regex(@"^subgicatrix\s+.+$", REGEX_OPTIONS);
