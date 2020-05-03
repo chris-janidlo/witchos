@@ -13,17 +13,17 @@ public class StubSpell : Spell
 	{
 		switch (TimeState.Instance.GetTodaysMoonPhase())
 		{
+			case MoonPhase.WaxingGibbous:
+			case MoonPhase.WaningGibbous:
+			case MoonPhase.FullMoon:
+				return new Regex(@"^subgicatrix\s+.+$", REGEX_OPTIONS);
+
 			case MoonPhase.WaxingCrescent:
 			case MoonPhase.WaningCrescent:
 				return new Regex(@"^subgicatrix$", REGEX_OPTIONS);
 
-			case MoonPhase.WaxingGibbous:
-			case MoonPhase.WaningGibbous:
-				return new Regex(@"^.+\s+subgicatrix", REGEX_OPTIONS);
-
 			default:
-				// every other phase is either `subgicatrix target_name` or `subgicatrix target_name_backward`, which are the same regex
-				return new Regex(@"^subgicatrix\s+.+$", REGEX_OPTIONS);
+				return new Regex(@"^.+\s+subgicatrix", REGEX_OPTIONS);
 		}
 	}
 
@@ -36,6 +36,10 @@ public class StubSpell : Spell
 			case MoonPhase.WaxingGibbous:
 			case MoonPhase.WaningGibbous:
 				return aura == "nox";
+
+			case MoonPhase.WaxingCrescent:
+			case MoonPhase.WaningCrescent:
+				return TerminalState.Instance.EnvironmentVariables.ContainsKey("target");
 			
 			case MoonPhase.FullMoon:
 				return aura == "lux";
@@ -48,24 +52,26 @@ public class StubSpell : Spell
 	public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
 	{
 		string target = TerminalState.Instance.GetEnvironmentVariable("target");
-
 		string name;
 
 		switch (TimeState.Instance.GetTodaysMoonPhase())
 		{
-			case MoonPhase.WaxingCrescent:
-			case MoonPhase.WaningCrescent:
 			case MoonPhase.WaxingGibbous:
 			case MoonPhase.WaningGibbous:
+				name = String.Join(" ", incantation.Skip(1));
+				break;
+
+			case MoonPhase.WaxingCrescent:
+			case MoonPhase.WaningCrescent:
 				name = target;
 				break;
 			
 			case MoonPhase.FullMoon:
-				name = String.Join(" ", incantation.Skip(1));
+				name = new String(string.Join(" ", incantation.Skip(1)).Reverse().ToArray());
 				break;
 
 			default:
-				name = new String(string.Join(" ", incantation.Skip(1)).Reverse().ToArray());
+				name = string.Join(" ", incantation.Take(incantation.Count - 1));
 				break;
 		}
 
