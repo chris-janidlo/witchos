@@ -3,11 +3,16 @@ FIXME:
 TODO:
 window resizing
 
+switch unity-aseprite-importer submodule url back to original project
+	delete the crass-sandwich version off of github while you're at
+
 change email UI to an invoice UI
 
 gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
 	cool effects when a spell fizzes out or is cast
+
+add retro computer system sounds as effects for things
 
 polish metatron UI
 	magicy UI particles (blue highlight effect) coming from access button and source button when moused over
