@@ -652,7 +652,7 @@ RectTransform:
   - {fileID: 1707194483545304235}
   - {fileID: 1707194483669770073}
   m_Father: {fileID: 1707194483065934535}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -669,7 +669,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1707194483065934535}
   - component: {fileID: 4473747682668473020}
-  - component: {fileID: 842281002689967638}
   m_Layer: 5
   m_Name: Title Bar
   m_TagString: Untagged
@@ -691,6 +690,7 @@ RectTransform:
   - {fileID: 1707194482198925356}
   - {fileID: 1707194481745357647}
   - {fileID: 1707194481748681855}
+  - {fileID: 174111124372003054}
   - {fileID: 1707194482955245963}
   m_Father: {fileID: 1707194482673688325}
   m_RootOrder: 4
@@ -708,19 +708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707194483065934534}
   m_CullTransparentMesh: 0
---- !u!114 &842281002689967638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707194483065934534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a4e14d5ea8241c0b74798ccde720d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransformToMove: {fileID: 1707194482673688325}
 --- !u!1 &1707194483348164925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,3 +1017,107 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1905508908548248365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174111124372003054}
+  - component: {fileID: 3501282533844903405}
+  - component: {fileID: 3576657806515492274}
+  - component: {fileID: 3328055061429659953}
+  - component: {fileID: 3366741172228356639}
+  m_Layer: 5
+  m_Name: Drag Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &174111124372003054
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905508908548248365}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1707194483065934535}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -1.5}
+  m_SizeDelta: {x: -8, y: -3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3501282533844903405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905508908548248365}
+  m_CullTransparentMesh: 0
+--- !u!114 &3576657806515492274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905508908548248365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b574565d19747a28897f8f2ab9c2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: this exists so that resizes have higher precedence than drags. only better
+    solution would be somehow changing the actual order of event execution so that
+    the resize events are called first, but since the resizer is a parent and this
+    is a child and unity does bubbly stuff, I don't think that's possible.
+--- !u!114 &3328055061429659953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905508908548248365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3366741172228356639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905508908548248365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4e14d5ea8241c0b74798ccde720d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransformToMove: {fileID: 1707194482673688325}
