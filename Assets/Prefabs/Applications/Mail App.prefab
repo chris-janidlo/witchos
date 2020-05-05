@@ -52,6 +52,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842281002689967638, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1707194481745357644, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_Sprite
@@ -250,17 +255,17 @@ PrefabInstance:
     - target: {fileID: 74975559698707482, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 74975559698707482, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3717843139155825335, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3918121510447443346, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}

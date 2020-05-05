@@ -2,7 +2,10 @@ FIXME:
 in terminal app, both carat and text highlight show outside of masks
 
 TODO:
-window resizing
+- window resizing
+	√ basic behavior
+	x cursor changing
+	x prevent event propagation to dragger
 
 switch unity-aseprite-importer submodule url back to original project
 	delete the crass-sandwich version off of github while you're at
