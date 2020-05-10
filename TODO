@@ -1,8 +1,6 @@
 FIXME:
 in terminal app, both carat and text highlight show outside of masks
 
-any app with text will prevent resize if the text is under a resize cursor
-
 TODO:
 switch unity-aseprite-importer submodule url back to original project
 	delete the crass-sandwich version off of github while you're at
