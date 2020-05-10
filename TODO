@@ -2,9 +2,6 @@ FIXME:
 in terminal app, carat shows outside of masks
 
 TODO:
-switch unity-aseprite-importer submodule url back to original project
-	delete the crass-sandwich version off of github while you're at
-
 move spell requests to an invoice UI
 
 move tutorial stuff to email
