@@ -1,12 +1,9 @@
 FIXME:
 in terminal app, both carat and text highlight show outside of masks
 
-TODO:
-- window resizing
-	√ basic behavior
-	x cursor changing
-	√ prevent event propagation to dragger
+any app with text will prevent resize if the text is under a resize cursor
 
+TODO:
 switch unity-aseprite-importer submodule url back to original project
 	delete the crass-sandwich version off of github while you're at
 
@@ -43,3 +40,5 @@ saveable window layout
 audio player app
 
 window auto tiling
+
+global window resizing (ie, not just for active window)

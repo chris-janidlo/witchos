@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
-  m_DragThreshold: 10
+  m_DragThreshold: 0
 --- !u!4 &680989698
 Transform:
   m_ObjectHideFlags: 0
@@ -4225,6 +4225,7 @@ GameObject:
   - component: {fileID: 1352642453}
   - component: {fileID: 1352642454}
   - component: {fileID: 1352642455}
+  - component: {fileID: 1352642457}
   m_Layer: 0
   m_Name: Global Game State
   m_TagString: Untagged
@@ -4426,6 +4427,28 @@ MonoBehaviour:
   PowerTurnedDepleted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1352642457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352642449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9334695bf869e416d8e9ce6cf82a4f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalTexture: {fileID: 2800000, guid: 6c685a9cf38dd4ee4a73b8ebac2765fe, type: 3}
+  VerticalResizeTexture: {fileID: 2800000, guid: 0a153cc2d74cc482097248df970e92ce,
+    type: 3}
+  HorizontalResizeTexture: {fileID: 2800000, guid: 06e1e3c77243a40198332d52d86da192,
+    type: 3}
+  DiagonalFromSoutheastResizeTexture: {fileID: 2800000, guid: 3323739e79add462985f2622747b9c35,
+    type: 3}
+  DiagonalFromSouthwestResizeTexture: {fileID: 2800000, guid: 48eb6eb3ea51d4f04b49b7561a06d110,
+    type: 3}
+  _currentCursorState: 0
 --- !u!1 &1398068856
 GameObject:
   m_ObjectHideFlags: 0

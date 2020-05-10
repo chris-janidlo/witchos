@@ -1,0 +1,4 @@
+.ase files can be opened and edited in Aseprite
+
+in general, try to keep everything in Aseprite format, except for the few files that are never going to change (the borders, the empty sprite, the 1 pixel sprite, etc)
+the only exception is mouse cursors, since they have to be imported a special way. keep the .ase file here and also export a png

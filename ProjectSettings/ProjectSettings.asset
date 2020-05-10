@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: crass_sandwich
   productName: WitchOS
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 55bf619893ec04567993bbf4d04d3318, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 0
