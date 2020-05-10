@@ -69,6 +69,9 @@ public class Window : MonoBehaviour, IPointerDownHandler
         TimeState.Instance.DayEnded.RemoveListener(Close);
         Destroy(gameObject);
         if (taskBarButton != null) Destroy(taskBarButton.gameObject);
+
+        // in case it already isn't:
+        CursorManager.Instance.CursorState = CursorState.Normal;
     }
 
     public void Focus ()
