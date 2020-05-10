@@ -1,5 +1,5 @@
 FIXME:
-in terminal app, both carat and text highlight show outside of masks
+in terminal app, carat shows outside of masks
 
 TODO:
 switch unity-aseprite-importer submodule url back to original project
@@ -40,3 +40,4 @@ audio player app
 window auto tiling
 
 global window resizing (ie, not just for active window)
+	with this, probably some kind of mouse event rearchitecturing so that the interactions between dragging and other things under the mouse aren't as jank
