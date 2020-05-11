@@ -11,6 +11,7 @@ move tutorial stuff to email
 gussy up spell casting:
 	cool effects when a valid spell is loaded up in the terminal
 	particle(?) effects when a spell fizzes out or is cast
+	add eldritch runes to spell output with sprite tags
 
 add retro computer system sounds as effects for things
 
