@@ -17,6 +17,8 @@ add retro computer system sounds as effects for things
 
 alt-tab style switching
 
+make a minimum size for taskbar buttons, and when there are enough that they would normally drop below that size, make them scroll instead
+
 polish metatron UI
 	magicy UI particles (blue highlight effect) coming from access button and source button when moused over
 	golden rays of light coming from the same when magic is on
