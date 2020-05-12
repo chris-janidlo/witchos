@@ -24,7 +24,7 @@ public class MailApp : MonoBehaviour
 
         int unreadCount = MailState.Instance.UnreadMessageCount;
         Window.Icon = unreadCount > 0 ? UnreadIcon : ReadIcon;
-        Window.Title = "Inbox" + (unreadCount > 0 ? $" ({unreadCount})" : "");
+        Window.Title = "Inbox" + (unreadCount > 0 ? $" ({unreadCount} unread)" : "");
     }
 
     void populateInbox ()
