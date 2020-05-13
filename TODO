@@ -3,6 +3,18 @@ in terminal app, cursor shows outside of masks
 
 TODO:
 move spell requests to an invoice UI
+	every day, get an email with an overview of your business (how many new orders you have, what your track record is, graphs? stuff like that)
+	bi-modal order management app:
+		mail-like invoice screen, with interactive previews for every invoice
+			only have a certain number of slots for invoices. you are immediately presented with the option to buy more slots in the form of grayed-out slots with overlaid payment buttons
+			each invoice preview at least has a button to open up for more details
+				might also have buttons for declining (which means deleting) or accepting (which means adding to task list) as well
+				invoice preview also shows the total amount and the due date. might also show payment scheme
+			invoice details screen shows the customer name, a list of requested services, the due date, a total payment amount, a description of the payment scheme, and buttons for declining or accepting the order
+				each individual requested service comes with its own justification line
+				the payment scheme describes how the money will reach you. some examples are "all upfront," "half upfront and half immediately on completion," and "all the next day after completion"
+			invoice preview and detail views both show the option to "turn in" once every sub task has been completed
+		task list that shows a compact view of only the individual requested items, sorted by due date. these tasks are auto-cleared as soon as you complete them. maybe then the old tasks are replaced with a new one saying "turn in your work?"
 
 move tutorial stuff to email
 	get an email explaining new desktop functionality as you progress through the days
