@@ -13,9 +13,8 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
     public TextMeshProUGUI Text;
     public CanvasGroup Group;
 
-    LinkedList<string> messages = new LinkedList<string>();
-
-    bool clickFlag;
+    LinkedList<IEnumerator> enums = new LinkedList<IEnumerator>();
+    IEnumerator currentEnum;
 
     void Awake ()
     {
@@ -24,78 +23,81 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
         Group.alpha = 0;
     }
 
-    IEnumerator Start ()
-    {
-        while (true)
-        {
-            while (messages.Count != 0)
-            {
-                string message = messages.First.Value;
-                messages.RemoveFirst();
-
-                Text.text = message;
-                Group.alpha = 1;
-
-                float timer = message.Split(' ').Length * SecondsToDisplayPerWord;
-                
-                while (timer > 0 && !clickFlag)
-                {
-                    timer -= Time.deltaTime;
-                    yield return null;
-                }
-
-                FadeoutTransition.FlashFromTo(1, 0);
-
-                do
-                {
-                    Group.alpha = FadeoutTransition.Value;
-                    yield return null;
-                }
-                while (Group.alpha != 0);
-            }
-
-            clickFlag = false;
-            yield return null;
-        }
-    }
-
     void Update ()
     {
         // enable clicking away when message is fully visible, while not blocking interaction with anything below the message if it's transparent at all
         Group.blocksRaycasts = Group.alpha == 1;
+
+        if (enums.Count > 0 && currentEnum == null)
+        {
+            StartCoroutine(currentEnum = enums.First.Value);
+            enums.RemoveFirst();
+        }
     }
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-        clickFlag = true;
+        hideImmediately();
 	}
 
     public void ClearMessages ()
     {
-        messages.Clear();
+        StopCoroutine(currentEnum);
+        enums.Clear();
     }
 
     public void ShowMessage (string message)
     {
-        messages.AddLast(message);
+        enums.AddLast(showAndHideRoutine(message));
     }
 
-    public void ShowMessageNext (string message)
+    public void ShowMessageImmediately (string message)
     {
-        messages.AddFirst(message);
+        hideImmediately();
+        enums.AddFirst(showAndHideRoutine(message));
     }
 
 #if UNITY_EDITOR
-    [ContextMenu("Test Message (end of queue)")]
+    [ContextMenu("Test Message (wait for every other pending message to show)")]
     public void TriggerTestMessage ()
     {
         ShowMessage("This is a test");
     }
 
-    [ContextMenu("Test Message (start of queue)")]
+    [ContextMenu("Test Message (show immediately, dismissing the current message)")]
     public void TriggerTestMessageNext ()
     {
-        ShowMessageNext("This is a test");
+        ShowMessageImmediately("This is a test");
     }
 #endif // UNITY_EDITOR
+
+    IEnumerator showAndHideRoutine (string message)
+    {
+        Text.text = message;
+        Group.alpha = 1;
+
+        yield return new WaitForSeconds(message.Split(' ').Length * SecondsToDisplayPerWord);
+
+        yield return hideRoutine();
+    }
+
+    IEnumerator hideRoutine ()
+    {
+        FadeoutTransition.FlashFromTo(1, 0);
+
+        do
+        {
+            Group.alpha = FadeoutTransition.Value;
+            yield return null;
+        }
+        while (Group.alpha != 0);
+
+        currentEnum = null;
+    }
+
+    void hideImmediately ()
+    {
+        StopCoroutine(currentEnum);
+        StartCoroutine(hideRoutine());
+    }
 }
