@@ -18,8 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 2
     TargetName: Scarlett-Rose Beattie
-  BuyerAddress: sebastian.ryanne.oquinn@juno.com
-  EmailSubjectLine: Curse Request
+  BuyerName: Sebastian O'Quinn
   Justification: 'To Whom It May Concern,
 
 

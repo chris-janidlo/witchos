@@ -9,7 +9,7 @@ public class Invoice : ScriptableObject
     public UnityEvent Completed;
 
     public Casting SpellRequest;
-    public string BuyerAddress, EmailSubjectLine;
+    public string BuyerName;
     [TextArea(5, 100)]
     public string Justification;
 
@@ -17,6 +17,6 @@ public class Invoice : ScriptableObject
 
     public override int GetHashCode ()
     {
-        return (BuyerAddress + SpellRequest.ToString() + Justification).GetHashCode();
+        return (BuyerName + SpellRequest.ToString() + Justification).GetHashCode();
     }
 }

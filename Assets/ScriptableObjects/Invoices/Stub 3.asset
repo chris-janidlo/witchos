@@ -18,7 +18,6 @@ MonoBehaviour:
   SpellRequest:
     Type: 1
     TargetName: Tristan Stamp
-  BuyerAddress: brainlessbarry@me.com
-  EmailSubjectLine: Gift for my buddy
+  BuyerName: Barry Knowles
   Justification: Tristan's birthday is tomorrow, I want him to know I'm thinking about
     him

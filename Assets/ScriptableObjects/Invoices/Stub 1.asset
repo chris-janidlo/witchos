@@ -18,8 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 1
     TargetName: Phoebe Morrison
-  BuyerAddress: julianathebanana@gmail.com
-  EmailSubjectLine: Curse Request PLEASE READ
+  BuyerName: Juliana Cortez
   Justification: 'Hi :)
 
     I just wanna prank my friend so please don''t make the curse 2 bad pleasse'
