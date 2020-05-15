@@ -10,7 +10,7 @@ public class MailMessagePreview : MonoBehaviour
     public Button Button;
     public TextMeshProUGUI Label;
 
-    Invoice message;
+    EMail message;
 
     void Start ()
     {
@@ -19,10 +19,10 @@ public class MailMessagePreview : MonoBehaviour
 
     void Update ()
     {
-        Label.text = (message.Read ? "" : "* ") + message.BuyerAddress + " - " + message.EmailSubjectLine;
+        Label.text = (message.Read ? "" : "* ") + message.FromAddress + " - " + message.Subject;
     }
 
-    public void SetMessage (Invoice message)
+    public void SetMessage (EMail message)
     {
         this.message = message;
     }

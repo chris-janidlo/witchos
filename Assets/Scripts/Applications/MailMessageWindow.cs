@@ -8,20 +8,16 @@ public class MailMessageWindow : MonoBehaviour
     public Window Window;
     public TextMeshProUGUI ContentText;
 
-    Invoice message;
+    EMail message;
 
     void Update ()
     {
-        Window.Title = message.EmailSubjectLine;
-        ContentText.text = "Subject: " + message.EmailSubjectLine +
-            "\n-------------\nCurse: " + message.SpellRequest.Type +
-            "\n-------------\nTarget: " + message.SpellRequest.TargetName +
-            "\n-------------\n\n" + message.Justification;
+        Window.Title = message.Subject;
+        ContentText.text = "Subject: " + message.Subject + "\n\n" + message.Body;
     }
 
-    public void SetMessage (Invoice message)
+    public void SetMessage (EMail message)
     {
         this.message = message;
-        message.Completed.AddListener(Window.Close);
     }
 }
