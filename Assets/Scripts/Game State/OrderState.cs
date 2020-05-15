@@ -16,7 +16,7 @@ public class OrderState : Singleton<OrderState>
 
     public int TasksCompleted, TotalTasks;
 
-    public GenericInbox<Invoice> InvoiceInbox;
+    public GenericInbox<Invoice> InvoiceInbox = new GenericInbox<Invoice>();
 
     int spawnCount => InvoicesToSpawnByDifficulty[CurrentDifficultyLevel];
 
