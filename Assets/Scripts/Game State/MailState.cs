@@ -7,7 +7,7 @@ using crass;
 
 public class MailState : Singleton<MailState>
 {
-    public GenericInbox<EMail> Inbox = new GenericInbox<EMail>();
+    public GenericInbox<EMail> Inbox;
 
     void Awake ()
     {
