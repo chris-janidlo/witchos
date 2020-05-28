@@ -13,6 +13,8 @@ public class Invoice : ScriptableObject
     [TextArea(5, 100)]
     public string Justification;
 
+    public bool Read { get; set; }
+
     public override int GetHashCode ()
     {
         return (BuyerName + SpellRequest.ToString() + Justification).GetHashCode();
