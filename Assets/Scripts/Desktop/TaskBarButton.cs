@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class TaskBarButton : MonoBehaviour
 {
+    public UnityEvent Destroyed;
+
     public TextMeshProUGUI TitleText;
     public Image IconImage;
     public Button Button;
@@ -21,6 +24,11 @@ public class TaskBarButton : MonoBehaviour
     {
         TitleText.text = window.Title;
         IconImage.sprite = window.Icon;
+    }
+
+    void OnDestroy ()
+    {
+        Destroyed.Invoke();
     }
 
     public void SetWindow (Window window)
