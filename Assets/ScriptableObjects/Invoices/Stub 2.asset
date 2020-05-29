@@ -18,5 +18,6 @@ MonoBehaviour:
   SpellRequest:
     Type: 1
     TargetName: Jarrod Ramsey
-  BuyerName: Gorka Morales
+  BuyerAddress: gorka.morales@aol.com
+  EmailSubjectLine: Make him hurt
   Justification: This tryhard asshole ruined flag football fridays

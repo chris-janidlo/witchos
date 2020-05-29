@@ -18,6 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 0
     TargetName: Susan Sharples
-  BuyerName: Sebastia Morgan
+  BuyerAddress: sebastia.likes.art@rocketmail.com
+  EmailSubjectLine: Revenge
   Justification: This Susan lady who lives next door to me trashed my yard for no
     reason. Also I hate her stupid face and her stupid yappy dog.

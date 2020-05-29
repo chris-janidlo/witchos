@@ -17,8 +17,9 @@ MonoBehaviour:
       m_Calls: []
   SpellRequest:
     Type: 4
-    TargetName: Thelma O'Doherty on facebook.com
-  BuyerName: Edward O'Doherty
+    TargetName: Thelma Morales on facebook.com
+  BuyerAddress: edwardaodohertycanada@hotmail.com
+  EmailSubjectLine: Curse Request
   Justification: 'I think my wife hates me after I threw out her silly crochet stuff.
     You''re going to help me win her back. Here''s my plan:
 

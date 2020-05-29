@@ -18,7 +18,8 @@ MonoBehaviour:
   SpellRequest:
     Type: 2
     TargetName: Archie Blake
-  BuyerName: Mia Lynch
+  BuyerAddress: mialynch@yahoo.com
+  EmailSubjectLine: Curse Request
   Justification: Archie thought he could get away with his weird little sabotage at
     Westminster last year, but boy oh boy did I see right through him. Well, he has
     a date tonight, his first in years, so let's see how much he likes being humiliated.

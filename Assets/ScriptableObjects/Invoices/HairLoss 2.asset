@@ -18,6 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 2
     TargetName: Robin Andrew
-  BuyerName: Stephanie Miller
+  BuyerAddress: dreamy_stephanie@gmail.com
+  EmailSubjectLine: MORTAL ENEMY
   Justification: my MORTAL ENEMY is dancing for the talent show and THIS TIME I won't
     lose :)

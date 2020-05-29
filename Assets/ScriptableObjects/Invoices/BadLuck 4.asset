@@ -18,7 +18,8 @@ MonoBehaviour:
   SpellRequest:
     Type: 0
     TargetName: Maisey Rowe
-  BuyerName: Petra Sokolova
+  BuyerAddress: abandonedpetra@sky.com
+  EmailSubjectLine: Curse Request
   Justification: Maisey and I have been best friends since we were kids. We're pretty
     much inseparable and she's helped me through some pretty tough times. Yesterday
     I found her in bed with my boyfriend of 3 years. Do your worst.

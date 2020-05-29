@@ -18,6 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 1
     TargetName: Daniel Woodcock
-  BuyerName: Marty Gibson
+  BuyerAddress: martygibson@hotmail.co.uk
+  EmailSubjectLine: Daniel Woodcock
   Justification: My maths professor is named Daniel Woodcock. This is ridiculous.
     He can't just have a name like that.
