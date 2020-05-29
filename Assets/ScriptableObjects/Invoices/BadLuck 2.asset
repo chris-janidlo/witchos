@@ -18,6 +18,7 @@ MonoBehaviour:
   SpellRequest:
     Type: 0
     TargetName: Drew Guy
-  BuyerName: Nikos Meyer
+  BuyerAddress: nikos.meyer@mail.ru
+  EmailSubjectLine: really annoying
   Justification: drew's the weird kid in my french class. he's just really annoying.
     I can't wait to see the look on his face when I tell him I cursed him
