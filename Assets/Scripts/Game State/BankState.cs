@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,6 +44,6 @@ public class BankState : Singleton<BankState>
     public bool HaveEnoughMoney (int deltaCurrency)
     {
         if (deltaCurrency >= 0) return true;
-        else return CurrentBalance + deltaCurrency < 0;
+        else return CurrentBalance + deltaCurrency >= 0;
     }
 }
