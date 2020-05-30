@@ -123,6 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3008688d52a4242a6c6940a425271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroyed:
+    m_PersistentCalls:
+      m_Calls: []
   TitleText: {fileID: 2394346774644062499}
   IconImage: {fileID: 2394346774320264656}
   Button: {fileID: 2394346775658836652}
