@@ -67,6 +67,16 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
         hideImmediately();
 	}
 
+    public void ClearMessages ()
+    {
+        // for end of day
+        showTimer = 0;
+        Group.alpha = 0;
+        faded = true;
+
+        messageQueue.Clear();
+    }
+
     public void ShowMessage (string message)
     {
         messageQueue.AddLast(message);
