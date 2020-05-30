@@ -3303,6 +3303,7 @@ GameObject:
   - component: {fileID: 1352642452}
   - component: {fileID: 1352642453}
   - component: {fileID: 1352642454}
+  - component: {fileID: 1352642458}
   - component: {fileID: 1352642455}
   - component: {fileID: 1352642457}
   m_Layer: 0
@@ -3517,6 +3518,24 @@ MonoBehaviour:
   DiagonalFromSouthwestResizeTexture: {fileID: 2800000, guid: 48eb6eb3ea51d4f04b49b7561a06d110,
     type: 3}
   _currentCursorState: 0
+--- !u!114 &1352642458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352642449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1ab07b666744e4abb6d34e4979ccd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InsufficientFundsAlertMessage: 'error: insufficient gp'
+  transactions:
+  - InitialCurrency: 0
+    DeltaCurrency: 100
+    Description: Initial Deposit
+    dateString: 10/13/2000 12:00:00 AM
 --- !u!1 &1398068856
 GameObject:
   m_ObjectHideFlags: 0
