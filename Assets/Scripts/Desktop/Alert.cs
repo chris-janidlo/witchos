@@ -13,12 +13,18 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
     public TextMeshProUGUI Text;
     public CanvasGroup Group;
 
-    LinkedList<IEnumerator> enums = new LinkedList<IEnumerator>();
-    IEnumerator currentEnum;
+    LinkedList<string> messageQueue = new LinkedList<string>();
+
+    float showTimer = -1;
+    bool faded = true;
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
+    }
+
+    void Start ()
+    {
         FadeoutTransition.AttachMonoBehaviour(this);
         Group.alpha = 0;
     }
@@ -28,10 +34,31 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
         // enable clicking away when message is fully visible, while not blocking interaction with anything below the message if it's transparent at all
         Group.blocksRaycasts = Group.alpha == 1;
 
-        if (enums.Count > 0 && currentEnum == null)
+        if (messageQueue.Count > 0 && faded)
         {
-            StartCoroutine(currentEnum = enums.First.Value);
-            enums.RemoveFirst();
+            faded = false;
+
+            string message = messageQueue.First.Value;
+            messageQueue.RemoveFirst();
+
+            Text.text = message;
+            Group.alpha = 1;
+
+            showTimer = message.Split(' ').Length * SecondsToDisplayPerWord;
+        }
+
+        if (showTimer > 0)
+        {
+            showTimer -= Time.deltaTime;
+        }
+        else if (!faded)
+        {
+            if (Group.alpha == 1 && !FadeoutTransition.Transitioning)
+                FadeoutTransition.FlashFromTo(1, 0);
+
+            Group.alpha = FadeoutTransition.Value;
+
+            faded = Group.alpha == 0;
         }
     }
 
@@ -40,21 +67,15 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
         hideImmediately();
 	}
 
-    public void ClearMessages ()
-    {
-        StopCoroutine(currentEnum);
-        enums.Clear();
-    }
-
     public void ShowMessage (string message)
     {
-        enums.AddLast(showAndHideRoutine(message));
+        messageQueue.AddLast(message);
     }
 
     public void ShowMessageImmediately (string message)
     {
         hideImmediately();
-        enums.AddFirst(showAndHideRoutine(message));
+        messageQueue.AddFirst(message);
     }
 
 #if UNITY_EDITOR
@@ -71,33 +92,8 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
     }
 #endif // UNITY_EDITOR
 
-    IEnumerator showAndHideRoutine (string message)
-    {
-        Text.text = message;
-        Group.alpha = 1;
-
-        yield return new WaitForSeconds(message.Split(' ').Length * SecondsToDisplayPerWord);
-
-        yield return hideRoutine();
-    }
-
-    IEnumerator hideRoutine ()
-    {
-        FadeoutTransition.FlashFromTo(1, 0);
-
-        do
-        {
-            Group.alpha = FadeoutTransition.Value;
-            yield return null;
-        }
-        while (Group.alpha != 0);
-
-        currentEnum = null;
-    }
-
     void hideImmediately ()
     {
-        StopCoroutine(currentEnum);
-        StartCoroutine(hideRoutine());
+        showTimer = Mathf.Min(showTimer, 0);
     }
 }
