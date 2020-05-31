@@ -14,6 +14,7 @@ public class ClickAwayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	void Start ()
     {
         OpenButton.onClick.AddListener(Minimizer.UnMinimize);
+        TimeState.Instance.DayStarted.AddListener(Minimizer.Minimize);
     }
 
     void Update ()
