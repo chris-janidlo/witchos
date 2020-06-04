@@ -15,7 +15,7 @@ public static class SaveManager
         LooseSaveData = new SaveData<LooseSaveValues>
         (
             "looseData",
-            new LooseSaveValues { Date = new DateTime(2000, 10, 13) }
+            new LooseSaveValues { Date = TimeState.INITIAL_DATE.AddDays(-1) }
         );
 
         allDataObjects = new HashSet<SaveData> { LooseSaveData };
@@ -43,6 +43,7 @@ public static class SaveManager
     }
 }
 
+[Serializable]
 public class LooseSaveValues
 {
     public DateTime Date;

@@ -3887,8 +3887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsufficientFundsAlertMessage: 'error: insufficient gp'
-  transactions:
-  - InitialCurrency: 0
+  InitialTransaction:
+    InitialCurrency: 0
     DeltaCurrency: 100
     Description: Initial Deposit
     dateString: 10/13/2000 12:00:00 AM

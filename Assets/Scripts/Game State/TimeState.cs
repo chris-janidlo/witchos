@@ -26,7 +26,6 @@ public class TimeState : Singleton<TimeState>
 
     void Start ()
     {
-        DateTime = INITIAL_DATE.AddDays(-1); // since StartNewDay will increment by 1
         StartNewDay();
     }
 
@@ -34,6 +33,7 @@ public class TimeState : Singleton<TimeState>
     public void EndDay ()
     {
         DayEnded.Invoke();
+        SaveManager.SaveAllData();
     }
 
     public void StartNewDay ()

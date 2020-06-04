@@ -2,6 +2,8 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public abstract class SaveData
@@ -41,6 +43,8 @@ public class SaveData<T> : SaveData
     // default value before any save interactions have ocurred
     T gameDefaultValue;
 
+    BinaryFormatter binaryFormatter = new BinaryFormatter();
+
     public SaveData (string fileName, T gameDefaultValue)
     {
         FileName = fileName;
@@ -49,19 +53,34 @@ public class SaveData<T> : SaveData
 
     public override void InitializeData ()
     {
-        // if file doesn't exist: set value to gameDefaultValue
-        // else: load the data from FilePath
+        using (FileStream file = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.Read))
+        {
+            try
+            {
+                value = (T) binaryFormatter.Deserialize(file);
+            }
+            catch (Exception ex) when (ex is SerializationException || ex is InvalidCastException)
+            {
+                Debug.LogWarning($"unable to deserialize save data; using default value {gameDefaultValue}");
+                value = gameDefaultValue;
+            }
+        }
 
         DataInitialized = true;
     }
 
     public override void WriteDataToFile ()
     {
-        // save the data to FilePath
+        if (!DataInitialized) InitializeData();
+
+        using (FileStream file = File.Open(FilePath, FileMode.Open, FileAccess.Write))
+        {
+            binaryFormatter.Serialize(file, value);
+        }
     }
 
     public override void DeleteSaveFile ()
     {
-        throw new NotImplementedException();
+        File.Delete(FilePath);
     }
 }
