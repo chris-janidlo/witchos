@@ -11,7 +11,11 @@ public class TimeState : Singleton<TimeState>
     // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
     public static DateTime INITIAL_DATE = new DateTime(2000, 10, 13);
 
-    public DateTime DateTime { get; private set; }
+    public DateTime DateTime
+    {
+        get => SaveManager.LooseSaveData.Value.Date;
+        private set => SaveManager.LooseSaveData.Value.Date = value;
+    }
 
     public UnityEvent DayStarted, DayEnded;
 

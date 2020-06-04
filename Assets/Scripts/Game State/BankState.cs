@@ -7,17 +7,28 @@ using crass;
 
 public class BankState : Singleton<BankState>
 {
-    public int CurrentBalance => transactions.Sum(t => t.DeltaCurrency);
+    public int CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
 
     public string InsufficientFundsAlertMessage;
+    public BankTransaction InitialTransaction;
 
-    [SerializeField]
-    List<BankTransaction> transactions = new List<BankTransaction>();
-    public IReadOnlyList<BankTransaction> Transactions => transactions.AsReadOnly();
+    SaveData<List<BankTransaction>> transactionData;
+    public IReadOnlyList<BankTransaction> Transactions => transactionData.Value.AsReadOnly();
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
+    }
+
+    void Start ()
+    {
+        transactionData = new SaveData<List<BankTransaction>>
+        (
+            "bankTransactionData",
+            new List<BankTransaction> { InitialTransaction }
+        );
+
+        SaveManager.RegisterSaveDataObject(transactionData);
     }
 
     public bool AddTransaction (int deltaCurrency, string description, bool autoAlert = true)
@@ -36,7 +47,7 @@ public class BankState : Singleton<BankState>
             Date = TimeState.Instance.DateTime.Date
         };
 
-        transactions.Add(transaction);
+        transactionData.Value.Add(transaction);
 
         return true;
     }
