@@ -27,16 +27,15 @@ public class SaveData<T> : SaveData
 
         set
         {
+            if (this.value.Equals(value)) return;
             this.value = value;
-            DataChangedSinceLastWrite = true;
         }
     }
 
     // the part not including the parent directory or the file extension
     public string FileName { get; private set; }
     public string FilePath => Path.Combine(Application.persistentDataPath, FileName + FILE_EXTENSION);
-    
-    public bool DataChangedSinceLastWrite { get; private set; }
+
     public bool DataInitialized { get; private set; }
 
     // default value before any save interactions have ocurred
@@ -58,8 +57,6 @@ public class SaveData<T> : SaveData
 
     public override void WriteDataToFile ()
     {
-        if (!DataChangedSinceLastWrite) return;
-
         // save the data to FilePath
     }
 
