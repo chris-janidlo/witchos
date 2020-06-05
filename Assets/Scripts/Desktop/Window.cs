@@ -44,7 +44,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
             () => { if (Closable) Close(); }
         );
 
-        TimeState.Instance.DayEnded.AddListener(Close);
+        TimeState.Instance.DayStarted.AddListener(Close);
 
         DidOpen.Invoke();
     }
