@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Json;
 using UnityEngine;
 
 public abstract class SaveData
@@ -16,7 +16,7 @@ public abstract class SaveData
 }
 
 public class SaveData<T> : SaveData
-    // where T : BinarySerializable
+    // note that T must be serializable by DataContractSerializer. unfortunately there's no way to check that at compile time, and at runtime you'd have to check if the entire object graph can be serialized, so currently it's up to the developer to ensure they follow this
 {
     T value;
     public T Value
@@ -43,12 +43,14 @@ public class SaveData<T> : SaveData
     // default value before any save interactions have ocurred
     T gameDefaultValue;
 
-    BinaryFormatter binaryFormatter = new BinaryFormatter();
+    DataContractJsonSerializer serializer;
 
     public SaveData (string fileName, T gameDefaultValue)
     {
         FileName = fileName;
         this.gameDefaultValue = gameDefaultValue;
+
+        serializer = new DataContractJsonSerializer(typeof(T));
     }
 
     public override void InitializeData ()
@@ -57,7 +59,7 @@ public class SaveData<T> : SaveData
         {
             try
             {
-                value = (T) binaryFormatter.Deserialize(file);
+                value = (T) serializer.ReadObject(file);
             }
             catch (Exception ex) when (ex is SerializationException || ex is InvalidCastException)
             {
@@ -75,7 +77,7 @@ public class SaveData<T> : SaveData
 
         using (FileStream file = File.Open(FilePath, FileMode.Open, FileAccess.Write))
         {
-            binaryFormatter.Serialize(file, value);
+            serializer.WriteObject(file, value);
         }
     }
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
-[Serializable]
+[Serializable, DataContract]
 public struct BankTransaction
 {
+    [DataMember]
     public int InitialCurrency, DeltaCurrency;
+    [DataMember]
     public string Description;
 
-    [SerializeField]
+    [SerializeField, DataMember]
     string dateString;
     public DateTime Date
     {

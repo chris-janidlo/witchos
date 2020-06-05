@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 public static class SaveManager
@@ -43,9 +44,10 @@ public static class SaveManager
     }
 }
 
-[Serializable]
+[DataContract]
 public class LooseSaveValues
 {
+    [DataMember]
     public DateTime Date;
     // list of icon positions
 }
