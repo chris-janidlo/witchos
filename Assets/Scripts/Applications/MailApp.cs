@@ -15,12 +15,12 @@ public class MailApp : MonoBehaviour
 
     void Update ()
     {
-        if (MailState.Instance.CurrentMessages.Count != previousMailCount)
+        if (MailState.Instance.CurrentMailEntries.Count != previousMailCount)
         {
             populateInbox();
         }
 
-        previousMailCount = MailState.Instance.CurrentMessages.Count;
+        previousMailCount = MailState.Instance.CurrentMailEntries.Count;
 
         int unreadCount = MailState.Instance.UnreadMessageCount;
         Window.Icon = unreadCount > 0 ? UnreadIcon : ReadIcon;
@@ -34,9 +34,9 @@ public class MailApp : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (Invoice message in MailState.Instance.CurrentMessages)
+        foreach (MailState.Entry entry in MailState.Instance.CurrentMailEntries)
         {
-            Instantiate(PreviewPrefab, InboxContainer.transform).SetMessage(message);
+            Instantiate(PreviewPrefab, InboxContainer.transform).SetMailEntry(entry);
         }
     }
 }

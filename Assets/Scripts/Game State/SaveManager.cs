@@ -16,7 +16,11 @@ public static class SaveManager
         LooseSaveData = new SaveData<LooseSaveValues>
         (
             "looseData",
-            new LooseSaveValues { Date = TimeState.INITIAL_DATE.AddDays(-1) }
+            new LooseSaveValues
+            {
+                Date = TimeState.INITIAL_DATE.AddDays(-1),
+                CurrentDifficultyLevel = 0
+            }
         );
 
         allDataObjects = new HashSet<SaveData> { LooseSaveData };
@@ -49,5 +53,6 @@ public class LooseSaveValues
 {
     [DataMember]
     public DateTime Date;
-    // list of icon positions
+    public int CurrentDifficultyLevel;
+    // TODO: list of icon positions
 }
