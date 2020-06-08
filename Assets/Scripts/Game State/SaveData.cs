@@ -65,8 +65,10 @@ public class SaveData<T> : SaveData
             }
             catch (Exception ex) when (ex is SerializationException || ex is InvalidCastException)
             {
+#if UNITY_EDITOR
                 Debug.LogWarning(ex);
                 Debug.LogWarning($"unable to deserialize save data; using default value {gameDefaultValue}");
+#endif // UNITY_EDITOR
                 value = gameDefaultValue;
             }
         }
