@@ -11,8 +11,8 @@ public class TimeState : Singleton<TimeState>
     // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
     public static DateTime INITIAL_DATE = new DateTime(2000, 10, 13);
 
-    // loop the calendar back to 2000 when we reach the year 2028, since those two years share the same calendar
-    public static DateTime FINAL_DATE = new DateTime(2027, 12, 31);
+    // loop the calendar back to 2000 at the end of 2010, since 01/01/2000 is a Saturday and 12/31/2010 is the first Friday December 31st to occur afterward
+    public static DateTime FINAL_DATE = new DateTime(2010, 12, 31);
 
     public DateTime DateTime
     {
