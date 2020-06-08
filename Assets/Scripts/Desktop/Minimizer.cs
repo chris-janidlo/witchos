@@ -26,7 +26,7 @@ public class Minimizer : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (Transition.Transitioning && MinimizeTarget != null)
+        if (MinimizeTarget != null && (Transition.Transitioning || edgeCheck()))
             doMinimizeAnimation();
 
         bool fullyUnMinimized = Transition.Value == 1;
@@ -53,6 +53,14 @@ public class Minimizer : MonoBehaviour
         Transition.StartTransitionTo(1);
 
         Minimized = false;
+    }
+
+    bool edgeCheck ()
+    {
+        // for the case where the transition has finished, but the scale is outdated
+        return
+            (Transition.Value == 0 && transform.localScale.x != 0) ||
+            (Transition.Value == 1 && transform.localScale.x != 1);
     }
 
     void doMinimizeAnimation ()
