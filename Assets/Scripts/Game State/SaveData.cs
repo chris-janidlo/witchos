@@ -10,6 +10,14 @@ public abstract class SaveData
 {
     public const string FILE_EXTENSION = ".witchos";
 
+    public Action OnBeforeSave;
+
+    // the part not including the parent directory or the file extension
+    public string FileName { get; protected set; }
+    public string FilePath => Path.Combine(Application.persistentDataPath, FileName + FILE_EXTENSION);
+
+    public bool DataInitialized { get; protected set; }
+
     public abstract void InitializeData ();
     public abstract void WriteDataToFile ();
     public abstract void DeleteSaveFile ();
@@ -34,12 +42,6 @@ public class SaveData<T> : SaveData
         }
     }
 
-    // the part not including the parent directory or the file extension
-    public string FileName { get; private set; }
-    public string FilePath => Path.Combine(Application.persistentDataPath, FileName + FILE_EXTENSION);
-
-    public bool DataInitialized { get; private set; }
-
     // default value before any save interactions have ocurred
     T gameDefaultValue;
 
@@ -63,6 +65,7 @@ public class SaveData<T> : SaveData
             }
             catch (Exception ex) when (ex is SerializationException || ex is InvalidCastException)
             {
+                Debug.LogWarning(ex);
                 Debug.LogWarning($"unable to deserialize save data; using default value {gameDefaultValue}");
                 value = gameDefaultValue;
             }
@@ -74,6 +77,8 @@ public class SaveData<T> : SaveData
     public override void WriteDataToFile ()
     {
         if (!DataInitialized) InitializeData();
+
+        OnBeforeSave?.Invoke();
 
         using (FileStream file = File.Open(FilePath, FileMode.Open, FileAccess.Write))
         {
