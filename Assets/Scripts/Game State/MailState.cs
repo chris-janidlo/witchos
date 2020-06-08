@@ -14,12 +14,12 @@ public class MailState : Singleton<MailState>
     [DataContract]
     public class Entry
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public bool Read;
 
         public Invoice Contents;
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         private int serializedContentsID
         {
             get => SOLookupTable.Instance.GetID(Contents);

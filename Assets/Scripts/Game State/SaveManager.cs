@@ -52,10 +52,10 @@ public static class SaveManager
 [DataContract]
 public class LooseSaveValues
 {
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public DateTime Date;
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public int CurrentDifficultyLevel;
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public Dictionary<string, Vector3Serializable> IconPositions;
 }

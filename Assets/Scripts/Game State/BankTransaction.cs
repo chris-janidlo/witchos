@@ -7,14 +7,14 @@ using UnityEngine;
 [Serializable, DataContract]
 public struct BankTransaction
 {
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public int InitialCurrency, DeltaCurrency;
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public string Description;
 
     [SerializeField]
     string dateString;
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public DateTime Date
     {
         get => DateTime.Parse(dateString);

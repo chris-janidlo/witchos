@@ -4,7 +4,7 @@ using UnityEngine;
 [DataContract]
 public struct Vector3Serializable
 {
-    [DataMember]
+    [DataMember(IsRequired = true)]
     public float x, y, z;
 
     public static implicit operator Vector3 (Vector3Serializable v)
