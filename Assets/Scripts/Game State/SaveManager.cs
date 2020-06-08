@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -53,6 +53,7 @@ public class LooseSaveValues
 {
     [DataMember]
     public DateTime Date;
+    [DataMember]
     public int CurrentDifficultyLevel;
     // TODO: list of icon positions
 }
