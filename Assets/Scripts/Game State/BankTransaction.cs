@@ -12,8 +12,9 @@ public struct BankTransaction
     [DataMember]
     public string Description;
 
-    [SerializeField, DataMember]
+    [SerializeField]
     string dateString;
+    [DataMember]
     public DateTime Date
     {
         get => DateTime.Parse(dateString);
