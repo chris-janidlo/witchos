@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +10,9 @@ public class TimeState : Singleton<TimeState>
 {
     // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
     public static DateTime INITIAL_DATE = new DateTime(2000, 10, 13);
+
+    // loop the calendar back to 2000 when we reach the year 2028, since those two years share the same calendar
+    public static DateTime FINAL_DATE = new DateTime(2027, 12, 31);
 
     public DateTime DateTime
     {
@@ -38,7 +41,10 @@ public class TimeState : Singleton<TimeState>
 
     public void StartNewDay ()
     {
-        DateTime = DateTime.AddDays(1);
+        DateTime = (DateTime.Date == FINAL_DATE.Date)
+            ? INITIAL_DATE
+            : DateTime.AddDays(1);
+
         DayStarted.Invoke();
     }
 
@@ -52,7 +58,10 @@ public class TimeState : Singleton<TimeState>
     // yeah yeah smelly I know
     public MoonPhase GetTomorrowsMoonPhase ()
     {
-        int daysElapsed = (DateTime.Date - INITIAL_DATE.Date).Days + 1;
+        int daysElapsed = (DateTime.Date == FINAL_DATE.Date)
+            ? 1
+            : (DateTime.Date - INITIAL_DATE.Date).Days + 1;
+
         return (MoonPhase) (daysElapsed % EnumUtil.NameCount<MoonPhase>());
     }
 }
