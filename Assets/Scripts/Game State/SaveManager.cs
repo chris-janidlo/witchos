@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +19,8 @@ public static class SaveManager
             new LooseSaveValues
             {
                 Date = TimeState.INITIAL_DATE.AddDays(-1),
-                CurrentDifficultyLevel = 0
+                CurrentDifficultyLevel = 0,
+                IconPositions = new Dictionary<string, Vector3Serializable>()
             }
         );
 
@@ -55,5 +56,6 @@ public class LooseSaveValues
     public DateTime Date;
     [DataMember]
     public int CurrentDifficultyLevel;
-    // TODO: list of icon positions
+    [DataMember]
+    public Dictionary<string, Vector3Serializable> IconPositions;
 }

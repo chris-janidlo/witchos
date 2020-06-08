@@ -16,9 +16,28 @@ public class DesktopIcon : MonoBehaviour
     public Image IconImage;
     public TextMeshProUGUI LabelText;
 
+    Dictionary<string, Vector3Serializable> posDict;
+
+    void Start ()
+    {
+        posDict = SaveManager.LooseSaveData.Value.IconPositions;
+
+        if (posDict.ContainsKey(name))
+        {
+            transform.position = posDict[name];
+        }
+
+        SaveManager.LooseSaveData.OnBeforeSave += savePosition;
+    }
+
     void Update ()
     {
         IconImage.sprite = Icon;
         LabelText.text = Label;
+    }
+
+    void savePosition ()
+    {
+        posDict[name] = transform.position;
     }
 }
