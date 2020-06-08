@@ -10,7 +10,7 @@ public class MailMessagePreview : MonoBehaviour
     public Button Button;
     public TextMeshProUGUI Label;
 
-    Invoice message;
+    MailState.Entry entry;
 
     void Start ()
     {
@@ -19,20 +19,20 @@ public class MailMessagePreview : MonoBehaviour
 
     void Update ()
     {
-        Label.text = (message.Read ? "" : "* ") + message.BuyerAddress + " - " + message.EmailSubjectLine;
+        Label.text = (entry.Read ? "" : "* ") + entry.Contents.BuyerAddress + " - " + entry.Contents.EmailSubjectLine;
     }
 
-    public void SetMessage (Invoice message)
+    public void SetMailEntry (MailState.Entry entry)
     {
-        this.message = message;
+        this.entry = entry;
     }
 
     void onClick ()
     {
-        message.Read = true;
+        entry.Read = true;
 
         WindowFactory.Instance
-            .OpenWindow(MessageWindowPrefab, "mail message " + message.GetHashCode().ToString(), WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton)
-            .GetComponent<MailMessageWindow>().SetMessage(message);
+            .OpenWindow(MessageWindowPrefab, "mail message " + entry.GetHashCode().ToString(), WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton)
+            .GetComponent<MailMessageWindow>().SetMessage(entry.Contents);
     }
 }

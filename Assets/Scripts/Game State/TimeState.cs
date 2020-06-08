@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +14,11 @@ public class TimeState : Singleton<TimeState>
     // loop the calendar back to 2000 when we reach the year 2028, since those two years share the same calendar
     public static DateTime FINAL_DATE = new DateTime(2027, 12, 31);
 
-    public DateTime DateTime { get; private set; }
+    public DateTime DateTime
+    {
+        get => SaveManager.LooseSaveData.Value.Date;
+        private set => SaveManager.LooseSaveData.Value.Date = value;
+    }
 
     public UnityEvent DayStarted, DayEnded;
 
@@ -25,7 +29,6 @@ public class TimeState : Singleton<TimeState>
 
     void Start ()
     {
-        DateTime = INITIAL_DATE.AddDays(-1); // since StartNewDay will increment by 1
         StartNewDay();
     }
 
@@ -33,6 +36,7 @@ public class TimeState : Singleton<TimeState>
     public void EndDay ()
     {
         DayEnded.Invoke();
+        SaveManager.SaveAllData();
     }
 
     public void StartNewDay ()

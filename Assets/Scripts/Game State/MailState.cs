@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 using crass;
 
@@ -10,21 +11,51 @@ public class MailState : Singleton<MailState>
     [Serializable]
     public class MailBag : BagRandomizer<Invoice> {}
 
+    [DataContract]
+    public class Entry
+    {
+        [DataMember(IsRequired = true)]
+        public bool Read;
+
+        public Invoice Contents;
+
+        [DataMember(IsRequired = true)]
+        private int serializedContentsID
+        {
+            get => SOLookupTable.Instance.GetID(Contents);
+            set => Contents = SOLookupTable.Instance.GetSO(value) as Invoice;
+        }
+    }
+
     public MailBag PossibleEMails;
     public List<int> EMailsToSpawnByDifficulty;
-    public int CurrentDifficultyLevel; // the highest level of difficulty that has been completed in one day
+
+    public int CurrentDifficultyLevel
+    {
+        get => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel;
+        set => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel = value;
+    }
 
     public int TasksCompleted, TotalTasks;
 
-    public List<Invoice> CurrentMessages;
+    SaveData<List<Entry>> messageData;
+    public IReadOnlyList<Entry> CurrentMailEntries => messageData.Value.AsReadOnly();
 
-    public int UnreadMessageCount => CurrentMessages.Where(m => !m.Read).Count();
+    public int UnreadMessageCount => CurrentMailEntries.Where(m => !m.Read).Count();
 
     int spawnCount => EMailsToSpawnByDifficulty[CurrentDifficultyLevel];
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
+
+        messageData = new SaveData<List<Entry>>
+        (
+            "emailData",
+            new List<Entry>()
+        );
+
+        SaveManager.RegisterSaveDataObject(messageData);
     }
 
     void Start ()
@@ -39,11 +70,10 @@ public class MailState : Singleton<MailState>
             CurrentDifficultyLevel++;
         }
 
-        while (CurrentMessages.Count < spawnCount)
+        while (CurrentMailEntries.Count < spawnCount)
         {
-            // kind of a kludge right now. all of the emails we currently have are repeatable filler emails that the player can and will see more than once. we want to preserve the unread state of the email across in-game days and across mail app sessions, and the only real way to do that is by storing the read state in the email object itself. that said, we don't want to store it on the ScriptableObject instance, since that preserves the read state across repeats of the same email, which is totally undesired behavior. so we create a copy of the email to add and add the copy. this is definitely not how we want to handle conversations or other one-off emails in the future
-            var newMessageClone = Instantiate(PossibleEMails.GetNext());
-            CurrentMessages.Add(newMessageClone);
+            var newMessage = PossibleEMails.GetNext();
+            messageData.Value.Add(new Entry { Read = false, Contents = newMessage });
         }
 
         TasksCompleted = 0;
@@ -52,13 +82,13 @@ public class MailState : Singleton<MailState>
 
     void onSpellCast (Casting casting)
     {
-		for (int i = CurrentMessages.Count - 1; i >= 0; i--)
+		for (int i = messageData.Value.Count - 1; i >= 0; i--)
         {
-            var message = CurrentMessages[i];
+            var message = messageData.Value[i].Contents;
             if (message.SpellRequest == casting)
             {
                 Alert.Instance.ShowMessage($"you completed an order! it's been removed from your inbox.");
-                CurrentMessages.RemoveAt(i);
+                messageData.Value.RemoveAt(i);
                 message.Completed.Invoke();
                 TasksCompleted++;
             }
