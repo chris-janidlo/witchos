@@ -18,10 +18,7 @@ public class BankState : Singleton<BankState>
     void Awake ()
     {
         SingletonOverwriteInstance(this);
-    }
 
-    void Start ()
-    {
         transactionData = new SaveData<List<BankTransaction>>
         (
             "bankTransactionData",
