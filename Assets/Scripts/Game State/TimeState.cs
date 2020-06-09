@@ -38,15 +38,16 @@ public class TimeState : Singleton<TimeState>
     public void EndDay ()
     {
         DayEnded.Invoke();
+
+        DateTime = (DateTime.Date == FINAL_DATE.Date)
+            ? INITIAL_DATE
+            : DateTime.AddDays(1);
+
         SaveManager.SaveAllData();
     }
 
     public void StartNewDay ()
     {
-        DateTime = (DateTime.Date == FINAL_DATE.Date)
-            ? INITIAL_DATE
-            : DateTime.AddDays(1);
-
         DayStarted.Invoke();
     }
 

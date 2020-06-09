@@ -58,6 +58,8 @@ public class MailState : Singleton<MailState>
         );
 
         SaveManager.RegisterSaveDataObject(messageData);
+
+        RefreshInbox();
     }
 
     void Start ()
@@ -65,7 +67,7 @@ public class MailState : Singleton<MailState>
         SpellWatcher.Instance.SpellCast += onSpellCast;
     }
 
-    public void StartDay ()
+    public void RefreshInbox ()
     {
         if (TasksCompleted == spawnCount && CurrentDifficultyLevel < EMailsToSpawnByDifficulty.Count- 1)
         {

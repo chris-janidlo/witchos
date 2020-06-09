@@ -20,7 +20,7 @@ public static class SaveManager
             "looseData",
             new LooseSaveValues
             {
-                Date = TimeState.INITIAL_DATE.AddDays(-1),
+                Date = TimeState.INITIAL_DATE,
                 CurrentDifficultyLevel = 0,
                 IconPositions = new Dictionary<string, Vector3Serializable>()
             }
