@@ -84,7 +84,7 @@ public class SaveData<T> : SaveData
 
         OnBeforeSave?.Invoke();
 
-        using (FileStream file = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.Write))
+        using (FileStream file = File.Open(FilePath, FileMode.Create, FileAccess.Write))
         {
             serializer.WriteObject(file, value);
         }
