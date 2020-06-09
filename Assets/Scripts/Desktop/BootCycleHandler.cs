@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace WitchOS
+{
 public class BootCycleHandler : MonoBehaviour
 {
     public Animator Animator;
@@ -49,4 +51,5 @@ public class BootCycleHandler : MonoBehaviour
 
         Image.raycastTarget = false;
     }
+}
 }

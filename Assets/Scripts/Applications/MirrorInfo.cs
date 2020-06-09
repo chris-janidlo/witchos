@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class MirrorInfo : MonoBehaviour
 {
 	public Animator IconAnimator;
@@ -48,4 +50,5 @@ public class MirrorInfo : MonoBehaviour
 
 		BreakButton.onClick.AddListener(mirror.Break);
 	}
+}
 }

@@ -5,6 +5,8 @@ using System.Globalization;
 using UnityEngine;
 using TMPro;
 
+namespace WitchOS
+{
 public class DateDisplay : MonoBehaviour
 {
     [TextArea]
@@ -15,4 +17,5 @@ public class DateDisplay : MonoBehaviour
     {
         Text.text = TimeState.Instance.DateTime.ToString(Format, CultureInfo.CreateSpecificCulture("en-US"));
     }
+}
 }

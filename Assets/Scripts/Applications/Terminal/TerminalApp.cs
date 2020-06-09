@@ -7,6 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public partial class TerminalApp : MonoBehaviour
 {
     public bool Evaluating { get; private set; }
@@ -187,4 +189,5 @@ public partial class TerminalApp : MonoBehaviour
         CommandInput.caretPosition = CommandInput.text.Length;
         ScrollToBottom();
     }
+}
 }

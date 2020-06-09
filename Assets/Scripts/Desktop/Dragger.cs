@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using crass;
 
+namespace WitchOS
+{
 public class Dragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public RectTransform TransformToMove;
@@ -52,4 +54,5 @@ public class Dragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragH
         pos.z = 0;
         TransformToMove.position = offset + pos;
 	}
+}
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+namespace WitchOS
+{
 [CreateAssetMenu(fileName = "NewInvoice.asset", menuName = "Invoice")]
 public class Invoice : ScriptableObject
 {
@@ -17,4 +19,5 @@ public class Invoice : ScriptableObject
     {
         return (BuyerAddress + SpellRequest.ToString() + Justification).GetHashCode();
     }
+}
 }

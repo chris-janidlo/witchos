@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class SeanceCommand : TerminalCommand
 {
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
@@ -46,4 +48,5 @@ public class SeanceCommand : TerminalCommand
 			}
 		}
 	}
+}
 }

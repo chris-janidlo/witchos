@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
+namespace WitchOS
+{
 [Serializable, DataContract]
 public struct BankTransaction
 {
@@ -20,4 +22,5 @@ public struct BankTransaction
         get => DateTime.Parse(dateString);
         set => dateString = value.ToString();
     }
+}
 }

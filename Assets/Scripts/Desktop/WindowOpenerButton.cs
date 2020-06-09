@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace WitchOS
+{
 public class WindowOpenerButton : MonoBehaviour
 {
     public Window ApplicationPrefab;
@@ -26,4 +28,5 @@ public class WindowOpenerButton : MonoBehaviour
 
         OnApplicationOpened.Invoke(application);
     }
+}
 }

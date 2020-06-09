@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public abstract class Spell
 {
     protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
@@ -70,4 +72,5 @@ public abstract class Spell
 
         return sb.ToString();
     }
+}
 }

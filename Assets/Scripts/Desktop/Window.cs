@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using TMPro;
 using crass;
 
+namespace WitchOS
+{
 public class Window : MonoBehaviour, IPointerDownHandler
 {
     public static Window FocusedWindow { get; private set; }
@@ -85,4 +87,5 @@ public class Window : MonoBehaviour, IPointerDownHandler
 	{
         Focus();
 	}
+}
 }

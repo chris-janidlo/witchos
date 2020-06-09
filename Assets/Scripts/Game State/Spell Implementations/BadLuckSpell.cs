@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class BadLuckSpell : Spell
 {
 	public override SpellType Type => SpellType.BadLuck;
@@ -79,4 +81,5 @@ public class BadLuckSpell : Spell
 
 		return name.ToString().ToLower();
 	}
+}
 }

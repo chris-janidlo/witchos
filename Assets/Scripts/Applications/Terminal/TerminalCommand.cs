@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public abstract class TerminalCommand : ScriptableObject
 {
     public string Name, ArgumentList;
@@ -18,4 +20,5 @@ public abstract class TerminalCommand : ScriptableObject
     {
         term.PrintLine($"usage: {Name} {ArgumentList}");
     }
+}
 }

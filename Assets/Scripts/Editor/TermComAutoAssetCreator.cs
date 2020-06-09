@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEditor;
 using crass;
 
+namespace WitchOS
+{
 public class TermComAutoAssetCreator : MonoBehaviour
 {
     public const string ASSET_PATH = "Assets/ScriptableObjects/TerminalCommands";
@@ -29,4 +31,5 @@ public class TermComAutoAssetCreator : MonoBehaviour
         // see https://issuetracker.unity3d.com/issues/assetdatabase-dot-saveassets-throws-an-exception-the-specified-path-is-not-of-a-legal-form-empty-while-in-play-mode
         if (needToSave) AssetDatabase.SaveAssets();
     }
+}
 }

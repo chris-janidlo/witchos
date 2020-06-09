@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class MoonPhaseViewer : MonoBehaviour
 {
     public List<Sprite> PhaseIcons;
@@ -27,4 +29,5 @@ public class MoonPhaseViewer : MonoBehaviour
         WaxingText.text = (waxWane == MoonPhaseChange.Waxing) ? "yes" : "no";
         WaningText.text = (waxWane == MoonPhaseChange.Waning) ? "yes" : "no";
     }
+}
 }

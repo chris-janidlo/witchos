@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 [RequireComponent(typeof(RectTransform))]
 public class ClampToParent : MonoBehaviour
 {
@@ -20,4 +22,5 @@ public class ClampToParent : MonoBehaviour
             rectTransform.localPosition.z
         );
     }
+}
 }

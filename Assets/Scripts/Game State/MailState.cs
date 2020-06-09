@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class MailState : Singleton<MailState>
 {
     [Serializable]
@@ -94,4 +96,5 @@ public class MailState : Singleton<MailState>
             }
         }
     }
+}
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+namespace WitchOS
+{
 public class MagicSourceUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Animator Animator;
@@ -38,4 +40,5 @@ public class MagicSourceUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (!MagicSource.Instance.Off) return;
         MagicSource.Instance.TurnOn();
 	}
+}
 }

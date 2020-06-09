@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class BankState : Singleton<BankState>
 {
     public int CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
@@ -54,4 +56,5 @@ public class BankState : Singleton<BankState>
         if (deltaCurrency >= 0) return true;
         else return CurrentBalance + deltaCurrency >= 0;
     }
+}
 }

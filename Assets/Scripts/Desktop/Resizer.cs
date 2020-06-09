@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using crass;
 
+namespace WitchOS
+{
 public class Resizer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
 	public const int EDGE_FUDGE = 2; // if the mouse is within this many pixels from the edge of the window, it's allowed to drag
@@ -149,4 +151,5 @@ public class Resizer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, ID
 
 		TargetTransform.sizeDelta = newSizeDelta;
     }
+}
 }

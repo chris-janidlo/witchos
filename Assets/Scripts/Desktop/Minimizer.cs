@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class Minimizer : MonoBehaviour
 {
     public bool Minimized { get; private set; }
@@ -75,4 +77,5 @@ public class Minimizer : MonoBehaviour
             scalar
         );
     }
+}
 }

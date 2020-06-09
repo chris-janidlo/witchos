@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+namespace WitchOS
+{
 public class MailMessageWindow : MonoBehaviour
 {
     public Window Window;
@@ -24,4 +26,5 @@ public class MailMessageWindow : MonoBehaviour
         this.message = message;
         message.Completed.AddListener(Window.Close);
     }
+}
 }

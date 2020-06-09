@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class SocialMediaSpell : Spell
 {
 	public override SpellType Type => SpellType.SocialMedia;
@@ -49,4 +51,5 @@ public class SocialMediaSpell : Spell
 
 		castAt(targetLock);
 	}
+}
 }

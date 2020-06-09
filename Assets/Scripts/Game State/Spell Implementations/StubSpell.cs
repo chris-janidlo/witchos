@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class StubSpell : Spell
 {
 	public override SpellType Type => SpellType.Stub;
@@ -95,4 +97,5 @@ public class StubSpell : Spell
 
 		castAt(name);
 	}
+}
 }

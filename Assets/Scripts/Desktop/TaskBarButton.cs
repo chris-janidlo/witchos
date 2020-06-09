@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
+namespace WitchOS
+{
 public class TaskBarButton : MonoBehaviour
 {
     public UnityEvent Destroyed;
@@ -52,4 +54,5 @@ public class TaskBarButton : MonoBehaviour
             window.Minimizer.Minimize();
         }
     }
+}
 }

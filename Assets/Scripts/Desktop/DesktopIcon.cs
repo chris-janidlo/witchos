@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
+namespace WitchOS
+{
 public class DesktopIcon : MonoBehaviour
 {
     [Header("Data")]
@@ -40,4 +42,5 @@ public class DesktopIcon : MonoBehaviour
     {
         posDict[name] = transform.position;
     }
+}
 }

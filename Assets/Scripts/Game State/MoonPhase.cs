@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public enum MoonPhase
 {
     FullMoon, WaningGibbous, ThirdQuarter, WaningCrescent, NewMoon, WaxingCrescent, FirstQuarter, WaxingGibbous
@@ -58,4 +60,5 @@ public static class MoonPhaseExtensions
     {
         return phase.GetPhaseChange() == MoonPhaseChange.Waning;
     }
+}
 }

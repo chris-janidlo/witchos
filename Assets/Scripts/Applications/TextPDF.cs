@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 [CreateAssetMenu(fileName = "NewPDF.asset", menuName = "PDF")]
 public class TextPDF : ScriptableObject
 {
@@ -9,4 +11,5 @@ public class TextPDF : ScriptableObject
 
     [TextArea(5, 100)]
     public List<string> Pages;
+}
 }

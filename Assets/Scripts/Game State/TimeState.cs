@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using crass;
 
+namespace WitchOS
+{
 public class TimeState : Singleton<TimeState>
 {
     // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
@@ -64,4 +66,5 @@ public class TimeState : Singleton<TimeState>
 
         return (MoonPhase) (daysElapsed % EnumUtil.NameCount<MoonPhase>());
     }
+}
 }

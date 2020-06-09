@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class SetCommand : TerminalCommand
 {
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
@@ -20,4 +22,5 @@ public class SetCommand : TerminalCommand
 		TerminalState.Instance.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
 		term.PrintLine(arguments[1] + " = " + value);
 	}
+}
 }

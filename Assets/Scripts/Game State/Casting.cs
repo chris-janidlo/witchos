@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 // a casting is what is produced when a spell is cast at a target. it is the fact that a spell of a certain type was cast at a certain target
 [Serializable]
 public struct Casting
@@ -43,4 +45,5 @@ public struct Casting
     {
         return Type.ToString() + " " + TargetName;
     }
+}
 }

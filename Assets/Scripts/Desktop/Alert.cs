@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using TMPro;
 using crass;
 
+namespace WitchOS
+{
 public class Alert : Singleton<Alert>, IPointerClickHandler
 {
     public float SecondsToDisplayPerWord;
@@ -106,4 +108,5 @@ public class Alert : Singleton<Alert>, IPointerClickHandler
     {
         showTimer = Mathf.Min(showTimer, 0);
     }
+}
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class MailIcon : MonoBehaviour
 {
     public Sprite OnSprite, OffSprite;
@@ -26,4 +28,5 @@ public class MailIcon : MonoBehaviour
             }
         }
     }
+}
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using crass;
-
+namespace WitchOS
+{
 public static class Seance
 {
     const float otherBullshitChance = 0.6f;
@@ -46,4 +47,5 @@ public static class Seance
     {
         return TrueName.FromName(TrueName.FromName(trueName)).Substring(0, 4);
     }
+}
 }

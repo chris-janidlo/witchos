@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class BankApp : MonoBehaviour
 {
     public BankAppTransactionLogEntry LogEntryPrefab;
@@ -35,4 +37,5 @@ public class BankApp : MonoBehaviour
             Instantiate(LogEntryPrefab, EntryLog.transform).SetTransaction(transaction);
         }
     }
+}
 }

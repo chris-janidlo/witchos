@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace WitchOS
+{
 public class MailApp : MonoBehaviour
 {
     public Window Window;
@@ -39,4 +41,5 @@ public class MailApp : MonoBehaviour
             Instantiate(PreviewPrefab, InboxContainer.transform).SetMailEntry(entry);
         }
     }
+}
 }

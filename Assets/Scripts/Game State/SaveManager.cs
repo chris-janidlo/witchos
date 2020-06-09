@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
+namespace WitchOS
+{
 public static class SaveManager
 {
     public static SaveData<LooseSaveValues> LooseSaveData { get; private set; }
@@ -58,4 +60,5 @@ public class LooseSaveValues
     public int CurrentDifficultyLevel;
     [DataMember(IsRequired = true)]
     public Dictionary<string, Vector3Serializable> IconPositions;
+}
 }

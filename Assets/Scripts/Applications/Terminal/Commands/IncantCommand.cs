@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class IncantCommand : TerminalCommand
 {
 	static List<Spell> spells;
@@ -56,4 +58,5 @@ public class IncantCommand : TerminalCommand
 
 		term.PrintLine(SpellSucceeded);
 	}
+}
 }

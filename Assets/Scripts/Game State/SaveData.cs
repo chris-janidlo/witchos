@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using UnityEngine;
 
+namespace WitchOS
+{
 public abstract class SaveData
 {
     public const string FILE_EXTENSION = ".witchos";
@@ -92,4 +94,5 @@ public class SaveData<T> : SaveData
     {
         File.Delete(FilePath);
     }
+}
 }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+namespace WitchOS
+{
 public class MagicStateDisplay : MonoBehaviour
 {
     public string OffLabel, OnLabel, DepletedLabel;
@@ -42,4 +44,5 @@ public class MagicStateDisplay : MonoBehaviour
         TimeSpan ts = TimeSpan.FromSeconds(seconds);
         return ts.ToString(@"mm\:ss");
     }
+}
 }

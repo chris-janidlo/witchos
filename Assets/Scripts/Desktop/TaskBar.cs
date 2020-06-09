@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using crass;
 
+namespace WitchOS
+{
 public class TaskBar : Singleton<TaskBar>
 {
     public int ButtonCount { get; private set; }
@@ -48,4 +50,5 @@ public class TaskBar : Singleton<TaskBar>
         if (!overflowing)
             (TaskBarSizeFitter.transform as RectTransform).sizeDelta = originalSizeDelta;
     }
+}
 }

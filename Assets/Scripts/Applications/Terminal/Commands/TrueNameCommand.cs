@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class TrueNameCommand : TerminalCommand
 {
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
@@ -25,4 +27,5 @@ public class TrueNameCommand : TerminalCommand
 		string trueName = TrueName.FromName(String.Join("", arguments.Skip(1)));
 		term.PrintLine(trueName);
 	}
+}
 }

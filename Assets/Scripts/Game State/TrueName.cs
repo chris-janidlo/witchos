@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public static class TrueName
 {
     public static string[] Syllables =
@@ -58,4 +60,5 @@ public static class TrueName
             yield return str.Substring(i, Math.Min(2, str.Length-i));
         }
     }
+}
 }

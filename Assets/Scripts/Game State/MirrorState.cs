@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class MirrorState : Singleton<MirrorState>
 {
 	public enum State
@@ -97,4 +99,5 @@ public class MirrorState : Singleton<MirrorState>
 	{
 		return Mirrors.Where(m => m.State == State.Broken).Count();
 	}
+}
 }

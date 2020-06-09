@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class PasswordSpell : Spell
 {
 	public override SpellType Type => SpellType.Password;
@@ -52,4 +54,5 @@ public class PasswordSpell : Spell
 
 		yield return new WaitForSeconds(.3f);
 	}
+}
 }

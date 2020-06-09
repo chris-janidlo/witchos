@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class WindowFactory : Singleton<WindowFactory>
 {
     public TaskBarButton TaskBarButtonPrefab;
@@ -68,4 +70,5 @@ public class WindowFactory : Singleton<WindowFactory>
     {
         return OpenWindow(prefab, null, prefab.name, options);
     }
+}
 }

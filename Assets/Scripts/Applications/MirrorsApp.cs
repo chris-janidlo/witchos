@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class MirrorsApp : MonoBehaviour
 {
 	public MirrorInfo MirrorInfoPrefab;
@@ -22,4 +24,5 @@ public class MirrorsApp : MonoBehaviour
 
 		HelpButton.onClick.AddListener(() => WindowFactory.Instance.OpenWindow(HelpWindowPrefab, WindowFactory.Options.Singleton));
 	}
+}
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+namespace WitchOS
+{
 public class ClickAwayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Minimizer Minimizer;
@@ -36,4 +38,5 @@ public class ClickAwayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	{
         mouseOver = false;
 	}
+}
 }

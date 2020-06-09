@@ -1,6 +1,8 @@
 ﻿using System.Runtime.Serialization;
 using UnityEngine;
 
+namespace WitchOS
+{
 [DataContract]
 public struct Vector3Serializable
 {
@@ -16,4 +18,5 @@ public struct Vector3Serializable
      {
          return new Vector3Serializable { x = v.x, y = v.y, z = v.z };
      }
+}
 }

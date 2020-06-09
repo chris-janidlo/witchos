@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class XingCommand : TerminalCommand
 {
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
@@ -60,4 +62,5 @@ public class XingCommand : TerminalCommand
 		// FIXME: throws exception if this is called as terminal object is destroyed
 		TerminalState.Instance.XingLock = false;
 	}
+}
 }

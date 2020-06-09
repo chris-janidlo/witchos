@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using crass;
 
+namespace WitchOS
+{
 public class MagicSource : Singleton<MagicSource>
 {
     [Serializable]
@@ -69,4 +71,5 @@ public class MagicSource : Singleton<MagicSource>
         CurrentState = State.Depleted;
         PowerTurnedDepleted.Invoke();
     }
+}
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class CursorManager : Singleton<CursorManager>
 {
     public Texture2D NormalTexture, VerticalResizeTexture, HorizontalResizeTexture, DiagonalFromSoutheastResizeTexture, DiagonalFromSouthwestResizeTexture;
@@ -52,4 +54,5 @@ public class CursorManager : Singleton<CursorManager>
 public enum CursorState
 {
     Normal, VerticalResize, HorizontalResize, DiagonalFromSoutheastResize, DiagonalFromSouthwestResize
+}
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class MailMessagePreview : MonoBehaviour
 {
     public Window MessageWindowPrefab;
@@ -35,4 +37,5 @@ public class MailMessagePreview : MonoBehaviour
             .OpenWindow(MessageWindowPrefab, "mail message " + entry.GetHashCode().ToString(), WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton)
             .GetComponent<MailMessageWindow>().SetMessage(entry.Contents);
     }
+}
 }

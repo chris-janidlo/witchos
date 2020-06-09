@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class TextViewerApp : MonoBehaviour
 {
     public Window Window;
@@ -51,4 +53,5 @@ public class TextViewerApp : MonoBehaviour
         NextPage.interactable = pageNum != pages.Count;
         PreviousPage.interactable = pageNum != 1;
     }
+}
 }

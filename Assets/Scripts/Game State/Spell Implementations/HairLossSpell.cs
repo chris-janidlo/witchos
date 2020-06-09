@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+namespace WitchOS
+{
 public class HairLossSpell : Spell
 {
 	public override SpellType Type => SpellType.HairLoss;
@@ -68,4 +70,5 @@ public class HairLossSpell : Spell
 	{
 		return String.Join(" ", incantation.Take(incantation.Count() - 1));
 	}
+}
 }

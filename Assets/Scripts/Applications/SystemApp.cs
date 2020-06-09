@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+namespace WitchOS
+{
 public class SystemApp : MonoBehaviour
 {
     public string NormalSavePrompt, SaveInProgressMessage, SaveCompletedMessage;
@@ -66,4 +68,5 @@ public class SystemApp : MonoBehaviour
         deletePromptInConfirmation = false;
         DeleteButtonText.text = NormalDeletePrompt;
     }
+}
 }

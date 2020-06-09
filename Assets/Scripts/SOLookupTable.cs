@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 // for (de)serialization
 public class SOLookupTable : Singleton<SOLookupTable>
 {
@@ -22,4 +24,5 @@ public class SOLookupTable : Singleton<SOLookupTable>
     {
         return LookupTable[id];
     }
+}
 }

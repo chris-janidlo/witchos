@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+namespace WitchOS
+{
 public class BankAppTransactionLogEntry : MonoBehaviour
 {
     public TextMeshProUGUI DateText, DescriptionText, AmountText, BalanceText;
@@ -15,4 +17,5 @@ public class BankAppTransactionLogEntry : MonoBehaviour
         AmountText.text = transaction.DeltaCurrency.ToString("+#;-#;0"); // from https://stackoverflow.com/a/348242/5931898
         BalanceText.text = (transaction.InitialCurrency + transaction.DeltaCurrency).ToString();
     }
+}
 }

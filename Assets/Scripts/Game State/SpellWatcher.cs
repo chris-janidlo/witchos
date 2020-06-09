@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
+namespace WitchOS
+{
 public class SpellWatcher : Singleton<SpellWatcher>
 {
     public event Action<Casting> SpellCast;
@@ -22,4 +24,5 @@ public class SpellWatcher : Singleton<SpellWatcher>
     {
         CastSpell(new Casting(type, targetTrueName));
     }
+}
 }
