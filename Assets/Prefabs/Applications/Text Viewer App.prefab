@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2, y: 2, z: 1, w: 1}
+  m_margin: {x: 0, y: 0, z: 1, w: 0}
   m_textInfo:
     textComponent: {fileID: 3796020712597201591}
     characterCount: 8
@@ -840,6 +840,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4181684895420140106, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4402321208093265198, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -913,17 +918,17 @@ PrefabInstance:
     - target: {fileID: 6446570415247897638, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6446570415247897638, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6446570415247897638, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6446570415247897638, guid: fc4d2fed4b7b240b6ae0c2e75b5072f6,
         type: 3}
