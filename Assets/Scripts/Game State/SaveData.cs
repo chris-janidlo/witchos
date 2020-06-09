@@ -65,7 +65,7 @@ public class SaveData<T> : SaveData
             {
                 value = (T) serializer.ReadObject(file);
             }
-            catch (Exception ex) when (ex is SerializationException || ex is InvalidCastException)
+            catch (Exception ex) when (ex is SerializationException)
             {
 #if UNITY_EDITOR
                 Debug.LogWarning(ex);
