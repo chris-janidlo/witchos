@@ -11,7 +11,6 @@ public struct Casting
 {
     public SpellType Type;
     public string TargetName;
-    public string TargetTrueName => TrueName.FromName(TargetName);
 
     public static bool operator == (Casting a, Casting b)
     {
