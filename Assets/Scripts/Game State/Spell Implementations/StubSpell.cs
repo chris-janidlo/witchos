@@ -9,8 +9,6 @@ namespace WitchOS
 {
 public class StubSpell : Spell
 {
-	public override SpellType Type => SpellType.Stub;
-
 	public override Regex GetRegex ()
 	{
 		switch (TimeState.Instance.GetTodaysMoonPhase())

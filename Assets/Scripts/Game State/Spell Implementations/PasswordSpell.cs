@@ -9,8 +9,6 @@ namespace WitchOS
 {
 public class PasswordSpell : Spell
 {
-	public override SpellType Type => SpellType.Password;
-
 	string envTarget => TerminalState.Instance.GetEnvironmentVariable("target");
 
 	static List<int> progChanges = new List<int>() {-1, 2, 3, 4, 5};

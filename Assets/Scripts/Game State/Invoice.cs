@@ -10,7 +10,7 @@ public class Invoice : ScriptableObject
 {
     public UnityEvent Completed;
 
-    public Casting SpellRequest;
+    public SpellDeliverable SpellRequest;
     public string BuyerAddress, EmailSubjectLine;
     [TextArea(5, 100)]
     public string Justification;

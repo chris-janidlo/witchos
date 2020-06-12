@@ -8,20 +8,10 @@ namespace WitchOS
 {
 public class IncantCommand : TerminalCommand
 {
-	static List<Spell> spells;
+	public List<Spell> Spells;
 
 	[TextArea]
 	public string MagicIsOff, SpellNotFound, SpellFailed, SpellSucceeded;
-
-	static IncantCommand ()
-	{
-		spells = new List<Spell>();
-
-		foreach (Type type in crass.Reflection.GetImplementations<Spell>())
-		{
-			spells.Add(Activator.CreateInstance(type) as Spell);
-		}
-	}
 
 	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
 	{
@@ -40,7 +30,7 @@ public class IncantCommand : TerminalCommand
 		var incantation = arguments.Skip(1).ToArray();
 		var joinedIncantation = String.Join(" ", incantation);
 
-		Spell spell = spells.FirstOrDefault(s => s.GetRegex().IsMatch(joinedIncantation));
+		Spell spell = Spells.FirstOrDefault(s => s.GetRegex().IsMatch(joinedIncantation));
 
 		if (spell == null)
 		{

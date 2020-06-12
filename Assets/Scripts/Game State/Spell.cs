@@ -7,11 +7,9 @@ using crass;
 
 namespace WitchOS
 {
-public abstract class Spell
+public abstract class Spell : Service
 {
     protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
-
-    public abstract SpellType Type { get; }
 
     // determine the regular expression that incant uses to disambiguate spells
     // should generally only do whole string matches, ie ^<some-regex>$
@@ -28,7 +26,7 @@ public abstract class Spell
     // for DRYness
     protected void castAt (string target)
     {
-        SpellWatcher.Instance.CastSpell(Type, target);
+        SpellEther.Instance.CastSpell(this, target);
     }
 
     // for spooky effects

@@ -9,8 +9,6 @@ namespace WitchOS
 {
 public class HairLossSpell : Spell
 {
-	public override SpellType Type => SpellType.HairLoss;
-
 	int requiredMirrors => TimeState.Instance.GetTodaysMoonPhase().IsWaning()
 		? 2
 		: 1;

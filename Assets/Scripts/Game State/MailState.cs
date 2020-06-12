@@ -64,7 +64,7 @@ public class MailState : Singleton<MailState>
 
     void Start ()
     {
-        SpellWatcher.Instance.SpellCast += onSpellCast;
+        SpellEther.Instance.SpellCast += onSpellCast;
     }
 
     public void RefreshInbox ()
@@ -84,12 +84,12 @@ public class MailState : Singleton<MailState>
         TotalTasks = spawnCount;
     }
 
-    void onSpellCast (Casting casting)
+    void onSpellCast (SpellDeliverable spell)
     {
 		for (int i = messageData.Value.Count - 1; i >= 0; i--)
         {
             var message = messageData.Value[i].Contents;
-            if (message.SpellRequest == casting)
+            if (message.SpellRequest == spell)
             {
                 Alert.Instance.ShowMessage($"you completed an order! it's been removed from your inbox.");
                 messageData.Value.RemoveAt(i);
