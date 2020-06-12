@@ -15,6 +15,12 @@ MonoBehaviour:
   Name: incant
   ArgumentList: spell
   HelpOutput: invoke the ancient magicks and cast a spell or curse
+  Spells:
+  - {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
+  - {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
+  - {fileID: 11400000, guid: 086f91b0b6bfd4553b7f548a1d761d81, type: 2}
+  - {fileID: 11400000, guid: f107df0718d644f7f934d83a84271486, type: 2}
+  - {fileID: 11400000, guid: 7db1a7d08b798457e84b2c57bc0b3691, type: 2}
   MagicIsOff: magic is off, unable to cast any spells
   SpellNotFound: unable to hook into the weave - double check the spelling of your
     incantation

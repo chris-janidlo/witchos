@@ -9,8 +9,6 @@ namespace WitchOS
 {
 public class SocialMediaSpell : Spell
 {
-	public override SpellType Type => SpellType.SocialMedia;
-
 	public override Regex GetRegex ()
 	{
 		return new Regex(@"^facies\s+libel.+$", REGEX_OPTIONS);

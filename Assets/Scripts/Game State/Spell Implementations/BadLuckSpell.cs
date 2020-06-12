@@ -9,8 +9,6 @@ namespace WitchOS
 {
 public class BadLuckSpell : Spell
 {
-	public override SpellType Type => SpellType.BadLuck;
-
 	public override Regex GetRegex ()
 	{
 		return new Regex

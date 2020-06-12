@@ -8,21 +8,21 @@ namespace WitchOS
 {
 public class SpellWatcher : Singleton<SpellWatcher>
 {
-    public event Action<Casting> SpellCast;
+    public event Action<SpellDeliverable> SpellCast;
 
     void Awake ()
     {
         SingletonOverwriteInstance(this);
     }
 
-    public void CastSpell (Casting casting)
+    public void CastSpell (SpellDeliverable spellDeliverable)
     {
-        SpellCast?.Invoke(casting);
+        SpellCast?.Invoke(spellDeliverable);
     }
 
-    public void CastSpell (SpellType type, string targetTrueName)
+    public void CastSpell (Spell spell, string targetName)
     {
-        CastSpell(new Casting(type, targetTrueName));
+        CastSpell(new SpellDeliverable { Service = spell, TargetName = targetName });
     }
 }
 }
