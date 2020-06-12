@@ -7,7 +7,6 @@ using crass;
 
 namespace WitchOS
 {
-// TODO: have spell instructions live here
 public abstract class Spell : Service
 {
     protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
