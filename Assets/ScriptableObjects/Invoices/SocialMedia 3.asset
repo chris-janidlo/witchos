@@ -16,7 +16,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SpellRequest:
-    Type: 4
+    Service: {fileID: 11400000, guid: f107df0718d644f7f934d83a84271486, type: 2}
     TargetName: Branden Pickett on facebook.com
   BuyerAddress: abject_julia@gmail.com
   EmailSubjectLine: ruinn mny Ex

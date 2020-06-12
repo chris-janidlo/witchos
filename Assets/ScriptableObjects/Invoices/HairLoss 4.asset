@@ -16,7 +16,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SpellRequest:
-    Type: 2
+    Service: {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
     TargetName: Terri Swift
   BuyerAddress: bad.leondrea@aol.com
   EmailSubjectLine: get her :)

@@ -16,7 +16,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SpellRequest:
-    Type: 1
+    Service: {fileID: 11400000, guid: 7db1a7d08b798457e84b2c57bc0b3691, type: 2}
     TargetName: Daniel Woodcock
   BuyerAddress: martygibson@hotmail.co.uk
   EmailSubjectLine: Daniel Woodcock

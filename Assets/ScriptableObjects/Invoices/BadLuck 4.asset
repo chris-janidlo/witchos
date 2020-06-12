@@ -16,7 +16,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SpellRequest:
-    Type: 0
+    Service: {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
     TargetName: Maisey Rowe
   BuyerAddress: abandonedpetra@sky.com
   EmailSubjectLine: Curse Request
