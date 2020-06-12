@@ -6,7 +6,9 @@ using crass;
 
 namespace WitchOS
 {
-public class SpellWatcher : Singleton<SpellWatcher>
+// spells are cast cast into the spell ether. once cast, they exist in the ether for the rest of the day
+// TODO: (for future tickets) make this an actual container
+public class SpellEther : Singleton<SpellEther>
 {
     public event Action<SpellDeliverable> SpellCast;
 

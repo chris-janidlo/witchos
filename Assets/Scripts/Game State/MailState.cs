@@ -64,7 +64,7 @@ public class MailState : Singleton<MailState>
 
     void Start ()
     {
-        SpellWatcher.Instance.SpellCast += onSpellCast;
+        SpellEther.Instance.SpellCast += onSpellCast;
     }
 
     public void RefreshInbox ()

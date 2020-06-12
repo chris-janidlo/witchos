@@ -27,7 +27,7 @@ public abstract class Spell : Service
     // for DRYness
     protected void castAt (string target)
     {
-        SpellWatcher.Instance.CastSpell(this, target);
+        SpellEther.Instance.CastSpell(this, target);
     }
 
     // for spooky effects
