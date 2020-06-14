@@ -6,12 +6,17 @@ using UnityEngine;
 
 namespace WitchOS
 {
+public abstract class Deliverable
+{
+    public abstract float AdjustedPrice { get; }
+}
+
 [Serializable, DataContract]
-public abstract class Deliverable<T> where T : Service
+public abstract class Deliverable<T> : Deliverable where T : Service
 {
     [DataMember]
     public T Service;
 
-    public virtual float AdjustedPrice => Service.BasePrice;
+    public override float AdjustedPrice => Service.BasePrice;
 }
 }
