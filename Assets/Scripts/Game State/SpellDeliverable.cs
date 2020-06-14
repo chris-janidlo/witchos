@@ -6,7 +6,7 @@ using UnityEngine;
 namespace WitchOS
 {
 [Serializable]
-public class SpellDeliverable : Deliverable<Spell>
+public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
 {
     public string TargetName;
 
@@ -25,6 +25,11 @@ public class SpellDeliverable : Deliverable<Spell>
         if (obj == null || GetType() != obj.GetType()) return false;
 
         return this == (SpellDeliverable) obj;
+    }
+
+    public bool Equals (SpellDeliverable other)
+    {
+        return this == other;
     }
 
     public override int GetHashCode ()
