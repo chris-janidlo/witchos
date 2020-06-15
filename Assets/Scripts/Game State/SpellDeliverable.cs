@@ -10,31 +10,10 @@ public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
 {
     public string TargetName;
 
-    public static bool operator == (SpellDeliverable a, SpellDeliverable b)
-    {
-        return a.Service == b.Service && a.TargetName.Equals(b.TargetName, StringComparison.InvariantCultureIgnoreCase);
-    }
-
-    public static bool operator != (SpellDeliverable a, SpellDeliverable b)
-    {
-        return !(a == b);
-    }
-
-    public override bool Equals (object obj)
-    {
-        if (obj == null || GetType() != obj.GetType()) return false;
-
-        return this == (SpellDeliverable) obj;
-    }
-
     public bool Equals (SpellDeliverable other)
     {
+        // uses base reference equality of UnityEngine.Object
         return this == other;
-    }
-
-    public override int GetHashCode ()
-    {
-        return new Tuple<Spell, string>(Service, TargetName).GetHashCode();
     }
 }
 }
