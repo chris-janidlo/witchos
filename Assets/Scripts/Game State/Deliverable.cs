@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace WitchOS
 {
-public abstract class Deliverable
+public abstract class Deliverable: ScriptableObject
 {
     public abstract float AdjustedPrice { get; }
 }

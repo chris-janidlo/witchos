@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WitchOS
 {
-[Serializable]
+[CreateAssetMenu(fileName = "NewSpellDeliverable.asset", menuName = "WitchOS/SpellDeliverable")]
 public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
 {
     public string TargetName;
