@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: BasicHairLoss2
   m_EditorClassIdentifier: 
   PossibleEmails:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: bcd026e53af4a4bd2a983007119f7f80, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
   PossibleInvoices:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 6371f642ac4204a3294ffcaca52ab051, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0

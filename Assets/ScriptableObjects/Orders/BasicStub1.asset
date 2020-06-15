@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: BasicStub1
   m_EditorClassIdentifier: 
   PossibleEmails:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 44dbdb2c91abe4781aa2b20f3b8f44e0, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
   PossibleInvoices:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 9aa0ca130e22a4ac290e81f9692694af, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0

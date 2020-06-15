@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: BasicBadLuck2
   m_EditorClassIdentifier: 
   PossibleEmails:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 1bad9fd04a88c4556b9e3ceff2532e39, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
   PossibleInvoices:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: f966126fa35c24d6baa91136dca70796, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0

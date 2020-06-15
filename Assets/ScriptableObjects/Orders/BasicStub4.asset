@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a2a61fe6a259495bb2f660829712501, type: 3}
-  m_Name: BasicStub3
+  m_Name: BasicStub4
   m_EditorClassIdentifier: 
   PossibleEmails:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: ec2ee9e84f6524693b26397be1264a99, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
   PossibleInvoices:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 2a2f00585ef09488cae54ea7f72e9cd1, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0

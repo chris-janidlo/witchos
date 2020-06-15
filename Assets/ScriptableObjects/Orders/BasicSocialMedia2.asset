@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: BasicSocialMedia2
   m_EditorClassIdentifier: 
   PossibleEmails:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: f036a71b565cd4e39b89b4d4bdce05bc, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0
   PossibleInvoices:
-    Items: []
-    AvoidRepeats: 0
+    Items:
+    - {fileID: 11400000, guid: 89f982eb657a0456999697e2833bb63f, type: 2}
+    AvoidRepeats: 1
     Type: 0
     LocalSeed: 0

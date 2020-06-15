@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SocialMediaSpell
   m_EditorClassIdentifier: 
   PrettyName: Social Media
-  BasePrice: 0
+  BasePrice: 200
+  SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}

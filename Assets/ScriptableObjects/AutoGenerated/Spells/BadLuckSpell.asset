@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BadLuckSpell
   m_EditorClassIdentifier: 
   PrettyName: Bad Luck
-  BasePrice: 0
+  BasePrice: 500
+  SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
