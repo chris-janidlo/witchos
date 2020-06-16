@@ -32,18 +32,19 @@ public class MailOrderWindow : MailEmailWindow
     protected override string makeContentText ()
     {
         string emailContent =
-            $@"{base.makeContentText()}
-            {SEPARATOR}
-            Invoice #{order.InvoiceData.OrderNumber}
-            {SEPARATOR}
-            Requested services:";
+$@"{base.makeContentText()}
+
+
+Attachment: Invoice #{order.InvoiceData.OrderNumber}
+{SEPARATOR}
+Requested services:";
 
         foreach (Deliverable lineItem in order.InvoiceData.LineItems)
         {
-            emailContent += $"\n{SEPARATOR}\n{lineItem.EmailAttachment()}";
+            emailContent += $"\n\n{lineItem.EmailAttachment()}";
         }
 
-        emailContent += $"\n{SEPARATOR}\nTotal: {order.InvoiceData.TotalPrice}";
+        emailContent += $"\n\nTotal: {order.InvoiceData.TotalPrice} gp";
 
         return emailContent;
     }

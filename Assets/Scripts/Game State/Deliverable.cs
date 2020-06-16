@@ -22,7 +22,7 @@ public abstract class Deliverable<T> : Deliverable where T : Service
 
     public override string EmailAttachment ()
     {
-        return $"Service: {Service.PrettyName}\nUnit Price: {AdjustedPrice}gp";
+        return $"Service: {Service.PrettyName}\nUnit Price: {AdjustedPrice} gp";
     }
 }
 }

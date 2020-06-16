@@ -15,6 +15,6 @@ public class InvoiceData : ScriptableObject
 
     public float TotalPrice => LineItems.Sum(d => d.AdjustedPrice);
 
-    public int OrderNumber => GetHashCode();
+    public int OrderNumber => Math.Abs(GetHashCode());
 }
 }
