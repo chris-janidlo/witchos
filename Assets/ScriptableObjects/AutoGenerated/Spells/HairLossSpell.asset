@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HairLossSpell
   m_EditorClassIdentifier: 
   PrettyName: Hair Loss
-  BasePrice: 100
+  BasePrice: 150
   SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
