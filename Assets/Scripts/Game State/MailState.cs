@@ -4,48 +4,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
+using UnityAtoms;
 using crass;
 
 namespace WitchOS
 {
 public class MailState : Singleton<MailState>
 {
-    [Serializable]
-    public class MailBag : BagRandomizer<Invoice> {}
-
     [DataContract]
     public class Entry
     {
         [DataMember(IsRequired = true)]
         public bool Read;
 
-        public Invoice Contents;
-
         [DataMember(IsRequired = true)]
-        private int serializedContentsID
-        {
-            get => SOLookupTable.Instance.GetID(Contents);
-            set => Contents = SOLookupTable.Instance.GetSO(value) as Invoice;
-        }
+        public Email Contents;
     }
-
-    public MailBag PossibleEMails;
-    public List<int> EMailsToSpawnByDifficulty;
-
-    public int CurrentDifficultyLevel
-    {
-        get => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel;
-        set => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel = value;
-    }
-
-    public int TasksCompleted, TotalTasks;
 
     SaveData<List<Entry>> messageData;
     public IReadOnlyList<Entry> CurrentMailEntries => messageData.Value.AsReadOnly();
 
     public int UnreadMessageCount => CurrentMailEntries.Where(m => !m.Read).Count();
-
-    int spawnCount => EMailsToSpawnByDifficulty[CurrentDifficultyLevel];
 
     void Awake ()
     {
@@ -58,43 +37,24 @@ public class MailState : Singleton<MailState>
         );
 
         SaveManager.RegisterSaveDataObject(messageData);
-
-        RefreshInbox();
     }
 
-    void Start ()
+    public void AddEmail (Email email)
     {
-        SpellEther.Instance.SpellCast += onSpellCast;
+        messageData.Value.Add(new Entry { Contents = email, Read = false });
     }
 
-    public void RefreshInbox ()
+    public void OnSpellCast (SpellDeliverable spell)
     {
-        if (TasksCompleted == spawnCount && CurrentDifficultyLevel < EMailsToSpawnByDifficulty.Count- 1)
+		foreach (Entry entry in messageData.Value)
         {
-            CurrentDifficultyLevel++;
-        }
+            if (!(entry.Contents is Order)) continue;
 
-        while (CurrentMailEntries.Count < spawnCount)
-        {
-            var newMessage = PossibleEMails.GetNext();
-            messageData.Value.Add(new Entry { Read = false, Contents = newMessage });
-        }
+            var invoice = (entry.Contents as Order).InvoiceData;
 
-        TasksCompleted = 0;
-        TotalTasks = spawnCount;
-    }
-
-    void onSpellCast (SpellDeliverable spell)
-    {
-		for (int i = messageData.Value.Count - 1; i >= 0; i--)
-        {
-            var message = messageData.Value[i].Contents;
-            if (message.SpellRequest == spell)
+            if (invoice.LineItems.Contains(spell))
             {
-                Alert.Instance.ShowMessage($"you completed an order! it's been removed from your inbox.");
-                messageData.Value.RemoveAt(i);
-                message.Completed.Invoke();
-                TasksCompleted++;
+                Alert.Instance.ShowMessage($"WitchWatch: spell {invoice.LineItems.IndexOf(spell) + 1} was cast for order #{invoice.OrderNumber}");
             }
         }
     }
