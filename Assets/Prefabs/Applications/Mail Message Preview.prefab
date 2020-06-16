@@ -216,7 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74531bc150f949268ebe9949d553adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MessageWindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
+  EmailWindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
+    type: 3}
+  OrderWindowPrefab: {fileID: 3675863834227289703, guid: ef7be225996684e3e85885cad2822418,
     type: 3}
   Button: {fileID: 3881585844906204325}
   Label: {fileID: 7329384081568237976}

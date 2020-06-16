@@ -15,5 +15,10 @@ public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
         // uses base reference equality of UnityEngine.Object
         return this == other;
     }
+
+    public override string EmailAttachment ()
+    {
+        return $"{base.EmailAttachment()}\nTarget: {TargetName}";
+    }
 }
 }

@@ -321,6 +321,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 2335441598933495782}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: Icon
@@ -330,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 1707194482673688324, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_Name
-      value: Mail Message
+      value: Mail Email Window
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
@@ -463,3 +498,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4023979000379132826}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2335441598933495782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4023979000379132826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
