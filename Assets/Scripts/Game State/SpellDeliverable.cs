@@ -12,8 +12,7 @@ public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
 
     public bool Equals (SpellDeliverable other)
     {
-        // uses base reference equality of UnityEngine.Object
-        return this == other;
+        return base.Equals(other) && TargetName.Equals(other.TargetName, StringComparison.InvariantCultureIgnoreCase);
     }
 
     public override string EmailAttachment ()

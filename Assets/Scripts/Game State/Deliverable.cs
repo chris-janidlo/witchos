@@ -13,12 +13,18 @@ public abstract class Deliverable: ScriptableObject
 }
 
 [Serializable, DataContract]
-public abstract class Deliverable<T> : Deliverable where T : Service
+public abstract class Deliverable<T> : Deliverable, IEquatable<Deliverable<T>> where T : Service
 {
     [DataMember]
     public T Service;
 
     public override float AdjustedPrice => Service.BasePrice;
+
+    public bool Equals (Deliverable<T> other)
+    {
+        // base reference equality on Services (but not on this)
+        return Service == other.Service;
+    }
 
     public override string EmailAttachment ()
     {

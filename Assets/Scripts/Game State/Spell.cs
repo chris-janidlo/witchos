@@ -28,7 +28,11 @@ public abstract class Spell : Service
 
     protected void castAt (string target)
     {
-        SpellEther.Add(new SpellDeliverable { Service = this, TargetName = target });
+        SpellDeliverable spellDeliverable = ScriptableObject.CreateInstance(typeof(SpellDeliverable)) as SpellDeliverable;
+        spellDeliverable.Service = this;
+        spellDeliverable.TargetName = target;
+
+        SpellEther.Add(spellDeliverable);
     }
 
     // for spooky effects

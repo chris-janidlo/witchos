@@ -52,7 +52,8 @@ public class MailState : Singleton<MailState>
 
             var invoice = (entry.Contents as Order).InvoiceData;
 
-            if (invoice.LineItems.Contains(spell))
+            // only search on SpellDeliverables, cast as such, so that the proper Equals method is called
+            if (invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).Contains(spell))
             {
                 Alert.Instance.ShowMessage($"WitchWatch: spell {invoice.LineItems.IndexOf(spell) + 1} was cast for order #{invoice.OrderNumber}");
             }
