@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityAtoms;
 using crass;
 
 namespace WitchOS
@@ -24,6 +25,8 @@ public class TimeState : Singleton<TimeState>
 
     public UnityEvent DayStarted, DayEnded;
 
+    public SpellDeliverableValueList SpellEther;
+
     void Awake ()
     {
         SingletonSetPersistantInstance(this);
@@ -38,6 +41,8 @@ public class TimeState : Singleton<TimeState>
     public void EndDay ()
     {
         DayEnded.Invoke();
+
+        SpellEther.Clear();
 
         DateTime = (DateTime.Date == FINAL_DATE.Date)
             ? INITIAL_DATE
