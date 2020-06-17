@@ -19,11 +19,15 @@ public class MailMessagePreview : MonoBehaviour
         Button.onClick.AddListener(onClick);
     }
 
+    void Update ()
+    {
+        // TODO: when moving to atoms implementation, make this not poll-y
+        Label.text = (entry.Read ? "" : "* ") + entry.Contents.EmailData.SenderAddress + " - " + entry.Contents.EmailData.SubjectLine;
+    }
+
     public void SetMailEntry (MailState.Entry entry)
     {
         this.entry = entry;
-
-        Label.text = (entry.Read ? "" : "* ") + entry.Contents.EmailData.SenderAddress + " - " + entry.Contents.EmailData.SubjectLine;
     }
 
     void onClick ()
