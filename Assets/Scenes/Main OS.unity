@@ -3812,7 +3812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78ed8206fc9d42449003b9411c252f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Bit of an ugly temp solution to put this here, but this is
+    so that players get notified when they cast a spell properly
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls:
