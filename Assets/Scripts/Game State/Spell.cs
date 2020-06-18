@@ -29,6 +29,7 @@ public abstract class Spell : Service
     protected void castAt (string target)
     {
         SpellDeliverable spellDeliverable = ScriptableObject.CreateInstance(typeof(SpellDeliverable)) as SpellDeliverable;
+        spellDeliverable.name = $"in-memory cast of {PrettyName} at {target}";
         spellDeliverable.Service = this;
         spellDeliverable.TargetName = target;
 
