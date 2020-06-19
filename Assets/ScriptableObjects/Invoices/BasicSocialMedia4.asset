@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineItems:
   - {fileID: 11400000, guid: 9493dfb971e6c4a9dbc7a40d7371baab, type: 2}
-  DaysToComplete: 1
+  FullDaysToComplete: 0

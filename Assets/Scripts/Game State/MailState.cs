@@ -59,5 +59,15 @@ public class MailState : Singleton<MailState>
             }
         }
     }
+
+    public void DeleteOverdueOrders ()
+    {
+        messageData.Value.RemoveAll(e =>
+        {
+            if (!(e.Contents is Order)) return false;
+
+            return (e.Contents as Order).DueDate.Date <= TimeState.Instance.DateTime.Date;
+        });
+    }
 }
 }

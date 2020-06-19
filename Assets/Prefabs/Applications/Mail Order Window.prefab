@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Window: {fileID: 3675863834227289703}
   ContentText: {fileID: 200743791837785942}
+  DateFormat: MM/dd
   TurnOrderInButton: {fileID: 8380418520440895179}
   OrderTurnedIn: {fileID: 11400000, guid: f1a2e864fc9894d26833a6ddc35ac8ea, type: 2}
   SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}

@@ -11,7 +11,7 @@ namespace WitchOS
 public class InvoiceData : ScriptableObject
 {
     public List<Deliverable> LineItems;
-    public int DaysToComplete;
+    public int FullDaysToComplete;
 
     public float TotalPrice => LineItems.Sum(d => d.AdjustedPrice);
 

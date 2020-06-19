@@ -9,6 +9,9 @@ public class Order : Email, IEquatable<Order>
     public InvoiceData InvoiceData;
 
     [DataMember(IsRequired = true)]
+    public DateTime DueDate;
+
+    [DataMember(IsRequired = true)]
     private int serializedInvoiceDataID
     {
         get => SOLookupTable.Instance.GetID(InvoiceData);
@@ -17,7 +20,7 @@ public class Order : Email, IEquatable<Order>
 
 	public bool Equals (Order other)
 	{
-        return base.Equals(other) && InvoiceData == other.InvoiceData;
+        return base.Equals(other) && InvoiceData == other.InvoiceData && DueDate == other.DueDate;
 	}
 }
 }

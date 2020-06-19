@@ -20,10 +20,17 @@ public class OrderData : ScriptableObject
 
     public Order GenerateOrder ()
     {
+        InvoiceData invoiceData = PossibleInvoices.GetNext();
+
+        DateTime dueDate = invoiceData.FullDaysToComplete < 0
+            ? TimeState.FINAL_DATE.AddDays(7)
+            : TimeState.Instance.AddDaysToToday(invoiceData.FullDaysToComplete);
+
         return new Order
         {
             EmailData = PossibleEmails.GetNext(),
-            InvoiceData = PossibleInvoices.GetNext()
+            InvoiceData = invoiceData,
+            DueDate = dueDate
         };
     }
 }

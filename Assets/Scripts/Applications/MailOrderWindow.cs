@@ -11,6 +11,9 @@ namespace WitchOS
 {
 public class MailOrderWindow : MailEmailWindow
 {
+    [TextArea]
+    public string DateFormat = "MM/dd";
+
     public Button TurnOrderInButton;
 
     public OrderEvent OrderTurnedIn;
@@ -32,12 +35,14 @@ public class MailOrderWindow : MailEmailWindow
     protected override string makeContentText ()
     {
         string emailContent =
-$@"{base.makeContentText()}
+            $"{base.makeContentText()}\n\n\nAttachment: Invoice #{order.InvoiceData.OrderNumber}\n{SEPARATOR}";
 
+        if (order.DueDate.Date <= TimeState.FINAL_DATE)
+            emailContent += $"\nDue {order.DueDate.ToString(DateFormat, TimeState.CULTURE_INFO)}";
+        else
+            emailContent += "\nNo Specified Due Date";
 
-Attachment: Invoice #{order.InvoiceData.OrderNumber}
-{SEPARATOR}
-Requested services:";
+        emailContent += "\n\nRequested services:";
 
         foreach (Deliverable lineItem in order.InvoiceData.LineItems)
         {
