@@ -20,7 +20,15 @@ public static class Seance
             "he who protecteth you for millions of years",
             "I shall not die again",
             "they shall fall and not be united again",
-            "I have opened a path"
+            "I have opened a path",
+            "I hold this against you",
+            "you have forsaken the love you had at first",
+            "I know the blasphemy of them",
+            "I know your deeds",
+            "you have a reputation of being alive, but you are dead",
+            "his feet as pillars of fire",
+            "I saw a new heaven and a new earth",
+            "the first heaven and the first earth were passed away"
         },
         AvoidRepeats = true
     };
