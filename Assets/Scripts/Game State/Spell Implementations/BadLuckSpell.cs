@@ -1,9 +1,11 @@
 using System;
+using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using crass;
 
 namespace WitchOS
 {
@@ -13,19 +15,21 @@ public class BadLuckSpell : Spell
 	{
 		return new Regex
 		(@"^
-			malam			# first keyword
-			\s+.+\s+		# name, surrounded by space characters
-			fortunam		# second keyword
-			\s+\w+\s+		# chant
-			horret			# third keyword
+			malam\s+		# first keyword, followed by space characters
+			fortunam\s+		# second keyword, followed by space characters
+			.*\.\s+			# name, followed by a period and one or more space characters
+			.*				# chant
 		$", REGEX_OPTIONS);
 	}
 
 	public override bool ConditionsAreMet (IList<string> incantation)
 	{
+		string ourChant = getChant(incantation), theirChant = Seance.TrueChant(getName(incantation));
+
 		return
 			MirrorState.Instance.NumberBroken() >= 1 &&
-			incantation[incantation.Count - 2] == Seance.TrueChant(getName(incantation));
+			ourChant.Equals(theirChant, StringComparison.InvariantCultureIgnoreCase);
+			// getChant(incantation).Equals(Seance.TrueChant(getName(incantation)), StringComparison.InvariantCultureIgnoreCase);
 	}
 
 	public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
@@ -68,16 +72,27 @@ public class BadLuckSpell : Spell
 
 	string getName (IList<string> incantation)
 	{
-		StringBuilder name = new StringBuilder(incantation[1]);
+		List<string> nameBits = new List<string>();
 
-		for (int i = 2; i < incantation.Count; i++)
+		foreach (string word in incantation.Skip(2))
 		{
-			if (incantation[i] == "fortunam") break;
-			name.Append(" ");
-			name.Append(incantation[i]);
+			if (word.EndsWith("."))
+			{
+				nameBits.Add(word.Substring(0, word.Length - 1));
+				break;
+			}
+			else
+			{
+				nameBits.Add(word);
+			}
 		}
 
-		return name.ToString().ToLower();
+		return String.Join(" ", nameBits);
+	}
+
+	string getChant (IList<string> incantation)
+	{
+		return String.Join(" ", incantation.SkipWhile(w => !w.EndsWith(".")).Skip(1));
 	}
 }
 }
