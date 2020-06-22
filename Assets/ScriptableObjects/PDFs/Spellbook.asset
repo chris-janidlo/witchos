@@ -56,10 +56,10 @@ MonoBehaviour:
   - "A Curse for moderate Ill Fortune, with a common Duration of one Week.\n\n* Commune
     with the aggrieved Ancestors of the Accursed, using the command 'seance <target
     name>'.\n   * Take note of their most Frequent Chant.\n* Break a Mirror.\n* Run
-    'set aura negative'.\n\nFinally, 'incant' the following Formula:\n* 'malam <target
-    name> fortunam <most frequent chant> horret'\n\nFor example, suppose the Accursed
-    is named Robert Smythe and the most frequent chant from his ancestors was \"beware\";
-    then the Command would become 'incant malam Robert Smythe fortunum beware horret'."
+    'set aura negative'.\n\nFinally, 'incant' the following Formula:\n* 'malam fortunam
+    <target name>. <most frequent chant>\n\nFor example, suppose the Accursed is named
+    Robert Smythe and the most frequent chant from his ancestors was \"beware\"; then
+    the Command would become 'incant malam fortunum Robert Smythe. beware'."
   - 'here''s a (not very charming) charm that causes people to post embarrassing statuses
     online:
 

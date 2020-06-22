@@ -28,15 +28,16 @@ public class SeanceCommand : TerminalCommand
 		yield return new WaitForSeconds(3);
 		
 		term.PrintLine("connection succeeded.");
+		term.PrintEmptyLine();
 		term.PrintLine("now echoing the laments of the dead. press escape to stop.");
+		term.PrintEmptyLine();
 
 		var laments = Seance.GetChants(name);
 
 		yield return new WaitForSeconds(3);
 
-		while (!term.SIGINT)
+		while (!term.SIGINT && laments.MoveNext())
 		{
-			laments.MoveNext();
 			term.PrintLine(laments.Current);
 
 			// roll our own weird WaitForSeconds so that we can immediately break if escape key is pressed
@@ -47,6 +48,8 @@ public class SeanceCommand : TerminalCommand
 				timer -= Time.deltaTime;
 			}
 		}
+
+		term.PrintEmptyLine();
 	}
 }
 }
