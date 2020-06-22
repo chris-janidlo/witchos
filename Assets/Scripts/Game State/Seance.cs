@@ -11,7 +11,6 @@ public static class Seance
 
     public static readonly List<string> CHANTS = new List<string>
     {
-        // TODO: ominous quotes from other religious texts
         "homage to you",
         "you are seated on your throne",
         "the heart-soul has bourne destiny",
@@ -27,6 +26,13 @@ public static class Seance
         "you have a reputation of being alive, but you are dead",
         "his feet as pillars of fire",
         "I saw a new heaven and a new earth",
+        "curiosis fabricavit inferos",
+        "lasciate ogni speranza, voi ch'entrate",
+        "abandon all hope, ye who enter here",
+        "but even Hell would not receive them",
+        "here every cowardice must meet its death",
+        "do you know not that we are worms",
+        "worldly renown is naught but a breath of wind"
     };
 
     static readonly BagRandomizer<string> chantBag = new BagRandomizer<string> { Items = CHANTS, AvoidRepeats = true };
