@@ -14,19 +14,25 @@ public class MailOrderWindow : MailEmailWindow
     [TextArea]
     public string DateFormat = "MM/dd";
 
-    public Button TurnOrderInButton;
+    public CanvasGroup TurnOrderInButtonCanvasGroup;
 
     public OrderEvent OrderTurnedIn;
     public SpellDeliverableValueList SpellEther;
 
     Order order => message as Order;
 
-    void Update ()
+    void Start ()
     {
-        TurnOrderInButton.gameObject.SetActive(orderFulfilled());
+        SetTurnInButtonState();
     }
 
-    // hook this up to the button
+    public void SetTurnInButtonState ()
+    {
+        bool buttonOn = orderFulfilled();
+        TurnOrderInButtonCanvasGroup.alpha = buttonOn ? 1 : 0;
+        TurnOrderInButtonCanvasGroup.interactable = buttonOn;
+    }
+
     public void TurnInOrder ()
     {
         OrderTurnedIn.Raise(this.message as Order);
@@ -56,7 +62,21 @@ public class MailOrderWindow : MailEmailWindow
 
     bool orderFulfilled ()
     {
-        return order.InvoiceData.LineItems.All(li => SpellEther.Contains(li));
+        foreach (var request in order.InvoiceData.LineItems)
+        {
+            if (request is SpellDeliverable)
+            {
+                if (!SpellEther.Any(spell => spell.Equals(request as SpellDeliverable)))
+                    return false;
+            }
+            else
+            {
+                // potion check would go here
+                throw new System.Exception("there's only one type of deliverable, how did the code get here");
+            }
+        }
+
+        return true;
     }
 }
 }
