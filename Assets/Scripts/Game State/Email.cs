@@ -15,6 +15,9 @@ public class Email : IEquatable<Email>
         set => EmailData = SOLookupTable.Instance.GetSO(value) as EmailData;
     }
 
+    // for times when the subject should be annotated (see: Order)
+    public virtual string AnnotatedSubject => EmailData.SubjectLine;
+
 	public bool Equals (Email other)
 	{
 		return EmailData == other.EmailData;

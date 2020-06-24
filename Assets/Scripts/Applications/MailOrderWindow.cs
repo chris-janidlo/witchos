@@ -28,14 +28,16 @@ public class MailOrderWindow : MailEmailWindow
 
     public void SetTurnInButtonState ()
     {
-        bool buttonOn = orderFulfilled();
+        bool buttonOn = orderIsReadyToBeTurnedIn();
         TurnOrderInButtonCanvasGroup.alpha = buttonOn ? 1 : 0;
         TurnOrderInButtonCanvasGroup.interactable = buttonOn;
     }
 
     public void TurnInOrder ()
     {
-        OrderTurnedIn.Raise(this.message as Order);
+        order.State = OrderState.Completed;
+        OrderTurnedIn.Raise(order);
+        Window.Close();
     }
 
     protected override string makeContentText ()
@@ -60,8 +62,10 @@ public class MailOrderWindow : MailEmailWindow
         return emailContent;
     }
 
-    bool orderFulfilled ()
+    bool orderIsReadyToBeTurnedIn ()
     {
+        if (order.State != OrderState.InProgress) return false;
+
         foreach (var request in order.InvoiceData.LineItems)
         {
             if (request is SpellDeliverable)

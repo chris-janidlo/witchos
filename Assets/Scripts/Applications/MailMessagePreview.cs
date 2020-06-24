@@ -22,7 +22,7 @@ public class MailMessagePreview : MonoBehaviour
     void Update ()
     {
         // TODO: when moving to atoms implementation, make this not poll-y
-        Label.text = (entry.Read ? "" : "* ") + entry.Contents.EmailData.SenderAddress + " - " + entry.Contents.EmailData.SubjectLine;
+        Label.text = (entry.Read ? "" : "* ") + entry.Contents.AnnotatedSubject + " - " + entry.Contents.EmailData.SenderAddress;
     }
 
     public void SetMailEntry (MailState.Entry entry)

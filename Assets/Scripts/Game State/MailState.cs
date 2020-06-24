@@ -25,6 +25,7 @@ public class MailState : Singleton<MailState>
     public IReadOnlyList<Entry> CurrentMailEntries => messageData.Value.AsReadOnly();
 
     public int UnreadMessageCount => CurrentMailEntries.Where(m => !m.Read).Count();
+    public int OrdersInProgress => CurrentMailEntries.Select(e => e.Contents).Where(e => (e as Order)?.State == OrderState.InProgress).Count();
 
     void Awake ()
     {
@@ -60,14 +61,13 @@ public class MailState : Singleton<MailState>
         }
     }
 
-    public void DeleteOverdueOrders ()
+    public void FailOverdueOrders ()
     {
-        messageData.Value.RemoveAll(e =>
+        foreach (Order order in messageData.Value.Select(entry => entry.Contents).Where(e => e is Order))
         {
-            if (!(e.Contents is Order)) return false;
-
-            return (e.Contents as Order).DueDate.Date <= TimeState.Instance.DateTime.Date;
-        });
+            if (order.State == OrderState.InProgress && order.DueDate.Date <= TimeState.Instance.DateTime.Date)
+                order.State = OrderState.Failed;
+        }
     }
 }
 }

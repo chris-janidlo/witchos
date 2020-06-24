@@ -21,7 +21,7 @@ public class MailEmailWindow : MonoBehaviour
     {
         this.message = message;
 
-        Window.Title = message.EmailData.SubjectLine;
+        Window.Title = message.AnnotatedSubject;
         ContentText.text = makeContentText();
     }
 

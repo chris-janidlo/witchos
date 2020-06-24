@@ -28,7 +28,7 @@ public class OrderGenerator : MonoBehaviour
     {
         TasksCompletedToday = 0;
 
-        while (MailState.Instance.CurrentMailEntries.Count < spawnCount)
+        while (MailState.Instance.OrdersInProgress < spawnCount)
         {
             MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateOrder());
         }
