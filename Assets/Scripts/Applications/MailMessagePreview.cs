@@ -8,7 +8,7 @@ namespace WitchOS
 {
 public class MailMessagePreview : MonoBehaviour
 {
-    public Window MessageWindowPrefab;
+    public Window EmailWindowPrefab, OrderWindowPrefab;
     public Button Button;
     public TextMeshProUGUI Label;
 
@@ -21,7 +21,8 @@ public class MailMessagePreview : MonoBehaviour
 
     void Update ()
     {
-        Label.text = (entry.Read ? "" : "* ") + entry.Contents.BuyerAddress + " - " + entry.Contents.EmailSubjectLine;
+        // TODO: when moving to atoms implementation, make this not poll-y
+        Label.text = (entry.Read ? "" : "* ") + entry.Contents.AnnotatedSubject + " - " + entry.Contents.EmailData.SenderAddress;
     }
 
     public void SetMailEntry (MailState.Entry entry)
@@ -34,8 +35,13 @@ public class MailMessagePreview : MonoBehaviour
         entry.Read = true;
 
         WindowFactory.Instance
-            .OpenWindow(MessageWindowPrefab, "mail message " + entry.GetHashCode().ToString(), WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton)
-            .GetComponent<MailMessageWindow>().SetMessage(entry.Contents);
+            .OpenWindow
+            (
+                (entry.Contents is Order) ? OrderWindowPrefab : EmailWindowPrefab,
+                "mail message " + entry.GetHashCode().ToString(),
+                WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton
+            )
+            .GetComponent<MailEmailWindow>().SetMessage(entry.Contents); // can use the same line for both cases bc order window is special case of email window
     }
 }
 }

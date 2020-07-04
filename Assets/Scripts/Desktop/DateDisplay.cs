@@ -15,7 +15,7 @@ public class DateDisplay : MonoBehaviour
 
     void Update ()
     {
-        Text.text = TimeState.Instance.DateTime.ToString(Format, CultureInfo.CreateSpecificCulture("en-US"));
+        Text.text = TimeState.Instance.DateTime.ToString(Format, TimeState.CULTURE_INFO);
     }
 }
 }

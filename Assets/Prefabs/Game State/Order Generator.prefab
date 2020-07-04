@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8017974949255870598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3232229594801995644}
+  - component: {fileID: 4406448311141999118}
+  - component: {fileID: 6921223984829105349}
+  m_Layer: 0
+  m_Name: Order Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3232229594801995644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017974949255870598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4406448311141999118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017974949255870598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bb6c76ba8d74d908bd4f18ecafb1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleOrders:
+    Items:
+    - {fileID: 11400000, guid: 3414943534d3d4bc6b9b27ba74ef2bdc, type: 2}
+    - {fileID: 11400000, guid: 73cc766ddb7534affb1c1303e2fac8ad, type: 2}
+    - {fileID: 11400000, guid: 06d0b784420f14e1baf0a7f47612a5e3, type: 2}
+    - {fileID: 11400000, guid: 014141bfa781c40d2b5e34c458917498, type: 2}
+    - {fileID: 11400000, guid: 2232bb55fa0bc427996f8364e7b5aaed, type: 2}
+    - {fileID: 11400000, guid: 07bb32bd322564b5598f800b82c39dc6, type: 2}
+    - {fileID: 11400000, guid: 0d801ec0cf2f84e5aad17081d9c06a7d, type: 2}
+    - {fileID: 11400000, guid: ab0f7b6b227f74d58bbbec974b6b3ff0, type: 2}
+    - {fileID: 11400000, guid: 1d254befaf25247769b1f48d92f24bc1, type: 2}
+    - {fileID: 11400000, guid: 52ea33e48aff24003b07edf539bd5a21, type: 2}
+    - {fileID: 11400000, guid: b67f35bbfe67c43ff8b2059ce07f84f2, type: 2}
+    - {fileID: 11400000, guid: 0c5a11c0b52e54bdfbf351c6ca283d51, type: 2}
+    - {fileID: 11400000, guid: c7197ad5d2c77430796a1872d97ccd7f, type: 2}
+    - {fileID: 11400000, guid: 2d2a8b508064a4a9d824f757a473f541, type: 2}
+    - {fileID: 11400000, guid: 2ca1460451e534aba91acbd9802e3340, type: 2}
+    - {fileID: 11400000, guid: 92c4a64b6fff04054aaacc1fd2fda4e5, type: 2}
+    - {fileID: 11400000, guid: 396593b8c0df94674838efd8c2d730f0, type: 2}
+    - {fileID: 11400000, guid: d506504746a7e49e89836e9065e80288, type: 2}
+    - {fileID: 11400000, guid: 3e8bf5a9989664c4da6f6c79bd05233e, type: 2}
+    - {fileID: 11400000, guid: b1d984a1b293841c2a85cccf0d5c8f07, type: 2}
+    AvoidRepeats: 1
+    Type: 0
+    LocalSeed: 0
+  OrdersToSpawnByDifficulty: 03000000070000000f00000014000000
+  TasksCompletedToday: 0
+--- !u!114 &6921223984829105349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017974949255870598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a00f86d22f464b56940477da5198603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerDescription: Let the order generator know when an order has been turned
+    in
+  _unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4406448311141999118}
+        m_MethodName: CountCompletedOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _actionResponses: []
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: f1a2e864fc9894d26833a6ddc35ac8ea, type: 2}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}

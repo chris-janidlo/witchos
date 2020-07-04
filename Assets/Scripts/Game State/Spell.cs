@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityAtoms;
 using crass;
 
 namespace WitchOS
 {
 public abstract class Spell : Service
 {
+    public SpellDeliverableValueList SpellEther;
+
     protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
 
     // determine the regular expression that incant uses to disambiguate spells
@@ -23,10 +26,14 @@ public abstract class Spell : Service
     // anything that should happen when this spell is cast
     public abstract IEnumerator CastBehavior (TerminalApp term, IList<string> incantation);
 
-    // for DRYness
     protected void castAt (string target)
     {
-        SpellEther.Instance.CastSpell(this, target);
+        SpellDeliverable spellDeliverable = ScriptableObject.CreateInstance(typeof(SpellDeliverable)) as SpellDeliverable;
+        spellDeliverable.name = $"in-memory cast of {PrettyName} at {target}";
+        spellDeliverable.Service = this;
+        spellDeliverable.TargetName = target;
+
+        SpellEther.Add(spellDeliverable);
     }
 
     // for spooky effects

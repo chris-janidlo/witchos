@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WitchOS
 {
-[CreateAssetMenu(fileName = "NewPDF.asset", menuName = "PDF")]
+[CreateAssetMenu(fileName = "NewPDF.asset", menuName = "WitchOS/PDF")]
 public class TextPDF : ScriptableObject
 {
     public string Title;

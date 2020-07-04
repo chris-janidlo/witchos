@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,7 +37,7 @@ public class MailApp : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (MailState.Entry entry in MailState.Instance.CurrentMailEntries)
+        foreach (MailState.Entry entry in MailState.Instance.CurrentMailEntries.Reverse())
         {
             Instantiate(PreviewPrefab, InboxContainer.transform).SetMailEntry(entry);
         }
