@@ -6,28 +6,28 @@ using TMPro;
 
 namespace WitchOS
 {
-public class MoonPhaseViewer : MonoBehaviour
-{
-    public List<Sprite> PhaseIcons;
-
-    public Image PhaseIconImage;
-    public TextMeshProUGUI WaxingText, WaningText, TodayPhase, TomorrowPhase;
-
-    void Update ()
+    public class MoonPhaseViewer : MonoBehaviour
     {
-        MoonPhase
-            today = TimeState.Instance.GetTodaysMoonPhase(),
-            tomorrow = TimeState.Instance.GetTomorrowsMoonPhase();
+        public List<Sprite> PhaseIcons;
 
-        TodayPhase.text = today.ToString(true);
-        TomorrowPhase.text = tomorrow.ToString(true);
-        
-        PhaseIconImage.sprite = PhaseIcons[(int) today];
+        public Image PhaseIconImage;
+        public TextMeshProUGUI WaxingText, WaningText, TodayPhase, TomorrowPhase;
 
-        MoonPhaseChange waxWane = today.GetPhaseChange();
+        void Update ()
+        {
+            MoonPhase
+                today = TimeState.Instance.GetTodaysMoonPhase(),
+                tomorrow = TimeState.Instance.GetTomorrowsMoonPhase();
 
-        WaxingText.text = (waxWane == MoonPhaseChange.Waxing) ? "yes" : "no";
-        WaningText.text = (waxWane == MoonPhaseChange.Waning) ? "yes" : "no";
+            TodayPhase.text = today.ToString(true);
+            TomorrowPhase.text = tomorrow.ToString(true);
+
+            PhaseIconImage.sprite = PhaseIcons[(int) today];
+
+            MoonPhaseChange waxWane = today.GetPhaseChange();
+
+            WaxingText.text = (waxWane == MoonPhaseChange.Waxing) ? "yes" : "no";
+            WaningText.text = (waxWane == MoonPhaseChange.Waning) ? "yes" : "no";
+        }
     }
-}
 }

@@ -7,52 +7,52 @@ using TMPro;
 
 namespace WitchOS
 {
-public class TaskBarButton : MonoBehaviour
-{
-    public UnityEvent Destroyed;
-
-    public TextMeshProUGUI TitleText;
-    public Image IconImage;
-    public Button Button;
-
-    Window window;
-
-    void Start ()
+    public class TaskBarButton : MonoBehaviour
     {
-        Button.onClick.AddListener(onClick);
-    }
+        public UnityEvent Destroyed;
 
-    void Update ()
-    {
-        TitleText.text = window.Title;
-        IconImage.sprite = window.Icon;
-    }
+        public TextMeshProUGUI TitleText;
+        public Image IconImage;
+        public Button Button;
 
-    void OnDestroy ()
-    {
-        Destroyed.Invoke();
-    }
+        Window window;
 
-    public void SetWindow (Window window)
-    {
-        this.window = window;
-    }
-
-    void onClick ()
-    {
-        if (window.Minimizer.Minimized)
+        void Start ()
         {
-            window.Minimizer.UnMinimize();
-            window.Focus();
+            Button.onClick.AddListener(onClick);
         }
-        else if (!window.Focused)
+
+        void Update ()
         {
-            window.Focus();
+            TitleText.text = window.Title;
+            IconImage.sprite = window.Icon;
         }
-        else
+
+        void OnDestroy ()
         {
-            window.Minimizer.Minimize();
+            Destroyed.Invoke();
+        }
+
+        public void SetWindow (Window window)
+        {
+            this.window = window;
+        }
+
+        void onClick ()
+        {
+            if (window.Minimizer.Minimized)
+            {
+                window.Minimizer.UnMinimize();
+                window.Focus();
+            }
+            else if (!window.Focused)
+            {
+                window.Focus();
+            }
+            else
+            {
+                window.Minimizer.Minimize();
+            }
         }
     }
-}
 }

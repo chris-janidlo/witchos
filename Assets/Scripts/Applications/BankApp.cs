@@ -7,35 +7,35 @@ using TMPro;
 
 namespace WitchOS
 {
-public class BankApp : MonoBehaviour
-{
-    public BankAppTransactionLogEntry LogEntryPrefab;
-    public VerticalLayoutGroup EntryLog;
-    public TextMeshProUGUI BalanceDisplay;
-
-    int entriesInLog;
-
-    void Update ()
+    public class BankApp : MonoBehaviour
     {
-        BalanceDisplay.text = BankState.Instance.CurrentBalance.ToString();
+        public BankAppTransactionLogEntry LogEntryPrefab;
+        public VerticalLayoutGroup EntryLog;
+        public TextMeshProUGUI BalanceDisplay;
 
-        if (entriesInLog != BankState.Instance.Transactions.Count)
-            populateLog();
-    }
+        int entriesInLog;
 
-    void populateLog ()
-    {
-        entriesInLog = BankState.Instance.Transactions.Count;
-
-        foreach (Transform child in EntryLog.transform)
+        void Update ()
         {
-            Destroy(child.gameObject);
+            BalanceDisplay.text = BankState.Instance.CurrentBalance.ToString();
+
+            if (entriesInLog != BankState.Instance.Transactions.Count)
+                populateLog();
         }
 
-        foreach (BankTransaction transaction in BankState.Instance.Transactions.Reverse())
+        void populateLog ()
         {
-            Instantiate(LogEntryPrefab, EntryLog.transform).SetTransaction(transaction);
+            entriesInLog = BankState.Instance.Transactions.Count;
+
+            foreach (Transform child in EntryLog.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (BankTransaction transaction in BankState.Instance.Transactions.Reverse())
+            {
+                Instantiate(LogEntryPrefab, EntryLog.transform).SetTransaction(transaction);
+            }
         }
     }
-}
 }

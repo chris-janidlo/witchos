@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace WitchOS
 {
-public enum OrderState
-{
-    InProgress, Completed, Failed
-}
+    public enum OrderState
+    {
+        InProgress, Completed, Failed
+    }
 }

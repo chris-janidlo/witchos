@@ -6,69 +6,69 @@ using crass;
 
 namespace WitchOS
 {
-public class WindowFactory : Singleton<WindowFactory>
-{
-    public TaskBarButton TaskBarButtonPrefab;
-    public RectTransform WindowParent;
-
-    [Flags]
-    public enum Options
+    public class WindowFactory : Singleton<WindowFactory>
     {
-        None            = 0,
-        Singleton       = 1,
-        TaskBarButton   = 2
-    }
+        public TaskBarButton TaskBarButtonPrefab;
+        public RectTransform WindowParent;
 
-    void Awake ()
-    {
-        SingletonOverwriteInstance(this);
-    }
-
-    public Window OpenWindow (Window prefab, ScriptableObject data, string name, Options options = Options.None)
-    {
-        Window window = null;
-
-        if (options.HasFlag(Options.Singleton))
+        [Flags]
+        public enum Options
         {
-            window = GameObject.Find(name)?.GetComponent<Window>();
+            None = 0,
+            Singleton = 1,
+            TaskBarButton = 2
         }
 
-        if (window == null)
+        void Awake ()
         {
-            // either we're not doing a singleton or a singleton wasn't found
+            SingletonOverwriteInstance(this);
+        }
 
-            window = Instantiate(prefab, WindowParent);
-            window.name = name;
-            window.AppData = data;
+        public Window OpenWindow (Window prefab, ScriptableObject data, string name, Options options = Options.None)
+        {
+            Window window = null;
 
-            if (options.HasFlag(Options.TaskBarButton))
+            if (options.HasFlag(Options.Singleton))
             {
-                var button = Instantiate(TaskBarButtonPrefab);
-
-                window.SetTaskBarButton(button);
-                button.SetWindow(window);
-
-                TaskBar.Instance.AddButton(button);
+                window = GameObject.Find(name)?.GetComponent<Window>();
             }
+
+            if (window == null)
+            {
+                // either we're not doing a singleton or a singleton wasn't found
+
+                window = Instantiate(prefab, WindowParent);
+                window.name = name;
+                window.AppData = data;
+
+                if (options.HasFlag(Options.TaskBarButton))
+                {
+                    var button = Instantiate(TaskBarButtonPrefab);
+
+                    window.SetTaskBarButton(button);
+                    button.SetWindow(window);
+
+                    TaskBar.Instance.AddButton(button);
+                }
+            }
+
+            window.Focus();
+            return window;
         }
 
-        window.Focus();
-        return window;
-    }
+        public Window OpenWindow (Window prefab, ScriptableObject data, Options options = Options.None)
+        {
+            return OpenWindow(prefab, data, prefab.name + data?.name ?? "", options);
+        }
 
-    public Window OpenWindow (Window prefab, ScriptableObject data, Options options = Options.None)
-    {
-        return OpenWindow(prefab, data, prefab.name + data?.name ?? "", options);
-    }
+        public Window OpenWindow (Window prefab, string name, Options options = Options.None)
+        {
+            return OpenWindow(prefab, null, name, options);
+        }
 
-    public Window OpenWindow (Window prefab, string name, Options options = Options.None)
-    {
-        return OpenWindow(prefab, null, name, options);
+        public Window OpenWindow (Window prefab, Options options = Options.None)
+        {
+            return OpenWindow(prefab, null, prefab.name, options);
+        }
     }
-
-    public Window OpenWindow (Window prefab, Options options = Options.None)
-    {
-        return OpenWindow(prefab, null, prefab.name, options);
-    }
-}
 }

@@ -6,21 +6,21 @@ using UnityEngine;
 
 namespace WitchOS
 {
-[Serializable, DataContract]
-public struct BankTransaction
-{
-    [DataMember(IsRequired = true)]
-    public int InitialCurrency, DeltaCurrency;
-    [DataMember(IsRequired = true)]
-    public string Description;
-
-    [SerializeField]
-    string dateString;
-    [DataMember(IsRequired = true)]
-    public DateTime Date
+    [Serializable, DataContract]
+    public struct BankTransaction
     {
-        get => DateTime.Parse(dateString);
-        set => dateString = value.ToString();
+        [DataMember(IsRequired = true)]
+        public int InitialCurrency, DeltaCurrency;
+        [DataMember(IsRequired = true)]
+        public string Description;
+
+        [SerializeField]
+        string dateString;
+        [DataMember(IsRequired = true)]
+        public DateTime Date
+        {
+            get => DateTime.Parse(dateString);
+            set => dateString = value.ToString();
+        }
     }
-}
 }

@@ -3,48 +3,48 @@ using System.Runtime.Serialization;
 
 namespace WitchOS
 {
-[Serializable, DataContract]
-public class Order : Email, IEquatable<Order>
-{
-    public InvoiceData InvoiceData;
-
-    [DataMember(IsRequired = true)]
-    public DateTime DueDate;
-
-    [DataMember(IsRequired = true)]
-    public OrderState State;
-
-    [DataMember(IsRequired = true)]
-    private int serializedInvoiceDataID
+    [Serializable, DataContract]
+    public class Order : Email, IEquatable<Order>
     {
-        get => SOLookupTable.Instance.GetID(InvoiceData);
-        set => InvoiceData = SOLookupTable.Instance.GetSO(value) as InvoiceData;
-    }
+        public InvoiceData InvoiceData;
 
-    public override string AnnotatedSubject
-    {
-        get
+        [DataMember(IsRequired = true)]
+        public DateTime DueDate;
+
+        [DataMember(IsRequired = true)]
+        public OrderState State;
+
+        [DataMember(IsRequired = true)]
+        private int serializedInvoiceDataID
         {
-            string prefix = "";
+            get => SOLookupTable.Instance.GetID(InvoiceData);
+            set => InvoiceData = SOLookupTable.Instance.GetSO(value) as InvoiceData;
+        }
 
-            switch (State)
+        public override string AnnotatedSubject
+        {
+            get
             {
-                case OrderState.Completed:
-                    prefix = "(completed) ";
-                    break;
+                string prefix = "";
 
-                case OrderState.Failed:
-                    prefix = "(failed) ";
-                    break;
+                switch (State)
+                {
+                    case OrderState.Completed:
+                        prefix = "(completed) ";
+                        break;
+
+                    case OrderState.Failed:
+                        prefix = "(failed) ";
+                        break;
+                }
+
+                return prefix + base.AnnotatedSubject;
             }
+        }
 
-            return prefix + base.AnnotatedSubject;
+        public bool Equals (Order other)
+        {
+            return base.Equals(other) && InvoiceData == other.InvoiceData && DueDate == other.DueDate;
         }
     }
-
-    public bool Equals (Order other)
-	{
-        return base.Equals(other) && InvoiceData == other.InvoiceData && DueDate == other.DueDate;
-	}
-}
 }

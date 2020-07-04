@@ -7,54 +7,54 @@ using crass;
 
 namespace WitchOS
 {
-public class BankState : Singleton<BankState>
-{
-    public int CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
-
-    public string InsufficientFundsAlertMessage;
-    public BankTransaction InitialTransaction;
-
-    SaveData<List<BankTransaction>> transactionData;
-    public IReadOnlyList<BankTransaction> Transactions => transactionData.Value.AsReadOnly();
-
-    void Awake ()
+    public class BankState : Singleton<BankState>
     {
-        SingletonOverwriteInstance(this);
+        public int CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
 
-        transactionData = new SaveData<List<BankTransaction>>
-        (
-            "bankTransactionData",
-            new List<BankTransaction> { InitialTransaction }
-        );
+        public string InsufficientFundsAlertMessage;
+        public BankTransaction InitialTransaction;
 
-        SaveManager.RegisterSaveDataObject(transactionData);
-    }
+        SaveData<List<BankTransaction>> transactionData;
+        public IReadOnlyList<BankTransaction> Transactions => transactionData.Value.AsReadOnly();
 
-    public bool AddTransaction (int deltaCurrency, string description, bool autoAlert = true)
-    {
-        if (!HaveEnoughMoney(deltaCurrency))
+        void Awake ()
         {
-            if (autoAlert) Alert.Instance.ShowMessageImmediately(InsufficientFundsAlertMessage);
-            return false;
+            SingletonOverwriteInstance(this);
+
+            transactionData = new SaveData<List<BankTransaction>>
+            (
+                "bankTransactionData",
+                new List<BankTransaction> { InitialTransaction }
+            );
+
+            SaveManager.RegisterSaveDataObject(transactionData);
         }
 
-        BankTransaction transaction = new BankTransaction
+        public bool AddTransaction (int deltaCurrency, string description, bool autoAlert = true)
         {
-            InitialCurrency = CurrentBalance,
-            DeltaCurrency = deltaCurrency,
-            Description = description,
-            Date = TimeState.Instance.DateTime.Date
-        };
+            if (!HaveEnoughMoney(deltaCurrency))
+            {
+                if (autoAlert) Alert.Instance.ShowMessageImmediately(InsufficientFundsAlertMessage);
+                return false;
+            }
 
-        transactionData.Value.Add(transaction);
+            BankTransaction transaction = new BankTransaction
+            {
+                InitialCurrency = CurrentBalance,
+                DeltaCurrency = deltaCurrency,
+                Description = description,
+                Date = TimeState.Instance.DateTime.Date
+            };
 
-        return true;
+            transactionData.Value.Add(transaction);
+
+            return true;
+        }
+
+        public bool HaveEnoughMoney (int deltaCurrency)
+        {
+            if (deltaCurrency >= 0) return true;
+            else return CurrentBalance + deltaCurrency >= 0;
+        }
     }
-
-    public bool HaveEnoughMoney (int deltaCurrency)
-    {
-        if (deltaCurrency >= 0) return true;
-        else return CurrentBalance + deltaCurrency >= 0;
-    }
-}
 }

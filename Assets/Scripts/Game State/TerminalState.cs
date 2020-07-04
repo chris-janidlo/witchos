@@ -6,22 +6,22 @@ using crass;
 
 namespace WitchOS
 {
-public class TerminalState : Singleton<TerminalState>
-{
-    public Dictionary<string, string> EnvironmentVariables = new Dictionary<string, string>();
-    public bool XingLock;
-    public string XingTarget;
-
-    void Awake ()
+    public class TerminalState : Singleton<TerminalState>
     {
-        SingletonOverwriteInstance(this);
-    }
+        public Dictionary<string, string> EnvironmentVariables = new Dictionary<string, string>();
+        public bool XingLock;
+        public string XingTarget;
 
-    public string GetEnvironmentVariable (string variable)
-    {
-        return (EnvironmentVariables.ContainsKey(variable))
-            ? EnvironmentVariables[variable]
-            : "";
+        void Awake ()
+        {
+            SingletonOverwriteInstance(this);
+        }
+
+        public string GetEnvironmentVariable (string variable)
+        {
+            return (EnvironmentVariables.ContainsKey(variable))
+                ? EnvironmentVariables[variable]
+                : "";
+        }
     }
-}
 }

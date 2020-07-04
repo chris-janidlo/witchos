@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace WitchOS
 {
-public abstract class Service : ScriptableObject
-{
-    public string PrettyName;
-    public float BasePrice;
-}
+    public abstract class Service : ScriptableObject
+    {
+        public string PrettyName;
+        public float BasePrice;
+    }
 }

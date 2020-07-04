@@ -6,42 +6,42 @@ using crass;
 
 namespace WitchOS
 {
-public class OrderGenerator : MonoBehaviour
-{
-    [Serializable]
-    public class OrderBag : BagRandomizer<OrderData> {}
-
-    public OrderBag PossibleOrders;
-    public List<int> OrdersToSpawnByDifficulty;
-
-    public int TasksCompletedToday;
-
-    public int CurrentDifficultyLevel
+    public class OrderGenerator : MonoBehaviour
     {
-        get => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel;
-        set => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel = value;
-    }
+        [Serializable]
+        public class OrderBag : BagRandomizer<OrderData> { }
 
-    int spawnCount => OrdersToSpawnByDifficulty[CurrentDifficultyLevel];
+        public OrderBag PossibleOrders;
+        public List<int> OrdersToSpawnByDifficulty;
 
-    public void GenerateOrders ()
-    {
-        TasksCompletedToday = 0;
+        public int TasksCompletedToday;
 
-        while (MailState.Instance.OrdersInProgress < spawnCount)
+        public int CurrentDifficultyLevel
         {
-            MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateOrder());
+            get => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel;
+            set => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel = value;
+        }
+
+        int spawnCount => OrdersToSpawnByDifficulty[CurrentDifficultyLevel];
+
+        public void GenerateOrders ()
+        {
+            TasksCompletedToday = 0;
+
+            while (MailState.Instance.OrdersInProgress < spawnCount)
+            {
+                MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateOrder());
+            }
+        }
+
+        public void CountCompletedOrder ()
+        {
+            TasksCompletedToday++;
+
+            if (TasksCompletedToday >= spawnCount && CurrentDifficultyLevel < OrdersToSpawnByDifficulty.Count - 1)
+            {
+                CurrentDifficultyLevel++;
+            }
         }
     }
-
-    public void CountCompletedOrder ()
-    {
-        TasksCompletedToday++;
-
-        if (TasksCompletedToday >= spawnCount && CurrentDifficultyLevel < OrdersToSpawnByDifficulty.Count- 1)
-        {
-            CurrentDifficultyLevel++;
-        }
-    }
-}
 }

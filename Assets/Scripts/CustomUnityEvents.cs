@@ -3,6 +3,6 @@ using UnityEngine.Events;
 
 namespace WitchOS
 {
-[Serializable]
-public class WindowEvent : UnityEvent<Window> {}
+    [Serializable]
+    public class WindowEvent : UnityEvent<Window> { }
 }

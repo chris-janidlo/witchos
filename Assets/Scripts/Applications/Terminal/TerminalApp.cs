@@ -9,185 +9,185 @@ using TMPro;
 
 namespace WitchOS
 {
-public partial class TerminalApp : MonoBehaviour
-{
-    public bool Evaluating { get; private set; }
-    public bool SIGINT { get; private set; }
-
-    public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
-
-    public string LastOutputLine
+    public partial class TerminalApp : MonoBehaviour
     {
-        get => OutputHistory[OutputHistory.Count - 1];
-        set => OutputHistory[OutputHistory.Count - 1] = value;
-    }
+        public bool Evaluating { get; private set; }
+        public bool SIGINT { get; private set; }
 
-    public List<TerminalCommand> Commands;
+        public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
 
-    public string BaseTitle;
-
-    [TextArea]
-    public string NoMagicWarning;
-
-    public List<string> InputHistory = new List<string>();
-    public List<string> OutputHistory = new List<string>();
-
-    public Window Window;
-    public TMP_InputField CommandInput;
-
-    public TextMeshProUGUI Prompt, HistoryText;
-
-    public ScrollRect ScrollRect;
-
-    TerminalCommand currentCommand;
-
-    int posInHistory;
-
-    StringBuilder paintTextBuilder = new StringBuilder();
-
-    void Start ()
-    {
-        CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
-
-        if (!MagicSource.Instance.On) Print(NoMagicWarning);
-        else PaintOutputHistoryText(); // paint anyway
-    }
-
-    void Update ()
-    {
-        SIGINT = false;
-
-        if (!Window.Focused) return;
-
-        if (Input.GetKey(KeyCode.Escape)) SIGINT = true;
-
-        if (Evaluating) return;
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
-    }
-
-    void OnDestroy ()
-    {
-        if (Evaluating) currentCommand.CleanUpEarly(this);
-    }
-
-    public void FocusInput ()
-    {
-        CommandInput.ActivateInputField();
-        CommandInput.Select();
-    }
-
-    public void Print (string output)
-    {
-        foreach (string line in output.Split('\n', '\r'))
+        public string LastOutputLine
         {
-            PrintLine(line);
+            get => OutputHistory[OutputHistory.Count - 1];
+            set => OutputHistory[OutputHistory.Count - 1] = value;
         }
 
-        PaintOutputHistoryText();
-    }
+        public List<TerminalCommand> Commands;
 
-    public void PrintLine (string line)
-    {
-        OutputHistory.Add(line);
-        PaintOutputHistoryText();
-    }
+        public string BaseTitle;
 
-    public void PrintEmptyLine ()
-    {
-        PrintLine("");
-    }
+        [TextArea]
+        public string NoMagicWarning;
 
-    public void ScrollToBottom ()
-    {
-        ScrollRect.verticalNormalizedPosition = 0;
-    }
+        public List<string> InputHistory = new List<string>();
+        public List<string> OutputHistory = new List<string>();
 
-    public void PaintOutputHistoryText ()
-    {
-        paintTextBuilder.Clear();
+        public Window Window;
+        public TMP_InputField CommandInput;
 
-        foreach (string line in OutputHistory)
+        public TextMeshProUGUI Prompt, HistoryText;
+
+        public ScrollRect ScrollRect;
+
+        TerminalCommand currentCommand;
+
+        int posInHistory;
+
+        StringBuilder paintTextBuilder = new StringBuilder();
+
+        void Start ()
         {
-            paintTextBuilder.Append(line);
-            paintTextBuilder.Append("\n");
+            CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
+
+            if (!MagicSource.Instance.On) Print(NoMagicWarning);
+            else PaintOutputHistoryText(); // paint anyway
         }
 
-        if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
-
-        HistoryText.text = paintTextBuilder.ToString();
-    }
-
-    IEnumerator evaluateCommand (string input)
-    {
-        if (Input.GetKey("escape")) yield break;
-
-        CommandInput.text = "";
-
-        Prompt.enabled = false;
-        CommandInput.enabled = false;
-
-        InputHistory.Add(input);
-        OutputHistory.Add(Prompt.text + input); // echo
-
-        posInHistory = InputHistory.Count;
-        ScrollToBottom();
-
-        input = input.Trim();
-
-        Evaluating = true;
-
-        // remove empty prompt line in history text
-        PaintOutputHistoryText();
-
-        string[] commands = input.Split(';');
-
-        foreach (string command in commands)
+        void Update ()
         {
-            if (command == "")
-            {
-                continue;
-            }
+            SIGINT = false;
 
-            string[] arguments = command.Split();
+            if (!Window.Focused) return;
 
-            if (CommandDict.ContainsKey(arguments[0]))
-            {
-                Window.Title = BaseTitle + " - " + arguments[0];
+            if (Input.GetKey(KeyCode.Escape)) SIGINT = true;
 
-                currentCommand = CommandDict[arguments[0]];
-                yield return currentCommand.Evaluate(this, arguments);
+            if (Evaluating) return;
 
-                Window.Title = BaseTitle;
-            }
-            else
-            {
-                PrintLine("command not recognized: " + arguments[0]);
-            }
+            if (Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
+            else if (Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
         }
 
-        Evaluating = false;
+        void OnDestroy ()
+        {
+            if (Evaluating) currentCommand.CleanUpEarly(this);
+        }
 
-        Prompt.enabled = true;
-        CommandInput.enabled = true;
+        public void FocusInput ()
+        {
+            CommandInput.ActivateInputField();
+            CommandInput.Select();
+        }
 
-        // restore empty prompt line in history text
-        PaintOutputHistoryText();
+        public void Print (string output)
+        {
+            foreach (string line in output.Split('\n', '\r'))
+            {
+                PrintLine(line);
+            }
 
-        if (Window.Focused) FocusInput();
+            PaintOutputHistoryText();
+        }
+
+        public void PrintLine (string line)
+        {
+            OutputHistory.Add(line);
+            PaintOutputHistoryText();
+        }
+
+        public void PrintEmptyLine ()
+        {
+            PrintLine("");
+        }
+
+        public void ScrollToBottom ()
+        {
+            ScrollRect.verticalNormalizedPosition = 0;
+        }
+
+        public void PaintOutputHistoryText ()
+        {
+            paintTextBuilder.Clear();
+
+            foreach (string line in OutputHistory)
+            {
+                paintTextBuilder.Append(line);
+                paintTextBuilder.Append("\n");
+            }
+
+            if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
+
+            HistoryText.text = paintTextBuilder.ToString();
+        }
+
+        IEnumerator evaluateCommand (string input)
+        {
+            if (Input.GetKey("escape")) yield break;
+
+            CommandInput.text = "";
+
+            Prompt.enabled = false;
+            CommandInput.enabled = false;
+
+            InputHistory.Add(input);
+            OutputHistory.Add(Prompt.text + input); // echo
+
+            posInHistory = InputHistory.Count;
+            ScrollToBottom();
+
+            input = input.Trim();
+
+            Evaluating = true;
+
+            // remove empty prompt line in history text
+            PaintOutputHistoryText();
+
+            string[] commands = input.Split(';');
+
+            foreach (string command in commands)
+            {
+                if (command == "")
+                {
+                    continue;
+                }
+
+                string[] arguments = command.Split();
+
+                if (CommandDict.ContainsKey(arguments[0]))
+                {
+                    Window.Title = BaseTitle + " - " + arguments[0];
+
+                    currentCommand = CommandDict[arguments[0]];
+                    yield return currentCommand.Evaluate(this, arguments);
+
+                    Window.Title = BaseTitle;
+                }
+                else
+                {
+                    PrintLine("command not recognized: " + arguments[0]);
+                }
+            }
+
+            Evaluating = false;
+
+            Prompt.enabled = true;
+            CommandInput.enabled = true;
+
+            // restore empty prompt line in history text
+            PaintOutputHistoryText();
+
+            if (Window.Focused) FocusInput();
+        }
+
+        void incrementPosInHistory (int dir)
+        {
+            posInHistory = Mathf.Clamp(posInHistory + (int) Mathf.Sign(dir), 0, InputHistory.Count);
+
+            CommandInput.text = (posInHistory == InputHistory.Count)
+                ? ""
+                : InputHistory[posInHistory];
+
+            CommandInput.caretPosition = CommandInput.text.Length;
+            ScrollToBottom();
+        }
     }
-
-    void incrementPosInHistory (int dir)
-    {
-        posInHistory = Mathf.Clamp(posInHistory + (int) Mathf.Sign(dir), 0, InputHistory.Count);
-
-        CommandInput.text = (posInHistory == InputHistory.Count)
-            ? ""
-            : InputHistory[posInHistory];
-        
-        CommandInput.caretPosition = CommandInput.text.Length;
-        ScrollToBottom();
-    }
-}
 }

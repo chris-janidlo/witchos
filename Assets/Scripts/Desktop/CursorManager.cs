@@ -6,53 +6,53 @@ using crass;
 
 namespace WitchOS
 {
-public class CursorManager : Singleton<CursorManager>
-{
-    public Texture2D NormalTexture, VerticalResizeTexture, HorizontalResizeTexture, DiagonalFromSoutheastResizeTexture, DiagonalFromSouthwestResizeTexture;
-
-    [SerializeField]
-    CursorState _currentCursorState;
-    public CursorState CursorState
+    public class CursorManager : Singleton<CursorManager>
     {
-        get => _currentCursorState;
+        public Texture2D NormalTexture, VerticalResizeTexture, HorizontalResizeTexture, DiagonalFromSoutheastResizeTexture, DiagonalFromSouthwestResizeTexture;
 
-        set
+        [SerializeField]
+        CursorState _currentCursorState;
+        public CursorState CursorState
         {
-            Vector2 hotspot = value == CursorState.Normal
-                ? Vector2.zero
-                : Vector2.one * 15;
+            get => _currentCursorState;
 
-            Texture2D texture;
-
-            switch (value)
+            set
             {
-                case CursorState.Normal: texture = NormalTexture; break;
-                case CursorState.VerticalResize: texture = VerticalResizeTexture; break;
-                case CursorState.HorizontalResize: texture = HorizontalResizeTexture; break;
-                case CursorState.DiagonalFromSoutheastResize: texture = DiagonalFromSoutheastResizeTexture; break;
-                case CursorState.DiagonalFromSouthwestResize: texture = DiagonalFromSouthwestResizeTexture; break;
+                Vector2 hotspot = value == CursorState.Normal
+                    ? Vector2.zero
+                    : Vector2.one * 15;
 
-                default: throw new ArgumentException($"unexpected CursorState value {value}");
+                Texture2D texture;
+
+                switch (value)
+                {
+                    case CursorState.Normal: texture = NormalTexture; break;
+                    case CursorState.VerticalResize: texture = VerticalResizeTexture; break;
+                    case CursorState.HorizontalResize: texture = HorizontalResizeTexture; break;
+                    case CursorState.DiagonalFromSoutheastResize: texture = DiagonalFromSoutheastResizeTexture; break;
+                    case CursorState.DiagonalFromSouthwestResize: texture = DiagonalFromSouthwestResizeTexture; break;
+
+                    default: throw new ArgumentException($"unexpected CursorState value {value}");
+                }
+
+                Cursor.SetCursor(texture, hotspot, CursorMode.Auto);
+                _currentCursorState = value;
             }
+        }
 
-            Cursor.SetCursor(texture, hotspot, CursorMode.Auto);
-            _currentCursorState = value;
+        void Awake ()
+        {
+            SingletonOverwriteInstance(this);
+        }
+
+        void Start ()
+        {
+            CursorState = CursorState.Normal;
         }
     }
 
-    void Awake ()
+    public enum CursorState
     {
-        SingletonOverwriteInstance(this);
+        Normal, VerticalResize, HorizontalResize, DiagonalFromSoutheastResize, DiagonalFromSouthwestResize
     }
-
-    void Start ()
-    {
-        CursorState = CursorState.Normal;
-    }
-}
-
-public enum CursorState
-{
-    Normal, VerticalResize, HorizontalResize, DiagonalFromSoutheastResize, DiagonalFromSouthwestResize
-}
 }

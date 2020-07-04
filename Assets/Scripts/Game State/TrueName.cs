@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace WitchOS
 {
-public static class TrueName
-{
-    public static string[] Syllables =
+    public static class TrueName
     {
+        public static string[] Syllables =
+        {
         "be", "bo", "bi", "bu",
         "de", "do", "di",
         "fe", "fo", "fi", "fu",
@@ -30,35 +30,35 @@ public static class TrueName
         "ze", "zo", "zi", "zu",
     };
 
-    public static string FromName (string name)
-    {
-        UInt32 unsignedHash = (UInt32) name.ToLower().GetHashCode();
-
-        string result = "";
-
-        // in one step, convert the unsigned hash to base syllables.length, reverse it, and map the digits of the new representation to syllables
-        while (unsignedHash != 0)
+        public static string FromName (string name)
         {
-            result += Syllables[unsignedHash % Syllables.Length];
-            unsignedHash /= (uint) Syllables.Length;
+            UInt32 unsignedHash = (UInt32) name.ToLower().GetHashCode();
+
+            string result = "";
+
+            // in one step, convert the unsigned hash to base syllables.length, reverse it, and map the digits of the new representation to syllables
+            while (unsignedHash != 0)
+            {
+                result += Syllables[unsignedHash % Syllables.Length];
+                unsignedHash /= (uint) Syllables.Length;
+            }
+
+            return result;
         }
 
-        return result;
-    }
-
-    public static bool IsTrueName (string name)
-    {
-        if (name.Split().Length != 1) return false;
-
-        return chunk(name).All(c => Syllables.Contains(c));
-    }
-
-    static IEnumerable<string> chunk (string str)
-    {
-        for (int i = 0; i < str.Length; i += 2)
+        public static bool IsTrueName (string name)
         {
-            yield return str.Substring(i, Math.Min(2, str.Length-i));
+            if (name.Split().Length != 1) return false;
+
+            return chunk(name).All(c => Syllables.Contains(c));
+        }
+
+        static IEnumerable<string> chunk (string str)
+        {
+            for (int i = 0; i < str.Length; i += 2)
+            {
+                yield return str.Substring(i, Math.Min(2, str.Length - i));
+            }
         }
     }
-}
 }

@@ -8,39 +8,39 @@ using TMPro;
 
 namespace WitchOS
 {
-public class DesktopIcon : MonoBehaviour
-{
-    [Header("Data")]
-    public Sprite Icon;
-    public string Label;
-
-    [Header("References")]
-    public Image IconImage;
-    public TextMeshProUGUI LabelText;
-
-    Dictionary<string, Vector3Serializable> posDict;
-
-    void Start ()
+    public class DesktopIcon : MonoBehaviour
     {
-        posDict = SaveManager.LooseSaveData.Value.IconPositions;
+        [Header("Data")]
+        public Sprite Icon;
+        public string Label;
 
-        if (posDict.ContainsKey(name))
+        [Header("References")]
+        public Image IconImage;
+        public TextMeshProUGUI LabelText;
+
+        Dictionary<string, Vector3Serializable> posDict;
+
+        void Start ()
         {
-            transform.position = posDict[name];
+            posDict = SaveManager.LooseSaveData.Value.IconPositions;
+
+            if (posDict.ContainsKey(name))
+            {
+                transform.position = posDict[name];
+            }
+
+            SaveManager.LooseSaveData.OnBeforeSave += savePosition;
         }
 
-        SaveManager.LooseSaveData.OnBeforeSave += savePosition;
-    }
+        void Update ()
+        {
+            IconImage.sprite = Icon;
+            LabelText.text = Label;
+        }
 
-    void Update ()
-    {
-        IconImage.sprite = Icon;
-        LabelText.text = Label;
+        void savePosition ()
+        {
+            posDict[name] = transform.position;
+        }
     }
-
-    void savePosition ()
-    {
-        posDict[name] = transform.position;
-    }
-}
 }

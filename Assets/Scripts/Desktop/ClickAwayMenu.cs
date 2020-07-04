@@ -6,37 +6,37 @@ using UnityEngine.EventSystems;
 
 namespace WitchOS
 {
-public class ClickAwayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-{
-    public Minimizer Minimizer;
-    public Button OpenButton;
-
-    bool mouseOver;
-
-	void Start ()
+    public class ClickAwayMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        OpenButton.onClick.AddListener(Minimizer.UnMinimize);
-        TimeState.Instance.DayStarted.AddListener(Minimizer.Minimize);
-    }
+        public Minimizer Minimizer;
+        public Button OpenButton;
 
-    void Update ()
-    {
-        OpenButton.interactable = Minimizer.Minimized;
+        bool mouseOver;
 
-        if (Input.GetMouseButtonDown(0) && !mouseOver)
+        void Start ()
         {
-            Minimizer.Minimize();
+            OpenButton.onClick.AddListener(Minimizer.UnMinimize);
+            TimeState.Instance.DayStarted.AddListener(Minimizer.Minimize);
+        }
+
+        void Update ()
+        {
+            OpenButton.interactable = Minimizer.Minimized;
+
+            if (Input.GetMouseButtonDown(0) && !mouseOver)
+            {
+                Minimizer.Minimize();
+            }
+        }
+
+        public void OnPointerEnter (PointerEventData eventData)
+        {
+            mouseOver = true;
+        }
+
+        public void OnPointerExit (PointerEventData eventData)
+        {
+            mouseOver = false;
         }
     }
-
-	public void OnPointerEnter (PointerEventData eventData)
-	{
-        mouseOver = true;
-	}
-
-	public void OnPointerExit (PointerEventData eventData)
-	{
-        mouseOver = false;
-	}
-}
 }

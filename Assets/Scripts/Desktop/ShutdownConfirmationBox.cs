@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 namespace WitchOS
 {
-public class ShutdownConfirmationBox : MonoBehaviour
-{
-    public Button Yes, No;
-    public Minimizer Minimizer;
-
-    void Start ()
+    public class ShutdownConfirmationBox : MonoBehaviour
     {
-        Yes.onClick.AddListener(TimeState.Instance.EndDay);
-        No.onClick.AddListener(Minimizer.Minimize);
+        public Button Yes, No;
+        public Minimizer Minimizer;
+
+        void Start ()
+        {
+            Yes.onClick.AddListener(TimeState.Instance.EndDay);
+            No.onClick.AddListener(Minimizer.Minimize);
+        }
     }
-}
 }

@@ -7,42 +7,42 @@ using TMPro;
 
 namespace WitchOS
 {
-public class MagicStateDisplay : MonoBehaviour
-{
-    public string OffLabel, OnLabel, DepletedLabel;
-    public TextMeshProUGUI StateDisplay;
-
-    void Update ()
+    public class MagicStateDisplay : MonoBehaviour
     {
-        string label;
+        public string OffLabel, OnLabel, DepletedLabel;
+        public TextMeshProUGUI StateDisplay;
 
-        var state = MagicSource.Instance.CurrentState;
-        switch (state)
+        void Update ()
         {
-            case MagicSource.State.Off:
-                label = OffLabel;
-                break;
+            string label;
 
-            case MagicSource.State.On:
-                label = OnLabel + remainingTimeString();
-                break;
+            var state = MagicSource.Instance.CurrentState;
+            switch (state)
+            {
+                case MagicSource.State.Off:
+                    label = OffLabel;
+                    break;
 
-            case MagicSource.State.Depleted:
-                label = DepletedLabel;
-                break;
+                case MagicSource.State.On:
+                    label = OnLabel + remainingTimeString();
+                    break;
 
-            default:
-                throw new InvalidOperationException($"unexpected MagicSource.State value {state}");
+                case MagicSource.State.Depleted:
+                    label = DepletedLabel;
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"unexpected MagicSource.State value {state}");
+            }
+
+            StateDisplay.text = label;
         }
 
-        StateDisplay.text = label;
+        string remainingTimeString ()
+        {
+            float seconds = MagicSource.Instance.RemainingOnTime;
+            TimeSpan ts = TimeSpan.FromSeconds(seconds);
+            return ts.ToString(@"mm\:ss");
+        }
     }
-
-    string remainingTimeString ()
-    {
-        float seconds = MagicSource.Instance.RemainingOnTime;
-        TimeSpan ts = TimeSpan.FromSeconds(seconds);
-        return ts.ToString(@"mm\:ss");
-    }
-}
 }

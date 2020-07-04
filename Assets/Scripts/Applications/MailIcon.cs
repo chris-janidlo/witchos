@@ -4,29 +4,29 @@ using UnityEngine;
 
 namespace WitchOS
 {
-public class MailIcon : MonoBehaviour
-{
-    public Sprite OnSprite, OffSprite;
-    public float FlashTime;
-    public DesktopIcon Icon;
-
-    IEnumerator Start ()
+    public class MailIcon : MonoBehaviour
     {
-        while (true)
+        public Sprite OnSprite, OffSprite;
+        public float FlashTime;
+        public DesktopIcon Icon;
+
+        IEnumerator Start ()
         {
-            if (MailState.Instance.UnreadMessageCount == 0)
+            while (true)
             {
-                Icon.Icon = OffSprite;
-                yield return null;
-            }
-            else
-            {
-                Icon.Icon = OnSprite;
-                yield return new WaitForSeconds(FlashTime);
-                Icon.Icon = OffSprite;
-                yield return new WaitForSeconds(FlashTime);
+                if (MailState.Instance.UnreadMessageCount == 0)
+                {
+                    Icon.Icon = OffSprite;
+                    yield return null;
+                }
+                else
+                {
+                    Icon.Icon = OnSprite;
+                    yield return new WaitForSeconds(FlashTime);
+                    Icon.Icon = OffSprite;
+                    yield return new WaitForSeconds(FlashTime);
+                }
             }
         }
     }
-}
 }

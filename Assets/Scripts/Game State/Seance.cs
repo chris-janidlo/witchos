@@ -5,11 +5,11 @@ using UnityEngine;
 using crass;
 namespace WitchOS
 {
-public static class Seance
-{
-    public const int MAX_CHANTS = 7; // MUST be smaller than the amount of available chants
+    public static class Seance
+    {
+        public const int MAX_CHANTS = 7; // MUST be smaller than the amount of available chants
 
-    public static readonly List<string> CHANTS = new List<string>
+        public static readonly List<string> CHANTS = new List<string>
     {
         "homage to you",
         "you are seated on your throne",
@@ -35,33 +35,33 @@ public static class Seance
         "worldly renown is naught but a breath of wind"
     };
 
-    static readonly BagRandomizer<string> chantBag = new BagRandomizer<string> { Items = CHANTS, AvoidRepeats = true };
+        static readonly BagRandomizer<string> chantBag = new BagRandomizer<string> { Items = CHANTS, AvoidRepeats = true };
 
-    public static IEnumerator<string> GetChants (string name)
-    {
-        string trueChant = TrueChant(name);
-
-        int trueCount = 0;
-
-        for (int i = 0; i < MAX_CHANTS; i++)
+        public static IEnumerator<string> GetChants (string name)
         {
-            // guarantee that by the end of the chant we've seen at least 2 chants, and spread the guaranteed ones around a bit
-            string next = (i >= MAX_CHANTS / 2 && trueCount < 1) || (i >= MAX_CHANTS - 1 && trueCount < 2)
-                ? trueChant
-                : chantBag.GetNext();
+            string trueChant = TrueChant(name);
 
-            if (next == trueChant)
+            int trueCount = 0;
+
+            for (int i = 0; i < MAX_CHANTS; i++)
             {
-                trueCount++;
-            }
+                // guarantee that by the end of the chant we've seen at least 2 chants, and spread the guaranteed ones around a bit
+                string next = (i >= MAX_CHANTS / 2 && trueCount < 1) || (i >= MAX_CHANTS - 1 && trueCount < 2)
+                    ? trueChant
+                    : chantBag.GetNext();
 
-            yield return next;
+                if (next == trueChant)
+                {
+                    trueCount++;
+                }
+
+                yield return next;
+            }
+        }
+
+        public static string TrueChant (string name)
+        {
+            return CHANTS[Math.Abs(name.ToLowerInvariant().GetHashCode()) % CHANTS.Count];
         }
     }
-
-    public static string TrueChant (string name)
-    {
-        return CHANTS[Math.Abs(name.ToLowerInvariant().GetHashCode()) % CHANTS.Count];
-    }
-}
 }

@@ -7,15 +7,15 @@ using TMPro;
 
 namespace WitchOS
 {
-public class DateDisplay : MonoBehaviour
-{
-    [TextArea]
-    public string Format = "dddd MMMM dd";
-    public TextMeshProUGUI Text;
-
-    void Update ()
+    public class DateDisplay : MonoBehaviour
     {
-        Text.text = TimeState.Instance.DateTime.ToString(Format, TimeState.CULTURE_INFO);
+        [TextArea]
+        public string Format = "dddd MMMM dd";
+        public TextMeshProUGUI Text;
+
+        void Update ()
+        {
+            Text.text = TimeState.Instance.DateTime.ToString(Format, TimeState.CULTURE_INFO);
+        }
     }
-}
 }

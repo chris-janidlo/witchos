@@ -6,21 +6,21 @@ using UnityEngine;
 
 namespace WitchOS
 {
-public class SetCommand : TerminalCommand
-{
-	public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
-	{
-		// TODO: allow for other argument styles like 'set a = b', 'set a=b', etc
-		if (arguments.Length < 3)
-		{
-			printUsage(term);
-			yield break;
-		}
+    public class SetCommand : TerminalCommand
+    {
+        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        {
+            // TODO: allow for other argument styles like 'set a = b', 'set a=b', etc
+            if (arguments.Length < 3)
+            {
+                printUsage(term);
+                yield break;
+            }
 
-		string value = String.Join(" ", arguments.Skip(2));
+            string value = String.Join(" ", arguments.Skip(2));
 
-		TerminalState.Instance.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
-		term.PrintLine(arguments[1] + " = " + value);
-	}
-}
+            TerminalState.Instance.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
+            term.PrintLine(arguments[1] + " = " + value);
+        }
+    }
 }

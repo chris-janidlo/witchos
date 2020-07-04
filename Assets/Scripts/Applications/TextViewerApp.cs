@@ -6,52 +6,52 @@ using TMPro;
 
 namespace WitchOS
 {
-public class TextViewerApp : MonoBehaviour
-{
-    public Window Window;
-
-    public TextMeshProUGUI ContentText, PageNumberIndicator;
-    public ScrollRect ScrollRect;
-
-    public Button NextPage, PreviousPage;
-
-    List<string> pages;
-    int pageNum;
-
-    void Start ()
+    public class TextViewerApp : MonoBehaviour
     {
-        NextPage.onClick.AddListener(() => incrementPage(1));
-        PreviousPage.onClick.AddListener(() => incrementPage(-1));
+        public Window Window;
+
+        public TextMeshProUGUI ContentText, PageNumberIndicator;
+        public ScrollRect ScrollRect;
+
+        public Button NextPage, PreviousPage;
+
+        List<string> pages;
+        int pageNum;
+
+        void Start ()
+        {
+            NextPage.onClick.AddListener(() => incrementPage(1));
+            PreviousPage.onClick.AddListener(() => incrementPage(-1));
+        }
+
+        public void SetData ()
+        {
+            var pdf = Window.AppData as TextPDF;
+
+            Window.Title = pdf.Title;
+            pages = pdf.Pages;
+
+            setPage(1);
+        }
+
+        void incrementPage (int direction)
+        {
+            ScrollRect.verticalNormalizedPosition = 1;
+            setPage(pageNum + (int) Mathf.Sign(direction));
+        }
+
+        void setPage (int target)
+        {
+            target = Mathf.Clamp(target, 1, pages.Count);
+            if (target == pageNum) return;
+
+            pageNum = target;
+
+            ContentText.text = pages[pageNum - 1];
+            PageNumberIndicator.text = pages.Count == 1 ? "" : pageNum.ToString();
+
+            NextPage.interactable = pageNum != pages.Count;
+            PreviousPage.interactable = pageNum != 1;
+        }
     }
-
-    public void SetData ()
-    {
-        var pdf = Window.AppData as TextPDF;
-
-        Window.Title = pdf.Title;
-        pages = pdf.Pages;
-
-        setPage(1);
-    }
-
-    void incrementPage (int direction)
-    {
-        ScrollRect.verticalNormalizedPosition = 1;
-        setPage(pageNum + (int) Mathf.Sign(direction));
-    }
-
-    void setPage (int target)
-    {
-        target = Mathf.Clamp(target, 1, pages.Count);
-        if (target == pageNum) return;
-
-        pageNum = target;
-
-        ContentText.text = pages[pageNum - 1];
-        PageNumberIndicator.text = pages.Count == 1 ? "" : pageNum.ToString();
-
-        NextPage.interactable = pageNum != pages.Count;
-        PreviousPage.interactable = pageNum != 1;
-    }
-}
 }

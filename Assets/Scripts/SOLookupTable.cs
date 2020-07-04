@@ -5,24 +5,24 @@ using crass;
 
 namespace WitchOS
 {
-// for (de)serialization
-public class SOLookupTable : Singleton<SOLookupTable>
-{
-    public List<ScriptableObject> LookupTable;
-
-    void Awake ()
+    // for (de)serialization
+    public class SOLookupTable : Singleton<SOLookupTable>
     {
-        SingletonOverwriteInstance(this);
-    }
+        public List<ScriptableObject> LookupTable;
 
-    public int GetID (ScriptableObject so)
-    {
-        return LookupTable.IndexOf(so);
-    }
+        void Awake ()
+        {
+            SingletonOverwriteInstance(this);
+        }
 
-    public ScriptableObject GetSO (int id)
-    {
-        return LookupTable[id];
+        public int GetID (ScriptableObject so)
+        {
+            return LookupTable.IndexOf(so);
+        }
+
+        public ScriptableObject GetSO (int id)
+        {
+            return LookupTable[id];
+        }
     }
-}
 }

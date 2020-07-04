@@ -5,50 +5,50 @@ using TMPro;
 
 namespace WitchOS
 {
-public class MirrorInfo : MonoBehaviour
-{
-	public Animator IconAnimator;
-	public string AnimatorStateIntegerName;
+    public class MirrorInfo : MonoBehaviour
+    {
+        public Animator IconAnimator;
+        public string AnimatorStateIntegerName;
 
-	public TextMeshProUGUI StateLabel;
+        public TextMeshProUGUI StateLabel;
 
-	public Button BreakButton;
-	public TextMeshProUGUI BreakButtonLabel;
+        public Button BreakButton;
+        public TextMeshProUGUI BreakButtonLabel;
 
-	MirrorState.Mirror mirror;
+        MirrorState.Mirror mirror;
 
-	void Update ()
-	{
-		if (mirror == null) return;
+        void Update ()
+        {
+            if (mirror == null) return;
 
-		BreakButton.interactable = mirror.State == MirrorState.State.Intact;
-		BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "Break" : "";
+            BreakButton.interactable = mirror.State == MirrorState.State.Intact;
+            BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "Break" : "";
 
-		int time = (int) mirror.Timer;
+            int time = (int) mirror.Timer;
 
-		switch (mirror.State)
-		{
-			case MirrorState.State.Intact:
-				StateLabel.text = "Intact";
-				break;
+            switch (mirror.State)
+            {
+                case MirrorState.State.Intact:
+                    StateLabel.text = "Intact";
+                    break;
 
-			case MirrorState.State.Broken:
-				StateLabel.text = $"Broken {time} second{(time != 1 ? "s" : "")} ago";
-				break;
+                case MirrorState.State.Broken:
+                    StateLabel.text = $"Broken {time} second{(time != 1 ? "s" : "")} ago";
+                    break;
 
-			case MirrorState.State.Depleted:
-				StateLabel.text = $"Depleted. {time} second{(time != 1 ? "s" : "")} until repaired";
-				break;
-		}
+                case MirrorState.State.Depleted:
+                    StateLabel.text = $"Depleted. {time} second{(time != 1 ? "s" : "")} until repaired";
+                    break;
+            }
 
-		IconAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
-	}
+            IconAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
+        }
 
-	public void SetMirrorState (MirrorState.Mirror mirror)
-	{
-		this.mirror = mirror;
+        public void SetMirrorState (MirrorState.Mirror mirror)
+        {
+            this.mirror = mirror;
 
-		BreakButton.onClick.AddListener(mirror.Break);
-	}
-}
+            BreakButton.onClick.AddListener(mirror.Break);
+        }
+    }
 }
