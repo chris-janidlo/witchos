@@ -8,7 +8,7 @@ namespace WitchOS
 {
     public abstract class Deliverable : ScriptableObject
     {
-        public abstract float AdjustedPrice { get; }
+        public abstract int AdjustedPrice { get; }
         public abstract string EmailAttachment ();
     }
 
@@ -18,7 +18,7 @@ namespace WitchOS
         [DataMember]
         public T Service;
 
-        public override float AdjustedPrice => Service.BasePrice;
+        public override int AdjustedPrice => Service.BasePrice;
 
         public bool Equals (Deliverable<T> other)
         {

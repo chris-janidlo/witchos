@@ -7,6 +7,6 @@ namespace WitchOS
     public abstract class Service : ScriptableObject
     {
         public string PrettyName;
-        public float BasePrice;
+        public int BasePrice;
     }
 }
