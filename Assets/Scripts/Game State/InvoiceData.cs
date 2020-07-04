@@ -13,7 +13,7 @@ namespace WitchOS
         public List<Deliverable> LineItems;
         public int FullDaysToComplete;
 
-        public float TotalPrice => LineItems.Sum(d => d.AdjustedPrice);
+        public int TotalPrice => LineItems.Sum(d => d.AdjustedPrice);
 
         public int OrderNumber => Math.Abs(GetHashCode());
     }
