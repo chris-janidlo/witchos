@@ -44,9 +44,13 @@ namespace WitchOS
             if (!term.SIGINT)
             {
                 TerminalState.Instance.XingTarget = target;
-                term.PrintLine("done. now entering stability mode.");
                 term.PrintEmptyLine();
-                term.PrintLine("press escape at any time to exit and RELEASE the imps from their current target.");
+                term.PrintLine("done.");
+                yield return new WaitForSeconds(.3f);
+                term.PrintLine("now entering stability mode.");
+                yield return new WaitForSeconds(.5f);
+                term.PrintEmptyLine();
+                term.PrintLine("press escape at any time to exit and release the imps from their current target.");
             }
 
             while (!term.SIGINT)
