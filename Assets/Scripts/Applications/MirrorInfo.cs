@@ -37,7 +37,7 @@ namespace WitchOS
                     break;
 
                 case MirrorState.State.Depleted:
-                    StateLabel.text = $"Depleted. {time} second{(time != 1 ? "s" : "")} until repaired";
+                    StateLabel.text = $"Depleted.\n{time} second{(time != 1 ? "s" : "")} until repair";
                     break;
             }
 
