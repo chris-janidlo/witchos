@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: spellbook.txt
   Pages:
-  - "Contents\n\n1...\tthis page\n2...\ttips\n3...\thair loss spell\n4...\tpassword
+  - "Contents\n\n1...\tthis page\n2...\ttips\n3...\tpassword spell\n4...\thair loss
     spell\n5...\tstub spell\n6...\tbad luck spell\n7...\tsocial media spell"
   - "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors in Mirrors\n\n-
     commands are entered in the spe// application\n\n- any time an instruction uses
