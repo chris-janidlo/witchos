@@ -21,3 +21,5 @@ MonoBehaviour:
     it takes either an IP address (for devices) or a person''s true name as an argument
 
     while active, any spell that needs imps can effect xing''s current target.'
+  XingLock: {fileID: 11400000, guid: 8b8cd797eaf694eb08647c72d7aae7d6, type: 2}
+  XingTarget: {fileID: 11400000, guid: 3fac386b48d4c4be4b21ee45109595a5, type: 2}
