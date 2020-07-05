@@ -4,11 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 namespace WitchOS
 {
     public class SocialMediaSpell : Spell
     {
+        public BoolVariable XingLock;
+        public StringVariable XingTarget;
+
         public override Regex GetRegex ()
         {
             return new Regex(@"^facies\s+libel.+$", REGEX_OPTIONS);
@@ -18,8 +22,8 @@ namespace WitchOS
         {
             return
                 MirrorState.Instance.NumberIntact() >= 1 &&
-                TerminalState.Instance.XingLock &&
-                !String.IsNullOrEmpty(TerminalState.Instance.XingTarget);
+                XingLock.Value &&
+                !String.IsNullOrEmpty(XingTarget.Value);
         }
 
         // TODO: make more forgiving in terms of URL
@@ -28,7 +32,7 @@ namespace WitchOS
             string targetLock =
                 String.Join(" ", incantation.Skip(2)) +
                 " on " +
-                TerminalState.Instance.XingTarget;
+                XingTarget.Value;
 
             term.PrintEmptyLine();
 

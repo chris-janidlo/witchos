@@ -1,16 +1,19 @@
 using System;
 using System.Linq;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 namespace WitchOS
 {
     public class XingCommand : TerminalCommand
     {
+        public BoolVariable XingLock;
+        public StringVariable XingTarget;
+
         public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
         {
-            if (TerminalState.Instance.XingLock)
+            if (XingLock.Value)
             {
                 term.PrintLine("error - xing is already running in another window");
                 yield break;
@@ -30,7 +33,7 @@ namespace WitchOS
 
             string target = String.Join(" ", arguments.Skip(1));
 
-            TerminalState.Instance.XingLock = true;
+            XingLock.Value = true;
 
             term.PrintLine($"pointing imps toward {target}... (press ESC to cancel if desired. this may take some time)");
 
@@ -43,10 +46,14 @@ namespace WitchOS
 
             if (!term.SIGINT)
             {
-                TerminalState.Instance.XingTarget = target;
-                term.PrintLine("done. now entering stability mode.");
+                XingTarget.Value = target;
                 term.PrintEmptyLine();
-                term.PrintLine("press escape at any time to exit and RELEASE the imps from their current target.");
+                term.PrintLine("done.");
+                yield return new WaitForSeconds(.3f);
+                term.PrintLine("now entering stability mode.");
+                yield return new WaitForSeconds(.5f);
+                term.PrintEmptyLine();
+                term.PrintLine("press escape at any time to exit and release the imps from their current target.");
             }
 
             while (!term.SIGINT)
@@ -54,13 +61,12 @@ namespace WitchOS
                 yield return null;
             }
 
-            TerminalState.Instance.XingLock = false;
+            XingLock.Value = false;
         }
 
         public override void CleanUpEarly (TerminalApp term)
         {
-            // FIXME: throws exception if this is called as terminal object is destroyed
-            TerminalState.Instance.XingLock = false;
+            XingLock.Value = false;
         }
     }
 }

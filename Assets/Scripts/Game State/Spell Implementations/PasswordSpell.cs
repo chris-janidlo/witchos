@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 using crass;
 
 namespace WitchOS
 {
     public class PasswordSpell : Spell
     {
+        public BoolVariable XingLock;
+        public StringVariable XingTarget;
+
         string envTarget => TerminalState.Instance.GetEnvironmentVariable("target");
 
         static List<int> progChanges = new List<int>() { -1, 2, 3, 4, 5 };
@@ -20,7 +24,7 @@ namespace WitchOS
 
         public override bool ConditionsAreMet (IList<string> incantation)
         {
-            return TerminalState.Instance.XingLock && envTarget == TerminalState.Instance.XingTarget;
+            return XingLock.Value && envTarget == XingTarget.Value;
         }
 
         public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
