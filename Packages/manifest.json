@@ -15,6 +15,14 @@
     }
   ],
   "dependencies": {
+    "com.crass.spellbook-unity": "https://github.com/crassSandwich/spellbook-unity.git",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.1.0",
+    "com.mambojambostudios.unity-atoms-core": "4.1.0",
+    "com.mambojambostudios.unity-atoms-fsm": "4.1.0",
+    "com.mambojambostudios.unity-atoms-mono-hooks": "4.1.0",
+    "com.mambojambostudios.unity-atoms-scene-mgmt": "4.1.0",
+    "com.mambojambostudios.unity-atoms-tags": "4.1.0",
+    "com.mambojambostudios.unity-atoms-ui": "4.1.0",
     "com.unity.2d.pixel-perfect": "1.0.1-preview",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
@@ -62,13 +70,12 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.mambojambostudios.unity-atoms-core": "4.1.0",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.1.0",
-    "com.mambojambostudios.unity-atoms-fsm": "4.1.0",
-    "com.mambojambostudios.unity-atoms-mono-hooks": "4.1.0",
-    "com.mambojambostudios.unity-atoms-tags": "4.1.0",
-    "com.mambojambostudios.unity-atoms-scene-mgmt": "4.1.0",
-    "com.mambojambostudios.unity-atoms-ui": "4.1.0"
+    "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.crass.spellbook-unity": {
+      "hash": "aa3948ad01df8ee8ed83712d5f5d9c1cf04663cc",
+      "revision": "HEAD"
+    }
   }
 }
