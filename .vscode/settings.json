@@ -14,7 +14,7 @@
         "**/*.unityproj":true,
         "**/*.dll":true,
         "**/*.exe":true,
-        "**/*.meta":true,
+        "**/*~":true,
         "build/":true,
         "Build/":true,
         "Library/":true,
