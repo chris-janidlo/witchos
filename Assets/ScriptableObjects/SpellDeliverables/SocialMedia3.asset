@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SocialMedia3
   m_EditorClassIdentifier: 
   Service: {fileID: 11400000, guid: f107df0718d644f7f934d83a84271486, type: 2}
-  TargetName: Branden Pickett on facebook.com
+  TargetName: Branden Pickett on gramoire
