@@ -18,7 +18,7 @@ namespace WitchOS
             LooseSaveData = new SaveData<LooseSaveValues>
             (
                 "looseData",
-                new LooseSaveValues
+                () => new LooseSaveValues
                 {
                     Date = TimeState.INITIAL_DATE,
                     CurrentDifficultyLevel = 0,

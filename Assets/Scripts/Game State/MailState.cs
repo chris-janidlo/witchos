@@ -34,7 +34,7 @@ namespace WitchOS
             messageData = new SaveData<List<Entry>>
             (
                 "emailData",
-                new List<Entry>()
+                () => new List<Entry>()
             );
 
             SaveManager.RegisterSaveDataObject(messageData);
