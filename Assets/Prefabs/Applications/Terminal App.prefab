@@ -355,7 +355,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdc634f8d0a78476ea02ec231920407d, type: 2}
   - {fileID: 11400000, guid: 13ac7d6f72dc44e72b78798b6d0ba5c3, type: 2}
   - {fileID: 11400000, guid: 177744f67285947daa06d56815273645, type: 2}
-  BaseTitle: spe//
+  BaseTitle: hexterm
   NoMagicWarning: 'Occuloscope err_5: incompatible source
 
     This usually means magic is not activated. Make sure to turn it on before attempting
@@ -938,7 +938,7 @@ PrefabInstance:
     - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_text
-      value: spe//
+      value: hexterm
       objectReference: {fileID: 0}
     - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
@@ -973,7 +973,7 @@ PrefabInstance:
     - target: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: Title
-      value: spe//
+      value: hexterm
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}

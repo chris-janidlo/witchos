@@ -17,7 +17,7 @@ MonoBehaviour:
   - "Contents\n\n1...\tthis page\n2...\ttips\n3...\tpassword spell\n4...\thair loss
     spell\n5...\tstub spell\n6...\tbad luck spell\n7...\tsocial media spell"
   - "notes/tips:\n\n- check the moon phase with PhaseVue\n\n- break mirrors in Mirrors\n\n-
-    commands are entered in the spe// application\n\n- any time an instruction uses
+    commands are entered in the hexterm application\n\n- any time an instruction uses
     <>, replace everything inside the brackets including the brackets\n   - for example:
     if you are told to enter 'tn <target name>' and the name is 'John Dee', enter
     'tn John Dee'\n\n- make sure to check out the 'help' command for more info"
@@ -28,7 +28,7 @@ MonoBehaviour:
     - run command ''xing <target name>''
 
 
-    - while that''s running, open a new spe// window
+    - while that''s running, open a new hexterm window
 
 
     - in the new window, run command ''set target <target name>''
@@ -70,4 +70,4 @@ MonoBehaviour:
     ''xing <target website>
 
 
-    in a new spe// window, ''incant facies libel <target name>'''
+    in a new hexterm window, ''incant facies libel <target name>'''
