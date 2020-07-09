@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 namespace WitchOS
 {
     [Serializable, DataContract]
+    [KnownType(typeof(Order))]
     public class Email : IEquatable<Email>
     {
         public EmailData EmailData;
