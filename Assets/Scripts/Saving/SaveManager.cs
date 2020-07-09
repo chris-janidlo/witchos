@@ -22,7 +22,7 @@ namespace WitchOS
                 {
                     Date = TimeState.INITIAL_DATE,
                     CurrentDifficultyLevel = 0,
-                    IconPositions = new Dictionary<string, Vector3Saveable>()
+                    IconPositions = new Dictionary<string, SaveableVector3>()
                 }
             );
 
@@ -59,6 +59,6 @@ namespace WitchOS
         [DataMember(IsRequired = true)]
         public int CurrentDifficultyLevel;
         [DataMember(IsRequired = true)]
-        public Dictionary<string, Vector3Saveable> IconPositions;
+        public Dictionary<string, SaveableVector3> IconPositions;
     }
 }

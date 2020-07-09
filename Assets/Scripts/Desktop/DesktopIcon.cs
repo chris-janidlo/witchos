@@ -18,7 +18,7 @@ namespace WitchOS
         public Image IconImage;
         public TextMeshProUGUI LabelText;
 
-        Dictionary<string, Vector3Saveable> posDict;
+        Dictionary<string, SaveableVector3> posDict;
 
         void Start ()
         {

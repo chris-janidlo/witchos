@@ -4,19 +4,19 @@ using UnityEngine;
 namespace WitchOS
 {
     [DataContract]
-    public struct Vector3Saveable
+    public struct SaveableVector3
     {
         [DataMember(IsRequired = true)]
         public float x, y, z;
 
-        public static implicit operator Vector3 (Vector3Saveable v)
+        public static implicit operator Vector3 (SaveableVector3 v)
         {
             return new Vector3(v.x, v.y, v.z);
         }
 
-        public static implicit operator Vector3Saveable (Vector3 v)
+        public static implicit operator SaveableVector3 (Vector3 v)
         {
-            return new Vector3Saveable { x = v.x, y = v.y, z = v.z };
+            return new SaveableVector3 { x = v.x, y = v.y, z = v.z };
         }
     }
 }
