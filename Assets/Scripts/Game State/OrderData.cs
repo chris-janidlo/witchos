@@ -26,12 +26,7 @@ namespace WitchOS
                 ? TimeState.FINAL_DATE.AddDays(7)
                 : TimeState.Instance.AddDaysToToday(invoiceData.FullDaysToComplete);
 
-            return new Order
-            {
-                EmailData = PossibleEmails.GetNext(),
-                InvoiceData = invoiceData,
-                DueDate = dueDate
-            };
+            return new Order(PossibleEmails.GetNext(), invoiceData, dueDate);
         }
     }
 }

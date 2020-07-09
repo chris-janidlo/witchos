@@ -51,7 +51,7 @@ namespace WitchOS
             {
                 if (!(entry.Contents is Order)) continue;
 
-                var invoice = (entry.Contents as Order).InvoiceData;
+                var invoice = (entry.Contents as Order).InvoiceData.Value;
 
                 // only search on SpellDeliverables, cast as such, so that the proper Equals method is called
                 if (invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).Contains(spell))

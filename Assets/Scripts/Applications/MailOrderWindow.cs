@@ -43,7 +43,7 @@ namespace WitchOS
         protected override string makeContentText ()
         {
             string emailContent =
-                $"{base.makeContentText()}\n\n\nAttachment: Invoice #{order.InvoiceData.OrderNumber}\n{SEPARATOR}";
+                $"{base.makeContentText()}\n\n\nAttachment: Invoice #{order.InvoiceData.Value.OrderNumber}\n{SEPARATOR}";
 
             if (order.DueDate.Date <= TimeState.FINAL_DATE)
                 emailContent += $"\nDue {order.DueDate.ToString(DateFormat, TimeState.CULTURE_INFO)}";
@@ -52,12 +52,12 @@ namespace WitchOS
 
             emailContent += "\n\nRequested services:";
 
-            foreach (Deliverable lineItem in order.InvoiceData.LineItems)
+            foreach (Deliverable lineItem in order.InvoiceData.Value.LineItems)
             {
                 emailContent += $"\n\n{lineItem.EmailAttachment()}";
             }
 
-            emailContent += $"\n\nTotal: {order.InvoiceData.TotalPrice} gp";
+            emailContent += $"\n\nTotal: {order.InvoiceData.Value.TotalPrice} gp";
 
             return emailContent;
         }
@@ -66,7 +66,7 @@ namespace WitchOS
         {
             if (order.State != OrderState.InProgress) return false;
 
-            foreach (var request in order.InvoiceData.LineItems)
+            foreach (var request in order.InvoiceData.Value.LineItems)
             {
                 if (request is SpellDeliverable)
                 {
