@@ -1,14 +1,13 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using crass;
 
 namespace WitchOS
 {
-    // for (de)serialization
     public class SOLookupTable : Singleton<SOLookupTable>
     {
-        public List<ScriptableObject> LookupTable;
+        public List<ScriptableObjectPathTuple> LookUpTable;
 
         void Awake ()
         {
@@ -17,12 +16,12 @@ namespace WitchOS
 
         public int GetID (ScriptableObject so)
         {
-            return LookupTable.IndexOf(so);
+            return LookUpTable.FindIndex(o => o.Asset == so);
         }
 
         public ScriptableObject GetSO (int id)
         {
-            return LookupTable[id];
+            return LookUpTable[id].Asset;
         }
     }
 }
