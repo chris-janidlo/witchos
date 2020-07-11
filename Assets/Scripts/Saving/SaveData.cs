@@ -45,14 +45,14 @@ namespace WitchOS
         }
 
         // default value before any save interactions have ocurred
-        T gameDefaultValue;
+        Func<T> getGameDefaultValue;
 
         DataContractJsonSerializer serializer;
 
-        public SaveData (string fileName, T gameDefaultValue)
+        public SaveData (string fileName, Func<T> getGameDefaultValue)
         {
             FileName = fileName;
-            this.gameDefaultValue = gameDefaultValue;
+            this.getGameDefaultValue = getGameDefaultValue;
 
             serializer = new DataContractJsonSerializer(typeof(T));
         }
@@ -67,11 +67,12 @@ namespace WitchOS
                 }
                 catch (Exception ex) when (ex is SerializationException)
                 {
+                    T defaultValue = getGameDefaultValue();
 #if UNITY_EDITOR
                     Debug.LogWarning(ex);
-                    Debug.LogWarning($"unable to deserialize save data; using default value {gameDefaultValue}");
+                    Debug.LogWarning($"unable to deserialize save data; using default value {defaultValue}");
 #endif // UNITY_EDITOR
-                    value = gameDefaultValue;
+                    value = defaultValue;
                 }
             }
 

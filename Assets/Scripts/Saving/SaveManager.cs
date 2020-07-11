@@ -18,11 +18,11 @@ namespace WitchOS
             LooseSaveData = new SaveData<LooseSaveValues>
             (
                 "looseData",
-                new LooseSaveValues
+                () => new LooseSaveValues
                 {
                     Date = TimeState.INITIAL_DATE,
                     CurrentDifficultyLevel = 0,
-                    IconPositions = new Dictionary<string, Vector3Serializable>()
+                    IconPositions = new Dictionary<string, SaveableVector3>()
                 }
             );
 
@@ -59,6 +59,6 @@ namespace WitchOS
         [DataMember(IsRequired = true)]
         public int CurrentDifficultyLevel;
         [DataMember(IsRequired = true)]
-        public Dictionary<string, Vector3Serializable> IconPositions;
+        public Dictionary<string, SaveableVector3> IconPositions;
     }
 }

@@ -6,7 +6,11 @@ namespace WitchOS
     [Serializable, DataContract]
     public class Order : Email, IEquatable<Order>
     {
-        public InvoiceData InvoiceData;
+        [Serializable, DataContract]
+        public class SaveableInvoiceDataReference : SaveableScriptableObjectReference<InvoiceData> { }
+
+        [DataMember(IsRequired = true)]
+        public SaveableInvoiceDataReference InvoiceData;
 
         [DataMember(IsRequired = true)]
         public DateTime DueDate;
@@ -14,11 +18,15 @@ namespace WitchOS
         [DataMember(IsRequired = true)]
         public OrderState State;
 
-        [DataMember(IsRequired = true)]
-        private int serializedInvoiceDataID
+        public Order (EmailData emailData, InvoiceData invoiceData, DateTime dueDate) : base(emailData)
         {
-            get => SOLookupTable.Instance.GetID(InvoiceData);
-            set => InvoiceData = SOLookupTable.Instance.GetSO(value) as InvoiceData;
+            if (InvoiceData == null)
+            {
+                InvoiceData = new SaveableInvoiceDataReference();
+            }
+
+            InvoiceData.Value = invoiceData;
+            DueDate = dueDate;
         }
 
         public override string AnnotatedSubject
@@ -44,7 +52,7 @@ namespace WitchOS
 
         public bool Equals (Order other)
         {
-            return base.Equals(other) && InvoiceData == other.InvoiceData && DueDate == other.DueDate;
+            return base.Equals(other) && InvoiceData.Value == other.InvoiceData.Value && DueDate == other.DueDate;
         }
     }
 }

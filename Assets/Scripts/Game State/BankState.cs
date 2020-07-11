@@ -24,7 +24,7 @@ namespace WitchOS
             transactionData = new SaveData<List<BankTransaction>>
             (
                 "bankTransactionData",
-                new List<BankTransaction> { InitialTransaction }
+                () => new List<BankTransaction> { InitialTransaction }
             );
 
             SaveManager.RegisterSaveDataObject(transactionData);

@@ -6,7 +6,7 @@ namespace WitchOS
     {
         public void OnOrderTurnedIn (Order order)
         {
-            BankState.Instance.AddTransaction(order.InvoiceData.TotalPrice, $"invoice {order.InvoiceData.OrderNumber} payment");
+            BankState.Instance.AddTransaction(order.InvoiceData.Value.TotalPrice, $"invoice {order.InvoiceData.Value.OrderNumber} payment");
         }
     }
 }
