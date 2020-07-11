@@ -20,7 +20,12 @@ namespace WitchOS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "this is an AssetPostProcessor message")]
         static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
-            var lutPrefab = AssetDatabase.LoadAssetAtPath(SO_LOOKUP_TABLE_PATH, typeof(GameObject)) as GameObject;
+            if (importedAssets.Length == 1 && importedAssets[0] == SO_LOOKUP_TABLE_PATH)
+            {
+                return;
+            }
+
+            var lutPrefab = AssetDatabase.LoadAssetAtPath(SO_LOOKUP_TABLE_PATH, typeof(Object)) as GameObject;
             var soLookupTable = lutPrefab.GetComponent<SOLookupTable>();
 
             // remove first in case asset moved between two tracked directories
@@ -38,7 +43,7 @@ namespace WitchOS
                     soLookupTable.LookUpTable.Add(new ScriptableObjectPathTuple(path));
             }
 
-            //PrefabUtility.SavePrefabAsset(lutPrefab);
+            PrefabUtility.SavePrefabAsset(lutPrefab);
         }
 
         static IEnumerable<string> pathsInTrackedDirectories (IEnumerable<string> pathList)
