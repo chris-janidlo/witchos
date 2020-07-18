@@ -9,9 +9,11 @@ namespace WitchOS
 {
     public class BankState : Singleton<BankState>
     {
-        public int CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
+        public long CurrentBalance => Transactions.Sum(t => t.DeltaCurrency);
 
-        public string InsufficientFundsAlertMessage;
+        public long MaximumBalance;
+
+        public string InsufficientFundsAlertMessage, CappedBalanceAlertMessage;
         public BankTransaction InitialTransaction;
 
         SaveData<List<BankTransaction>> transactionData;
@@ -38,10 +40,19 @@ namespace WitchOS
                 return false;
             }
 
+            int cappedDelta = (int) Math.Min(deltaCurrency, MaximumBalance - CurrentBalance);
+
+            if (cappedDelta != deltaCurrency)
+            {
+                if (cappedDelta < 0) throw new InvalidOperationException($"somehow CurrentBalance ({CurrentBalance}) got bigger than the MaximumBalance ({MaximumBalance})");
+                if (autoAlert) Alert.Instance.ShowMessageImmediately(CappedBalanceAlertMessage);
+                if (cappedDelta == 0) return false;
+            }
+
             BankTransaction transaction = new BankTransaction
             {
                 InitialCurrency = CurrentBalance,
-                DeltaCurrency = deltaCurrency,
+                DeltaCurrency = cappedDelta,
                 Description = description,
                 Date = TimeState.Instance.DateTime.Date
             };
