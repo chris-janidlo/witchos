@@ -40,7 +40,7 @@ namespace WitchOS
                 return false;
             }
 
-            int cappedDelta = (int) Math.Min(deltaCurrency, MaximumBalance - CurrentBalance);
+            long cappedDelta = Math.Min(deltaCurrency, MaximumBalance - CurrentBalance);
 
             if (cappedDelta != deltaCurrency)
             {
