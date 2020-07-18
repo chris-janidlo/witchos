@@ -10,7 +10,7 @@ namespace WitchOS
     public struct BankTransaction
     {
         [DataMember(IsRequired = true)]
-        public int InitialCurrency, DeltaCurrency;
+        public long InitialCurrency, DeltaCurrency;
         [DataMember(IsRequired = true)]
         public string Description;
 

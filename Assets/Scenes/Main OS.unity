@@ -8543,7 +8543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1ab07b666744e4abb6d34e4979ccd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaximumBalance: 99999999999999
   InsufficientFundsAlertMessage: 'error: insufficient gp'
+  CappedBalanceAlertMessage: 'warning: maximum bank account balance reached'
   InitialTransaction:
     InitialCurrency: 0
     DeltaCurrency: 100
