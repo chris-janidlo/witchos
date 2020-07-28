@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using crass;
@@ -8,31 +10,59 @@ namespace WitchOS
 {
     public class WikiApp : MonoBehaviour, IPointerUpHandler
     {
-        public WikiPage HomePage;
+        public WikiPageData HomePage, PageNotFoundPage;
+
+        public string BaseTitle;
+
+        public WikiPageBuildingBlock LeadBuildingBlock, BodySectionBuildingBlock;
+
+        public TextMeshProUGUI PageTitleContainer;
 
         public Window Window;
-        public TextMeshProUGUI PageText;
+        public VerticalLayoutGroup PageContentContainer;
+
+        List<WikiPageBuildingBlock> buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
 
         void Start ()
         {
-            drawPage(HomePage);
+            renderPage(HomePage);
         }
 
         public void OnPointerUp (PointerEventData eventData)
         {
             if (!Window.Focused) return;
 
-            int linkIndex = TMP_TextUtilities.FindIntersectingLink(PageText, Input.mousePosition, CameraCache.Main);
+            string linkID = buildingBlocksForCurrentPage.SingleOrDefault(b => b.Focused)?.GetHoveredLinkID();
 
-            if (linkIndex < 0) return;
+            if (linkID == null) return;
 
-            string linkID = PageText.textInfo.linkInfo[linkIndex].GetLinkID();
-            drawPage(WikiPage.LookUpTable[linkID]);
+            renderPage(WikiPageData.LookUpTable.TryGetValue(linkID, out WikiPageData page) ? page : PageNotFoundPage);
         }
 
-        void drawPage (WikiPage page)
+        void renderPage (WikiPageData page)
         {
-            // TODO build page from prefab building blocks
+            foreach (var block in buildingBlocksForCurrentPage)
+            {
+                Destroy(block.gameObject);
+            }
+
+            PageTitleContainer.text = page.Title;
+            Window.Title = $"{page.Title} - {BaseTitle}";
+
+            buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
+
+            Transform blockParent = PageContentContainer.transform;
+
+            var leadBlock = Instantiate(LeadBuildingBlock, blockParent);
+            leadBlock.SetContent(page.LeadSection);
+            buildingBlocksForCurrentPage.Add(leadBlock);
+
+            foreach (var bodySection in page.BodySections)
+            {
+                var bodyBlock = Instantiate(BodySectionBuildingBlock, blockParent);
+                bodyBlock.SetContent(bodySection);
+                buildingBlocksForCurrentPage.Add(bodyBlock);
+            }
         }
     }
 }

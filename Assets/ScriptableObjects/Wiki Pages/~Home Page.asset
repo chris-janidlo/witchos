@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d3baee5cc344918be0b90378502e7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
   m_Name: ~Home Page
   m_EditorClassIdentifier: 
-  LeadSection: Welcome to Witchipedia, the hypertext knowledge base for WitchOS. Click
-    any of the links on this page to read more about a specific topic.
+  Title: Home
+  LeadSection:
+    Content: Welcome to {Witchipedia->Witchipedia}, the hypertext knowledge base for
+      WitchOS. Click any of the links on this page to read more about a specific topic.
   BodySections:
-  - Title: Getting started with WitchOS
-    Content: 'Here''s a high-level overview of the features that WitchOS brings to
+  - Content: 'Here''s a high-level overview of the features that WitchOS brings to
       the table:
 
 
@@ -32,9 +33,10 @@ MonoBehaviour:
 
       And it all comes with comprehensive documentation. What other operating system
       can you say that about?'
-  - Title: Helpful links
-    Content: 'Check out the following pages for a deeper sample of what you can do
+    Title: Getting started with WitchOS
+  - Content: 'Check out the following pages for a deeper sample of what you can do
       with WitchOS:
 
 
       TODO'
+    Title: Helpful links
