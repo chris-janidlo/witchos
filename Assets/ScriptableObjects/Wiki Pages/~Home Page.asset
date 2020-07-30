@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Home
   LeadSection:
-    Content: Welcome to {Witchipedia->Witchipedia}, the hypertext knowledge base for
-      WitchOS. Click any of the links on this page to read more about a specific topic.
+    Content: Welcome to {Witchipedia}, the hypertext knowledge base for {WitchOS}.
+      Click any of the links on this page to read more about a specific topic.
   BodySections:
   - Content: 'Here''s a high-level overview of the features that WitchOS brings to
       the table:
@@ -24,7 +24,7 @@ MonoBehaviour:
       * Safe, user-friendly access to darker magickal arts: bad luck, imps, malicious
       incantations
 
-      * Powerful user interface for managing spell aspects and moods
+      * Powerful user interface for managing {spell:Spell} aspects and moods
 
       * Electronic mail with built-in invoicing support
 

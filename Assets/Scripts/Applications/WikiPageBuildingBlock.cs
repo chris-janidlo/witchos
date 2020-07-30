@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Text;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using crass;
@@ -7,8 +9,7 @@ namespace WitchOS
 {
     public class WikiPageBuildingBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public string RawLinkOpenTag, RawLinkCloseTag;
-        public string AliasLinkOpenTag, AliasLinkCloseTag, AliasLinkDelimiterTag;
+        public string LinkStyleOpenTag, LinkStyleCloseTag;
 
         public TextMeshProUGUI ContentTextDisplay;
 
@@ -36,15 +37,68 @@ namespace WitchOS
             return linkIndex < 0 ? null : ContentTextDisplay.textInfo.linkInfo[linkIndex].GetLinkID();
         }
 
-        // TODO fix this. raw links can't work
         string renderLinks (string bracketedText)
         {
-            return bracketedText
-                .Replace(WikiPageData.RAW_LINK_BEGIN_TOKEN, RawLinkOpenTag)
-                .Replace(WikiPageData.RAW_LINK_END_TOKEN, RawLinkCloseTag)
-                .Replace(WikiPageData.ALIAS_LINK_BEGIN_TOKEN, AliasLinkOpenTag)
-                .Replace(WikiPageData.ALIAS_LINK_END_TOKEN, AliasLinkCloseTag)
-                .Replace(WikiPageData.ALIAS_LINK_DELIMITER, AliasLinkDelimiterTag);
+            StringBuilder sb = new StringBuilder();
+
+            bool scanningLink = false, sawDelimiter = false;
+            string linkText = "", displayText = "";
+
+            foreach (char c in bracketedText)
+            {
+                switch (c)
+                {
+                    case WikiPageData.LINK_BEGIN_TOKEN:
+                        if (scanningLink)
+                            throw new ArgumentException($"wiki page parser error: two {WikiPageData.LINK_BEGIN_TOKEN} tokens appeared before a matching {WikiPageData.LINK_END_TOKEN}");
+                        scanningLink = true;
+                        sawDelimiter = false;
+                        break;
+
+                    case WikiPageData.LINK_END_TOKEN:
+                        if (!scanningLink)
+                            throw new ArgumentException($"wiki page parser error: {WikiPageData.LINK_END_TOKEN} token appeared without a matching {WikiPageData.LINK_BEGIN_TOKEN}");
+                        scanningLink = false;
+
+                        sb.Append(tagLink(linkText, displayText == "" ? linkText : displayText));
+
+                        linkText = "";
+                        displayText = "";
+                        break;
+
+                    case WikiPageData.ALIAS_LINK_DELIMITER:
+                        if (!scanningLink)
+                            goto default;
+
+                        if (sawDelimiter)
+                            throw new ArgumentException($"wiki page parser error: saw more than one {WikiPageData.ALIAS_LINK_DELIMITER} token in a single link declaration");
+
+                        sawDelimiter = true;
+
+                        displayText = linkText;
+                        linkText = "";
+                        break;
+
+                    default:
+                        if (scanningLink)
+                        {
+                            linkText += c;
+                        }
+                        else
+                        {
+                            sb.Append(c);
+                        }
+
+                        break;
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        string tagLink (string linkText, string displayText)
+        {
+            return $"{LinkStyleOpenTag}<link=\"{linkText}\">{displayText}</link>{LinkStyleCloseTag}";
         }
     }
 }

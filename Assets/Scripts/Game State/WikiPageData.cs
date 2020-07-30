@@ -8,14 +8,13 @@ namespace WitchOS
     [CreateAssetMenu(fileName = "NewWikiPage.asset", menuName = "WitchOS/Wiki Page")]
     public class WikiPageData : ScriptableObject
     {
-        public const string
-            // raw links link to the page named between the tokens. the text of the link is exactly the same as the page name
-            RAW_LINK_BEGIN_TOKEN = "[",
-            RAW_LINK_END_TOKEN = "]",
-            // alias links display the tex before the delimiter, but link to the page named after the delimiter
-            ALIAS_LINK_BEGIN_TOKEN = "{",
-            ALIAS_LINK_END_TOKEN = "}",
-            ALIAS_LINK_DELIMITER = "->";
+        public const char
+            // all links begin and end with the following characters, respectively
+            LINK_BEGIN_TOKEN = '{',
+            LINK_END_TOKEN = '}',
+            // "raw" links are just those characters containing the name of the page to link to. the displayed text of the link will also be the page name
+            // "alias" links specify the text to use as the display, in {display:link} format
+            ALIAS_LINK_DELIMITER = ':';
 
         public static Dictionary<string, WikiPageData> LookUpTable = new Dictionary<string, WikiPageData>();
 
@@ -38,7 +37,7 @@ namespace WitchOS
 
         public List<BodyContentSection> BodySections;
 
-        // TODO need to test this as a lifecycle thing
+        // TODO put this somewhere else. maybe another editor script
         void OnEnable ()
         {
             if (LookUpTable.ContainsKey(Title))

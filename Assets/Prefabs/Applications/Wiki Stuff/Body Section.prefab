@@ -54,11 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba85ab43048e4b22ba3cebb3c91dbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RawLinkOpenTag: 
-  RawLinkCloseTag: 
-  AliasLinkOpenTag: <u><link="
-  AliasLinkCloseTag: </link></u>
-  AliasLinkDelimiterTag: '">'
+  LinkStyleOpenTag: <u>
+  LinkStyleCloseTag: </u>
   ContentTextDisplay: {fileID: 5277965818888727261}
   TitleDisplay: {fileID: 1971952081934814123}
 --- !u!114 &6919692770753989192
