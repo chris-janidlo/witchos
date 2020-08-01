@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
+  m_Name: Rune System
+  m_EditorClassIdentifier: 
+  Title: Rune System
+  LeadSection:
+    Content: '"potion" system - ms paint app with a twist for creating runes. runes
+      are small pixel art symbols infused with color magic - for chunking''s sake,
+      they only have a handful of colors each. you can only get color by siphoning
+      it from consumables that you buy online.'
+  BodySections:
+  - Content: "1. you open the rune app and choose which rune you want to make. in
+      the process, both a blank canvas and a representation of the rune are opened\n2.
+      you choose one of the colors of the rune and attune to it somehow\n3. you open
+      an ingredient, and siphon the color from that ingredient\n   a. siphoning happens
+      in two simultaneous stages. still need to figure out exactly how it works, but
+      you siphon the color as if the color space is 2d\n   b. you left click to siphon
+      one, and right click to siphon the other. what happens is that the siphoning
+      app shows you a meter for each dimension with lines for the target amounts.
+      you hold the mouse buttons down to siphon, increasing each meter, and then try
+      to let go as close to the lines as possible. the closer to the line you get,
+      the better quality the rune will be. you can't un-siphon color, so you more
+      or less have one shot to be accurate without wasting color\n4. now that you
+      have the color, you can use it some amount of times in the sprite editor - either
+      as many as you want, or a finite amount, depending on how it feels. at this
+      point, the app works just like regular ms paint"
+    Title: how it works

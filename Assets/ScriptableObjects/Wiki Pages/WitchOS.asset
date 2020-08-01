@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: WitchOS
   LeadSection:
-    Content: WitchOS is a {magic-enabled:Spell} operating system developed and marketed
-      by Magisoft.
+    Content: WitchOS is a magic-enabled operating system developed and marketed by
+      Magisoft.
   BodySections: []
