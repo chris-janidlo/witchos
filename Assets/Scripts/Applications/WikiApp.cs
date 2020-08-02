@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-using crass;
 
 namespace WitchOS
 {
@@ -36,7 +35,7 @@ namespace WitchOS
 
             if (linkID == null) return;
 
-            renderPage(WikiPageData.LookUpTable.TryGetValue(linkID, out WikiPageData page) ? page : PageNotFoundPage);
+            renderPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{linkID}") ?? PageNotFoundPage);
         }
 
         void renderPage (WikiPageData page)

@@ -16,8 +16,6 @@ namespace WitchOS
             // "alias" links specify the text to use as the display, in {display:link} format
             ALIAS_LINK_DELIMITER = ':';
 
-        public static Dictionary<string, WikiPageData> LookUpTable = new Dictionary<string, WikiPageData>();
-
         [Serializable]
         public class ContentSection
         {
@@ -36,16 +34,5 @@ namespace WitchOS
         public ContentSection LeadSection;
 
         public List<BodyContentSection> BodySections;
-
-        // TODO put this somewhere else. maybe another editor script
-        void OnEnable ()
-        {
-            if (LookUpTable.ContainsKey(Title))
-            {
-                throw new InvalidOperationException($"attempted to add two pages with the same title ({Title})");
-            }
-
-            LookUpTable[Title] = this;
-        }
     }
 }
