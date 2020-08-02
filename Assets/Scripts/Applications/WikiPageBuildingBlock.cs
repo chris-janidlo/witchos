@@ -42,7 +42,7 @@ namespace WitchOS
             StringBuilder sb = new StringBuilder();
 
             bool scanningLink = false, sawDelimiter = false;
-            string linkText = "", displayText = "";
+            string linkText = "", displayText = null;
 
             foreach (char c in bracketedText)
             {
@@ -60,10 +60,10 @@ namespace WitchOS
                             throw new ArgumentException($"wiki page parser error: {WikiPageData.LINK_END_TOKEN} token appeared without a matching {WikiPageData.LINK_BEGIN_TOKEN}");
                         scanningLink = false;
 
-                        sb.Append(tagLink(linkText, displayText == "" ? linkText : displayText));
+                        sb.Append(tagLink(linkText, displayText ?? linkText));
 
                         linkText = "";
-                        displayText = "";
+                        displayText = null;
                         break;
 
                     case WikiPageData.ALIAS_LINK_DELIMITER:
