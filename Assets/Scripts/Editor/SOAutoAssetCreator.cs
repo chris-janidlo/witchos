@@ -20,7 +20,7 @@ namespace WitchOS
 
         [MenuItem("Tools/Generate assets for SO Auto Asset classes")] // for manual use
         [UnityEditor.Callbacks.DidReloadScripts] // automatic trigger every compilation
-        public static void GenerateAllTerminalCommands ()
+        public static void AutoGenerateAssets ()
         {
             bool needToSave = false;
 
