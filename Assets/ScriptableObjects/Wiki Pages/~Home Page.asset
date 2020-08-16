@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Home
   LeadSection:
-    Content: Welcome to {Witchipedia}, the hypertext knowledge base for {WitchOS}.
-      Click any of the links on this page to read more about a specific topic.
+    Content: Welcome to {Witchipedia}, the hyper-text knowledge base for {WitchOS}.
+      Click on any underlined text on this page to read more about a specific topic.
   BodySections:
   - Content: 'Here''s a high-level overview of the features that WitchOS brings to
       the table:
@@ -34,9 +34,10 @@ MonoBehaviour:
       And it all comes with comprehensive documentation. What other operating system
       can you say that about?'
     Title: Getting started with WitchOS
-  - Content: 'Check out the following pages for a deeper sample of what you can do
-      with WitchOS:
+  - Content: 'You haven''t finished reading these pages! Shame on you!
 
 
-      TODO'
-    Title: Helpful links
+      * item
+
+      * another item'
+    Title: Reading list

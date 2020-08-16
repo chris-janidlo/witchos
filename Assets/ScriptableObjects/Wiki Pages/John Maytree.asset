@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
+  m_Name: John Maytree
+  m_EditorClassIdentifier: 
+  Title: John Maytree
+  LeadSection:
+    Content: "John Maytree is the founder, President, CEO, Chairman, and majority
+      owner of Magisoft. Widely considered to be one of the most influential mages
+      in history, Maytree has created and overseen the development of countless innovations
+      since the founding of Magisoft. His discovery of binary runes in 1859 eventually
+      led to the complete eradication of the {odd sorrow:Odd Sorrow}, and his subsequent
+      philanthropical initiatives have funded numerous developments in the arts and
+      sciences.\n\nRaised in a family of non-wizards, Maytree took \x03interest in
+      spiteful magicks from an early age after encounters with a local hag. Determined
+      to see them used for good instead of evil, Maytree applied himself to the study
+      of magic and earned a top spot in Harvard but Magical. He dropped out in his
+      final year in order to found a tarot-card manufacturing business called Magisoft.
+      From there he grew Magisoft into a multinational magical-services company.\n\nAs
+      a direct result of his power and his intertangling with the astral weave, Maytree
+      acts as a sort of aether transformer, thus enabling the vast majority of the
+      magical output of Magisoft. He is the only human known to have achieved corporeal
+      immortality, drawing scrutiny from government enforcers and conspiracy theorists.
+      He currently resides at the top floor of the Magisoft Headquarters in multiple
+      spacetimes."
+  BodySections: []

@@ -20,6 +20,10 @@ namespace WitchOS
         public Window Window;
         public VerticalLayoutGroup PageContentContainer;
 
+#if UNITY_EDITOR
+        public string DebugOpenPageID;
+#endif // UNITY_EDITOR
+
         List<WikiPageBuildingBlock> buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
 
         void Start ()
@@ -35,7 +39,12 @@ namespace WitchOS
 
             if (linkID == null) return;
 
-            renderPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{linkID}") ?? PageNotFoundPage);
+            openPageID(linkID);
+        }
+
+        void openPageID (string pageID)
+        {
+            renderPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{pageID}") ?? PageNotFoundPage);
         }
 
         void renderPage (WikiPageData page)
@@ -63,5 +72,13 @@ namespace WitchOS
                 buildingBlocksForCurrentPage.Add(bodyBlock);
             }
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Open the page pointed to by DebugOpenPageID")]
+        void debugOpenPage ()
+        {
+            openPageID(DebugOpenPageID);
+        }
+#endif // UNITY_EDITOR
     }
 }

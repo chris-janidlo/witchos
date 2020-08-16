@@ -140,3 +140,9 @@ MonoBehaviour:
     Path: d2/~Home Page
   - Asset: {fileID: 11400000, guid: c1f9afe2b2e69465b96d8b1e35e80d5d, type: 2}
     Path: d2/~Page Not Found
+  - Asset: {fileID: 11400000, guid: 819573c2528d54726b56505cfd2a8f81, type: 2}
+    Path: d2/John Maytree
+  - Asset: {fileID: 11400000, guid: 88f7359fdf04b42249e0fe3a99ea04b2, type: 2}
+    Path: d2/Astral Weave
+  - Asset: {fileID: 11400000, guid: 4f73bfe0e55f047eebed28e1c4aa4373, type: 2}
+    Path: d2/Odd Sorrow
