@@ -1,9 +1,11 @@
 ﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System;
 
 namespace WitchOS
 {
@@ -15,25 +17,39 @@ namespace WitchOS
 
         public WikiPageBuildingBlock LeadBuildingBlock, BodySectionBuildingBlock;
 
+        public Window Window;
+
+        public ScrollRect ScrollRect;
+
         public List<TextMeshProUGUI> PageTitleContainers;
+        public VerticalLayoutGroup PageContentContainer;
 
         public Button NavigateBackButton, NavigateForwardButton;
-
-        public Window Window;
-        public VerticalLayoutGroup PageContentContainer;
 
 #if UNITY_EDITOR
         public string DebugOpenPageID;
 #endif // UNITY_EDITOR
 
+        private class SessionDataPageSnapshot
+        {
+            public WikiPageData Page;
+            public float ScrollPosition;
+
+            public SessionDataPageSnapshot (WikiPageData page)
+            {
+                Page = page;
+                ScrollPosition = 1; // 1 == top of page
+            }
+        }
+
         List<WikiPageBuildingBlock> buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
 
-        List<WikiPageData> sessionBrowsingHistory;
+        List<SessionDataPageSnapshot> sessionBrowsingHistory;
         int currentPositionInSessionBrowsingHistory;
 
         void Start ()
         {
-            sessionBrowsingHistory = new List<WikiPageData>();
+            sessionBrowsingHistory = new List<SessionDataPageSnapshot>();
             currentPositionInSessionBrowsingHistory = -1; // initialize to -1 since it will get incremented in first OpenPage call
 
             OpenPage(HomePage);
@@ -71,6 +87,8 @@ namespace WitchOS
 
         public void OpenPage (WikiPageData page)
         {
+            if (currentPositionInSessionBrowsingHistory >= 0) recordScrollRectPositionToHistory();
+
             if (currentPositionInSessionBrowsingHistory < sessionBrowsingHistory.Count - 1)
             {
                 int cuttingPoint = currentPositionInSessionBrowsingHistory + 1;
@@ -78,23 +96,23 @@ namespace WitchOS
             }
 
             currentPositionInSessionBrowsingHistory++;
-            sessionBrowsingHistory.Add(page);
+            sessionBrowsingHistory.Add(new SessionDataPageSnapshot(page));
 
             renderPage(page);
+
+            ScrollRect.verticalNormalizedPosition = 1;
         }
 
         // hook up the button to call this in the onClick callback
         public void NavigateBack ()
         {
-            currentPositionInSessionBrowsingHistory = Mathf.Max(0, currentPositionInSessionBrowsingHistory - 1);
-            renderPage(sessionBrowsingHistory[currentPositionInSessionBrowsingHistory]);
+            navigate(-1);
         }
 
         // hook up the button to call this in the onClick callback
         public void NavigateForward ()
         {
-            currentPositionInSessionBrowsingHistory = Mathf.Min(sessionBrowsingHistory.Count, currentPositionInSessionBrowsingHistory + 1);
-            renderPage(sessionBrowsingHistory[currentPositionInSessionBrowsingHistory]);
+            navigate(+1);
         }
 
         void renderPage (WikiPageData page)
@@ -128,6 +146,24 @@ namespace WitchOS
 
             NavigateForwardButton.interactable = currentPositionInSessionBrowsingHistory < sessionBrowsingHistory.Count - 1;
             NavigateBackButton.interactable = currentPositionInSessionBrowsingHistory > 0;
+        }
+
+        void navigate (int direction)
+        {
+            recordScrollRectPositionToHistory();
+
+            currentPositionInSessionBrowsingHistory = Mathf.Clamp(currentPositionInSessionBrowsingHistory + direction, 0, sessionBrowsingHistory.Count);
+            SessionDataPageSnapshot snapshot = sessionBrowsingHistory[currentPositionInSessionBrowsingHistory];
+            
+            renderPage(snapshot.Page);
+            // force rebuild the layout so that setting the vertical scroll position of the scrollrect uses the actual, built layout
+            LayoutRebuilder.ForceRebuildLayoutImmediate(ScrollRect.transform as RectTransform);
+            ScrollRect.verticalNormalizedPosition = snapshot.ScrollPosition;
+        }
+
+        void recordScrollRectPositionToHistory ()
+        {
+            sessionBrowsingHistory[currentPositionInSessionBrowsingHistory].ScrollPosition = ScrollRect.verticalNormalizedPosition;
         }
 
 #if UNITY_EDITOR
