@@ -15,7 +15,9 @@ namespace WitchOS
 
         public WikiPageBuildingBlock LeadBuildingBlock, BodySectionBuildingBlock;
 
-        public TextMeshProUGUI PageTitleContainer;
+        public List<TextMeshProUGUI> PageTitleContainers;
+
+        public Button NavigateBackButton, NavigateForwardButton;
 
         public Window Window;
         public VerticalLayoutGroup PageContentContainer;
@@ -26,9 +28,29 @@ namespace WitchOS
 
         List<WikiPageBuildingBlock> buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
 
+        List<WikiPageData> sessionBrowsingHistory;
+        int currentPositionInSessionBrowsingHistory;
+
         void Start ()
         {
-            renderPage(HomePage);
+            sessionBrowsingHistory = new List<WikiPageData>();
+            currentPositionInSessionBrowsingHistory = -1; // initialize to -1 since it will get incremented in first OpenPage call
+
+            OpenPage(HomePage);
+        }
+
+        void Update ()
+        {
+            if (!Window.Focused) return;
+
+            if (Input.GetMouseButtonUp(3))
+            {
+                NavigateBack();
+            }
+            else if (Input.GetMouseButtonUp(4))
+            {
+                NavigateForward();
+            }
         }
 
         public void OnPointerUp (PointerEventData eventData)
@@ -39,12 +61,40 @@ namespace WitchOS
 
             if (linkID == null) return;
 
-            openPageID(linkID);
+            OpenPageID(linkID);
         }
 
-        void openPageID (string pageID)
+        public void OpenPageID (string pageID)
         {
-            renderPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{pageID}") ?? PageNotFoundPage);
+            OpenPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{pageID}") ?? PageNotFoundPage);
+        }
+
+        public void OpenPage (WikiPageData page)
+        {
+            if (currentPositionInSessionBrowsingHistory < sessionBrowsingHistory.Count - 1)
+            {
+                int cuttingPoint = currentPositionInSessionBrowsingHistory + 1;
+                sessionBrowsingHistory.RemoveRange(cuttingPoint, sessionBrowsingHistory.Count - cuttingPoint);
+            }
+
+            currentPositionInSessionBrowsingHistory++;
+            sessionBrowsingHistory.Add(page);
+
+            renderPage(page);
+        }
+
+        // hook up the button to call this in the onClick callback
+        public void NavigateBack ()
+        {
+            currentPositionInSessionBrowsingHistory = Mathf.Max(0, currentPositionInSessionBrowsingHistory - 1);
+            renderPage(sessionBrowsingHistory[currentPositionInSessionBrowsingHistory]);
+        }
+
+        // hook up the button to call this in the onClick callback
+        public void NavigateForward ()
+        {
+            currentPositionInSessionBrowsingHistory = Mathf.Min(sessionBrowsingHistory.Count, currentPositionInSessionBrowsingHistory + 1);
+            renderPage(sessionBrowsingHistory[currentPositionInSessionBrowsingHistory]);
         }
 
         void renderPage (WikiPageData page)
@@ -54,7 +104,11 @@ namespace WitchOS
                 Destroy(block.gameObject);
             }
 
-            PageTitleContainer.text = page.Title;
+            foreach (var titleContainer in PageTitleContainers)
+            {
+                titleContainer.text = page.Title;
+            }
+
             Window.Title = $"{page.Title} - {BaseTitle}";
 
             buildingBlocksForCurrentPage = new List<WikiPageBuildingBlock>();
@@ -71,13 +125,16 @@ namespace WitchOS
                 bodyBlock.SetContent(bodySection);
                 buildingBlocksForCurrentPage.Add(bodyBlock);
             }
+
+            NavigateForwardButton.interactable = currentPositionInSessionBrowsingHistory < sessionBrowsingHistory.Count - 1;
+            NavigateBackButton.interactable = currentPositionInSessionBrowsingHistory > 0;
         }
 
 #if UNITY_EDITOR
         [ContextMenu("Open the page pointed to by DebugOpenPageID")]
         void debugOpenPage ()
         {
-            openPageID(DebugOpenPageID);
+            OpenPageID(DebugOpenPageID);
         }
 #endif // UNITY_EDITOR
     }
