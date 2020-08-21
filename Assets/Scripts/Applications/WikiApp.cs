@@ -47,12 +47,10 @@ namespace WitchOS
         List<SessionDataPageSnapshot> sessionBrowsingHistory;
         int currentPositionInSessionBrowsingHistory;
 
-        void Start ()
+        void Awake ()
         {
             sessionBrowsingHistory = new List<SessionDataPageSnapshot>();
             currentPositionInSessionBrowsingHistory = -1; // initialize to -1 since it will get incremented in first OpenPage call
-
-            OpenPage(HomePage);
         }
 
         void Update ()

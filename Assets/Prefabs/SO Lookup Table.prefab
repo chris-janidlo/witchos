@@ -146,3 +146,5 @@ MonoBehaviour:
     Path: d2/Astral Weave
   - Asset: {fileID: 11400000, guid: 4f73bfe0e55f047eebed28e1c4aa4373, type: 2}
     Path: d2/Odd Sorrow
+  - Asset: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
+    Path: d2/Mirrors App

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6213331320721158981}
   - component: {fileID: 971061574746722690}
   - component: {fileID: 9083026174228373041}
+  - component: {fileID: 3539277442309975134}
   m_Layer: 5
   m_Name: Help Button
   m_TagString: Untagged
@@ -64,6 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: -2864825086071390756, guid: 52ff52adb311e49738fd2294b5b3b8a0,
     type: 3}
   m_Type: 0
@@ -117,7 +120,37 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971061574746722690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3539277442309975134}
+        m_MethodName: OpenForUnityEventCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &3539277442309975134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997732964498249045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c536200b29a5e55468ef3caf327b47b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplicationPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
+    type: 3}
+  ApplicationData: {fileID: 0}
+  OpenSingleInstance: 0
+  Page: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
 --- !u!1 &5076463783276491045
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,9 +227,6 @@ MonoBehaviour:
   MirrorInfoPrefab: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
     type: 3}
   MirrorInfoParent: {fileID: 6199924226640593510}
-  HelpButton: {fileID: 9083026174228373041}
-  HelpWindowPrefab: {fileID: 496175164308470800, guid: 7d2a1c592e0b445849e533e1ee9a5e41,
-    type: 3}
 --- !u!1001 &5666300077470489545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,6 +234,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1707194482673688324, guid: 587c7c42945c442eea5e2ea5f06e92b1,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirrors App
+      objectReference: {fileID: 0}
     - target: {fileID: 174111124372003054, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -253,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 1707194481748681852, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_textAlignment
-      value: 514
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
@@ -265,11 +300,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Title
       value: Mirrors
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707194482673688324, guid: 587c7c42945c442eea5e2ea5f06e92b1,
-        type: 3}
-      propertyPath: m_Name
-      value: Mirrors App
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}

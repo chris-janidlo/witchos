@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
+  m_Name: Mirrors App
+  m_EditorClassIdentifier: 
+  Title: Mirrors
+  LeadSection:
+    Content: Mirrors is a sandboxed bad luck generator that comes pre-installed with
+      WitchOS.
+  BodySections:
+  - Content: 'To infuse the operating system with bad luck, simply click the "BREAK"
+      button below any of the mirrors. Now the bad luck is available for use in any
+      spell that requires it (for example, TODO).
+
+
+      After a mirror is broken and its magic is consumed, the mirror will repair itself
+      automatically. The time this takes is always twice as long as the amount of
+      time that passed between breaking the mirror and consuming its magic. For example,
+      if you break a mirror, wait 5 minutes, and then cast a spell to consume its
+      magic, the mirror will finish repairing itself 10 minutes later.'
+    Title: Usage
+  - Content: '* Mirrors was the fourth application to be developed for WitchOS, following
+      PhaseVue, Mail, and hexterm. This was unintentional, but the added bad luck
+      of the number four (which, in Chinese and other languages, is pronounced similarly
+      to the word for "death") has a measurable impact on the quality of the bad luck
+      that Mirrors generates.
+
+
+      * While breaking analogue mirrors gives you seven years of bad luck, breaking
+      a digital mirror gives you 111 years.
+
+
+      * Mirrors was written in Boo.'
+    Title: Trivia
