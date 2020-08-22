@@ -52,11 +52,11 @@ namespace WitchOS
                 if (!(entry.Contents is Order)) continue;
 
                 var invoice = (entry.Contents as Order).InvoiceData.Value;
+                var spells = invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).ToList();
 
-                // only search on SpellDeliverables, cast as such, so that the proper Equals method is called
-                if (invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).Contains(spell))
+                if (spells.Contains(spell))
                 {
-                    Alert.Instance.ShowMessage($"WitchWatch: spell {invoice.LineItems.IndexOf(spell) + 1} was cast for order #{invoice.OrderNumber}");
+                    Alert.Instance.ShowMessage($"WitchWatch: spell {spells.IndexOf(spell) + 1} was cast for order #{invoice.OrderNumber}");
                 }
             }
         }
