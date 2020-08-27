@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 using crass;
 
 namespace WitchOS
@@ -11,23 +12,36 @@ namespace WitchOS
     {
         public enum State
         {
-            Intact, Broken, Depleted
+            Intact, Broken, Repairing, Dud
         }
 
         [Serializable]
         public class Mirror
         {
-            public const float TIMER_TICKS_PER_SECOND = 1;
+            public AnimationCurve RepairSweetspotCurve;
+            public float MinimumRepairTime, MaximumRepairTime;
+
+            public RuntimeAnimatorController AnimatorController;
+
             public State State;
             public float Timer;
+
+            public float TimeUntilDud => RepairSweetspotCurve.keys[RepairSweetspotCurve.length - 1].time;
+            public float DistanceFromSweetspot => RepairSweetspotCurve.Evaluate(Timer);
+            public float RepairProgress => State == State.Repairing
+                ? 1 - (Timer / currentRepairTime)
+                : -1;
+
+            float currentRepairTime;
 
             public void Break ()
             {
                 if (State != State.Intact)
                 {
-                    throw new ArgumentException("can't break an already broken mirror");
+                    throw new ArgumentException("can't break a mirror unless it's intact");
                 }
 
+                Timer = 0;
                 State = State.Broken;
             }
 
@@ -35,25 +49,29 @@ namespace WitchOS
             {
                 if (State != State.Broken)
                 {
-                    throw new ArgumentException("can't consume a mirror that's intact or depleted");
+                    throw new ArgumentException("can't consume a mirror unless it's broken");
                 }
 
-                State = State.Depleted;
-                Timer *= 2;
+                Timer = Mathf.Lerp(MinimumRepairTime, MaximumRepairTime, DistanceFromSweetspot);
+                currentRepairTime = Timer;
+                State = State.Repairing;
             }
 
             public void Tick ()
             {
                 switch (State)
                 {
-                    case State.Intact: return;
-
-                    case State.Broken:
-                        Timer += TIMER_TICKS_PER_SECOND * Time.deltaTime;
+                    case State.Intact:
+                    case State.Dud:
                         return;
 
-                    case State.Depleted:
-                        Timer -= TIMER_TICKS_PER_SECOND * Time.deltaTime;
+                    case State.Broken:
+                        Timer += Time.deltaTime;
+                        if (Timer >= TimeUntilDud) State = State.Dud;
+                        return;
+
+                    case State.Repairing:
+                        Timer -= Time.deltaTime;
                         if (Timer <= 0) State = State.Intact;
                         return;
                 }
@@ -78,16 +96,23 @@ namespace WitchOS
         [ContextMenu("Try Deplete")]
         public bool TryConsumeMagic ()
         {
-            foreach (var mirror in Mirrors.OrderByDescending(m => m.Timer))
-            {
-                if (mirror.State == State.Broken)
-                {
-                    mirror.ConsumeMagic();
-                    return true;
-                }
-            }
+            Mirror target = Mirrors
+                .Where(m => m.State == State.Broken)
+                .OrderBy(m => m.DistanceFromSweetspot)
+                .FirstOrDefault();
 
-            return false;
+            if (target == null) return false;
+
+            target.ConsumeMagic();
+            return true;
+        }
+
+        public void ResetMirrorStates ()
+        {
+            foreach (var mirror in Mirrors)
+            {
+                mirror.State = State.Intact;
+            }
         }
 
         public int NumberIntact ()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8513,6 +8513,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1352642454}
+        m_MethodName: ResetMirrorStates
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DayEnded:
     m_PersistentCalls:
       m_Calls:
@@ -8601,11 +8612,122 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mirrors:
-  - State: 0
+  - RepairSweetspotCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.4006211
+        outSlope: -0.4006211
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.05487805
+      - serializedVersion: 3
+        time: 5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.06341463
+      - serializedVersion: 3
+        time: 30
+        value: 1
+        inSlope: 0.07511655
+        outSlope: 0.07511655
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.030487748
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MinimumRepairTime: 1
+    MaximumRepairTime: 10
+    AnimatorController: {fileID: 9100000, guid: ceb598861d5bfbe48a593bdc9498a8c6,
+      type: 2}
+    State: 0
     Timer: 0
-  - State: 0
+  - RepairSweetspotCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.06666667
+        outSlope: -0.06666667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 15
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 30
+        value: 1
+        inSlope: 0.06666667
+        outSlope: 0.06666667
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MinimumRepairTime: 1
+    MaximumRepairTime: 10
+    AnimatorController: {fileID: 22100000, guid: e4c830aa7dececa4088d1b428abc4116,
+      type: 2}
+    State: 0
     Timer: 0
-  - State: 0
+  - RepairSweetspotCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.05496335
+        outSlope: -0.05496335
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.05
+      - serializedVersion: 3
+        time: 25
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 30
+        value: 1
+        inSlope: 0.4173155
+        outSlope: 0.4173155
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.054877855
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MinimumRepairTime: 1
+    MaximumRepairTime: 10
+    AnimatorController: {fileID: 22100000, guid: 2b512b4fb5aca4f419dbc1e292278080,
+      type: 2}
+    State: 0
     Timer: 0
 --- !u!114 &1352642455
 MonoBehaviour:

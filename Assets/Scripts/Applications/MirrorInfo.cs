@@ -7,13 +7,14 @@ namespace WitchOS
 {
     public class MirrorInfo : MonoBehaviour
     {
-        public Animator IconAnimator;
-        public string AnimatorStateIntegerName;
+        public Animator MirrorAnimator;
+        public string AnimatorStateIntegerName, AnimatorRepairProgressFloatName;
 
-        public TextMeshProUGUI StateLabel;
+        public Image Clock, ClockOverlay;
+        public Sprite RegularClockSprite, BrokenClockSprite;
+        public int ClockFillSegments;
 
         public Button BreakButton;
-        public TextMeshProUGUI BreakButtonLabel;
 
         MirrorState.Mirror mirror;
 
@@ -21,34 +22,45 @@ namespace WitchOS
         {
             if (mirror == null) return;
 
-            BreakButton.interactable = mirror.State == MirrorState.State.Intact;
-            BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "Break" : "";
+            MirrorAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
 
-            int time = (int) mirror.Timer;
+            BreakButton.interactable = mirror.State == MirrorState.State.Intact;
+
+            Clock.sprite = mirror.State == MirrorState.State.Dud
+                ? BrokenClockSprite
+                : RegularClockSprite;
+
+            float fillAmount;
 
             switch (mirror.State)
             {
-                case MirrorState.State.Intact:
-                    StateLabel.text = "Intact";
-                    break;
-
                 case MirrorState.State.Broken:
-                    StateLabel.text = $"Broken {time} second{(time != 1 ? "s" : "")} ago";
+                    fillAmount = mirror.Timer / mirror.TimeUntilDud;
                     break;
 
-                case MirrorState.State.Depleted:
-                    StateLabel.text = $"Depleted.\n{time} second{(time != 1 ? "s" : "")} until repair";
+                case MirrorState.State.Repairing:
+                    fillAmount = 1 - mirror.RepairProgress;
+                    MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, mirror.RepairProgress);
+                    break;
+
+                default:
+                    fillAmount = 0;
                     break;
             }
 
-            IconAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
+            ClockOverlay.fillAmount = Mathf.Round(fillAmount * ClockFillSegments) / ClockFillSegments;
         }
 
         public void SetMirrorState (MirrorState.Mirror mirror)
         {
             this.mirror = mirror;
 
-            BreakButton.onClick.AddListener(mirror.Break);
+            MirrorAnimator.runtimeAnimatorController = mirror.AnimatorController;
+        }
+
+        public void BreakThisMirror ()
+        {
+            mirror.Break();
         }
     }
 }
