@@ -8454,7 +8454,6 @@ GameObject:
   - component: {fileID: 1352642456}
   - component: {fileID: 1352642452}
   - component: {fileID: 1352642453}
-  - component: {fileID: 1352642454}
   - component: {fileID: 1352642458}
   - component: {fileID: 1352642457}
   - component: {fileID: 1352642455}
@@ -8513,7 +8512,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1352642454}
+      - m_Target: {fileID: 0}
         m_MethodName: ResetMirrorStates
         m_Mode: 1
         m_Arguments:
@@ -8599,136 +8598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e24107af53f94a6da4585280051a1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1352642454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352642449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7850684d33e364121b4bf17a7e6fc370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mirrors:
-  - RepairSweetspotCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: -0.4006211
-        outSlope: -0.4006211
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.05487805
-      - serializedVersion: 3
-        time: 5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.06341463
-      - serializedVersion: 3
-        time: 30
-        value: 1
-        inSlope: 0.07511655
-        outSlope: 0.07511655
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.030487748
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    MinimumRepairTime: 1
-    MaximumRepairTime: 10
-    AnimatorController: {fileID: 9100000, guid: ceb598861d5bfbe48a593bdc9498a8c6,
-      type: 2}
-    State: 0
-    Timer: 0
-  - RepairSweetspotCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: -0.06666667
-        outSlope: -0.06666667
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 15
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 30
-        value: 1
-        inSlope: 0.06666667
-        outSlope: 0.06666667
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    MinimumRepairTime: 1
-    MaximumRepairTime: 10
-    AnimatorController: {fileID: 22100000, guid: e4c830aa7dececa4088d1b428abc4116,
-      type: 2}
-    State: 0
-    Timer: 0
-  - RepairSweetspotCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: -0.05496335
-        outSlope: -0.05496335
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.05
-      - serializedVersion: 3
-        time: 25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 30
-        value: 1
-        inSlope: 0.4173155
-        outSlope: 0.4173155
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.054877855
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    MinimumRepairTime: 1
-    MaximumRepairTime: 10
-    AnimatorController: {fileID: 22100000, guid: 2b512b4fb5aca4f419dbc1e292278080,
-      type: 2}
-    State: 0
-    Timer: 0
 --- !u!114 &1352642455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9372,6 +9241,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595608617}
   m_CullTransparentMesh: 0
+--- !u!4 &1722289200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7133856373485226005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1743024209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9881,6 +9756,7 @@ Transform:
   m_Children:
   - {fileID: 1091553458}
   - {fileID: 5754520974998349326}
+  - {fileID: 1722289200}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11262,6 +11138,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426741835533667105}
   m_CullTransparentMesh: 0
+--- !u!1001 &7133856373485226005
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1902420325}
+    m_Modifications:
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308645, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133856373994308666, guid: 98b49192816857f4a9c21322847b602a,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirror Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98b49192816857f4a9c21322847b602a, type: 3}
 --- !u!1 &8411891282483110538
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,17 +27,14 @@ namespace WitchOS
             string ourChant = getChant(incantation), theirChant = Seance.TrueChant(getName(incantation));
 
             return
-                MirrorState.Instance.NumberBroken() >= 1 &&
+                NumBrokenMirrors.Value >= 1 &&
                 ourChant.Equals(theirChant, StringComparison.InvariantCultureIgnoreCase);
             // getChant(incantation).Equals(Seance.TrueChant(getName(incantation)), StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
         {
-            if (!MirrorState.Instance.TryConsumeMagic())
-            {
-                throw new Exception("unable to consume magic despite being told there were enough mirrors to consume");
-            }
+            TryConsumeMirrorMagic.Raise();
 
             // fun stuff starts here
 

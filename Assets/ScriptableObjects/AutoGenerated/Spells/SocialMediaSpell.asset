@@ -15,5 +15,9 @@ MonoBehaviour:
   PrettyName: Social Media
   BasePrice: 200
   SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
+  NumBrokenMirrors: {fileID: 11400000, guid: 4535d5e89dc0642469c9d8b74cab379d, type: 2}
+  NumIntactMirrors: {fileID: 11400000, guid: b3b2ddd4f0fda614ba2a25f232460bf1, type: 2}
+  TryConsumeMirrorMagic: {fileID: 11400000, guid: bbd0780b192cbe74d98a4c696de591df,
+    type: 2}
   XingLock: {fileID: 11400000, guid: 8b8cd797eaf694eb08647c72d7aae7d6, type: 2}
   XingTarget: {fileID: 11400000, guid: 3fac386b48d4c4be4b21ee45109595a5, type: 2}

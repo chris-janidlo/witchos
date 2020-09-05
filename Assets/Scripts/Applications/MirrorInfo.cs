@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace WitchOS
 {
@@ -16,31 +14,35 @@ namespace WitchOS
 
         public Button BreakButton;
 
-        MirrorState.Mirror mirror;
+        public Mirror Mirror;
+
+        void Start ()
+        {
+            MirrorAnimator.runtimeAnimatorController = Mirror.AnimatorController;
+        }
 
         void Update ()
         {
-            if (mirror == null) return;
 
-            MirrorAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
+            MirrorAnimator.SetInteger(AnimatorStateIntegerName, (int) Mirror.CurrentState);
 
-            BreakButton.interactable = mirror.State == MirrorState.State.Intact;
+            BreakButton.interactable = Mirror.CurrentState == Mirror.State.Intact;
 
-            Clock.sprite = mirror.State == MirrorState.State.Dud
+            Clock.sprite = Mirror.CurrentState == Mirror.State.Dud
                 ? BrokenClockSprite
                 : RegularClockSprite;
 
             float fillAmount;
 
-            switch (mirror.State)
+            switch (Mirror.CurrentState)
             {
-                case MirrorState.State.Broken:
-                    fillAmount = mirror.Timer / mirror.TimeUntilDud;
+                case Mirror.State.Broken:
+                    fillAmount = Mirror.Timer / Mirror.TimeUntilDud;
                     break;
 
-                case MirrorState.State.Repairing:
-                    fillAmount = 1 - mirror.RepairProgress;
-                    MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, mirror.RepairProgress);
+                case Mirror.State.Repairing:
+                    fillAmount = 1 - Mirror.RepairProgress;
+                    MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
                     break;
 
                 default:
@@ -51,16 +53,9 @@ namespace WitchOS
             ClockOverlay.fillAmount = Mathf.Round(fillAmount * ClockFillSegments) / ClockFillSegments;
         }
 
-        public void SetMirrorState (MirrorState.Mirror mirror)
-        {
-            this.mirror = mirror;
-
-            MirrorAnimator.runtimeAnimatorController = mirror.AnimatorController;
-        }
-
         public void BreakThisMirror ()
         {
-            mirror.Break();
+            Mirror.Break();
         }
     }
 }
