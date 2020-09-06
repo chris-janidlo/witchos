@@ -12,6 +12,10 @@ namespace WitchOS
         public Sprite RegularClockSprite, BrokenClockSprite;
         public int ClockFillSegments;
 
+        public ParticleSystem ParticleSystem;
+        public AnimationCurve ParticleMotionIntensityByDistanceFromSweetspot;
+        public Vector2 ParticleVelocityMultiplierRange, ParticleLifetimeRange, ParticleSpawnRateRange;
+
         public Button BreakButton;
 
         public Mirror Mirror;
@@ -38,11 +42,13 @@ namespace WitchOS
             {
                 case Mirror.State.Broken:
                     fillAmount = Mirror.Timer / Mirror.TimeUntilDud;
+                    setParticleIntensity(Mirror.DistanceFromSweetspot);
                     break;
 
                 case Mirror.State.Repairing:
                     fillAmount = 1 - Mirror.RepairProgress;
                     MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
+                    makeParticlesDieFaster();
                     break;
 
                 default:
@@ -56,6 +62,25 @@ namespace WitchOS
         public void BreakThisMirror ()
         {
             Mirror.Break();
+        }
+
+        void setParticleIntensity (float distanceFromSweetspot)
+        {
+            float visibleIntensity = ParticleMotionIntensityByDistanceFromSweetspot.Evaluate(distanceFromSweetspot);
+
+            var mainModule = ParticleSystem.main;
+            var emissionModule = ParticleSystem.emission;
+            var velocityModule = ParticleSystem.velocityOverLifetime;
+
+            mainModule.startLifetime = Mathf.Lerp(ParticleLifetimeRange.x, ParticleLifetimeRange.y, visibleIntensity);
+            emissionModule.rateOverTimeMultiplier = Mathf.Lerp(ParticleSpawnRateRange.x, ParticleSpawnRateRange.y, visibleIntensity);
+            velocityModule.speedModifierMultiplier = Mathf.Lerp(ParticleVelocityMultiplierRange.x, ParticleVelocityMultiplierRange.y, visibleIntensity);
+        }
+
+        void makeParticlesDieFaster ()
+        {
+            var mainModule = ParticleSystem.main;
+            mainModule.startLifetime = ParticleLifetimeRange.y;
         }
     }
 }
