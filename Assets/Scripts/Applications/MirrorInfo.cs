@@ -20,6 +20,8 @@ namespace WitchOS
 
         public Mirror Mirror;
 
+        Mirror.State previousState;
+
         void Start ()
         {
             MirrorAnimator.runtimeAnimatorController = Mirror.AnimatorController;
@@ -48,7 +50,6 @@ namespace WitchOS
                 case Mirror.State.Repairing:
                     fillAmount = 1 - Mirror.RepairProgress;
                     MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
-                    makeParticlesDieFaster();
                     break;
 
                 default:
@@ -57,6 +58,13 @@ namespace WitchOS
             }
 
             ClockOverlay.fillAmount = Mathf.Round(fillAmount * ClockFillSegments) / ClockFillSegments;
+
+            if (previousState == Mirror.State.Broken && Mirror.CurrentState != Mirror.State.Broken)
+            {
+                makeParticlesDieFaster();
+            }
+
+            previousState = Mirror.CurrentState;
         }
 
         public void BreakThisMirror ()
@@ -79,8 +87,16 @@ namespace WitchOS
 
         void makeParticlesDieFaster ()
         {
-            var mainModule = ParticleSystem.main;
-            mainModule.startLifetime = ParticleLifetimeRange.y;
+            var particles = new ParticleSystem.Particle[ParticleSystem.main.maxParticles];
+            ParticleSystem.GetParticles(particles);
+
+            for (int i = 0; i < particles.Length; i++)
+            {
+                particles[i].remainingLifetime /= ParticleLifetimeRange.x;
+                Debug.Log(particles[i].remainingLifetime);
+            }
+
+            ParticleSystem.SetParticles(particles);
         }
     }
 }
