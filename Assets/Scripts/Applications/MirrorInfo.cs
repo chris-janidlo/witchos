@@ -93,7 +93,6 @@ namespace WitchOS
             for (int i = 0; i < particles.Length; i++)
             {
                 particles[i].remainingLifetime /= ParticleLifetimeRange.x;
-                Debug.Log(particles[i].remainingLifetime);
             }
 
             ParticleSystem.SetParticles(particles);
