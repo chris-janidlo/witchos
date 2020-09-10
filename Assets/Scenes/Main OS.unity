@@ -8666,15 +8666,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334695bf869e416d8e9ce6cf82a4f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTexture: {fileID: 2800000, guid: 6c685a9cf38dd4ee4a73b8ebac2765fe, type: 3}
-  VerticalResizeTexture: {fileID: 2800000, guid: 0a153cc2d74cc482097248df970e92ce,
-    type: 3}
-  HorizontalResizeTexture: {fileID: 2800000, guid: 06e1e3c77243a40198332d52d86da192,
-    type: 3}
-  DiagonalFromSoutheastResizeTexture: {fileID: 2800000, guid: 3323739e79add462985f2622747b9c35,
-    type: 3}
-  DiagonalFromSouthwestResizeTexture: {fileID: 2800000, guid: 48eb6eb3ea51d4f04b49b7561a06d110,
-    type: 3}
+  Data:
+  - Cursor: {fileID: 2800000, guid: 6c685a9cf38dd4ee4a73b8ebac2765fe, type: 3}
+    Hotspot: {x: 0, y: 0}
+  - Cursor: {fileID: 2800000, guid: 0a153cc2d74cc482097248df970e92ce, type: 3}
+    Hotspot: {x: 16, y: 16}
+  - Cursor: {fileID: 2800000, guid: 06e1e3c77243a40198332d52d86da192, type: 3}
+    Hotspot: {x: 16, y: 16}
+  - Cursor: {fileID: 2800000, guid: 3323739e79add462985f2622747b9c35, type: 3}
+    Hotspot: {x: 16, y: 16}
+  - Cursor: {fileID: 2800000, guid: 48eb6eb3ea51d4f04b49b7561a06d110, type: 3}
+    Hotspot: {x: 16, y: 16}
+  - Cursor: {fileID: 2800000, guid: 3aed7f5ead10c10488ba3e189ee19a72, type: 3}
+    Hotspot: {x: 16, y: 0}
+  - Cursor: {fileID: 2800000, guid: 15ed50f3962c72e4795a6df7e22e75b9, type: 3}
+    Hotspot: {x: 16, y: 0}
   _currentCursorState: 0
 --- !u!114 &1352642458
 MonoBehaviour:

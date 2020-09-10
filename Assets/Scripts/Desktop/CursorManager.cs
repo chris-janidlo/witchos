@@ -8,7 +8,14 @@ namespace WitchOS
 {
     public class CursorManager : Singleton<CursorManager>
     {
-        public Texture2D NormalTexture, VerticalResizeTexture, HorizontalResizeTexture, DiagonalFromSoutheastResizeTexture, DiagonalFromSouthwestResizeTexture;
+        [Serializable]
+        public class CursorData
+        {
+            public Texture2D Cursor;
+            public Vector2 Hotspot;
+        }
+
+        public List<CursorData> Data;
 
         [SerializeField]
         CursorState _currentCursorState;
@@ -18,24 +25,9 @@ namespace WitchOS
 
             set
             {
-                Vector2 hotspot = value == CursorState.Normal
-                    ? Vector2.zero
-                    : Vector2.one * 15;
-
-                Texture2D texture;
-
-                switch (value)
-                {
-                    case CursorState.Normal: texture = NormalTexture; break;
-                    case CursorState.VerticalResize: texture = VerticalResizeTexture; break;
-                    case CursorState.HorizontalResize: texture = HorizontalResizeTexture; break;
-                    case CursorState.DiagonalFromSoutheastResize: texture = DiagonalFromSoutheastResizeTexture; break;
-                    case CursorState.DiagonalFromSouthwestResize: texture = DiagonalFromSouthwestResizeTexture; break;
-
-                    default: throw new ArgumentException($"unexpected CursorState value {value}");
-                }
-
-                Cursor.SetCursor(texture, hotspot, CursorMode.Auto);
+                var data = Data[(int) value];
+                Cursor.SetCursor(data.Cursor, data.Hotspot, CursorMode.Auto);
+                
                 _currentCursorState = value;
             }
         }
@@ -53,6 +45,6 @@ namespace WitchOS
 
     public enum CursorState
     {
-        Normal, VerticalResize, HorizontalResize, DiagonalFromSoutheastResize, DiagonalFromSouthwestResize
+        Normal, VerticalResize, HorizontalResize, DiagonalFromSoutheastResize, DiagonalFromSouthwestResize, HammerPrimed, HammerSwung
     }
 }
