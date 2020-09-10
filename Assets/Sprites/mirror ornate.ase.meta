@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4613719697f984caf9a71597f0e8d85a
+guid: 73253c2820ea7274fa930934cc8e5808
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,6 +11,7 @@ ScriptedImporter:
   textureSettings:
     textureType: 8
     pixelsPerUnit: 32
+    mirror: 0
     transparentMask: 0
     transparentColor: {r: 1, g: 0, b: 1, a: 1}
     meshType: 1
@@ -25,13 +26,16 @@ ScriptedImporter:
   animationSettings:
   - animationName: Intact
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 0; To: 0"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 10"
+  - animationName: Intact to Broken
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 11; To: 14"
   - animationName: Broken
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 1; To: 3"
-  - animationName: Depleted
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 15; To: 15"
+  - animationName: Repairing
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 4; To: 4"
-  atlas: {fileID: -8328923581568760697, guid: 4613719697f984caf9a71597f0e8d85a, type: 3}
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 16; To: 27"
+  atlas: {fileID: -8328923581568760697, guid: 73253c2820ea7274fa930934cc8e5808, type: 3}
   importType: 0
   bindType: 1

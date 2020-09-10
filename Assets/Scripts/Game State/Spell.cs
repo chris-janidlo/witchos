@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityAtoms;
+using UnityAtoms.BaseAtoms;
 using crass;
 
 namespace WitchOS
@@ -11,6 +12,9 @@ namespace WitchOS
     public abstract class Spell : Service
     {
         public SpellDeliverableValueList SpellEther;
+
+        public IntVariable NumBrokenMirrors, NumIntactMirrors;
+        public VoidEvent TryConsumeMirrorMagic;
 
         protected const RegexOptions REGEX_OPTIONS = RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
 
@@ -76,6 +80,19 @@ namespace WitchOS
             }
 
             return sb.ToString();
+        }
+
+        protected bool tryConsumeMirror ()
+        {
+            if (NumBrokenMirrors.Value == 0)
+            {
+                return false;
+            }
+            else
+            {
+                TryConsumeMirrorMagic.Raise();
+                return true;
+            }
         }
     }
 }
