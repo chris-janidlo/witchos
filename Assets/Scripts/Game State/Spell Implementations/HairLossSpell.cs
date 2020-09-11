@@ -17,9 +17,9 @@ namespace WitchOS
         {
             return new Regex
             (@"^
-			.*\s+			# name, followed by space characters
-			borealeo		# keyword
-		$", REGEX_OPTIONS);
+			    .*\s+			# name, followed by space characters
+			    borealeo		# keyword
+		    $", REGEX_OPTIONS);
         }
 
         public override bool ConditionsAreMet (IList<string> incantation)

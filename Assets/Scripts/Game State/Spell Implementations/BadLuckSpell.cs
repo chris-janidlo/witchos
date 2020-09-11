@@ -15,11 +15,11 @@ namespace WitchOS
         {
             return new Regex
             (@"^
-			malam\s+		# first keyword, followed by space characters
-			fortunam\s+		# second keyword, followed by space characters
-			.*\.\s+			# name, followed by a period and one or more space characters
-			.*				# chant
-		$", REGEX_OPTIONS);
+			    malam\s+		# first keyword, followed by space characters
+			    fortunam\s+		# second keyword, followed by space characters
+			    .*\.\s+			# name, followed by a period and one or more space characters
+			    .*				# chant
+		    $", REGEX_OPTIONS);
         }
 
         public override bool ConditionsAreMet (IList<string> incantation)
