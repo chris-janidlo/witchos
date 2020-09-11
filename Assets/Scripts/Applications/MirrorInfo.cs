@@ -1,54 +1,101 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace WitchOS
 {
     public class MirrorInfo : MonoBehaviour
     {
-        public Animator IconAnimator;
-        public string AnimatorStateIntegerName;
+        public Animator MirrorAnimator;
+        public string AnimatorStateIntegerName, AnimatorRepairProgressFloatName;
 
-        public TextMeshProUGUI StateLabel;
+        public Image Clock, ClockOverlay;
+        public Sprite RegularClockSprite, BrokenClockSprite;
+        public int ClockFillSegments;
+
+        public ParticleSystem ParticleSystem;
+        public AnimationCurve ParticleMotionIntensityByDistanceFromSweetspot;
+        public Vector2 ParticleVelocityMultiplierRange, ParticleLifetimeRange, ParticleSpawnRateRange;
 
         public Button BreakButton;
-        public TextMeshProUGUI BreakButtonLabel;
 
-        MirrorState.Mirror mirror;
+        public Mirror Mirror;
+
+        Mirror.State previousState;
+
+        void Start ()
+        {
+            MirrorAnimator.runtimeAnimatorController = Mirror.AnimatorController;
+        }
 
         void Update ()
         {
-            if (mirror == null) return;
 
-            BreakButton.interactable = mirror.State == MirrorState.State.Intact;
-            BreakButtonLabel.text = mirror.State == MirrorState.State.Intact ? "Break" : "";
+            MirrorAnimator.SetInteger(AnimatorStateIntegerName, (int) Mirror.CurrentState);
 
-            int time = (int) mirror.Timer;
+            BreakButton.interactable = Mirror.CurrentState == Mirror.State.Intact;
 
-            switch (mirror.State)
+            Clock.sprite = Mirror.CurrentState == Mirror.State.Dud
+                ? BrokenClockSprite
+                : RegularClockSprite;
+
+            float fillAmount;
+
+            switch (Mirror.CurrentState)
             {
-                case MirrorState.State.Intact:
-                    StateLabel.text = "Intact";
+                case Mirror.State.Broken:
+                    fillAmount = Mirror.Timer / Mirror.TimeUntilDud;
+                    setParticleIntensity(Mirror.DistanceFromSweetspot);
                     break;
 
-                case MirrorState.State.Broken:
-                    StateLabel.text = $"Broken {time} second{(time != 1 ? "s" : "")} ago";
+                case Mirror.State.Repairing:
+                    fillAmount = 1 - Mirror.RepairProgress;
+                    MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
                     break;
 
-                case MirrorState.State.Depleted:
-                    StateLabel.text = $"Depleted.\n{time} second{(time != 1 ? "s" : "")} until repair";
+                default:
+                    fillAmount = 0;
                     break;
             }
 
-            IconAnimator.SetInteger(AnimatorStateIntegerName, (int) mirror.State);
+            ClockOverlay.fillAmount = Mathf.Round(fillAmount * ClockFillSegments) / ClockFillSegments;
+
+            if (previousState == Mirror.State.Broken && Mirror.CurrentState != Mirror.State.Broken)
+            {
+                makeParticlesDieFaster();
+            }
+
+            previousState = Mirror.CurrentState;
         }
 
-        public void SetMirrorState (MirrorState.Mirror mirror)
+        public void BreakThisMirror ()
         {
-            this.mirror = mirror;
+            Mirror.Break();
+        }
 
-            BreakButton.onClick.AddListener(mirror.Break);
+        void setParticleIntensity (float distanceFromSweetspot)
+        {
+            float visibleIntensity = ParticleMotionIntensityByDistanceFromSweetspot.Evaluate(distanceFromSweetspot);
+
+            var mainModule = ParticleSystem.main;
+            var emissionModule = ParticleSystem.emission;
+            var velocityModule = ParticleSystem.velocityOverLifetime;
+
+            mainModule.startLifetime = Mathf.Lerp(ParticleLifetimeRange.x, ParticleLifetimeRange.y, visibleIntensity);
+            emissionModule.rateOverTimeMultiplier = Mathf.Lerp(ParticleSpawnRateRange.x, ParticleSpawnRateRange.y, visibleIntensity);
+            velocityModule.speedModifierMultiplier = Mathf.Lerp(ParticleVelocityMultiplierRange.x, ParticleVelocityMultiplierRange.y, visibleIntensity);
+        }
+
+        void makeParticlesDieFaster ()
+        {
+            var particles = new ParticleSystem.Particle[ParticleSystem.main.maxParticles];
+            ParticleSystem.GetParticles(particles);
+
+            for (int i = 0; i < particles.Length; i++)
+            {
+                particles[i].remainingLifetime /= ParticleLifetimeRange.x;
+            }
+
+            ParticleSystem.SetParticles(particles);
         }
     }
 }

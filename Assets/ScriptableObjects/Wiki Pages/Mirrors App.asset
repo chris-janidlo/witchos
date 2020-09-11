@@ -17,16 +17,35 @@ MonoBehaviour:
     Content: Mirrors is a sandboxed bad luck generator that comes pre-installed with
       WitchOS.
   BodySections:
-  - Content: 'To infuse the operating system with bad luck, simply click the "BREAK"
-      button below any of the mirrors. Now the bad luck is available for use in any
-      spell that requires it (for example, TODO).
+  - Content: 'To infuse the operating system with bad luck, simply click on any of
+      the mirrors. This creates a reservoir of unluckiness which can be consumed by
+      spells and runes. Spells use bad luck automatically when they''re cast, if any
+      is available.
 
 
-      After a mirror is broken and its magic is consumed, the mirror will repair itself
-      automatically. The time this takes is always twice as long as the amount of
-      time that passed between breaking the mirror and consuming its magic. For example,
-      if you break a mirror, wait 5 minutes, and then cast a spell to consume its
-      magic, the mirror will finish repairing itself 10 minutes later.'
+      Each reservoir is only stable for a limited amount of time before collapsing
+      in on itself. This time is tracked by the clock underneath each mirror. When
+      a reservoir collapses, the mirror that created it becomes completely unusable
+      until the next system reboot.
+
+
+      Mirrors repair themselves automatically after their magic is consumed. The amount
+      of time this takes depends on how long the user took to consume the magic after
+      breaking the mirror. Each mirror has a different sweetspot where consuming the
+      magic leads to the fastest repair time:
+
+
+      1. Basic mirror - 7.5 seconds
+
+      2. Evil Mirror - 15 seconds
+
+      3. Ornate Mirror - 22.5 seconds
+
+
+      When the mirror is repaired at the sweetspot time, it takes 1 second to repair.
+      Farther away from the sweetspot results in slower repair times, up to 10 seconds.
+      How close the mirror is to the sweetspot can also be seen in how fast the bad
+      luck vortex in front of it is moving - faster means closer to the sweetspot.'
     Title: Usage
   - Content: '* Mirrors was the fourth application to be developed for WitchOS, following
       PhaseVue, Mail, and hexterm. This was unintentional, but the added bad luck

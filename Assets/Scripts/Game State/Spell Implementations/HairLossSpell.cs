@@ -17,15 +17,15 @@ namespace WitchOS
         {
             return new Regex
             (@"^
-			.*\s+			# name, followed by space characters
-			borealeo		# keyword
-		$", REGEX_OPTIONS);
+			    .*\s+			# name, followed by space characters
+			    borealeo		# keyword
+		    $", REGEX_OPTIONS);
         }
 
         public override bool ConditionsAreMet (IList<string> incantation)
         {
             return
-                MirrorState.Instance.NumberBroken() >= requiredMirrors &&
+                NumBrokenMirrors.Value >= requiredMirrors &&
                 TerminalState.Instance.GetEnvironmentVariable("aura") == "null";
         }
 
@@ -33,10 +33,7 @@ namespace WitchOS
         {
             for (int i = 0; i < requiredMirrors; i++)
             {
-                if (!MirrorState.Instance.TryConsumeMagic())
-                {
-                    throw new Exception("unable to consume magic despite being told there were enough mirrors to consume");
-                }
+                TryConsumeMirrorMagic.Raise();
             }
 
             // fun stuff begins here

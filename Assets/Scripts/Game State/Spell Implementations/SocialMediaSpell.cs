@@ -21,7 +21,7 @@ namespace WitchOS
         public override bool ConditionsAreMet (IList<string> incantation)
         {
             return
-                MirrorState.Instance.NumberIntact() >= 1 &&
+                NumIntactMirrors.Value >= 1 &&
                 XingLock.Value &&
                 !String.IsNullOrEmpty(XingTarget.Value);
         }
