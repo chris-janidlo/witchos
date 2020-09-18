@@ -53,8 +53,6 @@ namespace WitchOS
                 () => { if (Closable) Close(); }
             );
 
-            TimeState.Instance.DayStarted.AddListener(Close);
-
             DidOpen.Invoke();
 
             setSortingPlane();
