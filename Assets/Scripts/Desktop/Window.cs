@@ -12,9 +12,14 @@ namespace WitchOS
 {
     public class Window : MonoBehaviour, IPointerDownHandler
     {
+        // in order for particles (and potentially other effects) to be able to be layered between UI elements, we need to be able to set the sorting order of effects in between the elements we want to layer. therefore we create artificial "sorting planes" which are areas of the sorting order space divided by an increment of SORTING_PLANE_SIZE. each window has its own sorting plane, and effects can go above or below that as desired.
+        public const int SORTING_PLANE_SIZE = 10;
+
         public static Window FocusedWindow { get; private set; }
 
         public bool Focused => FocusedWindow == this;
+
+        int sortingPlane => transform.GetSiblingIndex() * SORTING_PLANE_SIZE;
 
         [Header("Data")]
         public string Title;
@@ -24,8 +29,10 @@ namespace WitchOS
         public Minimizer Minimizer;
 
         public UnityEvent DidOpen, DidFocus;
+        public IntEvent SortingPlaneDidChange;
 
         [Header("References")]
+        public Canvas LocalCanvas;
         public TextMeshProUGUI TitleText;
         public Image IconImage;
         public Button MinimizeButton, CloseButton;
@@ -49,6 +56,8 @@ namespace WitchOS
             TimeState.Instance.DayStarted.AddListener(Close);
 
             DidOpen.Invoke();
+
+            setSortingPlane();
         }
 
         void Update ()
@@ -58,6 +67,11 @@ namespace WitchOS
 
             TitleText.text = Title;
             IconImage.sprite = Icon;
+
+            if (LocalCanvas.sortingOrder != sortingPlane)
+            {
+                setSortingPlane();
+            }
         }
 
         public void SetTaskBarButton (TaskBarButton taskBarButton)
@@ -78,14 +92,21 @@ namespace WitchOS
 
         public void Focus ()
         {
-            transform.SetAsLastSibling(); // bring to front
             FocusedWindow = this;
+            transform.SetAsLastSibling(); // bring to front
             DidFocus.Invoke();
         }
 
         public void OnPointerDown (PointerEventData eventData)
         {
             Focus();
+        }
+
+        void setSortingPlane ()
+        {
+            LocalCanvas.sortingOrder = sortingPlane;
+            SortingPlaneDidChange.Invoke(sortingPlane);
+
         }
     }
 }

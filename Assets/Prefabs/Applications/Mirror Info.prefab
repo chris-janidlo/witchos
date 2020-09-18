@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1150034909096197800}
   - component: {fileID: 4028716278829416347}
   - component: {fileID: 7950832753762792543}
+  - component: {fileID: 54152231572805563}
   m_Layer: 5
   m_Name: Main Particles
   m_TagString: Untagged
@@ -4777,7 +4778,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 367943429
+  m_SortingLayerID: 107192393
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -4803,6 +4804,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &54152231572805563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236136017838921605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f5c082c9ba1d44389c9ee3dbbc72ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: 1
+  Renderer: {fileID: 7950832753762792543}
 --- !u!1 &2011325181365791196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4866,6 +4881,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: -5909295492364321701, guid: 06f29712e0a34a94b845f242924dd27e,
     type: 3}
   m_Type: 3
@@ -4987,6 +5004,7 @@ GameObject:
   - component: {fileID: 5468696683504827266}
   - component: {fileID: 558232616938144667}
   - component: {fileID: 7790440731619305467}
+  - component: {fileID: 7497960402289214775}
   m_Layer: 5
   m_Name: Burst Particles
   m_TagString: Untagged
@@ -9811,7 +9829,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 367943429
+  m_SortingLayerID: 107192393
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -9837,6 +9855,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7497960402289214775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336519745639722705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f5c082c9ba1d44389c9ee3dbbc72ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: 1
+  Renderer: {fileID: 7790440731619305467}
 --- !u!1 &4584836825127874922
 GameObject:
   m_ObjectHideFlags: 0
@@ -9900,6 +9932,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: -7673478473444137356, guid: 06f29712e0a34a94b845f242924dd27e,
     type: 3}
   m_Type: 0
@@ -9967,6 +10001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34ee31b955d03d4faa748006d4983de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mirror: {fileID: 0}
 --- !u!222 &662641863049773157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9993,6 +10028,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 3416357179323765279, guid: 1911daf36f3f06c4898146ad6a7768a8,
     type: 3}
   m_Type: 0
@@ -10058,6 +10095,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!95 &8620268046368201200
 Animator:
   serializedVersion: 3
@@ -10138,6 +10177,7 @@ GameObject:
   - component: {fileID: 2037852837553588252}
   - component: {fileID: 7806097128740845710}
   - component: {fileID: 5471118166252209717}
+  - component: {fileID: 58085008523717665}
   m_Layer: 5
   m_Name: Trail Particles
   m_TagString: Untagged
@@ -14904,7 +14944,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 367943429
+  m_SortingLayerID: 107192393
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -14930,3 +14970,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &58085008523717665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099690390456743379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f5c082c9ba1d44389c9ee3dbbc72ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: 1
+  Renderer: {fileID: 5471118166252209717}
