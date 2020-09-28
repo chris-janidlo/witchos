@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
   m_Name: Bad Luck Curse
   m_EditorClassIdentifier: 
-  Title: 
+  Title: Bad Luck Curse
   LeadSection:
     Content: The Bad Luck Curse is a curse that, as the name suggests, imparts bad
       luck on the target. It is one of the {level one spells:List of Level One Spells}
