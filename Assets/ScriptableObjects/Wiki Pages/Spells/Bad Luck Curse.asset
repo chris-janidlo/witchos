@@ -19,9 +19,9 @@ MonoBehaviour:
       that can be cast with {WitchOS}.
   BodySections:
   - Content: "* Run 'seance <target name>' in order to commmune with the target's
-      ancestors\n  * Make a note of which of their chants they repeated the most\n*
-      Break a mirror\n* Run 'set aura negative'\n* Run 'incant malam fortunam <target
-      name>. <most frequent chant>'"
+      ancestors.\n  * Make a note of which of their chants they repeated the most.\n*
+      Break a mirror.\n* Run 'set aura negative'.\n* Run 'incant malam fortunam <target
+      name>. <most frequent chant>'."
     Title: How to Cast
   - Content: 'The target of the curse is doomed to small misfortunes for a short period
       of time. As with all luck-based magic, the effects are often subtle and can
