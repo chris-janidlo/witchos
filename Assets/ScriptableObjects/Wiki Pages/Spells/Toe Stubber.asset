@@ -12,7 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
   m_Name: Toe Stubber
   m_EditorClassIdentifier: 
-  Title: 
+  Title: Stub Curse
   LeadSection:
-    Content: 
-  BodySections: []
+    Content: The stub curse is a hex that causes the target to injure one or more
+      of their toes the next time they walk. It is one of the {level one spells:List
+      of Level One Spells} that can be cast with {WitchOS}.
+  BodySections:
+  - Content: 'If the moon is in either of its Gibbous phases:
+
+      * Run ''set aura nox''.
+
+      * Run ''incant subgicatrix <target name>''.
+
+
+      If the moon is in either of its Crescent phases:
+
+      * Run ''set target <target name>''.
+
+      * Run ''incant subgicatrix''.
+
+
+      If the moon is Full:
+
+      * Run ''set aura lux''.
+
+      * Run ''incant subgicatrix <target name backward>''.
+
+
+      Otherwise:
+
+      * Run ''incant <target name> subgicatrix''.'
+    Title: How to Cast
+  - Content: The perprioceptors in the legs of the target are temporarily numbed,
+      and a fog of anti-kinaesthesia is placed on the target's mental model of their
+      feet. These effects are mediated by a minor demon from the second ring of the
+      seventh circle of hell, but it is necessarily a very weak demon that is dispelled
+      as soon as the physical damage to the toe happens. The demon escapes through
+      the target's mouth, which usually manifests as a loud stream of prophanities.
+    Title: Effects
