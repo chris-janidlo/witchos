@@ -17,13 +17,13 @@ MonoBehaviour:
     Content: This page contains a list of every level one spell that can be cast using
       {WitchOS}.
   BodySections:
-  - Content: '* Password
+  - Content: '* {Bad Luck Curse:Spells/Bad Luck Curse}
 
-      * Borealeo Curse
+      * {Borealeo Curse:Spells/Borealeo Curse}
 
-      * Toe Stubber
+      * {Password Curse:Spells/Password Curse}
 
-      * Bad Luck
+      * {Social Media Influence:Spells/Social Media Influence}
 
-      * Social Media Influence'
+      * {Stub Curse:Spells/Toe Stubber}'
     Title: Spells
