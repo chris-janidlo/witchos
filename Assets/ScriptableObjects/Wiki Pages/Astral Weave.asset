@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
-  m_Name: WitchOS
+  m_Name: Astral Weave
   m_EditorClassIdentifier: 
-  Title: WitchOS
+  Title: 
   LeadSection:
-    Content: WitchOS is a magic-enabled operating system developed and marketed by
-      Maco.
+    Content: 'TODO: what is the astral weave? how does it relate to aether? how is
+      Maytree entangled in it?'
   BodySections: []

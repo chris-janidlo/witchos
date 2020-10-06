@@ -15,5 +15,31 @@ MonoBehaviour:
   Title: Witchipedia
   LeadSection:
     Content: Witchipedia is the name for the hyper-text knowledge base that comes
-      pre-installed with {WitchOS}.
-  BodySections: []
+      pre-installed with {WitchOS}. Witchipedia was primarily developed by the Chronicler
+      but is currently self-maintaining. It is unknown whether or not Witchipedia
+      is sentient.
+  BodySections:
+  - Content: 'Hyper-text is normal text that is interspersed with clickable links
+      that lead to other pages containing additional hyper-text. In Witchipedia, links
+      appear as underlined text; e.g., {this link to the home page:~Home Page}. Links
+      that the current user has never visited before appear in bold, while links that
+      have been visited appear without the bold. TODO: demonstrate using a link that
+      only would appear here
+
+
+      Witchipedia is designed to ensure that users always get the knowledge they need
+      to be a productive magus. The {home page:~Home Page} contains a section with
+      links to pages that have only been half-read. Users are encouraged to visit
+      it daily in order to receive helpful tips for productivity and metaphysics.'
+    Title: Design
+  - Content: 'Witchipedia was mostly written in C#, although some bugfixes were done
+      via druidic ritual. There are published versions for every version of WitchOS,
+      and additionally it has been known to spread to computers with color monitors.
+
+
+      As WitchOS is self-documenting, Witchipedia is able to generate its content
+      automagically by use of behavioral reflection. For content on topics outside
+      of WitchOS itself, Witchipedia draws from the ancient and unkowable knowings.
+      It is able to censor itself as necessary to prevent the annihiilation that usually
+      occurs to humans who attempt to grasp such knowledge.'
+    Title: Technical details

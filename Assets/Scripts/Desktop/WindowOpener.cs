@@ -5,28 +5,23 @@ using UnityEngine.UI;
 
 namespace WitchOS
 {
-    public class WindowOpenerButton : MonoBehaviour
+    public class WindowOpener : MonoBehaviour
     {
         public Window ApplicationPrefab;
         public ScriptableObject ApplicationData;
         public bool OpenSingleInstance;
-        public WindowEvent OnApplicationOpened;
 
-        public Button Button;
-
-        void Start ()
-        {
-            Button.onClick.AddListener(onClick);
-        }
-
-        void onClick ()
+        public virtual Window Open ()
         {
             var options = WindowFactory.Options.TaskBarButton;
             if (OpenSingleInstance) options |= WindowFactory.Options.Singleton;
 
-            var application = WindowFactory.Instance.OpenWindow(ApplicationPrefab, ApplicationData, options);
+            return WindowFactory.Instance.OpenWindow(ApplicationPrefab, ApplicationData, options);
+        }
 
-            OnApplicationOpened.Invoke(application);
+        public void OpenForUnityEventCallback ()
+        {
+            Open();
         }
     }
 }

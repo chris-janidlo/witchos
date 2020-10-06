@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6213331320721158981}
   - component: {fileID: 971061574746722690}
   - component: {fileID: 9083026174228373041}
+  - component: {fileID: 1780163631643354790}
   m_Layer: 5
   m_Name: Help Button
   m_TagString: Untagged
@@ -119,9 +120,37 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971061574746722690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1780163631643354790}
+        m_MethodName: OpenForUnityEventCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1780163631643354790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997732964498249045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c536200b29a5e55468ef3caf327b47b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplicationPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
+    type: 3}
+  ApplicationData: {fileID: 0}
+  OpenSingleInstance: 0
+  Page: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
 --- !u!1 &5076463783276491045
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,21 +215,6 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &2146338680155442502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418634079337448653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a6622919cdc44e58496d5dab3144db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HelpButton: {fileID: 9083026174228373041}
-  HelpWindowPrefab: {fileID: 496175164308470800, guid: 7d2a1c592e0b445849e533e1ee9a5e41,
-    type: 3}
 --- !u!1001 &1122872935395694096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,6 +227,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Mirror
       objectReference: {fileID: 0}
+    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
     - target: {fileID: 318432293917993, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -297,33 +326,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Mirror
-      value: 
-      objectReference: {fileID: 11400000, guid: af6056abaa899804d949adc1ac00b4e5,
-        type: 2}
     - target: {fileID: 8611113459471225925, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
       propertyPath: Mirror
       value: 
       objectReference: {fileID: 11400000, guid: af6056abaa899804d949adc1ac00b4e5,
         type: 2}
-    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
-      propertyPath: Application
+      propertyPath: Mirror
       value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
+      objectReference: {fileID: 11400000, guid: af6056abaa899804d949adc1ac00b4e5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
 --- !u!224 &1122556706479047481 stripped
@@ -380,6 +394,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Mirror
       objectReference: {fileID: 0}
+    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
     - target: {fileID: 318432293917993, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -464,12 +493,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Mirror
-      value: 
-      objectReference: {fileID: 11400000, guid: f4680918877c5924d9d3d89308c8b44b,
-        type: 2}
     - target: {fileID: 1710539848598287434, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
       propertyPath: m_Sprite
@@ -482,21 +505,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f4680918877c5924d9d3d89308c8b44b,
         type: 2}
-    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
-      propertyPath: Application
+      propertyPath: Mirror
       value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
+      objectReference: {fileID: 11400000, guid: f4680918877c5924d9d3d89308c8b44b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
 --- !u!224 &2991306989653853007 stripped
@@ -1188,19 +1202,13 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4852308317154277565, guid: 587c7c42945c442eea5e2ea5f06e92b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 587c7c42945c442eea5e2ea5f06e92b1, type: 3}
---- !u!1 &6418634079337448653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1707194482673688324, guid: 587c7c42945c442eea5e2ea5f06e92b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 5666300077470489545}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6418634079337448651 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1707194482673688322, guid: 587c7c42945c442eea5e2ea5f06e92b1,
     type: 3}
   m_PrefabInstance: {fileID: 5666300077470489545}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418634079337448653}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17355803a271e4ed3b04e9925295cbd5, type: 3}
@@ -1224,6 +1232,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ornate Mirror
       objectReference: {fileID: 0}
+    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
+    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+        type: 3}
+      propertyPath: Application
+      value: 
+      objectReference: {fileID: 6418634079337448651}
     - target: {fileID: 318432293917993, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1308,12 +1331,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Mirror
-      value: 
-      objectReference: {fileID: 11400000, guid: c1e63c60e48209a4e97acf0bdd475817,
-        type: 2}
     - target: {fileID: 1710539848598287434, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
       propertyPath: m_Sprite
@@ -1326,21 +1343,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c1e63c60e48209a4e97acf0bdd475817,
         type: 2}
-    - target: {fileID: 54152231572805563, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
+    - target: {fileID: 8424887829606750654, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
         type: 3}
-      propertyPath: Application
+      propertyPath: Mirror
       value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 58085008523717665, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
-    - target: {fileID: 7497960402289214775, guid: 8f35a5ae31d2543eaa57fa12f4b8aace,
-        type: 3}
-      propertyPath: Application
-      value: 
-      objectReference: {fileID: 6418634079337448651}
+      objectReference: {fileID: 11400000, guid: c1e63c60e48209a4e97acf0bdd475817,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f35a5ae31d2543eaa57fa12f4b8aace, type: 3}
 --- !u!224 &6417339615910880785 stripped

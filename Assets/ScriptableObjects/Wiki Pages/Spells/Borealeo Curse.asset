@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
+  m_Name: Borealeo Curse
+  m_EditorClassIdentifier: 
+  Title: Borealeo Curse
+  LeadSection:
+    Content: The borealeo curse is a curse that causes temprorary hair loss. It is
+      one of the {level one spells:List of Level One Spells} that can be cast with
+      {WitchOS}.
+  BodySections:
+  - Content: '* Run ''set aura null''.
+
+      * Break a mirror. If the moon is waning, break an additional mirror.
+
+      * Run ''incant <target name> borealeo''.'
+    Title: How to Cast
+  - Content: The borealeo curse lacerates a portion of the hair follicles on the target's
+      scalp, causing them to temporarily degrade and the hair shafts to disintigrate.
+      The amount varies based on which sign is ascendant, but in most cases the target
+      becomes completely bald for the duration of the curse. The follicles' memory
+      of the damage typically only lasts for two weeks, at which point the curse subsides,
+      but there has been one recorded case where the target remained permanently bald
+      due to the strength of Leonian energy present.
+    Title: Effects

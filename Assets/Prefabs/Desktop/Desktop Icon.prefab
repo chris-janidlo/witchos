@@ -63,6 +63,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -138,6 +140,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: a63da489a544a4f828220e7affd09d3f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -190,7 +194,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1637483633686424613}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6294277228163364057}
+        m_MethodName: OpenForUnityEventCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1637483633814612769
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,10 +295,6 @@ MonoBehaviour:
   ApplicationPrefab: {fileID: 0}
   ApplicationData: {fileID: 0}
   OpenSingleInstance: 0
-  OnApplicationOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  Button: {fileID: 1637483633686424612}
 --- !u!114 &1637483633814612780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +383,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23c8042a39274447bbf1e90d1643d23b, type: 2}

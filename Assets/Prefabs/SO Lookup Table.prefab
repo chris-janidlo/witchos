@@ -140,3 +140,23 @@ MonoBehaviour:
     Path: d2/~Home Page
   - Asset: {fileID: 11400000, guid: c1f9afe2b2e69465b96d8b1e35e80d5d, type: 2}
     Path: d2/~Page Not Found
+  - Asset: {fileID: 11400000, guid: 819573c2528d54726b56505cfd2a8f81, type: 2}
+    Path: d2/John Maytree
+  - Asset: {fileID: 11400000, guid: 88f7359fdf04b42249e0fe3a99ea04b2, type: 2}
+    Path: d2/Astral Weave
+  - Asset: {fileID: 11400000, guid: 4f73bfe0e55f047eebed28e1c4aa4373, type: 2}
+    Path: d2/Odd Sorrow
+  - Asset: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
+    Path: d2/Mirrors App
+  - Asset: {fileID: 11400000, guid: 02896466760c03941b8e5ded4352adb0, type: 2}
+    Path: d2/Spells/Social Media Influence
+  - Asset: {fileID: 11400000, guid: a939a7eae237c16419ff61a2364b3a0c, type: 2}
+    Path: d2/Spells/Password Curse
+  - Asset: {fileID: 11400000, guid: 5f0668ec36155574d8fc05a805640980, type: 2}
+    Path: d2/Spells/Toe Stubber
+  - Asset: {fileID: 11400000, guid: bc70804df74238f49bfc3940bf1753e4, type: 2}
+    Path: d2/List of Level One Spells
+  - Asset: {fileID: 11400000, guid: c9ecd30e9f2ec6a40bc02d51d58c6e23, type: 2}
+    Path: d2/Spells/Borealeo Curse
+  - Asset: {fileID: 11400000, guid: 14a4e3fed5107b944a7fbfc7e6992d14, type: 2}
+    Path: d2/Spells/Bad Luck Curse
