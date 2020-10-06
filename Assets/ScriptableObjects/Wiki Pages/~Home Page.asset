@@ -17,6 +17,11 @@ MonoBehaviour:
     Content: Welcome to {Witchipedia}, the hyper-text knowledge base for {WitchOS}.
       Click on any underlined text on this page to read more about a specific topic.
   BodySections:
+  - Content: '* {List of Level One Spells}
+
+
+      More to come!'
+    Title: Quick Links
   - Content: 'Here''s a high-level overview of the features that WitchOS brings to
       the table:
 
@@ -33,7 +38,7 @@ MonoBehaviour:
 
       And it all comes with comprehensive documentation. What other operating system
       can you say that about?'
-    Title: Getting started with WitchOS
+    Title: Getting Started With WitchOS
   - Content: 'You haven''t finished reading these pages! Shame on you!
 
 
