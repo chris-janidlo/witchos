@@ -10,7 +10,8 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
   textureSettings:
     textureType: 8
-    pixelsPerUnit: 32
+    pixelsPerUnit: 100
+    mirror: 0
     transparentMask: 0
     transparentColor: {r: 1, g: 0, b: 1, a: 1}
     meshType: 1
@@ -25,25 +26,25 @@ ScriptedImporter:
   animationSettings:
   - animationName: Off
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 0; To: 0"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 0"
   - animationName: On
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 27; To: 44"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 26; To: 61"
   - animationName: On to Off
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 45; To: 49"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 62; To: 66"
   - animationName: Off to Highlighted
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 1; To: 4"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 1; To: 3"
   - animationName: Highlighted
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 5; To: 13"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 4; To: 12"
   - animationName: Highlighted to Off
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 14; To: 17"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 13; To: 16"
   - animationName: Highlighted to On
     loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 18; To: 26"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 17; To: 25"
   atlas: {fileID: -8328923581568760697, guid: f27a3209fbf0f4a848342c45afede4cd, type: 3}
   importType: 0
   bindType: 1

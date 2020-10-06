@@ -10,7 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
   textureSettings:
     textureType: 8
-    pixelsPerUnit: 32
+    pixelsPerUnit: 100
     mirror: 0
     transparentMask: 0
     transparentColor: {r: 1, g: 0, b: 1, a: 1}
@@ -35,7 +35,7 @@ ScriptedImporter:
     about: "Animation Type:\tForward\r\nAnimation:\tFrom: 18; To: 18"
   - animationName: Repairing
     loopTime: 1
-    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 19; To: 30"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 19; To: 31"
   atlas: {fileID: -8328923581568760697, guid: 1911daf36f3f06c4898146ad6a7768a8, type: 3}
   importType: 0
   bindType: 1

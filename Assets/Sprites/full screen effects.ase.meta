@@ -10,7 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
   textureSettings:
     textureType: 8
-    pixelsPerUnit: 32
+    pixelsPerUnit: 100
     mirror: 0
     transparentMask: 0
     transparentColor: {r: 1, g: 0, b: 1, a: 1}
@@ -26,13 +26,10 @@ ScriptedImporter:
   animationSettings:
   - animationName: Shutdown
     loopTime: 0
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 0; To: 6"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 6"
   - animationName: Startup
     loopTime: 0
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 7; To: 37"
-  - animationName: Idle
-    loopTime: 1
-    about: "Animation Type:\tForward\nAnimation:\tFrom: 38; To: 38"
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 7; To: 44"
   atlas: {fileID: -8328923581568760697, guid: 798bc80d587164387b968b2640a8cb17, type: 3}
   importType: 0
   bindType: 1
