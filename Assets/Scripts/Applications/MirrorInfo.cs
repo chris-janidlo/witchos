@@ -29,11 +29,31 @@ namespace WitchOS
 
         void Update ()
         {
+            animateMirror();
+            animateClock();
+            animateParticles();
 
+            previousState = Mirror.CurrentState;
+        }
+
+        public void BreakThisMirror ()
+        {
+            Mirror.Break();
+        }
+
+        void animateMirror ()
+        {
             MirrorAnimator.SetInteger(AnimatorStateIntegerName, (int) Mirror.CurrentState);
-
             BreakButton.interactable = Mirror.CurrentState == Mirror.State.Intact;
 
+            if (Mirror.CurrentState == Mirror.State.Repairing)
+            {
+                MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
+            }
+        }
+
+        void animateClock ()
+        {
             Clock.sprite = Mirror.CurrentState == Mirror.State.Dud
                 ? BrokenClockSprite
                 : RegularClockSprite;
@@ -44,12 +64,10 @@ namespace WitchOS
             {
                 case Mirror.State.Broken:
                     fillAmount = Mirror.Timer / Mirror.TimeUntilDud;
-                    setParticleIntensity(Mirror.DistanceFromSweetspot);
                     break;
 
                 case Mirror.State.Repairing:
                     fillAmount = 1 - Mirror.RepairProgress;
-                    MirrorAnimator.SetFloat(AnimatorRepairProgressFloatName, Mirror.RepairProgress);
                     break;
 
                 default:
@@ -58,18 +76,18 @@ namespace WitchOS
             }
 
             ClockOverlay.fillAmount = Mathf.Round(fillAmount * ClockFillSegments) / ClockFillSegments;
+        }
 
-            if (previousState == Mirror.State.Broken && Mirror.CurrentState != Mirror.State.Broken)
+        void animateParticles ()
+        {
+            if (Mirror.CurrentState == Mirror.State.Broken)
+            {
+                setParticleIntensity(Mirror.DistanceFromSweetspot);
+            }
+            else if (previousState == Mirror.State.Broken)
             {
                 makeParticlesDieFaster();
             }
-
-            previousState = Mirror.CurrentState;
-        }
-
-        public void BreakThisMirror ()
-        {
-            Mirror.Break();
         }
 
         void setParticleIntensity (float distanceFromSweetspot)
