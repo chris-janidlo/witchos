@@ -25,6 +25,8 @@ namespace WitchOS
         void Start ()
         {
             MirrorAnimator.runtimeAnimatorController = Mirror.AnimatorController;
+
+            animateMirror(); // get animator in correct state immediately so that it doesn't play the "break" animation if the app loads when the mirror is not intact
         }
 
         void Update ()
