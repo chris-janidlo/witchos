@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace WitchOS
 {
-    public class MirrorInfo : MonoBehaviour
+    public class MirrorVisualizer : MonoBehaviour
     {
         public Animator MirrorAnimator;
         public string AnimatorStateIntegerName, AnimatorRepairProgressFloatName;
