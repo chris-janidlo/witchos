@@ -53,10 +53,10 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
-  playOnAwake: 1
+  prewarm: 1
+  playOnAwake: 0
   useUnscaledTime: 0
-  autoRandomSeed: 0
+  autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 318432293917993}
   - component: {fileID: 8424887829606750654}
   m_Layer: 5
-  m_Name: Mirror Info
+  m_Name: Mirrors App - Individual Mirror Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9955,11 +9955,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7175480059832316361}
   - component: {fileID: 8611113459471225925}
+  - component: {fileID: 6840636367422240720}
   - component: {fileID: 662641863049773157}
   - component: {fileID: 1710539848598287434}
   - component: {fileID: 3643015186129496370}
   - component: {fileID: 8620268046368201200}
-  - component: {fileID: 5139172850206736134}
   m_Layer: 5
   m_Name: Mirror
   m_TagString: Untagged
@@ -10002,6 +10002,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mirror: {fileID: 0}
+--- !u!114 &6840636367422240720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792830212570536554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1032761c271d0947b170713e7456748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainSystem: {fileID: 4028716278829416347}
+  TrailSystem: {fileID: 7806097128740845710}
+  BurstSystem: {fileID: 558232616938144667}
 --- !u!222 &662641863049773157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10116,19 +10131,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5139172850206736134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6792830212570536554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a204cb5141ab45343822b514cfd19b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 558232616938144667}
 --- !u!1 &7164425157102487869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10220,9 +10222,9 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
-  autoRandomSeed: 0
+  autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
