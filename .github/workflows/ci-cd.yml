@@ -66,6 +66,7 @@ jobs:
           name: build-${{ matrix.targetPlatform }}
           path: builds
   release:
+    needs: [test, build]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
