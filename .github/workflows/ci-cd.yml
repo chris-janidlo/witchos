@@ -13,15 +13,6 @@ env:
   ITCH_GAME: witchos-secret-version
   ITCH_USER: crass_sandwich
   BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-  SUPPORTED_PLATFORMS:
-  # builder-name: name used for unity-builder action
-  # itch-name: name used for butler-publish-itchio-action
-    - builder-name: WebGL
-      itch-name: webgl
-    - builder-name: StandaloneWindows
-      itch-name: win
-    - builder-name: StandaloneOSX
-      itch-name: osx
 
 jobs:
   test:
@@ -53,8 +44,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-      # filter syntax (*.) gets you just an array of the builder-name values
-        targetPlatform: ${{ env.SUPPORTED_PLATFORMS.*.builder-name }}
+        targetPlatform:
+          - WebGL
+          - StandaloneWindows
+          - StandaloneOSX
     steps:
       - uses: actions/checkout@v2
         with:
@@ -73,19 +66,23 @@ jobs:
           name: build-${{ matrix.targetPlatform }}
           path: builds
   release:
+    needs: [test, build]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        targetPlatform: ${{ env.SUPPORTED_PLATFORMS }}
+        include:
+          - builder-name: WebGL
+            itch-name: webgl
+          - builder-name: StandaloneWindows
+            itch-name: win
+          - builder-name: StandaloneOSX
+            itch-name: osx
     steps:
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
       - uses: actions/download-artifact@v2
         with:
           path: builds
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
-          PACKAGE: builds/build-${{ matrix.targetPlatform.builder-name }}
-          CHANNEL: ${{ matrix.targetPlatform.itch-name }}
+          PACKAGE: builds/build-${{ matrix.builder-name }}
+          CHANNEL: ${{ matrix.itch-name }}
