@@ -11,7 +11,7 @@ jobs:
       - name: Get the activation file
         uses: webbertakken/unity-request-manual-activation-file@v1.1
         with:
-          unityVersion: 2019.4.12f1
+          unityVersion: 2019.4.12f1-update-2020-10-08
       - name: Expose activation file as artifact
         uses: actions/upload-artifact@v1
         with:
