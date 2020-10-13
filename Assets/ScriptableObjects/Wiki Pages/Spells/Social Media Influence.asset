@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Social Media Influence
   LeadSection:
-    Content: The social media influence is a minor influence that causes targets to
-      behave inappropriately online. It is one of the {level one spells:List of Level
-      One Spells} that can be cast with {WitchOS}.
+    Content: The social media influence is a minor influence that causes targets
+      to behave inappropriately online. It is one of the {level one spells:List of
+      Level One Spells} that can be cast with {WitchOS}.
   BodySections:
   - Content: 'Prerequisite: at least one mirror is intact.
 
-      * Run ''xing <target website>''.
+      * Run ''xing <target
+      website>''.
 
-      * In a new hexterm window, run ''incant facies libel <target name>''.'
+      * In a new hexterm window, run ''incant facies libel <target
+      name>''.'
     Title: How to Cast
   - Content: The social media influence has an aspect of Mercury, and usually wears
       off when it becomes visible in the sky. The effects vary based on the temperament

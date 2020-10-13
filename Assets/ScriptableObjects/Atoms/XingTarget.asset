@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: The target of the currently running Xing command
   _id: 
-  _value: allan robbins
+  _value: 
   Changed: {fileID: 0}
   ChangedWithHistory: {fileID: 0}
-  _oldValue: facebook.com
+  _oldValue: 
   _initialValue: 
   _preChangeTransformers: []

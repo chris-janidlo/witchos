@@ -23,13 +23,13 @@ MonoBehaviour:
       Break a mirror.\n* Run 'set aura negative'.\n* Run 'incant malam fortunam <target
       name>. <most frequent chant>'."
     Title: How to Cast
-  - Content: 'The target of the curse is doomed to small misfortunes for a short period
-      of time. As with all luck-based magic, the effects are often subtle and can
-      vary widely, but generally this hex only lasts a week.
+  - Content: 'The target of the curse is doomed to small misfortunes for a short
+      period of time. As with all luck-based magic, the effects are often subtle
+      and can vary widely, but generally this hex only lasts a week.
 
 
-      Any instances of bad luck are typically confined to events with high levels
-      of variance. Some examples include dice rolls, weather fluctuations, and job
-      applications. People who frequently gamble, such as stock traders, tend to get
-      hit the hardest.'
+      Any
+      instances of bad luck are typically confined to events with high levels of
+      variance. Some examples include dice rolls, weather fluctuations, and job applications.
+      People who frequently gamble, such as stock traders, tend to get hit the hardest.'
     Title: Effects

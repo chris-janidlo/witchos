@@ -15,5 +15,8 @@ MonoBehaviour:
   _developerDescription: Raised when the user turns in an order
   _replayBufferSize: 0
   _inspectorRaiseValue:
-    EmailData: {fileID: 0}
-    InvoiceData: {fileID: 0}
+    EmailData:
+      Value: {fileID: 0}
+    InvoiceData:
+      Value: {fileID: 0}
+    State: 0

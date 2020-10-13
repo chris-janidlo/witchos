@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebd22dae7d8f44879c1a21b73f86a19, type: 3}
   m_Name: SpellEther
   m_EditorClassIdentifier: 
-  _developerDescription: Contains all the spells that have been cast in one day. Needs
-    to be cleared daily.
+  _developerDescription: Contains all the spells that have been cast in one day.
+    Needs to be cleared daily.
   Cleared: {fileID: 0}
   Added: {fileID: 11400000, guid: 75ae51b6f5f824d9d804b93d5688dc25, type: 2}
   Removed: {fileID: 0}
