@@ -20,28 +20,33 @@ MonoBehaviour:
   BodySections:
   - Content: 'If the moon is in either of its Gibbous phases:
 
-      * Run ''set aura nox''.
+      * Run ''set
+      aura nox''.
 
       * Run ''incant subgicatrix <target name>''.
 
 
-      If the moon is in either of its Crescent phases:
+      If the
+      moon is in either of its Crescent phases:
 
-      * Run ''set target <target name>''.
+      * Run ''set target <target
+      name>''.
 
       * Run ''incant subgicatrix''.
 
 
       If the moon is Full:
 
-      * Run ''set aura lux''.
+      *
+      Run ''set aura lux''.
 
       * Run ''incant subgicatrix <target name backward>''.
 
 
       Otherwise:
 
-      * Run ''incant <target name> subgicatrix''.'
+      *
+      Run ''incant <target name> subgicatrix''.'
     Title: How to Cast
   - Content: The perprioceptors in the legs of the target are temporarily numbed,
       and a fog of anti-kinaesthesia is placed on the target's mental model of their

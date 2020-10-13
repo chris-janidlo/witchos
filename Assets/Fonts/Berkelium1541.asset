@@ -19,6 +19,8 @@ Texture2D:
   m_TextureFormat: 1
   m_MipCount: 1
   m_IsReadable: 1
+  m_IgnoreMasterTextureLimit: 0
+  m_IsPreProcessed: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_AlphaIsTransparency: 0
@@ -52,9 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Berkelium1541
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 2141524167
   material: {fileID: 294586611673679250}
-  materialHashCode: 0
+  materialHashCode: -1846758420
   m_Version: 1.1.0
   m_SourceFontFileGUID: f0b9a225e5fd247909de323216a8e956
   m_SourceFontFile_EditorRef: {fileID: 0}
@@ -1831,6 +1833,7 @@ MonoBehaviour:
   m_AtlasTextures:
   - {fileID: -6241612949363287312}
   m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
   m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0

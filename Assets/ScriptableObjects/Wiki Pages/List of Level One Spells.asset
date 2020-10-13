@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Level One Spells
   LeadSection:
-    Content: This page contains a list of every level one spell that can be cast using
-      {WitchOS}.
+    Content: This page contains a list of every level one spell that can be cast
+      using {WitchOS}.
   BodySections:
   - Content: '* {Bad Luck Curse:Spells/Bad Luck Curse}
 
-      * {Borealeo Curse:Spells/Borealeo Curse}
+      * {Borealeo Curse:Spells/Borealeo
+      Curse}
 
       * {Password Curse:Spells/Password Curse}
 
-      * {Social Media Influence:Spells/Social Media Influence}
+      * {Social Media
+      Influence:Spells/Social Media Influence}
 
       * {Stub Curse:Spells/Toe Stubber}'
     Title: Spells

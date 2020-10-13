@@ -20,15 +20,16 @@ MonoBehaviour:
   BodySections:
   - Content: '* Run ''set aura null''.
 
-      * Break a mirror. If the moon is waning, break an additional mirror.
+      * Break a mirror. If the moon is waning,
+      break an additional mirror.
 
       * Run ''incant <target name> borealeo''.'
     Title: How to Cast
-  - Content: The borealeo curse lacerates a portion of the hair follicles on the target's
-      scalp, causing them to temporarily degrade and the hair shafts to disintigrate.
-      The amount varies based on which sign is ascendant, but in most cases the target
-      becomes completely bald for the duration of the curse. The follicles' memory
-      of the damage typically only lasts for two weeks, at which point the curse subsides,
-      but there has been one recorded case where the target remained permanently bald
-      due to the strength of Leonian energy present.
+  - Content: The borealeo curse lacerates a portion of the hair follicles on the
+      target's scalp, causing them to temporarily degrade and the hair shafts to
+      disintigrate. The amount varies based on which sign is ascendant, but in most
+      cases the target becomes completely bald for the duration of the curse. The
+      follicles' memory of the damage typically only lasts for two weeks, at which
+      point the curse subsides, but there has been one recorded case where the target
+      remained permanently bald due to the strength of Leonian energy present.
     Title: Effects

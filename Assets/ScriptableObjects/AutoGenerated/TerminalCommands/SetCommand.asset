@@ -16,8 +16,9 @@ MonoBehaviour:
   ArgumentList: label value
   HelpOutput: 'lets you set environment variables
 
-    environment variables are just a way of storing values by name so other commands/programs
-    can access them
+    environment variables are
+    just a way of storing values by name so other commands/programs can access them
 
-    for example, if you enter ''set aura null'', any other command that wants to know
+    for
+    example, if you enter ''set aura null'', any other command that wants to know
     what the current value of ''aura'' is would see that it is ''null'''

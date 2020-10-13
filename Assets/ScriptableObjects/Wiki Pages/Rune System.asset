@@ -23,15 +23,15 @@ MonoBehaviour:
       the process, both a blank canvas and a representation of the rune are opened\n2.
       you choose one of the colors of the rune and attune to it somehow\n3. you open
       an ingredient, and siphon the color from that ingredient\n   a. siphoning happens
-      in two simultaneous stages. still need to figure out exactly how it works, but
-      you siphon the color as if the color space is 2d\n   b. you left click to siphon
-      one, and right click to siphon the other. what happens is that the siphoning
-      app shows you a meter for each dimension with lines for the target amounts.
-      you hold the mouse buttons down to siphon, increasing each meter, and then try
-      to let go as close to the lines as possible. the closer to the line you get,
-      the better quality the rune will be. you can't un-siphon color, so you more
-      or less have one shot to be accurate without wasting color\n4. now that you
-      have the color, you can use it some amount of times in the sprite editor - either
-      as many as you want, or a finite amount, depending on how it feels. at this
-      point, the app works just like regular ms paint"
+      in two simultaneous stages. still need to figure out exactly how it works,
+      but you siphon the color as if the color space is 2d\n   b. you left click
+      to siphon one, and right click to siphon the other. what happens is that the
+      siphoning app shows you a meter for each dimension with lines for the target
+      amounts. you hold the mouse buttons down to siphon, increasing each meter,
+      and then try to let go as close to the lines as possible. the closer to the
+      line you get, the better quality the rune will be. you can't un-siphon color,
+      so you more or less have one shot to be accurate without wasting color\n4.
+      now that you have the color, you can use it some amount of times in the sprite
+      editor - either as many as you want, or a finite amount, depending on how it
+      feels. at this point, the app works just like regular ms paint"
     Title: how it works

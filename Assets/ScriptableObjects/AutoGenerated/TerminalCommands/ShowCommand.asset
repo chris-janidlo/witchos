@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: ShowCommand
   m_EditorClassIdentifier: 
   Name: show
+  ArgumentList: 
   HelpOutput: 'displays values of environment variables
 
-    if this isn''t given any arguments, it simply displays every environment variable
-    that currently has a value
+    if this isn''t given
+    any arguments, it simply displays every environment variable that currently has
+    a value
 
-    otherwise, the command tries to display the current value for every argument
+    otherwise, the command tries to display the current value for every
+    argument
 
     (see ''help set'' for more information on environment variables)'
