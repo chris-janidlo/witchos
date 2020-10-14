@@ -41,6 +41,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: test-report
+          path: artifacts
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -65,8 +66,8 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v2
         with:
-          name: build-${{ matrix.targetPlatform }}
-          path: builds
+          name: build
+          path: build-${{ matrix.targetPlatform }}
   release:
     needs: [test, build]
     runs-on: ubuntu-latest
@@ -86,5 +87,5 @@ jobs:
           path: builds
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
-          PACKAGE: builds/build-${{ matrix.builder-name }}
+          PACKAGE: build-${{ matrix.builder-name }}
           CHANNEL: ${{ matrix.itch-name }}
