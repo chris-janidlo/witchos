@@ -38,7 +38,7 @@ jobs:
       - uses: webbertakken/unity-test-runner@v1.4
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
-          testMode: ${{ matrix.testMode }
+          testMode: ${{ matrix.testMode }}
       - uses: actions/upload-artifact@v2
         with:
           name: test-report
