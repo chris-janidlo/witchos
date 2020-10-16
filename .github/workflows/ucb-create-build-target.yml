@@ -5,6 +5,9 @@ on:
   workflow_dispatch: ~
   create:
     branches: [ feature/** ]
+  # TODO: remove below
+  push:
+    branches: [ feature/** ]
 
 
 env:
