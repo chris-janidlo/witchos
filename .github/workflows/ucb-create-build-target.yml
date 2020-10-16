@@ -38,7 +38,7 @@ jobs:
           _input-file: ./.github/workflows/create-build-target-request-body.json
           NAME_PLACEHOLDER: feature - ${{ env.BRANCH_NAME }} - ${{ matrix.platform }}
           PLATFORM_PLACEHOLDER: ${{ matrix.platform }}
-          BRANCH_PLACEHOLDER: ${{ env.BRANCH_NAME }}
+          BRANCH_PLACEHOLDER: feature/${{ env.BRANCH_NAME }}
 
       - name: 'Send create-target request'
         id: create-target-request
