@@ -28,6 +28,8 @@ jobs:
           - standalonewindows64
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: 'Grab branch name'
         uses: nelonoel/branch-name@v1
 
