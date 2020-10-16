@@ -46,7 +46,7 @@ jobs:
         with:
           url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets
           method: POST
-          customHeaders: ${{ AUTHORIZATION_HEADER }}
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
           data: ${{ steps.get-config.outputs.result }}
       
       - name: 'Trigger first build'
@@ -54,4 +54,4 @@ jobs:
         with:
           url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets/${{ fromJSON(steps.create-target-request.outputs.response).buildtargetid }}/builds
           method: POST
-          customHeaders: ${{ AUTHORIZATION_HEADER }}
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
