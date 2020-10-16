@@ -4,9 +4,6 @@ name: 'UCB: Create Build Target'
 on:
   create:
     branches: [ feature/** ]
-  # TODO: remove below
-  push:
-    branches: [ feature/** ]
 
 
 env:
