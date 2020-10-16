@@ -37,10 +37,10 @@ jobs:
         id: get-config
         uses: bluwy/substitute-string-action@v1
         with:
-          _input_file: ./.github/workflows/create-build-target-request-body.json
-          NAME_PLACEHOLDER: ${{ BRANCH_NAME }} - ${{ matrix.platform }}
+          _input-file: ./.github/workflows/create-build-target-request-body.json
+          NAME_PLACEHOLDER: ${{ env.BRANCH_NAME }} - ${{ matrix.platform }}
           PLATFORM_PLACEHOLDER: ${{ matrix.platform }}
-          BRANCH_PLACEHOLDER: ${{ BRANCH_NAME }}
+          BRANCH_PLACEHOLDER: ${{ env.BRANCH_NAME }}
 
       - name: 'Send create-target request'
         id: create-target-request
@@ -48,7 +48,7 @@ jobs:
         with:
           url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets
           method: POST
-          customHeaders: ${{ AUTHORIZATION_HEADER }}
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
           data: ${{ steps.get-config.outputs.result }}
       
       - name: 'Trigger first build'
@@ -56,4 +56,4 @@ jobs:
         with:
           url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets/${{ fromJSON(steps.create-target-request.outputs.response).buildtargetid }}/builds
           method: POST
-          customHeaders: ${{ AUTHORIZATION_HEADER }}
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
