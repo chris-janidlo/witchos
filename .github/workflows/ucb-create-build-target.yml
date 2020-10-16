@@ -9,7 +9,7 @@ on:
 
 env:
   REQUEST_BODY_CONTENT_DIRECTORY: './workflows/create_build_target_request_bodies/'
-  REQUEST_URL: 'https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets'
+  AUTHORIZATION_HEADER: '{"Authorization": "Basic ${{ secrets.UNITY_CLOUD_BUILD_API_KEY }}"}'
 
 
 jobs:
@@ -38,9 +38,17 @@ jobs:
           BRANCH_PLACEHOLDER: ${{ BRANCH_NAME }}
 
       - name: 'Send create-target request'
+        id: create-target-request
         uses: fjogeleit/http-request-action@v1.5.0
         with:
-          url: ${{ REQUEST_URL }}
+          url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets
           method: POST
-          customHeaders: '{"Authorization": "Basic ${{ secrets.UNITY_CLOUD_BUILD_API_KEY }}"}'
+          customHeaders: ${{ AUTHORIZATION_HEADER }}
           data: ${{ steps.get-config.outputs.result }}
+      
+      - name: 'Trigger first build'
+        uses: fjogeleit/http-request-action@v1.5.0
+        with:
+          url: https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets/${{ fromJSON(steps.create-target-request.outputs.response).buildtargetid }}/builds
+          method: POST
+          customHeaders: ${{ AUTHORIZATION_HEADER }}
