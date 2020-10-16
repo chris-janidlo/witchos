@@ -1,0 +1,82 @@
+{
+  "name": "NAME_PLACEHOLDER",
+  "platform": "PLATFORM_PLACEHOLDER",
+  "enabled": true,
+  "settings": {
+    "autoBuild": true,
+    "unityVersion": "2019_4_12f1",
+    "autoDetectUnityVersion": false,
+    "fallbackPatchVersion": false,
+    "executablename": "",
+    "scm": {
+      "type": "git",
+      "repo": "",
+      "branch": "BRANCH_PLACEHOLDER",
+      "subdirectory": "",
+      "client": ""
+    },
+    "platform": {
+      "bundleId": "",
+      "xcodeVersion": ""
+    },
+    "autoBuildCancellation": true,
+    "advanced": {
+      "xcode": {
+        "useArchiveAndExport": false,
+        "customFastlaneConfigPath": "",
+        "shouldNotarize": false
+      },
+      "android": {
+        "buildAppBundle": false
+      },
+      "unity": {
+        "preExportMethod": "",
+        "postExportMethod": "",
+        "preBuildScript": "",
+        "postBuildScript": "",
+        "scriptingDefineSymbols": "",
+        "playerExporter": {
+          "sceneList": [],
+          "buildOptions": [],
+          "export": true
+        },
+        "playerSettings": {
+          "Android": {
+            "useAPKExpansionFiles": false
+          }
+        },
+        "editorUserBuildSettings": {
+          "androidBuildSystem": "internal"
+        },
+        "assetBundles": {
+          "buildBundles": false,
+          "basePath": "",
+          "buildAssetBundleOptions": "",
+          "copyToStreamingAssets": false,
+          "copyBundlePatterns": []
+        },
+        "addressables": {
+          "buildAddressables": false,
+          "contentUpdate": false,
+          "profileName": "",
+          "failedAddressablesFailsBuild": true,
+          "contentUpdateSettings": {
+            "contentStatePath": "",
+            "linkedTargetId": ""
+          }
+        },
+        "runUnitTests": true,
+        "runEditModeTests": true,
+        "runPlayModeTests": true,
+        "failedUnitTestFailsBuild": true,
+        "unitTestMethod": "",
+        "enableLightBake": false
+      }
+    }
+  },
+  "credentials": {
+    "signing": {
+      "credentialid": ""
+    }
+  }
+}
