@@ -7,7 +7,6 @@ on:
 
 
 env:
-  REQUEST_BODY_CONTENT_DIRECTORY: './workflows/create_build_target_request_bodies/'
   AUTHORIZATION_HEADER: '{"Authorization": "Basic ${{ secrets.UNITY_CLOUD_BUILD_API_KEY }}"}'
   REQUEST_TIMEOUT: 30000
 
