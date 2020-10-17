@@ -1,0 +1,68 @@
+name: 'UCB: Deploy Finished Build To itch.io'
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        environment: 'Sets both the UCB build target from which this grabs the build artifacts, and the itch.io page those artifacts will be deployed to. Must be one of ''develop'' or ''master'''
+        required: true
+
+
+env:
+  AUTHORIZATION_HEADER: '{"Authorization": "Basic ${{ secrets.UNITY_CLOUD_BUILD_API_KEY }}"}'
+  REQUEST_TIMEOUT: 30000
+  BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+  ITCH_USER: crass-sandwich
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        platform:
+          - ucb: webgl
+            itch: webgl
+          - ucb: standaloneosxuniversal
+            itch: osx
+          - ucb: standalonewindows64
+            itch: win
+
+    steps:
+      - if: ${{ github.event.inputs.channel != 'master' && github.event.inputs.channel != 'develop' }}
+        name: 'Channel name must be either ''master'' or ''develop'''
+        run: exit 1
+
+      - name: 'Get build status'
+        id: build-status
+        uses: fjogeleit/http-request-action@v1.5.0
+        with:
+          url: 'https://build-api.cloud.unity3d.com/api/v1/orgs/1366086/projects/b19fc897-adf6-4d9b-bef5-3bb4daf59bbc/buildtargets/automation-${{ github.event.inputs.channel }}-${{ matrix.platform.ucb }}/builds'
+          method: GET
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
+          timeout: ${{ env.REQUEST_TIMEOUT }}
+      
+      - name: 'Download build artifact'
+        id: download-build
+        uses: fjogeleit/http-request-action@v1.5.0
+        with:
+          url: ${{ fromJSON(steps.build-status.outputs.response)[0].links.download_primary.href }}
+          method: GET
+          customHeaders: ${{ env.AUTHORIZATION_HEADER }}
+          timeout: ${{ env.REQUEST_TIMEOUT }}
+
+      - if: ${{ github.event.inputs.channel == 'master' }}
+        name: 'Set the name of the itch.io page to deploy to'
+        run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
+
+      - if: ${{ github.event.inputs.channel == 'develop' }}
+        name: 'Set the name of the itch.io page to deploy to'
+        run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
+
+      - name: 'Upload to itch'
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          CHANNEL: ${{ matrix.platform.itch }}
+          PACKAGE: ${{ steps.download-build.response }}
