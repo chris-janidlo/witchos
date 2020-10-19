@@ -35,9 +35,6 @@ jobs:
           - editmode
 
     steps:
-      - name: fake failure
-        run: exit 1
-
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -76,9 +73,6 @@ jobs:
           - StandaloneOSX
 
     steps:
-      - name: fake failure
-        run: exit 1
-
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -141,14 +135,3 @@ jobs:
         env:
           PACKAGE: build-${{ matrix.targetPlatform.builder-name }}
           CHANNEL: ${{ matrix.targetPlatform.itch-name }}
-  
-
-  return-license:
-    # get some headroom by freeing up the seat immediately after using it
-    needs: [test, build]
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Return license
-        uses: webbertakken/unity-return-license@v1.1
