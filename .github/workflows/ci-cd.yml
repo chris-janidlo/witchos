@@ -135,3 +135,13 @@ jobs:
         env:
           PACKAGE: build-${{ matrix.targetPlatform.builder-name }}
           CHANNEL: ${{ matrix.targetPlatform.itch-name }}
+  
+
+  return-license:
+    # get some headroom by freeing up the seat immediately after using it
+    needs: [test, build]
+    if: ${{ always() }}
+
+    steps:
+      - name: Return license
+        uses: webbertakken/unity-return-license@v1
