@@ -8,6 +8,10 @@ on:
       - develop
       - bug/**
       - feature/**
+  create:
+    branches:
+      - bug/**
+      - feature/**
 
 
 env:
