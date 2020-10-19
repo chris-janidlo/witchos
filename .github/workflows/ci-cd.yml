@@ -141,6 +141,7 @@ jobs:
     # get some headroom by freeing up the seat immediately after using it
     needs: [test, build]
     if: ${{ always() }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Return license
