@@ -35,6 +35,9 @@ jobs:
           - editmode
 
     steps:
+      - name: fake failure
+        run: exit 1
+
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -73,6 +76,9 @@ jobs:
           - StandaloneOSX
 
     steps:
+      - name: fake failure
+        run: exit 1
+
       - name: Checkout code
         uses: actions/checkout@v2
         with:
