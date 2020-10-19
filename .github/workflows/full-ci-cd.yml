@@ -49,7 +49,6 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
           testMode: ${{ matrix.testMode }}
-          customParameters: '-nographics'
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
@@ -88,7 +87,6 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: '-nographics'
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
