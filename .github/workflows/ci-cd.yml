@@ -95,7 +95,7 @@ jobs:
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
         with:
-          name: build-${{ matrix.targetPlatform }}
+          name: WitchOS-${{ matrix.targetPlatform }}
           path: build
 
 
@@ -108,7 +108,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        targetPlatform:
+        include:
           - builder-name: WebGL
             itch-name: webgl
           - builder-name: StandaloneWindows
@@ -120,7 +120,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-          name: build-${{ matrix.targetPlatform.builder-name }}
+          name: WitchOS-${{ matrix.builder-name }}
 
       - name: 'Set the name of the itch.io page to deploy to for master branch'
         if: ${{ github.event.inputs.channel == 'master' }}
@@ -134,4 +134,4 @@ jobs:
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
           PACKAGE: build-${{ matrix.targetPlatform.builder-name }}
-          CHANNEL: ${{ matrix.targetPlatform.itch-name }}
+          CHANNEL: ${{ matrix.itch-name }}
