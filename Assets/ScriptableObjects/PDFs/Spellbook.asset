@@ -53,12 +53,41 @@ MonoBehaviour:
 
     3.
     Run command ''incant <target name> borealeo''. The hex is now cast.'
-  - "to make someone stub one of their toes:\n\nif the moon is Gibbous (waxing or
-    waning, no difference):\n- 'set aura nox'\n- 'incant subgicatrix <target name>'\n\nif
-    the moon is Crescent:\n- 'set target <target name>'\n- 'incant subgicatrix'\n\nif
-    the moon is Full:\n- 'set aura lux'\n- 'incant subgicatrix <target name backward>'\n
-    - make sure to reverse the name!\n\nif the moon is in any other phase:\n- 'incant
-    <target name> subgicatrix'"
+  - 'to make someone stub one of their toes:
+
+
+    if the moon is Gibbous (waxing
+    or waning, no difference):
+
+    - ''set aura nox''
+
+    - ''incant subgicatrix
+    <target name>''
+
+
+    if the moon is Crescent:
+
+    - ''set target <target name>''
+
+    -
+    ''incant subgicatrix''
+
+
+    if the moon is Full:
+
+    - ''set aura lux''
+
+    -
+    ''incant subgicatrix <target name backward>''
+
+    - make sure to reverse the
+    name!
+
+
+    if the moon is in any other phase:
+
+    - ''incant <target name>
+    subgicatrix'''
   - "A Curse for moderate Ill Fortune, with a common Duration of one Week.\n\n* Commune
     with the aggrieved Ancestors of the Accursed, using the command 'seance <target
     name>'.\n   * Take note of their most Frequent Chant.\n* Break a Mirror.\n* Run
