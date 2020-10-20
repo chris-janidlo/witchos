@@ -91,6 +91,10 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          
+      - name: Make OSX app runnable
+        if: ${{ matrix.targetPlatform == StandaloneOSX }}
+        run: chmod +x build/Contents/MacOS/*
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
