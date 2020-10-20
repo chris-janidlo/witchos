@@ -93,7 +93,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           
       - name: Make OSX app runnable
-        if: ${{ matrix.targetPlatform == StandaloneOSX }}
+        if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
         run: chmod +x build/Contents/MacOS/*
 
       - name: Upload build artifact to github cache
