@@ -42,11 +42,15 @@ jobs:
           submodules: recursive
 
       - name: Cache
-        uses: actions/cache@v1.1.0
+        uses: actions/cache@v2
         with:
           path: Library
-          key: Library-test
-          restore-keys: Library-
+          key: Library-test-${{ env.UNITY_VERSION }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+            Library-test-${{ env.UNITY_VERSION }}-
+            Library-
+            Library-test-
 
       - name: Run tests
         uses: webbertakken/unity-test-runner@v1.4
@@ -80,11 +84,15 @@ jobs:
           submodules: recursive
 
       - name: Cache
-        uses: actions/cache@v1.1.0
+        uses: actions/cache@v2
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
+          key: Library-${{ env.UNITY_VERSION }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+            Library-test-${{ env.UNITY_VERSION }}-
+            Library-
+            Library-test-
 
       - name: Build
         uses: webbertakken/unity-builder@v1.4
