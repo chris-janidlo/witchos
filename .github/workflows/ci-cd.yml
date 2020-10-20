@@ -101,7 +101,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
 
       - name: check out what's in build
-        run: ls build
+        run: ls build/StandaloneOSX
           
       - name: Make OSX app runnable
         if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
