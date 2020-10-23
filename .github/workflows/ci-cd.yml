@@ -130,11 +130,11 @@ jobs:
           name: WitchOS-${{ matrix.builder-name }}
 
       - name: Set the name of the itch.io page to deploy to for master branch
-        if: ${{ github.event.inputs.channel == 'master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
 
       - name: Set the name of the itch.io page to deploy to for feature/ci-cd branch
-        if: ${{ github.event.inputs.channel == 'feature/ci-cd' }}
+        if: ${{ github.ref == 'ref/heads/feature/ci-cd' }}
         run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
 
       - name: Push to itch.io
