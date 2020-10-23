@@ -16,11 +16,6 @@ on:
 
 env:
   UNITY_VERSION: 2019.3.15f1
-  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-  UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-  ITCH_USER: crass_sandwich
-  BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
 
 
 jobs:
@@ -68,6 +63,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       OUTPUT_DIRECTORY: build
 
     strategy:
@@ -117,6 +115,9 @@ jobs:
     needs: [test, build]
     if: ${{ github.ref == 'refs/heads/master' || github.ref == 'ref/heads/develop' }}
     runs-on: ubuntu-latest
+    env:
+      ITCH_USER: crass_sandwich
+      BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
 
     strategy:
       fail-fast: true
@@ -133,11 +134,11 @@ jobs:
         with:
           name: WitchOS-${{ matrix.builder-name }}
 
-      - name: 'Set the name of the itch.io page to deploy to for master branch'
+      - name: Set the name of the itch.io page to deploy to for master branch
         if: ${{ github.event.inputs.channel == 'master' }}
         run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
 
-      - name: 'Set the name of the itch.io page to deploy to for develop branch'
+      - name: Set the name of the itch.io page to deploy to for develop branch
         if: ${{ github.event.inputs.channel == 'develop' }}
         run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
 
