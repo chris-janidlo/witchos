@@ -108,7 +108,7 @@ jobs:
   release:
     # only run if both test and build jobs succeeded, and if the branch is either 'master' or 'feature/ci-cd'
     needs: [test, build]
-    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'ref/heads/feature/ci-cd' }}
+    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/feature/ci-cd' }}
     runs-on: ubuntu-latest
     env:
       ITCH_USER: crass_sandwich
