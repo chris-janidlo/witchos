@@ -97,6 +97,8 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
           buildName: WitchOS-${{ matrix.targetPlatform }}
+      
+      - run: ls build
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
