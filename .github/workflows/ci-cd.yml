@@ -106,9 +106,9 @@ jobs:
 
 
   release:
-    # only run if both test and build jobs succeeded, and if the branch is either 'master' or 'develop'
+    # only run if both test and build jobs succeeded, and if the branch is either 'master' or 'feature/ci-cd'
     needs: [test, build]
-    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'ref/heads/develop' }}
+    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'ref/heads/feature/ci-cd' }}
     runs-on: ubuntu-latest
     env:
       ITCH_USER: crass_sandwich
@@ -133,8 +133,8 @@ jobs:
         if: ${{ github.event.inputs.channel == 'master' }}
         run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
 
-      - name: Set the name of the itch.io page to deploy to for develop branch
-        if: ${{ github.event.inputs.channel == 'develop' }}
+      - name: Set the name of the itch.io page to deploy to for feature/ci-cd branch
+        if: ${{ github.event.inputs.channel == 'feature/ci-cd' }}
         run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
 
       - name: Push to itch.io
