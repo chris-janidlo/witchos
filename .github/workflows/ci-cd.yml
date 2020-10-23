@@ -100,9 +100,10 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
-      - name: check out what's in build
-        run: ls build/StandaloneOSX
-          
+      - name: Debugging with tmate
+        if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
+        uses: mxschmitt/action-tmate@v3
+
       - name: Make OSX app runnable
         if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
         run: chmod +x build/StandaloneOSX/Contents/MacOS/*
