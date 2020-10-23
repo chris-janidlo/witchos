@@ -65,8 +65,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    env:
-      OUTPUT_DIRECTORY: build
 
     strategy:
       fail-fast: false
@@ -98,16 +96,13 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          
-      - name: Reassign build directory for platforms with a layer of indirection
-        if: ${{ matrix.targetPlatform == 'WebGL' || matrix.targetPlatform == 'StandaloneOSX' }}
-        run: echo "OUTPUT_DIRECTORY=build/${{ matrix.targetPlatform }}" >> $GITHUB_ENV
+          buildName: WitchOS-${{ matrix.targetPlatform }}
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
         with:
           name: WitchOS-${{ matrix.targetPlatform }}
-          path: ${{ env.OUTPUT_DIRECTORY }}
+          path: build/WitchOS-${{ matrix.targetPlatform }}
 
 
   release:
