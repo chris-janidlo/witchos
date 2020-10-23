@@ -101,7 +101,7 @@ jobs:
           buildName: WitchOS-${{ matrix.targetPlatform }}
       
       - name: Reassign build directory for platforms with a layer of indirection
-        if: ${{ matrix.targetPlatform == 'WebGL' || matrix.targetPlatform == 'StandaloneOSX' }}
+        if: ${{ matrix.targetPlatform == 'WebGL' || matrix.targetPlatform == 'StandaloneWindows' }}
         run: echo "OUTPUT_DIRECTORY=build/${{ matrix.targetPlatform }}" >> $GITHUB_ENV
 
       - name: Upload build artifact to github cache
