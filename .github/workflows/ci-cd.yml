@@ -145,5 +145,5 @@ jobs:
       - name: Push to itch.io
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
-          PACKAGE: build-${{ matrix.targetPlatform.builder-name }}
+          PACKAGE: WitchOS-${{ matrix.targetPlatform.builder-name }}
           CHANNEL: ${{ matrix.itch-name }}
