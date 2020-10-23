@@ -67,6 +67,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    env:
+      OUTPUT_DIRECTORY: build
 
     strategy:
       fail-fast: false
@@ -74,7 +76,6 @@ jobs:
         targetPlatform:
           - WebGL
           - StandaloneWindows
-          - StandaloneOSX
 
     steps:
       - name: Checkout code
@@ -99,16 +100,16 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
-
-      - name: Make OSX app runnable
-        if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
-        run: chmod +x build/StandaloneOSX/StandaloneOSX.app/Contents/MacOS/*
+          
+      - name: Reassign build directory for platforms with a layer of indirection
+        if: ${{ matrix.targetPlatform == 'WebGL' || matrix.targetPlatform == 'StandaloneOSX' }}
+        run: echo "OUTPUT_DIRECTORY=build/${{ matrix.targetPlatform }}" >> $GITHUB_ENV
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
         with:
           name: WitchOS-${{ matrix.targetPlatform }}
-          path: build
+          path: ${{ env.OUTPUT_DIRECTORY }}
 
 
   release:
@@ -125,8 +126,6 @@ jobs:
             itch-name: webgl
           - builder-name: StandaloneWindows
             itch-name: win
-          - builder-name: StandaloneOSX
-            itch-name: osx
 
     steps:
       - name: Download build artifact
