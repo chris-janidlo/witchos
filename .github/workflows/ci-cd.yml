@@ -100,13 +100,9 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
-      - name: Debugging with tmate
-        if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
-        uses: mxschmitt/action-tmate@v3
-
       - name: Make OSX app runnable
         if: ${{ matrix.targetPlatform == 'StandaloneOSX' }}
-        run: chmod +x build/StandaloneOSX/Contents/MacOS/*
+        run: chmod +x build/StandaloneOSX/StandaloneOSX.app/Contents/MacOS/*
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
