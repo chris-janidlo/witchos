@@ -16,6 +16,9 @@ on:
 
 env:
   UNITY_VERSION: 2019.3.15f1
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
 
 jobs:
@@ -42,10 +45,10 @@ jobs:
           path: Library
           key: Library-test-${{ env.UNITY_VERSION }}-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-${{ env.UNITY_VERSION }}-
             Library-test-${{ env.UNITY_VERSION }}-
-            Library-
+            Library-${{ env.UNITY_VERSION }}-
             Library-test-
+            Library-
 
       - name: Run tests
         uses: webbertakken/unity-test-runner@v1.4
@@ -63,9 +66,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-      UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       OUTPUT_DIRECTORY: build
 
     strategy:
@@ -145,5 +145,5 @@ jobs:
       - name: Push to itch.io
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
-          PACKAGE: WitchOS-${{ matrix.targetPlatform.builder-name }}
+          PACKAGE: WitchOS-${{ matrix.builder-name }}
           CHANNEL: ${{ matrix.itch-name }}
