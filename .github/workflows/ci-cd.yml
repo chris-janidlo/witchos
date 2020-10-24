@@ -111,7 +111,7 @@ jobs:
     if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/feature/ci-cd' }}
     runs-on: ubuntu-latest
     env:
-      ITCH_USER: crass_sandwich
+      ITCH_USER: crass-sandwich
       BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
 
     strategy:
