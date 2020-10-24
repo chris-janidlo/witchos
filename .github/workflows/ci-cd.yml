@@ -97,6 +97,14 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
           buildName: WitchOS-${{ matrix.targetPlatform }}
+      
+      - name: Group Windows artifacts into a folder
+        if: ${{ matrix.targetPlatform == 'StandaloneWindows' }}
+        run: |
+          mkdir tmp
+          mv build/StandaloneWindows/* tmp/
+          mkdir build/StandaloneWindows/WitchOS-StandaloneWindows
+          mv tmp/* build/StandaloneWindows/WitchOS-StandaloneWindows
 
       - name: Upload build artifact to github cache
         uses: actions/upload-artifact@v2
