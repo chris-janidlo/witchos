@@ -134,7 +134,7 @@ jobs:
         run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
 
       - name: Set the name of the itch.io page to deploy to for feature/ci-cd branch
-        if: ${{ github.ref == 'ref/heads/feature/ci-cd' }}
+        if: ${{ github.ref == 'refs/heads/feature/ci-cd' }}
         run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
 
       - name: Push to itch.io
