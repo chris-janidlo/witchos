@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class PersistentDataPathTool : MonoBehaviour
+namespace WitchOS.Editor
 {
-    [MenuItem("Tools/Copy persistent data path to clipboard")]
-    public static void CopyPersistentDataPath ()
+    public class PersistentDataPathTool : MonoBehaviour
     {
-        EditorGUIUtility.systemCopyBuffer = Application.persistentDataPath;
+        [MenuItem("Tools/Copy persistent data path to clipboard")]
+        public static void CopyPersistentDataPath ()
+        {
+            EditorGUIUtility.systemCopyBuffer = Application.persistentDataPath;
+        }
     }
 }
