@@ -8,7 +8,7 @@ namespace WitchOS
 {
     public class TrueNameCommand : TerminalCommand
     {
-        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
             if (arguments.Length == 1)
             {

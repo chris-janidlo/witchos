@@ -27,7 +27,7 @@ namespace WitchOS
         }
 
         // TODO: make more forgiving in terms of URL
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             string targetLock =
                 String.Join(" ", incantation.Skip(2)) +

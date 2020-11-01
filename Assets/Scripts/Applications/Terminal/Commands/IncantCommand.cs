@@ -13,7 +13,7 @@ namespace WitchOS
         [TextArea]
         public string MagicIsOff, SpellNotFound, SpellFailed, SpellSucceeded;
 
-        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
             if (arguments.Length < 2)
             {

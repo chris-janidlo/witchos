@@ -7,7 +7,7 @@ namespace WitchOS
 {
     public class ShowCommand : TerminalCommand
     {
-        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
             var env = TerminalState.Instance.EnvironmentVariables;
             if (arguments.Length == 1)

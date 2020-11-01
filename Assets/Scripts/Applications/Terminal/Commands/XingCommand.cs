@@ -11,7 +11,7 @@ namespace WitchOS
         public BoolVariable XingLock;
         public StringVariable XingTarget;
 
-        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
             if (XingLock.Value)
             {
@@ -64,7 +64,7 @@ namespace WitchOS
             XingLock.Value = false;
         }
 
-        public override void CleanUpEarly (TerminalApp term)
+        public override void CleanUpEarly (ITerminal term)
         {
             XingLock.Value = false;
         }

@@ -49,7 +49,7 @@ namespace WitchOS
             }
         }
 
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             string target = TerminalState.Instance.GetEnvironmentVariable("target");
             string name;
@@ -84,7 +84,6 @@ namespace WitchOS
             while (timer > 0)
             {
                 term.LastOutputLine += randomAscii(1);
-                term.PaintOutputHistoryText();
                 timer -= Time.deltaTime;
                 yield return null;
             }

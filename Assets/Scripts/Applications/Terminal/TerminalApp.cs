@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityAtoms;
 
 namespace WitchOS
 {
@@ -18,14 +19,22 @@ namespace WitchOS
         public IList<string> InputHistory
         {
             get => _inputHistory;
-            set => _inputHistory = (List<string>) value;
+            set
+            {
+                _inputHistory = (List<string>) value;
+                paintOutputHistoryText();
+            }
         }
 
         List<string> _outputHistory = new List<string>();
         public IList<string> OutputHistory
         {
             get => _outputHistory;
-            set => _outputHistory = (List<string>) value;
+            set
+            {
+                _outputHistory = (List<string>) value;
+                paintOutputHistoryText();
+            }
         }
 
         public string LastOutputLine
@@ -34,9 +43,7 @@ namespace WitchOS
             set => OutputHistory[OutputHistory.Count - 1] = value;
         }
 
-        public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
-
-        public List<TerminalCommand> Commands;
+        public TerminalCommandValueList Commands;
 
         public string BaseTitle;
 
@@ -50,6 +57,8 @@ namespace WitchOS
 
         public ScrollRect ScrollRect;
 
+        Dictionary<string, TerminalCommand> commandDict => Commands.ToDictionary(c => c.Name);
+
         TerminalCommand currentCommand;
 
         int posInHistory;
@@ -61,7 +70,7 @@ namespace WitchOS
             CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
 
             if (!MagicSource.Instance.On) Print(NoMagicWarning);
-            else PaintOutputHistoryText(); // paint anyway
+            else paintOutputHistoryText(); // paint anyway
         }
 
         void Update ()
@@ -96,13 +105,13 @@ namespace WitchOS
                 PrintLine(line);
             }
 
-            PaintOutputHistoryText();
+            paintOutputHistoryText();
         }
 
         public void PrintLine (string line)
         {
             OutputHistory.Add(line);
-            PaintOutputHistoryText();
+            paintOutputHistoryText();
         }
 
         public void PrintEmptyLine ()
@@ -110,12 +119,7 @@ namespace WitchOS
             PrintLine("");
         }
 
-        public void ScrollToBottom ()
-        {
-            ScrollRect.verticalNormalizedPosition = 0;
-        }
-
-        public void PaintOutputHistoryText ()
+        void paintOutputHistoryText ()
         {
             paintTextBuilder.Clear();
 
@@ -143,14 +147,14 @@ namespace WitchOS
             OutputHistory.Add(Prompt.text + input); // echo
 
             posInHistory = InputHistory.Count;
-            ScrollToBottom();
+            scrollToBottom();
 
             input = input.Trim();
 
             CurrentlyEvaluating = true;
 
             // remove empty prompt line in history text
-            PaintOutputHistoryText();
+            paintOutputHistoryText();
 
             string[] commands = input.Split(';');
 
@@ -163,11 +167,11 @@ namespace WitchOS
 
                 string[] arguments = command.Split();
 
-                if (CommandDict.ContainsKey(arguments[0]))
+                if (commandDict.ContainsKey(arguments[0]))
                 {
                     Window.Title = BaseTitle + " - " + arguments[0];
 
-                    currentCommand = CommandDict[arguments[0]];
+                    currentCommand = commandDict[arguments[0]];
                     yield return currentCommand.Evaluate(this, arguments);
 
                     Window.Title = BaseTitle;
@@ -184,7 +188,7 @@ namespace WitchOS
             CommandInput.enabled = true;
 
             // restore empty prompt line in history text
-            PaintOutputHistoryText();
+            paintOutputHistoryText();
 
             if (Window.Focused) FocusInput();
         }
@@ -198,7 +202,12 @@ namespace WitchOS
                 : InputHistory[posInHistory];
 
             CommandInput.caretPosition = CommandInput.text.Length;
-            ScrollToBottom();
+            scrollToBottom();
+        }
+
+        void scrollToBottom ()
+        {
+            ScrollRect.verticalNormalizedPosition = 0;
         }
     }
 }

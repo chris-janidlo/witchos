@@ -29,7 +29,7 @@ namespace WitchOS
                 TerminalState.Instance.GetEnvironmentVariable("aura") == "null";
         }
 
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             for (int i = 0; i < requiredMirrors; i++)
             {

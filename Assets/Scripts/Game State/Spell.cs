@@ -28,7 +28,7 @@ namespace WitchOS
         public abstract bool ConditionsAreMet (IList<string> incantation);
 
         // anything that should happen when this spell is cast
-        public abstract IEnumerator CastBehavior (TerminalApp term, IList<string> incantation);
+        public abstract IEnumerator CastBehavior (ITerminal term, IList<string> incantation);
 
         protected void castAt (string target)
         {

@@ -32,7 +32,7 @@ namespace WitchOS
             // getChant(incantation).Equals(Seance.TrueChant(getName(incantation)), StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             TryConsumeMirrorMagic.Raise();
 

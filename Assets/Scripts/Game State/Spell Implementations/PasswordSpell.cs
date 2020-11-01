@@ -27,7 +27,7 @@ namespace WitchOS
             return XingLock.Value && envTarget == XingTarget.Value;
         }
 
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             string targetLock = envTarget;
 
@@ -39,7 +39,6 @@ namespace WitchOS
             while (timer > 0)
             {
                 term.LastOutputLine = $"progress: [{new String('=', progress).PadRight(10)}]";
-                term.PaintOutputHistoryText();
 
                 progress = Mathf.Max(0, progress + progChanges.PickRandom());
 
