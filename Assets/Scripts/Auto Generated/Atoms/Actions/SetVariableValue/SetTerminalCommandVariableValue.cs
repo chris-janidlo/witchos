@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Set variable value Action of type `TerminalCommand`. Inherits from `SetVariableValue&lt;TerminalCommand, TerminalCommandPair, TerminalCommandVariable, TerminalCommandConstant, TerminalCommandReference, TerminalCommandEvent, TerminalCommandPairEvent, TerminalCommandVariableInstancer&gt;`.

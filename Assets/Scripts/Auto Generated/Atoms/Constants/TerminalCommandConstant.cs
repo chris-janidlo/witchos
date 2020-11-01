@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Constant of type `TerminalCommand`. Inherits from `AtomBaseVariable&lt;TerminalCommand&gt;`.

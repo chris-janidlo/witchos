@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Constant of type `SpellDeliverable`. Inherits from `AtomBaseVariable&lt;SpellDeliverable&gt;`.

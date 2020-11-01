@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event of type `TerminalCommandPair`. Inherits from `AtomEvent&lt;TerminalCommandPair&gt;`.

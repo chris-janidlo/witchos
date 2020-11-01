@@ -1,5 +1,5 @@
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Action of type `SpellDeliverable`. Inherits from `AtomAction&lt;SpellDeliverable&gt;`.

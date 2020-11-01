@@ -2,7 +2,7 @@ using System;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Reference of type `TerminalCommand`. Inherits from `EquatableAtomReference&lt;TerminalCommand, TerminalCommandPair, TerminalCommandConstant, TerminalCommandVariable, TerminalCommandEvent, TerminalCommandPairEvent, TerminalCommandTerminalCommandFunction, TerminalCommandVariableInstancer, AtomCollection, AtomList&gt;`.

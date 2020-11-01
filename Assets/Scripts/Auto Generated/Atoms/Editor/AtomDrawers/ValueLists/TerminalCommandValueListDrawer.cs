@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityAtoms.Editor;
 
-namespace UnityAtoms.Editor
+namespace UnityAtoms.WitchOS.Editor
 {
     /// <summary>
     /// Value List property drawer of type `TerminalCommand`. Inherits from `AtomDrawer&lt;TerminalCommandValueList&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.

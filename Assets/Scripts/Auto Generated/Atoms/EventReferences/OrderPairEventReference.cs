@@ -1,7 +1,7 @@
 using System;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Reference of type `OrderPair`. Inherits from `AtomEventReference&lt;OrderPair, OrderVariable, OrderPairEvent, OrderVariableInstancer, OrderPairEventInstancer&gt;`.

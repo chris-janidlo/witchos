@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable of type `Order`. Inherits from `EquatableAtomVariable&lt;Order, OrderPair, OrderEvent, OrderPairEvent, OrderOrderFunction&gt;`.

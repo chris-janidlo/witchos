@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event of type `OrderPair`. Inherits from `AtomEvent&lt;OrderPair&gt;`.

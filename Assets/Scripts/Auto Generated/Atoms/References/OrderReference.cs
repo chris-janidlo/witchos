@@ -2,7 +2,7 @@ using System;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Reference of type `Order`. Inherits from `EquatableAtomReference&lt;Order, OrderPair, OrderConstant, OrderVariable, OrderEvent, OrderPairEvent, OrderOrderFunction, OrderVariableInstancer, AtomCollection, AtomList&gt;`.

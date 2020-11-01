@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityAtoms;
+using UnityAtoms.WitchOS;
 
 namespace WitchOS
 {

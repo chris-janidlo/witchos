@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Instancer of type `OrderPair`. Inherits from `AtomEventInstancer&lt;OrderPair, OrderPairEvent&gt;`.

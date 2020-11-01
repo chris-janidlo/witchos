@@ -1,7 +1,7 @@
 using System;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Reference of type `SpellDeliverablePair`. Inherits from `AtomEventReference&lt;SpellDeliverablePair, SpellDeliverableVariable, SpellDeliverablePairEvent, SpellDeliverableVariableInstancer, SpellDeliverablePairEventInstancer&gt;`.

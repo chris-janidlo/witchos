@@ -1,5 +1,5 @@
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Action of type `TerminalCommand`. Inherits from `AtomAction&lt;TerminalCommand&gt;`.

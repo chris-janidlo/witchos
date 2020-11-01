@@ -1,5 +1,5 @@
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Function x 2 of type `Order`. Inherits from `AtomFunction&lt;Order, Order&gt;`.

@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable of type `SpellDeliverable`. Inherits from `EquatableAtomVariable&lt;SpellDeliverable, SpellDeliverablePair, SpellDeliverableEvent, SpellDeliverablePairEvent, SpellDeliverableSpellDeliverableFunction&gt;`.

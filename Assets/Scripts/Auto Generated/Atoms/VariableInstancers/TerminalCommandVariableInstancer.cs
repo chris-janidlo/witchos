@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable Instancer of type `TerminalCommand`. Inherits from `AtomVariableInstancer&lt;TerminalCommandVariable, TerminalCommandPair, TerminalCommand, TerminalCommandEvent, TerminalCommandPairEvent, TerminalCommandTerminalCommandFunction&gt;`.

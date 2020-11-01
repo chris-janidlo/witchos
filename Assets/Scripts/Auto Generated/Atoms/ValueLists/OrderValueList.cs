@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Value List of type `Order`. Inherits from `AtomValueList&lt;Order, OrderEvent&gt;`.

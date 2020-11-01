@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Value List of type `TerminalCommand`. Inherits from `AtomValueList&lt;TerminalCommand, TerminalCommandEvent&gt;`.

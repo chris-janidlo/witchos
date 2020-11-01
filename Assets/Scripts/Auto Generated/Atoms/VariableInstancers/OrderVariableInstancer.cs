@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable Instancer of type `Order`. Inherits from `AtomVariableInstancer&lt;OrderVariable, OrderPair, Order, OrderEvent, OrderPairEvent, OrderOrderFunction&gt;`.

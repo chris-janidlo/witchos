@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// IPair of type `&lt;SpellDeliverable&gt;`. Inherits from `IPair&lt;SpellDeliverable&gt;`.

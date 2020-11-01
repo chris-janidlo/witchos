@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable Instancer of type `SpellDeliverable`. Inherits from `AtomVariableInstancer&lt;SpellDeliverableVariable, SpellDeliverablePair, SpellDeliverable, SpellDeliverableEvent, SpellDeliverablePairEvent, SpellDeliverableSpellDeliverableFunction&gt;`.

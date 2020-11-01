@@ -1,5 +1,5 @@
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Action of type `OrderPair`. Inherits from `AtomAction&lt;OrderPair&gt;`.

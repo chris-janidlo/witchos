@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Instancer of type `Order`. Inherits from `AtomEventInstancer&lt;Order, OrderEvent&gt;`.

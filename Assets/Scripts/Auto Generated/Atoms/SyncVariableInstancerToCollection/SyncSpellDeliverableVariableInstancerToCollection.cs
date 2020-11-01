@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Adds Variable Instancer's Variable of type SpellDeliverable to a Collection or List on OnEnable and removes it on OnDestroy. 

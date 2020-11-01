@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Reference Listener of type `TerminalCommand`. Inherits from `AtomEventReferenceListener&lt;TerminalCommand, TerminalCommandEvent, TerminalCommandEventReference, TerminalCommandUnityEvent&gt;`.

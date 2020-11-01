@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityAtoms;
+using UnityAtoms.WitchOS;
 
 namespace WitchOS
 {

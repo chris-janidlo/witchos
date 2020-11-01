@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Variable of type `TerminalCommand`. Inherits from `EquatableAtomVariable&lt;TerminalCommand, TerminalCommandPair, TerminalCommandEvent, TerminalCommandPairEvent, TerminalCommandTerminalCommandFunction&gt;`.

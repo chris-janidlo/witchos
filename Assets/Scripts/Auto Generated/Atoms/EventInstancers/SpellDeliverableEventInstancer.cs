@@ -1,7 +1,7 @@
 using UnityEngine;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Event Instancer of type `SpellDeliverable`. Inherits from `AtomEventInstancer&lt;SpellDeliverable, SpellDeliverableEvent&gt;`.

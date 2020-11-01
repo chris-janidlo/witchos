@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Set variable value Action of type `Order`. Inherits from `SetVariableValue&lt;Order, OrderPair, OrderVariable, OrderConstant, OrderReference, OrderEvent, OrderPairEvent, OrderVariableInstancer&gt;`.

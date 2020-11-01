@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 using UnityAtoms.Editor;
 using WitchOS;
 
-namespace UnityAtoms.Editor
+namespace UnityAtoms.WitchOS.Editor
 {
     /// <summary>
     /// Event property drawer of type `SpellDeliverable`. Inherits from `AtomEventEditor&lt;SpellDeliverable, SpellDeliverableEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.

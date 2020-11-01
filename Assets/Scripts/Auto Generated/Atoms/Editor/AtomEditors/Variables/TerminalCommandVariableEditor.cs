@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityAtoms.Editor;
 using WitchOS;
 
-namespace UnityAtoms.Editor
+namespace UnityAtoms.WitchOS.Editor
 {
     /// <summary>
     /// Variable Inspector of type `TerminalCommand`. Inherits from `AtomVariableEditor`

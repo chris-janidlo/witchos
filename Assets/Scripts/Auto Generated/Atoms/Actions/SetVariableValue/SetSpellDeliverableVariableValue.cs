@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using WitchOS;
 
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// Set variable value Action of type `SpellDeliverable`. Inherits from `SetVariableValue&lt;SpellDeliverable, SpellDeliverablePair, SpellDeliverableVariable, SpellDeliverableConstant, SpellDeliverableReference, SpellDeliverableEvent, SpellDeliverablePairEvent, SpellDeliverableVariableInstancer&gt;`.

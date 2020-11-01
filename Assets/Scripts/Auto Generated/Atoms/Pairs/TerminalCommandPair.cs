@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using WitchOS;
-namespace UnityAtoms
+namespace UnityAtoms.WitchOS
 {
     /// <summary>
     /// IPair of type `&lt;TerminalCommand&gt;`. Inherits from `IPair&lt;TerminalCommand&gt;`.

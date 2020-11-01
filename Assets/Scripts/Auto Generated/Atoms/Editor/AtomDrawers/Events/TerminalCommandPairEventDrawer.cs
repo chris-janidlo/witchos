@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityAtoms.Editor;
 
-namespace UnityAtoms.Editor
+namespace UnityAtoms.WitchOS.Editor
 {
     /// <summary>
     /// Event property drawer of type `TerminalCommandPair`. Inherits from `AtomDrawer&lt;TerminalCommandPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
