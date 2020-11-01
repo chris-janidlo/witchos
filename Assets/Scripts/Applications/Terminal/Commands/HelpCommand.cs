@@ -26,7 +26,7 @@ namespace WitchOS
 
                 foreach (var command in Commands)
                 {
-                    if (command.name == commandName)
+                    if (command.Name == commandName)
                     {
                         found = true;
                         term.Print(command.HelpOutput);
