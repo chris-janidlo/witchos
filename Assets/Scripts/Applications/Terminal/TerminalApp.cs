@@ -9,12 +9,24 @@ using TMPro;
 
 namespace WitchOS
 {
-    public partial class TerminalApp : MonoBehaviour
+    public partial class TerminalApp : MonoBehaviour, ITerminal
     {
-        public bool Evaluating { get; private set; }
-        public bool SIGINT { get; private set; }
+        public bool CurrentlyEvaluating { get; private set; }
+        public bool WasInterrupted { get; private set; }
 
-        public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
+        List<string> _inputHistory = new List<string>();
+        public IList<string> InputHistory
+        {
+            get => _inputHistory;
+            set => _inputHistory = (List<string>) value;
+        }
+
+        List<string> _outputHistory = new List<string>();
+        public IList<string> OutputHistory
+        {
+            get => _outputHistory;
+            set => _outputHistory = (List<string>) value;
+        }
 
         public string LastOutputLine
         {
@@ -22,15 +34,14 @@ namespace WitchOS
             set => OutputHistory[OutputHistory.Count - 1] = value;
         }
 
+        public Dictionary<string, TerminalCommand> CommandDict => Commands.ToDictionary(c => c.Name);
+
         public List<TerminalCommand> Commands;
 
         public string BaseTitle;
 
         [TextArea]
         public string NoMagicWarning;
-
-        public List<string> InputHistory = new List<string>();
-        public List<string> OutputHistory = new List<string>();
 
         public Window Window;
         public TMP_InputField CommandInput;
@@ -55,13 +66,13 @@ namespace WitchOS
 
         void Update ()
         {
-            SIGINT = false;
+            WasInterrupted = false;
 
             if (!Window.Focused) return;
 
-            if (Input.GetKey(KeyCode.Escape)) SIGINT = true;
+            if (Input.GetKey(KeyCode.Escape)) WasInterrupted = true;
 
-            if (Evaluating) return;
+            if (CurrentlyEvaluating) return;
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) incrementPosInHistory(-1);
             else if (Input.GetKeyDown(KeyCode.DownArrow)) incrementPosInHistory(1);
@@ -69,7 +80,7 @@ namespace WitchOS
 
         void OnDestroy ()
         {
-            if (Evaluating) currentCommand.CleanUpEarly(this);
+            if (CurrentlyEvaluating) currentCommand.CleanUpEarly(this);
         }
 
         public void FocusInput ()
@@ -114,7 +125,7 @@ namespace WitchOS
                 paintTextBuilder.Append("\n");
             }
 
-            if (!Evaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
+            if (!CurrentlyEvaluating) paintTextBuilder.Append(" "); // empty additional line so that the history doesn't overlap the prompt
 
             HistoryText.text = paintTextBuilder.ToString();
         }
@@ -136,7 +147,7 @@ namespace WitchOS
 
             input = input.Trim();
 
-            Evaluating = true;
+            CurrentlyEvaluating = true;
 
             // remove empty prompt line in history text
             PaintOutputHistoryText();
@@ -167,7 +178,7 @@ namespace WitchOS
                 }
             }
 
-            Evaluating = false;
+            CurrentlyEvaluating = false;
 
             Prompt.enabled = true;
             CommandInput.enabled = true;

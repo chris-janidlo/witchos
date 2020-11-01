@@ -38,13 +38,13 @@ namespace WitchOS
             term.PrintLine($"pointing imps toward {target}... (press ESC to cancel if desired. this may take some time)");
 
             float timer = UnityEngine.Random.Range(10, 20);
-            while (!term.SIGINT && timer >= 0)
+            while (!term.WasInterrupted && timer >= 0)
             {
                 yield return null;
                 timer -= Time.deltaTime;
             }
 
-            if (!term.SIGINT)
+            if (!term.WasInterrupted)
             {
                 XingTarget.Value = target;
                 term.PrintEmptyLine();
@@ -56,7 +56,7 @@ namespace WitchOS
                 term.PrintLine("press escape at any time to exit and release the imps from their current target.");
             }
 
-            while (!term.SIGINT)
+            while (!term.WasInterrupted)
             {
                 yield return null;
             }

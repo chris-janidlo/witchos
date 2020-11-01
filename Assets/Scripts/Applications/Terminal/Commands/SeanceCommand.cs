@@ -36,13 +36,13 @@ namespace WitchOS
 
             yield return new WaitForSeconds(3);
 
-            while (!term.SIGINT && laments.MoveNext())
+            while (!term.WasInterrupted && laments.MoveNext())
             {
                 term.PrintLine(laments.Current);
 
                 // roll our own weird WaitForSeconds so that we can immediately break if escape key is pressed
                 float timer = UnityEngine.Random.Range(.5f, 3);
-                while (!term.SIGINT && timer >= 0)
+                while (!term.WasInterrupted && timer >= 0)
                 {
                     yield return null;
                     timer -= Time.deltaTime;
