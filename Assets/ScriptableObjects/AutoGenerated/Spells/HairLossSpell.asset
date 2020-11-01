@@ -19,3 +19,5 @@ MonoBehaviour:
   NumIntactMirrors: {fileID: 11400000, guid: b3b2ddd4f0fda614ba2a25f232460bf1, type: 2}
   TryConsumeMirrorMagic: {fileID: 11400000, guid: bbd0780b192cbe74d98a4c696de591df,
     type: 2}
+  EnvironmentVariableState: {fileID: 11400000, guid: 7f03f1bbb68d8974daeabf8ee493d456,
+    type: 2}

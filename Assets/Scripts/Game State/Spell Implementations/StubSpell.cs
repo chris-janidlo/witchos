@@ -9,6 +9,8 @@ namespace WitchOS
 {
     public class StubSpell : Spell
     {
+        public EnvironmentVariableState EnvironmentVariableState;
+
         public override Regex GetRegex ()
         {
             switch (TimeState.Instance.GetTodaysMoonPhase())
@@ -29,7 +31,7 @@ namespace WitchOS
 
         public override bool ConditionsAreMet (IList<string> incantation)
         {
-            string aura = TerminalState.Instance.GetEnvironmentVariable("aura");
+            string aura = EnvironmentVariableState.GetEnvironmentVariable("aura");
 
             switch (TimeState.Instance.GetTodaysMoonPhase())
             {
@@ -39,7 +41,7 @@ namespace WitchOS
 
                 case MoonPhase.WaxingCrescent:
                 case MoonPhase.WaningCrescent:
-                    return TerminalState.Instance.EnvironmentVariables.ContainsKey("target");
+                    return EnvironmentVariableState.EnvironmentVariables.ContainsKey("target");
 
                 case MoonPhase.FullMoon:
                     return aura == "lux";
@@ -51,7 +53,7 @@ namespace WitchOS
 
         public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
-            string target = TerminalState.Instance.GetEnvironmentVariable("target");
+            string target = EnvironmentVariableState.GetEnvironmentVariable("target");
             string name;
 
             switch (TimeState.Instance.GetTodaysMoonPhase())

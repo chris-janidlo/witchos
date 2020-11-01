@@ -10,10 +10,12 @@ namespace WitchOS
 {
     public class PasswordSpell : Spell
     {
+        public EnvironmentVariableState EnvironmentVariableState;
+
         public BoolVariable XingLock;
         public StringVariable XingTarget;
 
-        string envTarget => TerminalState.Instance.GetEnvironmentVariable("target");
+        string envTarget => EnvironmentVariableState.GetEnvironmentVariable("target");
 
         static List<int> progChanges = new List<int>() { -1, 2, 3, 4, 5 };
 

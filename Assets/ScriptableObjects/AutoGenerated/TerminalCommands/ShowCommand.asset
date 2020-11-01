@@ -24,3 +24,5 @@ MonoBehaviour:
     argument
 
     (see ''help set'' for more information on environment variables)'
+  EnvironmentVariableState: {fileID: 11400000, guid: 7f03f1bbb68d8974daeabf8ee493d456,
+    type: 2}

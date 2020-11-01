@@ -9,6 +9,8 @@ namespace WitchOS
 {
     public class HairLossSpell : Spell
     {
+        public EnvironmentVariableState EnvironmentVariableState;
+
         int requiredMirrors => TimeState.Instance.GetTodaysMoonPhase().IsWaning()
             ? 2
             : 1;
@@ -26,7 +28,7 @@ namespace WitchOS
         {
             return
                 NumBrokenMirrors.Value >= requiredMirrors &&
-                TerminalState.Instance.GetEnvironmentVariable("aura") == "null";
+                EnvironmentVariableState.GetEnvironmentVariable("aura") == "null";
         }
 
         public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)

@@ -8,6 +8,8 @@ namespace WitchOS
 {
     public class SetCommand : TerminalCommand
     {
+        public EnvironmentVariableState EnvironmentVariableState;
+
         public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
             // TODO: allow for other argument styles like 'set a = b', 'set a=b', etc
@@ -19,7 +21,7 @@ namespace WitchOS
 
             string value = String.Join(" ", arguments.Skip(2));
 
-            TerminalState.Instance.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
+            EnvironmentVariableState.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
             term.PrintLine(arguments[1] + " = " + value);
         }
     }
