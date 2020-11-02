@@ -16,5 +16,10 @@ namespace WitchOS
                 ? EnvironmentVariables[variable]
                 : "";
         }
+
+        public void ClearEnvironmentVariables ()
+        {
+            EnvironmentVariables = new Dictionary<string, string>();
+        }
     }
 }
