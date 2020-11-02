@@ -2,7 +2,19 @@
     "name": "WitchOS.Editor",
     "references": [
         "GUID:5e1e42ef5b88c4e2092f9609983cb2b7",
-        "GUID:18f5cad3cbf8a234d9d02f8c97b1598b"
+        "GUID:18f5cad3cbf8a234d9d02f8c97b1598b",
+        "GUID:598750ec792e4472396f5fbc092caa65",
+        "GUID:29492541a59d04a81b47a7f225e8a22d",
+        "GUID:87264ae76e36244ae9adf5b5fbf7ca19",
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:3c1deed969bef45f090d1de9c5ae3f54",
+        "GUID:b46ca25735456405ca5f0ebae3fd2f52",
+        "GUID:9bc48b3aaac2247dbad05ace2c2d11d7",
+        "GUID:39d90d64ded314c27a72b2586cd86439",
+        "GUID:35405fc9d817249958711883902db606",
+        "GUID:7cead87e598844809ae298f71540fc18",
+        "GUID:e7e15a8eb685c44439fe73b95ef81946",
+        "GUID:137b5fe5a647f47108d48da1eca43858"
     ],
     "includePlatforms": [
         "Editor"
