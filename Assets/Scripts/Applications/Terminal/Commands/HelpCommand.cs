@@ -15,9 +15,9 @@ namespace WitchOS
         {
             if (arguments.Length == 1)
             {
-                term.PrintLine("available commands:");
-                term.PrintLine(" " + String.Join(" ", Commands.OrderBy(c => c.Name).Select(c => c.Name)));
-                term.PrintLine("enter 'help' followed by a command name to learn more");
+                term.PrintSingleLine("available commands:");
+                term.PrintSingleLine(" " + String.Join(" ", Commands.OrderBy(c => c.Name).Select(c => c.Name)));
+                term.PrintSingleLine("enter 'help' followed by a command name to learn more");
             }
             else
             {
@@ -26,11 +26,11 @@ namespace WitchOS
 
                 if (command == null)
                 {
-                    term.PrintLine($"help: can't find any command named '{commandName}'");
+                    term.PrintSingleLine($"help: can't find any command named '{commandName}'");
                 }
                 else
                 {
-                    term.Print(command.HelpOutput);
+                    term.PrintMultipleLines(command.HelpOutput);
                 }
             }
 

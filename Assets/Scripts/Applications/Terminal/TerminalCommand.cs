@@ -19,7 +19,7 @@ namespace WitchOS
 
         protected void printUsage (ITerminal term)
         {
-            term.PrintLine($"usage: {Name} {ArgumentList}");
+            term.PrintSingleLine($"usage: {Name} {ArgumentList}");
         }
 
         public bool Equals (TerminalCommand other)

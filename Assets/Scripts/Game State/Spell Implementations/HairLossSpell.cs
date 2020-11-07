@@ -46,7 +46,7 @@ namespace WitchOS
 
             for (int i = 0; i < UnityEngine.Random.Range(5, 10); i++)
             {
-                term.PrintLine(randomAscii(UnityEngine.Random.Range(13, 37)));
+                term.PrintSingleLine(randomAscii(UnityEngine.Random.Range(13, 37)));
                 yield return null;
             }
 

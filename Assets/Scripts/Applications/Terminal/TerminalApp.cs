@@ -15,32 +15,13 @@ namespace WitchOS
         public bool CurrentlyEvaluating { get; private set; }
         public bool WasInterrupted { get; private set; }
 
-        List<string> _inputHistory = new List<string>();
-        public IList<string> InputHistory
-        {
-            get => _inputHistory;
-            set
-            {
-                _inputHistory = (List<string>) value;
-                paintOutputHistoryText();
-            }
-        }
-
-        List<string> _outputHistory = new List<string>();
-        public IList<string> OutputHistory
-        {
-            get => _outputHistory;
-            set
-            {
-                _outputHistory = (List<string>) value;
-                paintOutputHistoryText();
-            }
-        }
+        public IReadOnlyList<string> InputHistory => inputHistory.AsReadOnly();
+        public IReadOnlyList<string> OutputHistory => outputHistory.AsReadOnly();
 
         public string LastOutputLine
         {
-            get => OutputHistory[OutputHistory.Count - 1];
-            set => OutputHistory[OutputHistory.Count - 1] = value;
+            get => outputHistory[outputHistory.Count - 1];
+            set => ModifyOutputHistory(outputHistory.Count - 1, value);
         }
 
         public TerminalCommandValueList Commands;
@@ -57,6 +38,9 @@ namespace WitchOS
 
         public ScrollRect ScrollRect;
 
+        readonly List<string> inputHistory = new List<string>();
+        readonly List<string> outputHistory = new List<string>();
+
         Dictionary<string, TerminalCommand> commandDict => Commands.ToDictionary(c => c.Name);
 
         TerminalCommand currentCommand;
@@ -67,10 +51,10 @@ namespace WitchOS
 
         void Start ()
         {
-            CommandInput.onSubmit.AddListener((s) => StartCoroutine(evaluateCommand(s)));
+            CommandInput.onSubmit.AddListener(s => StartCoroutine(evaluateCommand(s)));
 
-            if (!MagicSource.Instance.On) Print(NoMagicWarning);
-            else paintOutputHistoryText(); // paint anyway
+            if (!MagicSource.Instance.On) PrintMultipleLines(NoMagicWarning);
+            else paintOutputHistoryText();
         }
 
         void Update ()
@@ -98,32 +82,43 @@ namespace WitchOS
             CommandInput.Select();
         }
 
-        public void Print (string output)
+        public void ModifyInputHistory (int position, string value)
+        {
+            inputHistory[position] = value;
+        }
+
+        public void ModifyOutputHistory (int position, string value)
+        {
+            outputHistory[position] = value;
+            paintOutputHistoryText();
+        }
+
+        public void PrintMultipleLines (string output)
         {
             foreach (string line in output.Split('\n', '\r'))
             {
-                PrintLine(line);
+                outputHistory.Add(line);
             }
 
             paintOutputHistoryText();
         }
 
-        public void PrintLine (string line)
+        public void PrintSingleLine (string line)
         {
-            OutputHistory.Add(line);
+            outputHistory.Add(line);
             paintOutputHistoryText();
         }
 
         public void PrintEmptyLine ()
         {
-            PrintLine("");
+            PrintSingleLine("");
         }
 
         void paintOutputHistoryText ()
         {
             paintTextBuilder.Clear();
 
-            foreach (string line in OutputHistory)
+            foreach (string line in outputHistory)
             {
                 paintTextBuilder.Append(line);
                 paintTextBuilder.Append("\n");
@@ -143,10 +138,10 @@ namespace WitchOS
             Prompt.enabled = false;
             CommandInput.enabled = false;
 
-            InputHistory.Add(input);
-            OutputHistory.Add(Prompt.text + input); // echo
+            inputHistory.Add(input);
+            outputHistory.Add(Prompt.text + input); // echo
 
-            posInHistory = InputHistory.Count;
+            posInHistory = inputHistory.Count;
             scrollToBottom();
 
             input = input.Trim();
@@ -178,7 +173,7 @@ namespace WitchOS
                 }
                 else
                 {
-                    PrintLine("command not recognized: " + arguments[0]);
+                    PrintSingleLine("command not recognized: " + arguments[0]);
                 }
             }
 
@@ -195,11 +190,11 @@ namespace WitchOS
 
         void incrementPosInHistory (int dir)
         {
-            posInHistory = Mathf.Clamp(posInHistory + (int) Mathf.Sign(dir), 0, InputHistory.Count);
+            posInHistory = Mathf.Clamp(posInHistory + (int) Mathf.Sign(dir), 0, inputHistory.Count);
 
-            CommandInput.text = (posInHistory == InputHistory.Count)
+            CommandInput.text = (posInHistory == inputHistory.Count)
                 ? ""
-                : InputHistory[posInHistory];
+                : inputHistory[posInHistory];
 
             CommandInput.caretPosition = CommandInput.text.Length;
             scrollToBottom();

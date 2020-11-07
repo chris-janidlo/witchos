@@ -7,13 +7,16 @@ namespace WitchOS
         bool CurrentlyEvaluating { get; }
         bool WasInterrupted { get; }
 
-        IList<string> InputHistory { get; set; }
-        IList<string> OutputHistory { get; set; }
+        IReadOnlyList<string> InputHistory { get; }
+        IReadOnlyList<string> OutputHistory { get; }
 
         string LastOutputLine { get; set; }
 
-        void Print (string output);
-        void PrintLine (string line);
+        void ModifyInputHistory (int position, string value);
+        void ModifyOutputHistory (int position, string value);
+
+        void PrintMultipleLines (string output);
+        void PrintSingleLine (string line);
         void PrintEmptyLine ();
     }
 }

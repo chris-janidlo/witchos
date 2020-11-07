@@ -22,7 +22,7 @@ namespace WitchOS
             string value = String.Join(" ", arguments.Skip(2));
 
             EnvironmentVariableState.EnvironmentVariables[arguments[1]] = String.Join(" ", value);
-            term.PrintLine(arguments[1] + " = " + value);
+            term.PrintSingleLine(arguments[1] + " = " + value);
         }
     }
 }

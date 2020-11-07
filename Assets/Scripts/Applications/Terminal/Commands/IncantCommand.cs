@@ -23,7 +23,7 @@ namespace WitchOS
 
             if (!MagicSource.Instance.On)
             {
-                term.PrintLine(MagicIsOff);
+                term.PrintSingleLine(MagicIsOff);
                 yield break;
             }
 
@@ -34,19 +34,19 @@ namespace WitchOS
 
             if (spell == null)
             {
-                term.PrintLine(SpellNotFound);
+                term.PrintSingleLine(SpellNotFound);
                 yield break;
             }
 
             if (!spell.ConditionsAreMet(incantation))
             {
-                term.PrintLine(SpellFailed);
+                term.PrintSingleLine(SpellFailed);
                 yield break;
             }
 
             yield return spell.CastBehavior(term, incantation);
 
-            term.PrintLine(SpellSucceeded);
+            term.PrintSingleLine(SpellSucceeded);
         }
     }
 }

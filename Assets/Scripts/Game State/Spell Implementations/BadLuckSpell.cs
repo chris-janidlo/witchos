@@ -40,9 +40,9 @@ namespace WitchOS
 
             yield return new WaitForSeconds(.5f);
 
-            term.PrintLine(randomAscii(UnityEngine.Random.Range(1, 3)));
+            term.PrintSingleLine(randomAscii(UnityEngine.Random.Range(1, 3)));
             yield return null;
-            term.PrintLine(randomAscii(UnityEngine.Random.Range(2, 4)));
+            term.PrintSingleLine(randomAscii(UnityEngine.Random.Range(2, 4)));
             yield return null;
 
             yield return new WaitForSeconds(1);
@@ -52,7 +52,7 @@ namespace WitchOS
 
             while (timer > 0)
             {
-                term.PrintLine(randomAscii(UnityEngine.Random.Range(1, max / 2)));
+                term.PrintSingleLine(randomAscii(UnityEngine.Random.Range(1, max / 2)));
                 max += 2;
                 timer -= Time.deltaTime;
                 yield return null;

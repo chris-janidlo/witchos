@@ -20,29 +20,25 @@ namespace Tests
             public bool CurrentlyEvaluating => true;
             public bool WasInterrupted => false;
 
-            public IList<string> InputHistory
-            {
-                get => new List<string>();
-                set { }
-            }
-
-            public IList<string> OutputHistory
-            {
-                get => new List<string>();
-                set { }
-            }
-
             public string LastOutputLine
             {
                 get => "";
                 set { }
             }
 
-            public void Print (string output) { }
+            IReadOnlyList<string> ITerminal.InputHistory => new List<string>().AsReadOnly();
+
+            IReadOnlyList<string> ITerminal.OutputHistory => new List<string>().AsReadOnly();
+
+            public void ModifyInputHistory (int position, string value) { }
+
+            public void ModifyOutputHistory (int position, string value) { }
+
+            public void PrintMultipleLines (string output) { }
 
             public void PrintEmptyLine () { }
 
-            public void PrintLine (string line) { }
+            public void PrintSingleLine (string line) { }
         }
 
         SetCommand setCommand;

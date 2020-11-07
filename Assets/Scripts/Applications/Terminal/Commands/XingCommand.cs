@@ -15,7 +15,7 @@ namespace WitchOS
         {
             if (XingLock.Value)
             {
-                term.PrintLine("error - xing is already running in another window");
+                term.PrintSingleLine("error - xing is already running in another window");
                 yield break;
             }
 
@@ -27,7 +27,7 @@ namespace WitchOS
 
             if (!MagicSource.Instance.On)
             {
-                term.PrintLine("error - unable to contact the imps unless magic is on");
+                term.PrintSingleLine("error - unable to contact the imps unless magic is on");
                 yield break;
             }
 
@@ -35,7 +35,7 @@ namespace WitchOS
 
             XingLock.Value = true;
 
-            term.PrintLine($"pointing imps toward {target}... (press ESC to cancel if desired. this may take some time)");
+            term.PrintSingleLine($"pointing imps toward {target}... (press ESC to cancel if desired. this may take some time)");
 
             float timer = UnityEngine.Random.Range(10, 20);
             while (!term.WasInterrupted && timer >= 0)
@@ -48,12 +48,12 @@ namespace WitchOS
             {
                 XingTarget.Value = target;
                 term.PrintEmptyLine();
-                term.PrintLine("done.");
+                term.PrintSingleLine("done.");
                 yield return new WaitForSeconds(.3f);
-                term.PrintLine("now entering stability mode.");
+                term.PrintSingleLine("now entering stability mode.");
                 yield return new WaitForSeconds(.5f);
                 term.PrintEmptyLine();
-                term.PrintLine("press escape at any time to exit and release the imps from their current target.");
+                term.PrintSingleLine("press escape at any time to exit and release the imps from their current target.");
             }
 
             while (!term.WasInterrupted)
