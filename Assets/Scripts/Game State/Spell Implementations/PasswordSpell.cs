@@ -10,10 +10,12 @@ namespace WitchOS
 {
     public class PasswordSpell : Spell
     {
+        public EnvironmentVariableState EnvironmentVariableState;
+
         public BoolVariable XingLock;
         public StringVariable XingTarget;
 
-        string envTarget => TerminalState.Instance.GetEnvironmentVariable("target");
+        string envTarget => EnvironmentVariableState.GetEnvironmentVariable("target");
 
         static List<int> progChanges = new List<int>() { -1, 2, 3, 4, 5 };
 
@@ -27,7 +29,7 @@ namespace WitchOS
             return XingLock.Value && envTarget == XingTarget.Value;
         }
 
-        public override IEnumerator CastBehavior (TerminalApp term, IList<string> incantation)
+        public override IEnumerator CastBehavior (ITerminal term, IList<string> incantation)
         {
             string targetLock = envTarget;
 
@@ -39,7 +41,6 @@ namespace WitchOS
             while (timer > 0)
             {
                 term.LastOutputLine = $"progress: [{new String('=', progress).PadRight(10)}]";
-                term.PaintOutputHistoryText();
 
                 progress = Mathf.Max(0, progress + progChanges.PickRandom());
 

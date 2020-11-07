@@ -7,14 +7,16 @@ namespace WitchOS
 {
     public class ShowCommand : TerminalCommand
     {
-        public override IEnumerator Evaluate (TerminalApp term, string[] arguments)
+        public EnvironmentVariableState EnvironmentVariableState;
+
+        public override IEnumerator Evaluate (ITerminal term, string[] arguments)
         {
-            var env = TerminalState.Instance.EnvironmentVariables;
+            var env = EnvironmentVariableState.EnvironmentVariables;
             if (arguments.Length == 1)
             {
                 foreach (var pair in env)
                 {
-                    term.PrintLine(pair.Key + " = " + pair.Value);
+                    term.PrintSingleLine(pair.Key + " = " + pair.Value);
                     yield return null;
                 }
             }
@@ -25,11 +27,11 @@ namespace WitchOS
                     string result;
                     if (env.TryGetValue(key, out result))
                     {
-                        term.PrintLine(key + " = " + result);
+                        term.PrintSingleLine(key + " = " + result);
                     }
                     else
                     {
-                        term.PrintLine(key + " not set");
+                        term.PrintSingleLine(key + " not set");
                     }
                     yield return null;
                 }

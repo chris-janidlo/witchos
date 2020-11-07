@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityAtoms;
+using UnityAtoms.WitchOS;
 using crass;
 
 namespace WitchOS
