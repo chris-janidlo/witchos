@@ -22,21 +22,15 @@ namespace WitchOS
             else
             {
                 string commandName = arguments[1];
-                bool found = false;
+                var command = Commands.FirstOrDefault(c => c.Name == commandName);
 
-                foreach (var command in Commands)
-                {
-                    if (command.Name == commandName)
-                    {
-                        found = true;
-                        term.Print(command.HelpOutput);
-                        break;
-                    }
-                }
-
-                if (!found)
+                if (command == null)
                 {
                     term.PrintLine($"help: can't find any command named '{commandName}'");
+                }
+                else
+                {
+                    term.Print(command.HelpOutput);
                 }
             }
 
