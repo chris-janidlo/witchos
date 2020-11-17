@@ -9,9 +9,8 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
-using WitchOS;
 
-namespace Tests
+namespace WitchOS.Tests
 {
     public class SetCommandTests
     {

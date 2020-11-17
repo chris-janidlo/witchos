@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
-using WitchOS.Editor;
 
-namespace Tests
+namespace WitchOS.Editor.Tests
 {
     public class PersistentDataPathToolTests
     {

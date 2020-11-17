@@ -1,11 +1,13 @@
 {
-    "name": "WitchOS.Tests.Playmode",
+    "name": "WitchOS.Tests.Editor",
     "references": [
         "GUID:27619889b8ba8c24980f49ee34dbb44a",
         "GUID:0acc523941302664db1f4e527237feb3",
-        "GUID:18f5cad3cbf8a234d9d02f8c97b1598b"
+        "GUID:97ccace8f8281e044acf12930a5b53c1"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
