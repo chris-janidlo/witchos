@@ -47,11 +47,16 @@ namespace WitchOS
 
         public void OnSpellCast (SpellDeliverable spell)
         {
-            foreach (Entry entry in messageData.Value)
-            {
-                if (!(entry.Contents is Order)) continue;
+            var orders = messageData.Value
+                .Where(e => e.Contents is Order)
+                .Select(e => e.Contents as Order);
 
-                var invoice = (entry.Contents as Order).InvoiceData.Value;
+            var incompleteOrderInvoices = orders
+                .Where(o => o.State == OrderState.InProgress)
+                .Select(o => o.InvoiceData.Value);
+
+            foreach (InvoiceData invoice in incompleteOrderInvoices)
+            {
                 var spells = invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).ToList();
 
                 if (spells.Contains(spell))
