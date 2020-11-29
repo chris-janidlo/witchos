@@ -11,6 +11,7 @@ namespace WitchOS.Tests
         const string PATH_SEP = "/";
 
         FileSystem fileSystem;
+        File<string> defaultFile = new File<string> { Name = "test", Data = "" };
 
         [SetUp]
         public void SetUp ()
@@ -19,13 +20,10 @@ namespace WitchOS.Tests
 
             fileSystem.PathSeparator = PATH_SEP;
 
-            var emptyTextFile = new File<string> { Data = "" };
-            var root = new Directory { Data = new List<FileBase> { emptyTextFile } };
-
             fileSystem.SaveData = new DirectorySaveData
             {
                 FileName = "filesystem-tests",
-                Value = root
+                Value = new Directory { Data = new List<FileBase> { defaultFile } }
             };
 
             fileSystem.SaveManager = ScriptableObject.CreateInstance<SaveManager>();
@@ -39,6 +37,12 @@ namespace WitchOS.Tests
         }
 
         [Test]
-        public void SetUpTearDownTest () { }
+        public void PathIsCorrect_ForInitialFiles ()
+        {
+            var calculatedPath = fileSystem.RootDirectory.Name + PATH_SEP + fileSystem.RootDirectory.Data[0].Name;
+
+            Assert.That(fileSystem.GetPathOfFile(fileSystem.RootDirectory), Is.EqualTo(fileSystem.RootDirectory.Name));
+            Assert.That(fileSystem.GetPathOfFile(defaultFile), Is.EqualTo(calculatedPath));
+        }
     }
 }

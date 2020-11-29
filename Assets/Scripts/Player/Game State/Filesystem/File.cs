@@ -9,7 +9,7 @@ namespace WitchOS
     public abstract class FileBase
     {
         [DataMember(IsRequired = true)]
-        public string Name;
+        public string Name = "";
 
         [DataMember(IsRequired = true)]
         public SaveableVector3 GuiPosition;

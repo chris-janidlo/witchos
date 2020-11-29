@@ -53,7 +53,7 @@ namespace WitchOS
 
         public string GetPathOfFile (FileBase file)
         {
-            throw new NotImplementedException();
+            return recursiveFilePathSearch(file, RootDirectory, "");
         }
 
         public void AddFile (FileBase file, string path)
@@ -72,6 +72,28 @@ namespace WitchOS
             initialized = true;
 
             return SaveData;
+        }
+
+        string recursiveFilePathSearch (FileBase target, FileBase current, string parentPath)
+        {
+            string currentPath = parentPath + current.Name;
+
+            if (current == target)
+            {
+                return currentPath;
+            }
+
+            if (current is Directory)
+            {
+                foreach (var child in (current as Directory).Data)
+                {
+                    string childPath = recursiveFilePathSearch(target, child, currentPath + PathSeparator);
+
+                    if (childPath != null) return childPath;
+                }
+            }
+
+            return null;
         }
     }
 }
