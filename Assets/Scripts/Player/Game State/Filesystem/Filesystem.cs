@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace WitchOS
 {
+    [CreateAssetMenu(menuName = "WitchOS/Filesystem", fileName = "NewFileSystem.asset")]
     public class FileSystem : ScriptableObject
     {
         public Directory RootDirectory => (initialized ? SaveData : initializeSaveData()).Value;
