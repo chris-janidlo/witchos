@@ -22,13 +22,16 @@ namespace WitchOS
 
         public DateTime DateTime
         {
-            get => SaveManager.LooseSaveData.Value.Date;
-            private set => SaveManager.LooseSaveData.Value.Date = value;
+            get => DateTimeSaveData.Value.Value;
+            private set => DateTimeSaveData.Value.Value = value;
         }
 
         public UnityEvent DayStarted, DayEnded;
 
         public SpellDeliverableValueList SpellEther;
+
+        public DateTimeSaveData DateTimeSaveData;
+        public SaveManager SaveManager;
 
         void Awake ()
         {
@@ -37,6 +40,8 @@ namespace WitchOS
 
         void Start ()
         {
+            SaveManager.Register(DateTimeSaveData);
+
             StartNewDay();
         }
 

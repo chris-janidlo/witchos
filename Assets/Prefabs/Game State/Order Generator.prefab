@@ -66,6 +66,11 @@ MonoBehaviour:
     LocalSeed: 0
   OrdersToSpawnByDifficulty: 03000000070000000f00000014000000
   TasksCompletedToday: 0
+  DifficultyLevelSaveData:
+    DeveloperNotes: 
+    FileName: difficulty
+    value: 0
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
 --- !u!114 &6921223984829105349
 MonoBehaviour:
   m_ObjectHideFlags: 0

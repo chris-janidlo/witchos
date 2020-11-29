@@ -24,6 +24,7 @@ MonoBehaviour:
   DeleteSaveButton: {fileID: 7030415900137803512}
   SaveButtonText: {fileID: 4183515176144243902}
   DeleteButtonText: {fileID: 1811693543784695330}
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
 --- !u!1 &5603301431390230888
 GameObject:
   m_ObjectHideFlags: 0
