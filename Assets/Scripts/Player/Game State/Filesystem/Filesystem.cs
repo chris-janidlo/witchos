@@ -119,6 +119,11 @@ namespace WitchOS
         // deep parameter acts like the 'p' flag in mkdir. if it's set and you want to add path '/a/b/c' and directory 'a' or 'b' do not exist, they will be created
         public void AddFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
+            if (FileExistsInFileSystem(file))
+            {
+                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
+            }
+
             if (string.IsNullOrEmpty(file.Name))
             {
                 throw new InvalidOperationException("files must be named in order to be added");
@@ -165,6 +170,47 @@ namespace WitchOS
             }
 
             addFileToInternalStructures(file, parent, addedPath);
+        }
+
+        public void AddFile (FileBase file, Directory parent)
+        {
+            if (FileExistsInFileSystem(file))
+            {
+                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
+            }
+
+            string addedPath = GetPathOfFile(parent) + PathSeparator + file.Name;
+
+            if (FileExistsAtPath(addedPath))
+            {
+                throw new InvalidOperationException($"cannot add file with path {addedPath} because one already exists");
+            }
+
+            addFileToInternalStructures(file, parent, addedPath);
+        }
+
+        public void MoveFile (string fromPath, string toPath, bool deep = false)
+        {
+            var file = GetFileAtPath(fromPath, out _);
+            MoveFile(file, toPath, deep);
+        }
+
+        public void MoveFile (FileBase file, string toPath, bool deep = false)
+        {
+            RemoveFile(file);
+            AddFile(file, toPath, deep);
+        }
+
+        public void MoveFile (string fromPath, Directory newParent)
+        {
+            var file = GetFileAtPath(fromPath, out _);
+            MoveFile(file, newParent);
+        }
+
+        public void MoveFile (FileBase file, Directory newParent)
+        {
+            RemoveFile(file);
+            AddFile(file, newParent);
         }
 
         // returns whether file existed
