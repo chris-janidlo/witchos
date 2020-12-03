@@ -157,6 +157,22 @@ namespace WitchOS.Tests
             Assert.That(fileSystem.GetFileAtPath(path, typeof(object)), Is.Null, "passed-in type method should return null");
             Assert.That(fileSystem.GetFileAtPath<object>(path), Is.Null, "generic method should return null");
         }
+
+        [TestCase("foo")]
+        [TestCase("test")] // same name -> should do nothing
+        public void CanRenameFile (string newName)
+        {
+            Assert.That(() => fileSystem.RenameFile(defaultFile, newName), Throws.Nothing);
+        }
+
+        [Test]
+        public void CannotRenameFile_IfFileWithSamePathAlreadyExists ()
+        {
+            fileSystem.AddFile(new TFile { Name = "foo" }, "/test/", true);
+            fileSystem.MoveFile(defaultFile, "/test/");
+
+            Assert.That(() => fileSystem.RenameFile(defaultFile, "foo"), Throws.InvalidOperationException);
+        }
     }
 
     [DataContract]

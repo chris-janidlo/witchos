@@ -120,6 +120,31 @@ namespace WitchOS
             return filePathAssociations.First(fpa => fpa.File == file).ValidPaths.First();
         }
 
+        public void RenameFile (FileBase file, string name)
+        {
+            if (!FileExistsInFileSystem(file))
+            {
+                throw new InvalidOperationException("cannot rename file that does not exist");
+            }
+
+            if (file.Name == name) return;
+
+            var parent = parentCache[file];
+            if (parent.Data.Any(f => f != file && f.Name == name))
+            {
+                throw new InvalidOperationException($"cannot rename {file.Name} to {name} because its parent directory ({parent.Name}{PathSeparator}) already contains a file with that name");
+            }
+
+            RemoveFile(file);
+            file.Name = name;
+            AddFile(file, parent);
+        }
+
+        public void RenameFile (string filePath, string name)
+        {
+            RenameFile(GetFileAtPath(filePath), name);
+        }
+
         // deep parameter acts like the 'p' flag in mkdir. if it's set and you want to add path '/a/b/c' and directory 'a' or 'b' do not exist, they will be created
         public void AddFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
