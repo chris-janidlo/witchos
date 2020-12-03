@@ -145,6 +145,17 @@ namespace WitchOS.Tests
         {
             Assert.That(() => fileSystem.RemoveFile(new TFile()), Throws.InvalidOperationException);
         }
+
+        [TestCase("/abc")]
+        [TestCase("/test/")]
+        [TestCase("/test/test")]
+        [TestCase("/test/test/")]
+        public void GetFileAtPath_ReturnsNull_IfFileDoesNotExist (string path)
+        {
+            Assert.That(fileSystem.GetFileAtPath(path, out _), Is.Null, "out type method should return null");
+            Assert.That(fileSystem.GetFileAtPath(path, typeof(object)), Is.Null, "passed-in type method should return null");
+            Assert.That(fileSystem.GetFileAtPath<object>(path), Is.Null, "generic method should return null");
+        }
     }
 
     [DataContract]
