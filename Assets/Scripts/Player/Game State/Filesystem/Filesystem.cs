@@ -96,11 +96,6 @@ namespace WitchOS
             return type;
         }
 
-        FileBase retrieveFileFromAssociations (string path)
-        {
-            return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
-        }
-
         public bool FileExistsInFileSystem (FileBase file)
         {
             return parentCache.ContainsKey(file);
@@ -172,14 +167,6 @@ namespace WitchOS
             addFileToInternalStructures(file, parent, addedPath);
         }
 
-        void addFileToInternalStructures (FileBase file, Directory parent, string filePath)
-        {
-            parent.Data.Add(file);
-
-            parentCache[file] = parent;
-            addFPA(file, filePath);
-        }
-
         // returns whether file existed
         public bool RemoveFile (string path)
         {
@@ -214,6 +201,11 @@ namespace WitchOS
             filePathAssociations.RemoveAll(fpa => fpa.File == file);
         }
 
+        FileBase retrieveFileFromAssociations (string path)
+        {
+            return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
+        }
+
         void buildDataStructures ()
         {
             parentCache = new Dictionary<FileBase, Directory>();
@@ -236,6 +228,14 @@ namespace WitchOS
                     buildDataStructuresRecursive(child, dir, currentPath + PathSeparator);
                 }
             }
+        }
+
+        void addFileToInternalStructures (FileBase file, Directory parent, string filePath)
+        {
+            parent.Data.Add(file);
+
+            parentCache[file] = parent;
+            addFPA(file, filePath);
         }
 
         void addFPA (FileBase file, string path)
