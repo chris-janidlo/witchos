@@ -56,8 +56,7 @@ namespace WitchOS.Tests
         [TestCase("root" + PATH_SEP + "root")]
         public void RootPath_IsAlwaysRootName (string rootName)
         {
-            fileSystem.RootDirectory.Name = rootName;
-            fileSystem.RebuildInternalStructures();
+            fileSystem.RenameFile(fileSystem.RootDirectory, rootName);
             Assert.That(fileSystem.RootPath, Is.EqualTo(rootName));
         }
 
@@ -65,8 +64,7 @@ namespace WitchOS.Tests
         public void FilesWithSameName_ButDifferentLocation_ReturnDifferentPaths ()
         {
             var sameName = new File<string> { Name = defaultFile.Name, Data = "" };
-            fileSystem.RootDirectory.Data.Add(new Directory("otherDirectory") { Data = new List<FileBase> { sameName } });
-            fileSystem.RebuildInternalStructures();
+            fileSystem.AddFile(sameName, "/otherDirectory", true);
 
             var pathOne = fileSystem.GetPathOfFile(defaultFile);
             var pathTwo = fileSystem.GetPathOfFile(sameName);

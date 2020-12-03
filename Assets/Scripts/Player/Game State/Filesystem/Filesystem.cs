@@ -46,12 +46,6 @@ namespace WitchOS
             initialized = true;
         }
 
-        // call this after mutating any file names or directory data
-        public void RebuildInternalStructures ()
-        {
-            buildDataStructures();
-        }
-
         public FileBase GetFileAtPath (string path)
         {
             return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
@@ -129,15 +123,13 @@ namespace WitchOS
 
             if (file.Name == name) return;
 
-            var parent = parentCache[file];
-            if (parent.Data.Any(f => f != file && f.Name == name))
+            if (file != RootDirectory && parentCache[file].Data.Any(f => f != file && f.Name == name))
             {
-                throw new InvalidOperationException($"cannot rename {file.Name} to {name} because its parent directory ({parent.Name}{PathSeparator}) already contains a file with that name");
+                throw new InvalidOperationException($"cannot rename {file.Name} to {name} because its parent directory ({parentCache[file].Name}{PathSeparator}) already contains a file with that name");
             }
 
-            RemoveFile(file);
             file.Name = name;
-            AddFile(file, parent);
+            buildDataStructures();
         }
 
         public void RenameFile (string filePath, string name)
