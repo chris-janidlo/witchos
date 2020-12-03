@@ -13,7 +13,7 @@ namespace WitchOS.Tests
         const string PATH_SEP = "/";
 
         FileSystem fileSystem;
-        File<string> defaultFile = new File<string> { Name = "test", Data = "" };
+        static File<string> defaultFile = new File<string> { Name = "test", Data = "" };
 
         [SetUp]
         public void SetUp ()
@@ -88,6 +88,7 @@ namespace WitchOS.Tests
             new object[] { new TFile { Name = "" },                     "a file with an empty name" },
             new object[] { new TFile { Name = $"path{PATH_SEP}sep" },   "a file with the path separator in its name" },
             new object[] { new TFile { Name = "test" },                 "two files with the same name" },
+            new object[] { defaultFile,                                 "a file that already exists" },
         };
 
         [TestCaseSource("InvalidFileCases")]
