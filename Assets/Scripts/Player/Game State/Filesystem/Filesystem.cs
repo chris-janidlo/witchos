@@ -52,11 +52,15 @@ namespace WitchOS
             buildDataStructures();
         }
 
-        // GetFile methods will probably return null if nothing is found, rather than throw an exception
+        public FileBase GetFileAtPath (string path)
+        {
+            return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
+        }
+
         public FileBase GetFileAtPath (string path, out Type fileDataType)
         {
             fileDataType = GetTypeOfFileDataAtPath(path);
-            return retrieveFileFromAssociations(path);
+            return GetFileAtPath(path);
         }
 
         public FileBase GetFileAtPath (string path, Type fileDataType)
@@ -68,7 +72,7 @@ namespace WitchOS
                 return null;
             }
 
-            return retrieveFileFromAssociations(path);
+            return GetFileAtPath(path);
         }
 
         public File<T> GetFileAtPath<T> (string path)
@@ -84,7 +88,7 @@ namespace WitchOS
         // returns null if file doesn't exist
         public Type GetTypeOfFileDataAtPath (string path)
         {
-            var file = retrieveFileFromAssociations(path);
+            var file = GetFileAtPath(path);
 
             if (file == null)
             {
@@ -141,7 +145,6 @@ namespace WitchOS
                 throw new InvalidOperationException($"cannot add file with path {addedPath} because one already exists");
             }
 
-            // don't use retrieveFileFromAssociations here - we want the ability for this to return null
             Directory parent = GetDirectoryAtPath(parentDirectoryPath);
 
             if (parent == null)
@@ -191,7 +194,7 @@ namespace WitchOS
 
         public void MoveFile (string fromPath, string toPath, bool deep = false)
         {
-            var file = GetFileAtPath(fromPath, out _);
+            var file = GetFileAtPath(fromPath);
             MoveFile(file, toPath, deep);
         }
 
@@ -203,7 +206,7 @@ namespace WitchOS
 
         public void MoveFile (string fromPath, Directory newParent)
         {
-            var file = GetFileAtPath(fromPath, out _);
+            var file = GetFileAtPath(fromPath);
             MoveFile(file, newParent);
         }
 
@@ -216,7 +219,7 @@ namespace WitchOS
         // returns whether file existed
         public bool RemoveFile (string path)
         {
-            var file = retrieveFileFromAssociations(path);
+            var file = GetFileAtPath(path);
 
             if (file == null)
             {
@@ -245,11 +248,6 @@ namespace WitchOS
             parentCache.Remove(file);
 
             filePathAssociations.RemoveAll(fpa => fpa.File == file);
-        }
-
-        FileBase retrieveFileFromAssociations (string path)
-        {
-            return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
         }
 
         void buildDataStructures ()
