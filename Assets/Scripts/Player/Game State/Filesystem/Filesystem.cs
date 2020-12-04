@@ -205,8 +205,9 @@ namespace WitchOS
 
                     var currentFileThere = GetFileAtPath(fullDirectoryPaths[i]);
 
-                    if (currentFileThere is Directory)
+                    if (currentFileThere is Directory currentDirectoryThere)
                     {
+                        parent = currentDirectoryThere;
                         continue;
                     }
                     else if (currentFileThere != null)

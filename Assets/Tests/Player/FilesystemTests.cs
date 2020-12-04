@@ -196,6 +196,16 @@ namespace WitchOS.Tests
             Assert.That(fileSystem.GetFileAtPath(""), Is.EqualTo(fileSystem.RootDirectory));
             Assert.That(fileSystem.GetFileAtPath("/"), Is.EqualTo(fileSystem.RootDirectory));
         }
+
+        [Test]
+        public void DeepAdd_DoesNotSkipExistingDirectories ()
+        {
+            fileSystem.AddFile(new Directory("subOne"), fileSystem.RootDirectory);
+            var file = new TFile { Name = "baz" };
+
+            fileSystem.AddFile(file, "/subOne/subTwo", true);
+            Assert.That(fileSystem.GetPathOfFile(file), Is.EqualTo("/subOne/subTwo/baz"));
+        }
     }
 
     [DataContract]
