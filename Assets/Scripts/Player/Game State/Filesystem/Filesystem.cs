@@ -33,6 +33,11 @@ namespace WitchOS
             initialized = true;
         }
 
+        public bool FileExistsInFileSystem (FileBase file)
+        {
+            return parentCache.ContainsKey(file);
+        }
+
         public FileBase GetFileAtPath (string path)
         {
             if (path == RootDirectory.Name || path == RootDirectory.Name + PathSeparator)
@@ -70,6 +75,11 @@ namespace WitchOS
             return GetFileAtPath(path);
         }
 
+        public File<T> GetFileAtPath<T> (string path)
+        {
+            return (File<T>) GetFileAtPath(path, typeof(T));
+        }
+
         public FileBase GetFileAtPath (string path, Type fileDataType)
         {
             Type actualTypeAtPath = GetTypeOfFileDataAtPath(path);
@@ -82,17 +92,16 @@ namespace WitchOS
             return GetFileAtPath(path);
         }
 
-        public File<T> GetFileAtPath<T> (string path)
-        {
-            return (File<T>) GetFileAtPath(path, typeof(T));
-        }
-
         public Directory GetDirectoryAtPath (string path)
         {
             return GetFileAtPath<List<FileBase>>(path) as Directory;
         }
 
-        // returns null if file doesn't exist
+        public bool FileExistsAtPath (string path)
+        {
+            return GetFileAtPath(path) != null;
+        }
+
         public Type GetTypeOfFileDataAtPath (string path)
         {
             var file = GetFileAtPath(path);
@@ -105,16 +114,6 @@ namespace WitchOS
             var type = file.GetType().GetField("Data").FieldType;
 
             return type;
-        }
-
-        public bool FileExistsInFileSystem (FileBase file)
-        {
-            return parentCache.ContainsKey(file);
-        }
-
-        public bool FileExistsAtPath (string path)
-        {
-            return GetFileAtPath(path) != null;
         }
 
         public string GetPathOfFile (FileBase file)
@@ -140,6 +139,11 @@ namespace WitchOS
             return path;
         }
 
+        public void RenameFile (string filePath, string name)
+        {
+            RenameFile(GetFileAtPath(filePath), name);
+        }
+
         public void RenameFile (FileBase file, string name)
         {
             if (!FileExistsInFileSystem(file))
@@ -155,11 +159,6 @@ namespace WitchOS
             }
 
             file.Name = name;
-        }
-
-        public void RenameFile (string filePath, string name)
-        {
-            RenameFile(GetFileAtPath(filePath), name);
         }
 
         // deep parameter acts like the 'p' flag in mkdir. if it's set and you want to add path '/a/b/c' and directory 'a' or 'b' do not exist, they will be created
