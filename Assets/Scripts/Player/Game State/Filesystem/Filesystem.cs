@@ -164,60 +164,19 @@ namespace WitchOS
         // deep parameter acts like the 'p' flag in mkdir. if it's set and you want to add path '/a/b/c' and directory 'a' or 'b' do not exist, they will be created
         public void AddFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
-            if (FileExistsInFileSystem(file))
-            {
-                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
-            }
-
-            if (string.IsNullOrEmpty(file.Name))
-            {
-                throw new InvalidOperationException("files must be named in order to be added");
-            }
-
-            if (file.Name.Contains(PathSeparator))
-            {
-                throw new InvalidOperationException($"file {file.Name} cannot be added because it contains the path separator ({PathSeparator}) in its name");
-            }
-
-            string addedPath = parentDirectoryPath + (parentDirectoryPath.EndsWith(PathSeparator) ? "" : PathSeparator) + file.Name;
-
-            if (FileExistsAtPath(addedPath))
-            {
-                throw new InvalidOperationException($"cannot add file with path {addedPath} because one already exists");
-            }
+            validateFileToBeAdded(file);
 
             Directory parent = GetDirectoryAtPath(parentDirectoryPath);
 
             if (parent == null)
             {
-                if (!deep) throw new InvalidOperationException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
-
-                string[] directoryNames = splitPath(parentDirectoryPath);
-                string[] fullDirectoryPaths = new string[directoryNames.Length];
-                fullDirectoryPaths[0] = "";
-
-                parent = RootDirectory;
-
-                for (int i = 1; i < directoryNames.Length; i++)
+                if (deep)
                 {
-                    fullDirectoryPaths[i] = fullDirectoryPaths[i - 1] + PathSeparator + directoryNames[i];
-
-                    var currentFileThere = GetFileAtPath(fullDirectoryPaths[i]);
-
-                    if (currentFileThere is Directory currentDirectoryThere)
-                    {
-                        parent = currentDirectoryThere;
-                        continue;
-                    }
-                    else if (currentFileThere != null)
-                    {
-                        throw new InvalidOperationException($"unable to deep add file at path {addedPath} because a non-directory file already exists at {fullDirectoryPaths[i]}");
-                    }
-
-                    var newDirectory = new Directory(directoryNames[i]);
-                    AddFile(newDirectory, parent);
-
-                    parent = newDirectory;
+                    parent = convertDeepPathToDirectories(parentDirectoryPath);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
                 }
             }
 
@@ -226,10 +185,7 @@ namespace WitchOS
 
         public void AddFile (FileBase file, Directory parent)
         {
-            if (FileExistsInFileSystem(file))
-            {
-                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
-            }
+            validateFileToBeAdded(file);
 
             if (parent.Data.Any(f => f.Name == file.Name))
             {
@@ -332,6 +288,59 @@ namespace WitchOS
         {
             // gah why can't we just call the thing directly
             return path.Split(new string[] { PathSeparator }, StringSplitOptions.None);
+        }
+
+        void validateFileToBeAdded (FileBase file)
+        {
+            if (FileExistsInFileSystem(file))
+            {
+                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
+            }
+
+            if (string.IsNullOrEmpty(file.Name))
+            {
+                throw new InvalidOperationException("files must be named in order to be added");
+            }
+
+            if (file.Name.Contains(PathSeparator))
+            {
+                throw new InvalidOperationException($"file {file.Name} cannot be added because it contains the path separator ({PathSeparator}) in its name");
+            }
+        }
+
+        // takes a path consisting of valid directory names and converts it to a directory structure.
+        // returns the final directory of that structure
+        Directory convertDeepPathToDirectories (string pathToCreate)
+        {
+            string[] directoryNames = splitPath(pathToCreate);
+            string[] fullDirectoryPaths = new string[directoryNames.Length];
+            fullDirectoryPaths[0] = "";
+
+            var parent = RootDirectory;
+
+            for (int i = 1; i < directoryNames.Length; i++)
+            {
+                fullDirectoryPaths[i] = fullDirectoryPaths[i - 1] + PathSeparator + directoryNames[i];
+
+                var currentFileThere = GetFileAtPath(fullDirectoryPaths[i]);
+
+                if (currentFileThere is Directory currentDirectoryThere)
+                {
+                    parent = currentDirectoryThere;
+                    continue;
+                }
+                else if (currentFileThere != null)
+                {
+                    throw new InvalidOperationException($"unable to create path {pathToCreate} because a non-directory file already exists at {fullDirectoryPaths[i]}");
+                }
+
+                var newDirectory = new Directory(directoryNames[i]);
+                AddFile(newDirectory, parent);
+
+                parent = newDirectory;
+            }
+
+            return parent;
         }
     }
 }
