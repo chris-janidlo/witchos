@@ -19,21 +19,8 @@ namespace WitchOS
         public DirectorySaveData SaveData;
 
         Dictionary<FileBase, Directory> parentCache;
-        List<FilePathAssociation> filePathAssociations;
 
         bool initialized;
-
-        class FilePathAssociation
-        {
-            public FileBase File;
-            public List<string> ValidPaths;
-
-            public FilePathAssociation (FileBase file, params string[] paths)
-            {
-                File = file;
-                ValidPaths = paths.ToList();
-            }
-        }
 
         // initializes the filesystem, if necessary
         public void Initialize ()
@@ -41,14 +28,40 @@ namespace WitchOS
             if (initialized) return;
 
             SaveManager.Register(SaveData);
-            buildDataStructures();
+            buildParentCache();
 
             initialized = true;
         }
 
         public FileBase GetFileAtPath (string path)
         {
-            return filePathAssociations.FirstOrDefault(fpa => fpa.ValidPaths.Contains(path))?.File;
+            if (path == RootDirectory.Name || path == RootDirectory.Name + PathSeparator)
+            {
+                return RootDirectory;
+            }
+
+            Directory currentDirectory = RootDirectory;
+            var pathParts = splitPath(path);
+
+            // don't include the root or the final filename
+            for (int i = 1; i < pathParts.Length - 1; i++)
+            {
+                currentDirectory = currentDirectory.Data
+                    .SingleOrDefault(f => f.Name == pathParts[i])
+                    as Directory;
+
+                if (currentDirectory == null) return null;
+            }
+
+            if (path.EndsWith(PathSeparator))
+            {
+                // optional, since "dir" and "dir/" are both valid paths
+                return currentDirectory;
+            }
+            else
+            {
+                return currentDirectory.Data.SingleOrDefault(f => f.Name == pathParts.Last());
+            }
         }
 
         public FileBase GetFileAtPath (string path, out Type fileDataType)
@@ -101,7 +114,7 @@ namespace WitchOS
 
         public bool FileExistsAtPath (string path)
         {
-            return filePathAssociations.Any(fpa => fpa.ValidPaths.Contains(path));
+            return GetFileAtPath(path) != null;
         }
 
         public string GetPathOfFile (FileBase file)
@@ -111,7 +124,20 @@ namespace WitchOS
                 throw new InvalidOperationException($"file {file.Name} does not exist in this filesystem");
             }
 
-            return filePathAssociations.First(fpa => fpa.File == file).ValidPaths.First();
+            string path = file.Name + (file is Directory ? PathSeparator : "");
+
+            if (file == RootDirectory) return path;
+
+            Directory currentDirectory = parentCache[file];
+
+            while (currentDirectory != RootDirectory)
+            {
+                path = currentDirectory.Name + PathSeparator + path;
+                currentDirectory = parentCache[currentDirectory];
+            }
+
+            path = RootDirectory.Name + PathSeparator + path;
+            return path;
         }
 
         public void RenameFile (FileBase file, string name)
@@ -129,7 +155,6 @@ namespace WitchOS
             }
 
             file.Name = name;
-            buildDataStructures();
         }
 
         public void RenameFile (string filePath, string name)
@@ -155,7 +180,7 @@ namespace WitchOS
                 throw new InvalidOperationException($"file {file.Name} cannot be added because it contains the path separator ({PathSeparator}) in its name");
             }
 
-            string addedPath = parentDirectoryPath + PathSeparator + file.Name;
+            string addedPath = parentDirectoryPath + (parentDirectoryPath.EndsWith(PathSeparator) ? "" : PathSeparator) + file.Name;
 
             if (FileExistsAtPath(addedPath))
             {
@@ -168,9 +193,7 @@ namespace WitchOS
             {
                 if (!deep) throw new InvalidOperationException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
 
-                // gah why can't we just call the thing directly
-                string[] directoryNames = parentDirectoryPath.Split(new string[] { PathSeparator }, StringSplitOptions.None);
-
+                string[] directoryNames = splitPath(parentDirectoryPath);
                 string[] fullDirectoryPaths = new string[directoryNames.Length];
                 fullDirectoryPaths[0] = "";
 
@@ -180,16 +203,25 @@ namespace WitchOS
                 {
                     fullDirectoryPaths[i] = fullDirectoryPaths[i - 1] + PathSeparator + directoryNames[i];
 
-                    if (FileExistsAtPath(fullDirectoryPaths[i])) continue;
+                    var currentFileThere = GetFileAtPath(fullDirectoryPaths[i]);
+
+                    if (currentFileThere is Directory)
+                    {
+                        continue;
+                    }
+                    else if (currentFileThere != null)
+                    {
+                        throw new InvalidOperationException($"unable to deep add file at path {addedPath} because a non-directory file already exists at {fullDirectoryPaths[i]}");
+                    }
 
                     var newDirectory = new Directory(directoryNames[i]);
-                    addFileToInternalStructures(newDirectory, parent, fullDirectoryPaths[i]);
+                    AddFile(newDirectory, parent);
 
                     parent = newDirectory;
                 }
             }
 
-            addFileToInternalStructures(file, parent, addedPath);
+            AddFile(file, parent);
         }
 
         public void AddFile (FileBase file, Directory parent)
@@ -199,14 +231,13 @@ namespace WitchOS
                 throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
             }
 
-            string addedPath = GetPathOfFile(parent) + PathSeparator + file.Name;
-
-            if (FileExistsAtPath(addedPath))
+            if (parent.Data.Any(f => f.Name == file.Name))
             {
-                throw new InvalidOperationException($"cannot add file with path {addedPath} because one already exists");
+                throw new InvalidOperationException($"cannot add file {file.Name} to directory {parent.Name} because it already contains a file with that name");
             }
 
-            addFileToInternalStructures(file, parent, addedPath);
+            parent.Data.Add(file);
+            parentCache[file] = parent;
         }
 
         public void MoveFile (string fromPath, string toPath, bool deep = false)
@@ -263,49 +294,31 @@ namespace WitchOS
 
             parentCache[file].Data.Remove(file);
             parentCache.Remove(file);
-
-            filePathAssociations.RemoveAll(fpa => fpa.File == file);
         }
 
-        void buildDataStructures ()
+        void buildParentCache ()
         {
             parentCache = new Dictionary<FileBase, Directory>();
-            filePathAssociations = new List<FilePathAssociation>();
-
-            buildDataStructuresRecursive(SaveData.Value, null, "");
+            buildParentCacheRecursive(SaveData.Value, null);
         }
 
-        void buildDataStructuresRecursive (FileBase file, Directory parent, string parentPath)
+        void buildParentCacheRecursive (FileBase file, Directory parent)
         {
-            var currentPath = parentPath + file.Name;
-
             parentCache[file] = parent;
-            addFPA(file, currentPath);
 
             if (file is Directory dir)
             {
                 foreach (var child in dir.Data)
                 {
-                    buildDataStructuresRecursive(child, dir, currentPath + PathSeparator);
+                    buildParentCacheRecursive(child, dir);
                 }
             }
         }
 
-        void addFileToInternalStructures (FileBase file, Directory parent, string filePath)
+        string[] splitPath (string path)
         {
-            parent.Data.Add(file);
-
-            parentCache[file] = parent;
-            addFPA(file, filePath);
-        }
-
-        void addFPA (FileBase file, string path)
-        {
-            var fpa = file is Directory
-                ? new FilePathAssociation(file, path, path + PathSeparator)
-                : new FilePathAssociation(file, path);
-
-            filePathAssociations.Add(fpa);
+            // gah why can't we just call the thing directly
+            return path.Split(new string[] { PathSeparator }, StringSplitOptions.None);
         }
     }
 }

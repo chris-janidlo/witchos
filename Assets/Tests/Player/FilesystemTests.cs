@@ -45,7 +45,7 @@ namespace WitchOS.Tests
         {
             var calculatedPath = fileSystem.RootDirectory.Name + PATH_SEP + fileSystem.RootDirectory.Data[0].Name;
 
-            Assert.That(fileSystem.RootPath, Is.EqualTo(fileSystem.RootDirectory.Name));
+            Assert.That(fileSystem.RootPath, Is.EqualTo(fileSystem.RootDirectory.Name + PATH_SEP));
             Assert.That(fileSystem.GetPathOfFile(defaultFile), Is.EqualTo(calculatedPath));
         }
 
@@ -54,10 +54,10 @@ namespace WitchOS.Tests
         [TestCase(PATH_SEP)]
         [TestCase(PATH_SEP + PATH_SEP)]
         [TestCase("root" + PATH_SEP + "root")]
-        public void RootPath_IsAlwaysRootName (string rootName)
+        public void RootPath_IsAlwaysRootNamePlusPathSep (string rootName)
         {
             fileSystem.RenameFile(fileSystem.RootDirectory, rootName);
-            Assert.That(fileSystem.RootPath, Is.EqualTo(rootName));
+            Assert.That(fileSystem.RootPath, Is.EqualTo(rootName + PATH_SEP));
         }
 
         [Test]
@@ -109,12 +109,14 @@ namespace WitchOS.Tests
             Assert.That(() => fileSystem.AddFile(fileToAdd, path), Throws.InvalidOperationException);
         }
 
-        static readonly string[] paths = new string[] { "/", "/root", "/a/b/c", "/root/root/root" };
+        static readonly string[] paths = new string[] { "", "/root", "/a/b/c", "/root/root/root" };
         static readonly string[] names = new string[] { "test", "root" };
 
         [Test]
         public void AddedPath_AlwaysEquals_RetrievedPath ([ValueSource("paths")] string parentPath, [ValueSource("names")] string fileName)
         {
+            fileSystem.RemoveFile(defaultFile);
+
             var fileToAdd = new File<float> { Name = fileName };
             fileSystem.AddFile(fileToAdd, parentPath, true);
 
@@ -166,10 +168,33 @@ namespace WitchOS.Tests
         [Test]
         public void CannotRenameFile_IfFileWithSamePathAlreadyExists ()
         {
-            fileSystem.AddFile(new TFile { Name = "foo" }, "/test/", true);
-            fileSystem.MoveFile(defaultFile, "/test/");
+            fileSystem.AddFile(new TFile { Name = "foo" }, "/bar/", true);
+            fileSystem.MoveFile(defaultFile, "/bar/");
 
             Assert.That(() => fileSystem.RenameFile(defaultFile, "foo"), Throws.InvalidOperationException);
+        }
+
+        [Test]
+        public void DeepAddFails_WhenDirectoryNameIsEqualToExistingFilename ()
+        {
+            Assert.That(() => fileSystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InvalidOperationException);
+        }
+
+        [Test]
+        public void CanGetDirectoryPath_WithAndWithoutPathSeparator ()
+        {
+            var dir = new Directory("dir");
+            fileSystem.AddFile(dir, fileSystem.RootDirectory);
+
+            Assert.That(fileSystem.GetFileAtPath("/dir"), Is.EqualTo(dir));
+            Assert.That(fileSystem.GetFileAtPath("/dir/"), Is.EqualTo(dir));
+        }
+
+        [Test]
+        public void CanGetRootPath_WithAndWithoutPathSeparator ()
+        {
+            Assert.That(fileSystem.GetFileAtPath(""), Is.EqualTo(fileSystem.RootDirectory));
+            Assert.That(fileSystem.GetFileAtPath("/"), Is.EqualTo(fileSystem.RootDirectory));
         }
     }
 
