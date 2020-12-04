@@ -206,6 +206,66 @@ namespace WitchOS.Tests
             fileSystem.AddFile(file, "/subOne/subTwo", true);
             Assert.That(fileSystem.GetPathOfFile(file), Is.EqualTo("/subOne/subTwo/baz"));
         }
+
+        [Test]
+        public void AddingDirectory_AddsContents ()
+        {
+            var files = new List<TFile>
+            {
+                new TFile { Name = "file0" },
+                new TFile { Name = "file1" },
+                new TFile { Name = "file2" },
+                new TFile { Name = "file3" }
+            };
+
+            var dirSubSub = new Directory("subSubDirectory") { Data = new List<FileBase> { files[3] } };
+            var dirSub = new Directory("subDirectory") { Data = new List<FileBase> { files[2], dirSubSub } };
+            var dirMain = new Directory("fullDirectory") { Data = new List<FileBase> { files[1], files[0], dirSub} };
+
+            fileSystem.AddFile(dirMain, fileSystem.RootDirectory);
+
+            foreach (var file in files)
+            {
+                Assert.That(fileSystem.FileExistsInFileSystem(file), $"file {file.Name} should exist");
+            }
+        }
+
+        [Test]
+        public void MovingDirectory_MovesContents ()
+        {
+            var fileA = new TFile() { Name = "a" };
+            var fileB = new TFile() { Name = "b" };
+
+            fileSystem.AddFile(fileA, "/originalDir", true);
+            fileSystem.AddFile(fileB, "/originalDir/subDir", true);
+
+            fileSystem.AddFile(new Directory("newDirectory"), fileSystem.RootDirectory);
+
+            fileSystem.MoveFile("/originalDir", "/newDirectory");
+
+            Assert.That(fileSystem.FileExistsAtPath("/newDirectory/originalDir"));
+
+            Assert.That(fileSystem.GetPathOfFile(fileA), Is.EqualTo("/newDirectory/originalDir/a"));
+            Assert.That(fileSystem.GetPathOfFile(fileB), Is.EqualTo("/newDirectory/originalDir/subDir/b"));
+        }
+
+        [Test]
+        public void RemovingDirectory_RemovesContents ()
+        {
+            var fileA = new TFile() { Name = "a" };
+            var fileB = new TFile() { Name = "b" };
+
+            fileSystem.AddFile(fileA, "/directoryToDelete", true);
+            fileSystem.AddFile(fileB, "/directoryToDelete/subDir", true);
+
+            Assert.That(fileSystem.FileExistsInFileSystem(fileA), "file A should exist in the filesystem at this point");
+            Assert.That(fileSystem.FileExistsInFileSystem(fileB), "file B should exist in the filesystem at this point");
+
+            fileSystem.RemoveFile("/directoryToDelete");
+
+            Assert.That(fileSystem.FileExistsInFileSystem(fileA), Is.False, "file A should no longer exist in the filesystem");
+            Assert.That(fileSystem.FileExistsInFileSystem(fileB), Is.False, "file B should no longer exist in the filesystem");
+        }
     }
 
     [DataContract]

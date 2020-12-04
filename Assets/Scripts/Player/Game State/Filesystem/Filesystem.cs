@@ -238,7 +238,7 @@ namespace WitchOS
             }
 
             parent.Data.Add(file);
-            parentCache[file] = parent;
+            trackFileAndAnyChildren(file, parent);
         }
 
         public void MoveFile (string fromPath, string toPath, bool deep = false)
@@ -294,16 +294,16 @@ namespace WitchOS
             }
 
             parentCache[file].Data.Remove(file);
-            parentCache.Remove(file);
+            untrackFileAndAnyChildren(file);
         }
 
         void buildParentCache ()
         {
             parentCache = new Dictionary<FileBase, Directory>();
-            buildParentCacheRecursive(SaveData.Value, null);
+            trackFileAndAnyChildren(SaveData.Value, null);
         }
 
-        void buildParentCacheRecursive (FileBase file, Directory parent)
+        void trackFileAndAnyChildren (FileBase file, Directory parent)
         {
             parentCache[file] = parent;
 
@@ -311,7 +311,20 @@ namespace WitchOS
             {
                 foreach (var child in dir.Data)
                 {
-                    buildParentCacheRecursive(child, dir);
+                    trackFileAndAnyChildren(child, dir);
+                }
+            }
+        }
+
+        void untrackFileAndAnyChildren (FileBase file)
+        {
+            parentCache.Remove(file);
+
+            if (file is Directory dir)
+            {
+                foreach (var child in dir.Data)
+                {
+                    untrackFileAndAnyChildren(child);
                 }
             }
         }
