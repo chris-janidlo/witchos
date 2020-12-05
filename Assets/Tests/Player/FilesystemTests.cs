@@ -51,12 +51,9 @@ namespace WitchOS.Tests
 
         [TestCase("")]
         [TestCase("root")]
-        [TestCase(PATH_SEP)]
-        [TestCase(PATH_SEP + PATH_SEP)]
-        [TestCase("root" + PATH_SEP + "root")]
         public void RootPath_IsAlwaysRootNamePlusPathSep (string rootName)
         {
-            fileSystem.RenameFile(fileSystem.RootDirectory, rootName);
+            fileSystem.RootDirectory.Name = rootName;
             Assert.That(fileSystem.RootPath, Is.EqualTo(rootName + PATH_SEP));
         }
 

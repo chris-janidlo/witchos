@@ -142,13 +142,13 @@ namespace WitchOS
 
         public void RenameFile (string filePath, string name)
         {
-            validatePath(filePath);
-
             RenameFile(GetFileAtPath(filePath), name);
         }
 
         public void RenameFile (FileBase file, string name)
         {
+            validateFileName(name);
+
             if (!FileExistsInFileSystem(file))
             {
                 throw new InvalidOperationException("cannot rename file that does not exist");
@@ -190,6 +190,11 @@ namespace WitchOS
         public void AddFile (FileBase file, Directory parent)
         {
             validateFileToBeAdded(file);
+
+            if (!FileExistsInFileSystem(parent))
+            {
+                throw new InvalidOperationException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
+            }
 
             if (parent.Data.Any(f => f.Name == file.Name))
             {
@@ -311,14 +316,19 @@ namespace WitchOS
                 throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
             }
 
-            if (string.IsNullOrEmpty(file.Name))
+            validateFileName(file.Name);
+        }
+
+        void validateFileName (string name)
+        {
+            if (string.IsNullOrEmpty(name))
             {
-                throw new InvalidOperationException("files must be named in order to be added");
+                throw new InvalidOperationException("file names cannot be null or empty");
             }
 
-            if (file.Name.Contains(PathSeparator))
+            if (name.Contains(PathSeparator))
             {
-                throw new InvalidOperationException($"file {file.Name} cannot be added because it contains the path separator ({PathSeparator}) in its name");
+                throw new InvalidOperationException($"filename {name} is invalid because it contains the path separator ({PathSeparator})");
             }
         }
 
