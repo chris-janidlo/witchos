@@ -92,7 +92,7 @@ namespace WitchOS.Tests
             Assert.That
             (
                 () => fileSystem.AddFile(file, fileSystem.RootPath),
-                Throws.InvalidOperationException,
+                Throws.InstanceOf<FilesystemException>(),
                 $"attempting to add {descriptionOfBadFile} should fail"
             );
         }
@@ -103,7 +103,7 @@ namespace WitchOS.Tests
             var fileToAdd = new File<char>();
             var path = fileSystem.RootPath + PATH_SEP + "dir" + PATH_SEP + "anotherDir";
 
-            Assert.That(() => fileSystem.AddFile(fileToAdd, path), Throws.InvalidOperationException);
+            Assert.That(() => fileSystem.AddFile(fileToAdd, path), Throws.InstanceOf<FilesystemException>());
         }
 
         static readonly string[] paths = new string[] { "", "/root", "/a/b/c", "/root/root/root" };
@@ -134,13 +134,13 @@ namespace WitchOS.Tests
         [Test]
         public void CannotRemoveRoot ()
         {
-            Assert.That(() => fileSystem.RemoveFile(fileSystem.RootDirectory), Throws.InvalidOperationException);
+            Assert.That(() => fileSystem.RemoveFile(fileSystem.RootDirectory), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]
         public void UnaddedFile_CantBeRemoved ()
         {
-            Assert.That(() => fileSystem.RemoveFile(new TFile()), Throws.InvalidOperationException);
+            Assert.That(() => fileSystem.RemoveFile(new TFile()), Throws.InstanceOf<FilesystemException>());
         }
 
         [TestCase("/foo")]
@@ -172,13 +172,13 @@ namespace WitchOS.Tests
             fileSystem.AddFile(new TFile { Name = "foo" }, "/bar/", true);
             fileSystem.MoveFile(defaultFile, "/bar/");
 
-            Assert.That(() => fileSystem.RenameFile(defaultFile, "foo"), Throws.InvalidOperationException);
+            Assert.That(() => fileSystem.RenameFile(defaultFile, "foo"), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]
         public void DeepAddFails_WhenDirectoryNameIsEqualToExistingFilename ()
         {
-            Assert.That(() => fileSystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InvalidOperationException);
+            Assert.That(() => fileSystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]

@@ -121,7 +121,7 @@ namespace WitchOS
         {
             if (!FileExistsInFileSystem(file))
             {
-                throw new InvalidOperationException($"file {file.Name} does not exist in this filesystem");
+                throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
             }
 
             string path = file.Name + (file is Directory ? PathSeparator : "");
@@ -151,14 +151,14 @@ namespace WitchOS
 
             if (!FileExistsInFileSystem(file))
             {
-                throw new InvalidOperationException("cannot rename file that does not exist");
+                throw new FilesystemException("cannot rename file that does not exist");
             }
 
             if (file.Name == name) return;
 
             if (file != RootDirectory && parentCache[file].Data.Any(f => f != file && f.Name == name))
             {
-                throw new InvalidOperationException($"cannot rename {file.Name} to {name} because its parent directory ({parentCache[file].Name}{PathSeparator}) already contains a file with that name");
+                throw new FilesystemException($"cannot rename {file.Name} to {name} because its parent directory ({parentCache[file].Name}{PathSeparator}) already contains a file with that name");
             }
 
             file.Name = name;
@@ -180,7 +180,7 @@ namespace WitchOS
                 }
                 else
                 {
-                    throw new InvalidOperationException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
+                    throw new FilesystemException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
                 }
             }
 
@@ -193,12 +193,12 @@ namespace WitchOS
 
             if (!FileExistsInFileSystem(parent))
             {
-                throw new InvalidOperationException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
+                throw new FilesystemException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
             }
 
             if (parent.Data.Any(f => f.Name == file.Name))
             {
-                throw new InvalidOperationException($"cannot add file {file.Name} to directory {parent.Name} because it already contains a file with that name");
+                throw new FilesystemException($"cannot add file {file.Name} to directory {parent.Name} because it already contains a file with that name");
             }
 
             parent.Data.Add(file);
@@ -249,12 +249,12 @@ namespace WitchOS
         {
             if (!FileExistsInFileSystem(file))
             {
-                throw new InvalidOperationException($"file {file.Name} does not exist in this filesystem");
+                throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
             }
 
             if (file == RootDirectory)
             {
-                throw new InvalidOperationException("cannot delete the root directory");
+                throw new FilesystemException("cannot delete the root directory");
             }
 
             parentCache[file].Data.Remove(file);
@@ -313,7 +313,7 @@ namespace WitchOS
         {
             if (FileExistsInFileSystem(file))
             {
-                throw new InvalidOperationException($"cannot add file {file.Name} because it already exists in this filesystem");
+                throw new FilesystemException($"cannot add file {file.Name} because it already exists in this filesystem");
             }
 
             validateFileName(file.Name);
@@ -323,12 +323,12 @@ namespace WitchOS
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new InvalidOperationException("file names cannot be null or empty");
+                throw new FilesystemException("file names cannot be null or empty");
             }
 
             if (name.Contains(PathSeparator))
             {
-                throw new InvalidOperationException($"filename {name} is invalid because it contains the path separator ({PathSeparator})");
+                throw new FilesystemException($"filename {name} is invalid because it contains the path separator ({PathSeparator})");
             }
         }
 
@@ -336,7 +336,7 @@ namespace WitchOS
         {
             if (path == null || (path == "" && RootDirectory.Name != ""))
             {
-                throw new InvalidOperationException("paths cannot be null or empty");
+                throw new FilesystemException("paths cannot be null or empty");
             }
 
             int pathSepLength = PathSeparator.Length;
@@ -345,7 +345,7 @@ namespace WitchOS
             {
                 if (path.Substring(i, pathSepLength) == PathSeparator && path.Substring(i + pathSepLength, pathSepLength) == PathSeparator)
                 {
-                    throw new InvalidOperationException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
+                    throw new FilesystemException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
                 }
             }
         }
@@ -373,7 +373,7 @@ namespace WitchOS
                 }
                 else if (currentFileThere != null)
                 {
-                    throw new InvalidOperationException($"unable to create path {pathToCreate} because a non-directory file already exists at {fullDirectoryPaths[i]}");
+                    throw new FilesystemException($"unable to create path {pathToCreate} because a non-directory file already exists at {fullDirectoryPaths[i]}");
                 }
 
                 var newDirectory = new Directory(directoryNames[i]);
