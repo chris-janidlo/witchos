@@ -8732,6 +8732,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
+  DateTimeSaveData:
+    DeveloperNotes: The initial date, at midnight
+    FileName: date
+    value:
+      dateString: 10/13/2000 12:00:00 AM
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
 --- !u!4 &1352642451
 Transform:
   m_ObjectHideFlags: 0
@@ -8758,6 +8764,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348df3ae504e54d7a96490288bce1116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveData:
+    DeveloperNotes: Can't access the value here, but that's ok, because we expect
+      it to be null
+    FileName: mail
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
 --- !u!114 &1352642455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8857,11 +8868,16 @@ MonoBehaviour:
   MaximumBalance: 99999999999999
   InsufficientFundsAlertMessage: 'error: insufficient gp'
   CappedBalanceAlertMessage: 'warning: maximum bank account balance reached'
-  InitialTransaction:
-    InitialCurrency: 0
-    DeltaCurrency: 100
-    Description: Initial Deposit
-    dateString: 10/13/2000 12:00:00 AM
+  TransactionData:
+    DeveloperNotes: Date should always be initial date
+    FileName: bank
+    value:
+    - InitialCurrency: 0
+      DeltaCurrency: 100
+      Description: Initial Deposit
+      Date:
+        dateString: 10/13/2000 12:00:00 AM
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
 --- !u!1 &1398068856
 GameObject:
   m_ObjectHideFlags: 0

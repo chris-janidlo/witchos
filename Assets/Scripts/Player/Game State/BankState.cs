@@ -14,22 +14,17 @@ namespace WitchOS
         public long MaximumBalance;
 
         public string InsufficientFundsAlertMessage, CappedBalanceAlertMessage;
-        public BankTransaction InitialTransaction;
 
-        SaveData<List<BankTransaction>> transactionData;
-        public IReadOnlyList<BankTransaction> Transactions => transactionData.Value.AsReadOnly();
+        public BankSaveData TransactionData;
+        public IReadOnlyList<BankTransaction> Transactions => TransactionData.Value.AsReadOnly();
+
+        public SaveManager SaveManager;
 
         void Awake ()
         {
             SingletonOverwriteInstance(this);
 
-            transactionData = new SaveData<List<BankTransaction>>
-            (
-                "bankTransactionData",
-                () => new List<BankTransaction> { InitialTransaction }
-            );
-
-            SaveManager.RegisterSaveDataObject(transactionData);
+            SaveManager.Register(TransactionData);
         }
 
         public bool AddTransaction (int deltaCurrency, string description, bool autoAlert = true)
@@ -54,10 +49,10 @@ namespace WitchOS
                 InitialCurrency = CurrentBalance,
                 DeltaCurrency = cappedDelta,
                 Description = description,
-                Date = TimeState.Instance.DateTime.Date
+                Date = new SaveableDate(TimeState.Instance.DateTime.Date)
             };
 
-            transactionData.Value.Add(transaction);
+            TransactionData.Value.Add(transaction);
 
             return true;
         }

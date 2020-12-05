@@ -16,13 +16,21 @@ namespace WitchOS
 
         public int TasksCompletedToday;
 
+        public IntSaveData DifficultyLevelSaveData;
+        public SaveManager SaveManager;
+
         public int CurrentDifficultyLevel
         {
-            get => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel;
-            set => SaveManager.LooseSaveData.Value.CurrentDifficultyLevel = value;
+            get => DifficultyLevelSaveData.Value;
+            set => DifficultyLevelSaveData.Value = value;
         }
 
         int spawnCount => OrdersToSpawnByDifficulty[CurrentDifficultyLevel];
+
+        void Start ()
+        {
+            SaveManager.Register(DifficultyLevelSaveData);
+        }
 
         public void GenerateOrders ()
         {

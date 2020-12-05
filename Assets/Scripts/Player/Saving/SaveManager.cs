@@ -7,34 +7,22 @@ using UnityEngine;
 
 namespace WitchOS
 {
-    public static class SaveManager
+    [CreateAssetMenu(menuName = "WitchOS/Save Manager", fileName = "SaveManagerSystem.asset")]
+    public class SaveManager : ScriptableObject
     {
-        public static SaveData<LooseSaveValues> LooseSaveData { get; private set; }
+        HashSet<SaveData> allDataObjects = new HashSet<SaveData>();
 
-        static HashSet<SaveData> allDataObjects;
-
-        static SaveManager ()
+        public void Register (SaveData saveData)
         {
-            LooseSaveData = new SaveData<LooseSaveValues>
-            (
-                "looseData",
-                () => new LooseSaveValues
-                {
-                    Date = TimeState.INITIAL_DATE,
-                    CurrentDifficultyLevel = 0,
-                    IconPositions = new Dictionary<string, SaveableVector3>()
-                }
-            );
+            if (allDataObjects.Any(s => s.FileName == saveData.FileName))
+            {
+                throw new InvalidOperationException($"cannot register two save files with the same name ({saveData.FileName})");
+            }
 
-            allDataObjects = new HashSet<SaveData> { LooseSaveData };
-        }
-
-        public static void RegisterSaveDataObject (SaveData saveData)
-        {
             allDataObjects.Add(saveData);
         }
 
-        public static void SaveAllData ()
+        public void SaveAllData ()
         {
             foreach (var dataObject in allDataObjects)
             {
@@ -42,23 +30,12 @@ namespace WitchOS
             }
         }
 
-        public static void DeleteAllSaveData ()
+        public void DeleteAllSaveData ()
         {
             foreach (var dataObject in allDataObjects)
             {
                 dataObject.DeleteSaveFile();
             }
         }
-    }
-
-    [DataContract]
-    public class LooseSaveValues
-    {
-        [DataMember(IsRequired = true)]
-        public DateTime Date;
-        [DataMember(IsRequired = true)]
-        public int CurrentDifficultyLevel;
-        [DataMember(IsRequired = true)]
-        public Dictionary<string, SaveableVector3> IconPositions;
     }
 }

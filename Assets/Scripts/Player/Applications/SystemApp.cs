@@ -15,6 +15,8 @@ namespace WitchOS
         public Button ManualSaveButton, DeleteSaveButton;
         public TextMeshProUGUI SaveButtonText, DeleteButtonText;
 
+        public SaveManager SaveManager;
+
         bool deletePromptInConfirmation;
 
         void Start ()

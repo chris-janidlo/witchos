@@ -11,16 +11,11 @@ namespace WitchOS
     {
         [DataMember(IsRequired = true)]
         public long InitialCurrency, DeltaCurrency;
+
         [DataMember(IsRequired = true)]
         public string Description;
 
-        [SerializeField]
-        string dateString;
         [DataMember(IsRequired = true)]
-        public DateTime Date
-        {
-            get => DateTime.Parse(dateString);
-            set => dateString = value.ToString();
-        }
+        public SaveableDate Date;
     }
 }

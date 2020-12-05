@@ -21,33 +21,33 @@ namespace WitchOS
             public Email Contents;
         }
 
-        SaveData<List<Entry>> messageData;
-        public IReadOnlyList<Entry> CurrentMailEntries => messageData.Value.AsReadOnly();
+        public IReadOnlyList<Entry> CurrentMailEntries => SaveData.Value.AsReadOnly();
 
         public int UnreadMessageCount => CurrentMailEntries.Where(m => !m.Read).Count();
         public int OrdersInProgress => CurrentMailEntries.Select(e => e.Contents).Where(e => (e as Order)?.State == OrderState.InProgress).Count();
+        
+        public MailSaveData SaveData;
+        public SaveManager SaveManager;
 
         void Awake ()
         {
             SingletonOverwriteInstance(this);
+            SaveManager.Register(SaveData);
 
-            messageData = new SaveData<List<Entry>>
-            (
-                "emailData",
-                () => new List<Entry>()
-            );
-
-            SaveManager.RegisterSaveDataObject(messageData);
+            if (SaveData.Value == null)
+            {
+                SaveData.Value = new List<Entry>();
+            }
         }
 
         public void AddEmail (Email email)
         {
-            messageData.Value.Add(new Entry { Contents = email, Read = false });
+            SaveData.Value.Add(new Entry { Contents = email, Read = false });
         }
 
         public void OnSpellCast (SpellDeliverable spell)
         {
-            var orders = messageData.Value
+            var orders = SaveData.Value
                 .Where(e => e.Contents is Order)
                 .Select(e => e.Contents as Order);
 
@@ -68,7 +68,7 @@ namespace WitchOS
 
         public void FailOverdueOrders ()
         {
-            foreach (Order order in messageData.Value.Select(entry => entry.Contents).Where(e => e is Order))
+            foreach (Order order in SaveData.Value.Select(entry => entry.Contents).Where(e => e is Order))
             {
                 if (order.State == OrderState.InProgress && order.DueDate.Date <= TimeState.Instance.DateTime.Date)
                     order.State = OrderState.Failed;

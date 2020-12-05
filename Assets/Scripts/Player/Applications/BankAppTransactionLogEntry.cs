@@ -12,7 +12,7 @@ namespace WitchOS
 
         public void SetTransaction (BankTransaction transaction)
         {
-            DateText.text = transaction.Date.ToString("d", DateTimeFormatInfo.InvariantInfo);
+            DateText.text = transaction.Date.Value.ToString("d", DateTimeFormatInfo.InvariantInfo);
             DescriptionText.text = transaction.Description;
             AmountText.text = transaction.DeltaCurrency.ToString("+#;-#;0"); // from https://stackoverflow.com/a/348242/5931898
             BalanceText.text = (transaction.InitialCurrency + transaction.DeltaCurrency).ToString();
