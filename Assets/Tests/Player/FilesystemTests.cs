@@ -146,7 +146,11 @@ namespace WitchOS.Tests
             Assert.That(() => fileSystem.RemoveFile(new TFile()), Throws.InvalidOperationException);
         }
 
-        [TestCase("/abc")]
+        [TestCase("/foo")]
+        [TestCase("/foo/")]
+        [TestCase("/foo/test")]
+        [TestCase("/foo/test/")]
+        // same name as default file:
         [TestCase("/test/")]
         [TestCase("/test/test")]
         [TestCase("/test/test/")]

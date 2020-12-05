@@ -40,6 +40,8 @@ namespace WitchOS
 
         public FileBase GetFileAtPath (string path)
         {
+            validatePath(path);
+
             if (path == RootDirectory.Name || path == RootDirectory.Name + PathSeparator)
             {
                 return RootDirectory;
@@ -58,15 +60,14 @@ namespace WitchOS
                 if (currentDirectory == null) return null;
             }
 
+            var file = currentDirectory.Data.SingleOrDefault(f => f.Name == pathParts.Last());
+
             if (path.EndsWith(PathSeparator))
             {
-                // optional, since "dir" and "dir/" are both valid paths
-                return currentDirectory;
+                return file as Directory;
             }
-            else
-            {
-                return currentDirectory.Data.SingleOrDefault(f => f.Name == pathParts.Last());
-            }
+
+            return file;
         }
 
         public FileBase GetFileAtPath (string path, out Type fileDataType)
@@ -94,7 +95,7 @@ namespace WitchOS
 
         public Directory GetDirectoryAtPath (string path)
         {
-            return GetFileAtPath<List<FileBase>>(path) as Directory;
+            return GetFileAtPath(path) as Directory;
         }
 
         public bool FileExistsAtPath (string path)
@@ -141,6 +142,8 @@ namespace WitchOS
 
         public void RenameFile (string filePath, string name)
         {
+            validatePath(filePath);
+
             RenameFile(GetFileAtPath(filePath), name);
         }
 
@@ -165,6 +168,7 @@ namespace WitchOS
         public void AddFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
             validateFileToBeAdded(file);
+            validatePath(parentDirectoryPath);
 
             Directory parent = GetDirectoryAtPath(parentDirectoryPath);
 
@@ -286,8 +290,18 @@ namespace WitchOS
 
         string[] splitPath (string path)
         {
+            validatePath(path);
+
             // gah why can't we just call the thing directly
-            return path.Split(new string[] { PathSeparator }, StringSplitOptions.None);
+            string[] split = path.Split(new string[] { PathSeparator }, StringSplitOptions.None);
+            
+            // last element is empty if there's a trailing slash
+            if (split.Last() == "")
+            {
+                split = split.Take(split.Length - 1).ToArray();
+            }
+
+            return split;
         }
 
         void validateFileToBeAdded (FileBase file)
@@ -305,6 +319,24 @@ namespace WitchOS
             if (file.Name.Contains(PathSeparator))
             {
                 throw new InvalidOperationException($"file {file.Name} cannot be added because it contains the path separator ({PathSeparator}) in its name");
+            }
+        }
+
+        void validatePath (string path)
+        {
+            if (path == null || (path == "" && RootDirectory.Name != ""))
+            {
+                throw new InvalidOperationException("paths cannot be null or empty");
+            }
+
+            int pathSepLength = PathSeparator.Length;
+
+            for (int i = 0; i < path.Length - pathSepLength * 2; i++)
+            {
+                if (path.Substring(i, pathSepLength) == PathSeparator && path.Substring(i + pathSepLength, pathSepLength) == PathSeparator)
+                {
+                    throw new InvalidOperationException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
+                }
             }
         }
 
