@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
 
 namespace WitchOS
 {
-    [DataContract]
+    [Serializable, DataContract]
     public abstract class FileBase
     {
         [DataMember(IsRequired = true)]
@@ -15,11 +16,13 @@ namespace WitchOS
         public SaveableVector3 GuiPosition;
     }
 
-    [DataContract]
+    [Serializable, DataContract]
     [KnownType(typeof(Directory))]
+    [KnownType(typeof(TextFile))]
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
     {
+        [SerializeReference]
         [DataMember(IsRequired = true)]
         public DataType Data;
     }

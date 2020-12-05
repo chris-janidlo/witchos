@@ -13,12 +13,15 @@ namespace WitchOS.Tests
     public class FilesystemBuildTimeChecks
     {
         [Test]
-        public void AllFileSubclasses_AreDataContracts ()
+        public void AllFileSubclasses_HaveAppropriateAttributes ()
         {
             foreach (var implementation in Reflection.GetImplementations<FileBase>())
             {
-                string errMessage = $"File subclass {implementation.Name} has no DataContract attribute";
-                Assert.That(getAttributeValues<DataContractAttribute>(implementation), Is.Not.Empty, errMessage);
+                var dataContracts = getAttributeValues<DataContractAttribute>(implementation);
+                Assert.That(dataContracts, Is.Not.Empty, $"File subclass {implementation.Name} has no DataContract attribute");
+
+                var serializables = getAttributeValues<SerializableAttribute>(implementation);
+                Assert.That(serializables, Is.Not.Empty, $"File subclass {implementation.Name} has no Serializable attribute");
             }
         }
 
