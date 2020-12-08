@@ -25,5 +25,10 @@ namespace WitchOS
         [SerializeReference]
         [DataMember(IsRequired = true)]
         public DataType Data;
+
+        public Type GetTypeOfData ()
+        {
+            return typeof(DataType);
+        }
     }
 }

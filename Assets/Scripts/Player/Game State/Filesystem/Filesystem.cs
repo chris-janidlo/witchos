@@ -70,29 +70,6 @@ namespace WitchOS
             return file;
         }
 
-        public FileBase GetFileAtPath (string path, out Type fileDataType)
-        {
-            fileDataType = GetTypeOfFileDataAtPath(path);
-            return GetFileAtPath(path);
-        }
-
-        public File<T> GetFileAtPath<T> (string path)
-        {
-            return (File<T>) GetFileAtPath(path, typeof(T));
-        }
-
-        public FileBase GetFileAtPath (string path, Type fileDataType)
-        {
-            Type actualTypeAtPath = GetTypeOfFileDataAtPath(path);
-
-            if (actualTypeAtPath == null || fileDataType != actualTypeAtPath)
-            {
-                return null;
-            }
-
-            return GetFileAtPath(path);
-        }
-
         public Directory GetDirectoryAtPath (string path)
         {
             return GetFileAtPath(path) as Directory;
@@ -101,20 +78,6 @@ namespace WitchOS
         public bool FileExistsAtPath (string path)
         {
             return GetFileAtPath(path) != null;
-        }
-
-        public Type GetTypeOfFileDataAtPath (string path)
-        {
-            var file = GetFileAtPath(path);
-
-            if (file == null)
-            {
-                return null;
-            }
-
-            var type = file.GetType().GetField("Data").FieldType;
-
-            return type;
         }
 
         public string GetPathOfFile (FileBase file)

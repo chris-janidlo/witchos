@@ -153,10 +153,7 @@ namespace WitchOS.Tests
         [TestCase("/test/test/")]
         public void GetFileAtPath_ReturnsNull_IfFileDoesNotExist (string path)
         {
-            Assert.That(fileSystem.GetFileAtPath(path), Is.Null, "base type method should return null");
-            Assert.That(fileSystem.GetFileAtPath(path, out _), Is.Null, "out type method should return null");
-            Assert.That(fileSystem.GetFileAtPath(path, typeof(object)), Is.Null, "passed-in type method should return null");
-            Assert.That(fileSystem.GetFileAtPath<object>(path), Is.Null, "generic method should return null");
+            Assert.That(fileSystem.GetFileAtPath(path), Is.Null);
         }
 
         [TestCase("foo")]
