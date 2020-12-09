@@ -19,6 +19,7 @@ namespace WitchOS
     [Serializable, DataContract]
     [KnownType(typeof(Directory))]
     [KnownType(typeof(TextFile))]
+    [KnownType(typeof(ExecutableFile))]
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
     {

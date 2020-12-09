@@ -28,5 +28,8 @@ namespace WitchOS
     [Serializable, DataContract]
     public class TextFile : File<string> { }
 
+    [Serializable, DataContract]
+    public class ExecutableFile : File<WindowMetadata> { }
+
     // put additional concrete implementations here
 }
