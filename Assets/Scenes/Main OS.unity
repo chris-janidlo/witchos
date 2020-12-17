@@ -8146,7 +8146,8 @@ MonoBehaviour:
   TaskBarButtonPrefab: {fileID: 2394346774578566858, guid: 7fdee62d67d1e44ca8797504a4ee077f,
     type: 3}
   WindowParent: {fileID: 956045532}
-  FileAssociationConfig: {fileID: 0}
+  FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
+    type: 2}
 --- !u!4 &1483230422
 Transform:
   m_ObjectHideFlags: 0
