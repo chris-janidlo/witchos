@@ -20,17 +20,10 @@ namespace WitchOS
 
         Dictionary<FileBase, Directory> parentCache;
 
-        bool initialized;
-
-        // initializes the filesystem, if necessary
         public void Initialize ()
         {
-            if (initialized) return;
-
             SaveManager.Register(SaveData);
             buildParentCache();
-
-            initialized = true;
         }
 
         public bool FileExistsInFileSystem (FileBase file)
