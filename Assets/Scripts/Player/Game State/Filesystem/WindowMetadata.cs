@@ -2,16 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization;
 
 namespace WitchOS
 {
+    [Serializable]
     public class WindowMetadata
     {
         public const string FILENAME_PLACEHOLDER = "##file##";
 
         public enum NewWindowBehavior
         {
-            FocusOldWindow, OpenNewWindowPerFile, AlwaysOpenNewWindow
+            FocusOldWindow, OpenOneWindowPerFile, AlwaysOpenNewWindow
         }
 
         [Header("Behavior")]
@@ -20,8 +22,8 @@ namespace WitchOS
         public bool AddButtonToTaskbar = true;
 
         [Header("Presentation")]
-        public Sprite Icon;
         public string NameTemplate;
+        public Sprite IconLarge, IconSmall;
 
         public string GetWindowName (string filename)
         {

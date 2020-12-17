@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization;
 
 namespace WitchOS
 {
-    [CreateAssetMenu(fileName = "NewPDF.asset", menuName = "WitchOS/PDF")]
-    public class TextPDF : ScriptableObject
+    [Serializable, DataContract]
+    public class TextPDF
     {
+        [DataMember(IsRequired = true)]
         public string Title;
 
         [TextArea(5, 100)]
+        [DataMember(IsRequired = true)]
         public List<string> Pages;
     }
 }

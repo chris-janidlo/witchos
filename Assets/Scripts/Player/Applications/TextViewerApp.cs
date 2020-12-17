@@ -26,7 +26,7 @@ namespace WitchOS
 
         public void SetData ()
         {
-            var pdf = Window.AppData as TextPDF;
+            var pdf = (Window.File as TextPDFFile).Data;
 
             Window.Title = pdf.Title;
             pages = pdf.Pages;

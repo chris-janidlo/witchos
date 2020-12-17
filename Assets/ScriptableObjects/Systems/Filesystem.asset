@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Filesystem
+  m_EditorClassIdentifier: WitchOS.Main:WitchOS:FileSystem
+  PathSeparator: ':'
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
+  SaveData:
+    DeveloperNotes: 
+    FileName: filesystem
+    value:
+      Name: 
+      jsonSerializedData: '[{"__type":"EmailAppExeFile:#WitchOS","GuiPosition":{"x":-14,"y":58,"z":0},"Name":"E-Mail","Data":null},{"__type":"MoonPhaseAppExeFile:#WitchOS","GuiPosition":{"x":69,"y":-72,"z":0},"Name":"PhaseVue","Data":null},{"__type":"TerminalAppExeFile:#WitchOS","GuiPosition":{"x":-75,"y":-55,"z":0},"Name":"HexTerminal","Data":null},{"__type":"MirrorsAppExeFile:#WitchOS","GuiPosition":{"x":112,"y":43,"z":0},"Name":"Mirrors","Data":null},{"__type":"BankAppExeFile:#WitchOS","GuiPosition":{"x":-83,"y":19,"z":0},"Name":"BankUtil","Data":null}]'

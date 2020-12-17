@@ -34,14 +34,20 @@ namespace WitchOS
         {
             entry.Read = true;
 
-            WindowFactory.Instance
-                .OpenWindow
-                (
-                    (entry.Contents is Order) ? OrderWindowPrefab : EmailWindowPrefab,
-                    "mail message " + entry.GetHashCode().ToString(),
-                    WindowFactory.Options.Singleton | WindowFactory.Options.TaskBarButton
-                )
-                .GetComponent<MailEmailWindow>().SetMessage(entry.Contents); // can use the same line for both cases bc order window is special case of email window
+            FileBase file;
+
+            if (entry.Contents is Order)
+            {
+                file = new File<Order> { Data = entry.Contents as Order };
+            }
+            else
+            {
+                file = new File<Email> { Data = entry.Contents };
+            }
+
+            file.Name = entry.Contents.AnnotatedSubject;
+
+            WindowFactory.Instance.OpenWindowWithFile(file);
         }
     }
 }
