@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace WitchOS
     public class FileSO<T> : FileSOBase where T : FileBase
     {
         [SerializeField]
-        private T _file;
+        private T _file = null;
 
         public override FileBase File => _file;
     }
