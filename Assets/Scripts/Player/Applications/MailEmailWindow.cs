@@ -15,19 +15,17 @@ namespace WitchOS
         public Window Window;
         public TextMeshProUGUI ContentText;
 
-        protected Email message;
-
-        public void SetMessage (Email message)
+        void Start ()
         {
-            this.message = message;
+            var message = Window.File.GetData<Email>();
 
             Window.Title = message.AnnotatedSubject;
-            ContentText.text = makeContentText();
+            ContentText.text = makeEmailText(message);
         }
 
-        protected virtual string makeContentText ()
+        protected string makeEmailText (Email email)
         {
-            return $"Subject: {message.EmailData.Value.SubjectLine}\n{SEPARATOR}\n\n{message.EmailData.Value.Body}";
+            return $"Subject: {email.EmailData.Value.SubjectLine}\n{SEPARATOR}\n\n{email.EmailData.Value.Body}";
         }
     }
 }

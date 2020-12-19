@@ -90,3 +90,23 @@ MonoBehaviour:
         type: 3}
       IconSmall: {fileID: 3156831668386275163, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+  - FullNameOfFileDataType: WitchOS.Order
+    Metadata:
+      WindowPrefab: {fileID: 3675863834227289703, guid: ef7be225996684e3e85885cad2822418,
+        type: 3}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileDataType: WitchOS.Email
+    Metadata:
+      WindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
+        type: 3}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
