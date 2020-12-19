@@ -14,14 +14,6 @@ namespace WitchOS
 
         public FileAssociationConfig FileAssociationConfig;
 
-        [Flags]
-        public enum Options
-        {
-            None = 0,
-            Singleton = 1,
-            TaskBarButton = 2
-        }
-
         void Awake ()
         {
             SingletonOverwriteInstance(this);
