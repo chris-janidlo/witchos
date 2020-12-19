@@ -7,12 +7,12 @@ namespace WitchOS
     public class DesktopInitializer : MonoBehaviour
     {
         public DirectoryDrawer DesktopDrawer;
-        public FileSystem FileSystem;
+        public Filesystem Filesystem;
 
         void Start ()
         {
-            FileSystem.Initialize();
-            DesktopDrawer.Draw(FileSystem.RootDirectory);
+            Filesystem.Initialize();
+            DesktopDrawer.Draw(Filesystem.RootDirectory);
         }
     }
 }
