@@ -34,16 +34,9 @@ namespace WitchOS
         {
             entry.Read = true;
 
-            FileBase file;
-
-            if (entry.Contents is Order)
-            {
-                file = new File<Order> { Data = entry.Contents as Order };
-            }
-            else
-            {
-                file = new File<Email> { Data = entry.Contents };
-            }
+            FileBase file = entry.Contents is Order order
+                ? new File<Order> { Data = order } as FileBase
+                : new File<Email> { Data = entry.Contents };
 
             file.Name = entry.Contents.AnnotatedSubject;
 
