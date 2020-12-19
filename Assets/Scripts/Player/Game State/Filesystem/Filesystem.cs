@@ -24,7 +24,7 @@ namespace WitchOS
         void OnEnable ()
         {
             // since this SaveData is stored in this prefab, the data will believe itself to be initialized between editor runs, despite the fact that the initialization is lost. this manually reinitializes for every editor run
-            SaveData.Initialize();
+            SaveData?.Initialize();
         }
 
         public void Initialize ()
