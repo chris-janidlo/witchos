@@ -16,6 +16,7 @@ namespace WitchOS
     [KnownType(typeof(MirrorsAppExeFile))]
     [KnownType(typeof(BankAppExeFile))]
     [KnownType(typeof(WikiFile))]
+    [KnownType(typeof(SystemAppExeFile))]
     public abstract class FileBase
     {
         [DataMember(IsRequired = true)]
@@ -39,6 +40,7 @@ namespace WitchOS
     [KnownType(typeof(MirrorsAppExeFile))]
     [KnownType(typeof(BankAppExeFile))]
     [KnownType(typeof(WikiFile))]
+    [KnownType(typeof(SystemAppExeFile))]
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
     {
