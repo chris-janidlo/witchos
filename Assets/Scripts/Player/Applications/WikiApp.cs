@@ -52,7 +52,7 @@ namespace WitchOS
             sessionBrowsingHistory = new List<SessionDataPageSnapshot>();
             currentPositionInSessionBrowsingHistory = -1; // initialize to -1 since it will get incremented in first OpenPage call
 
-            OpenPage((Window.File as WikiFile).Data.Value);
+            OpenPage(Window.File.GetData<SaveableWikiPageDataReference>().Value);
         }
 
         void Update ()

@@ -24,6 +24,8 @@ namespace WitchOS
         [DataMember(IsRequired = true)]
         public SaveableVector3 GuiPosition;
 
+        public abstract T GetData<T> () where T : class;
+
         public abstract Type GetTypeOfData ();
     }
 
@@ -43,6 +45,18 @@ namespace WitchOS
         //[SerializeReference]
         [DataMember(IsRequired = true)]
         public DataType Data;
+
+        public override T GetData<T> ()
+        {
+            Type t = typeof(T), dataType = typeof(DataType);
+
+            if (t != dataType)
+            {
+                throw new ArgumentException($"cannot get data of type {t.FullName} from a file with data of type {dataType.FullName}");
+            }
+
+            return Data as T;
+        }
 
         public override Type GetTypeOfData ()
         {

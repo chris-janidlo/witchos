@@ -26,7 +26,7 @@ namespace WitchOS
 
         public void SetData ()
         {
-            pages = (Window.File as TextPDFFile).Data.Pages;
+            pages = Window.File.GetData<TextPDF>().Pages;
             setPage(1);
         }
 
