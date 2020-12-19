@@ -18,6 +18,8 @@ namespace WitchOS
 
         [Header("Behavior")]
         public Window WindowPrefab;
+        [Tooltip("Keep this null to use the default desktop icon configured per icon drawer. If this is not null, the value provided will be used instead.")]
+        public DesktopIcon DesktopIconPrefabOverride;
         public NewWindowBehavior NewWindowMode;
         public bool AddButtonToTaskbar = true;
 

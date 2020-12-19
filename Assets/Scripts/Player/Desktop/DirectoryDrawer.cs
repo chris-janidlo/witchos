@@ -9,11 +9,14 @@ namespace WitchOS
         public RectTransform DesktopIconParent;
         public DesktopIcon DesktopIconPrefab;
 
+        public FileAssociationConfig FileAssociationConfig;
+
         public void Draw (Directory directory)
         {
             foreach (var file in directory.Data)
             {
-                var icon = Instantiate(DesktopIconPrefab, file.GuiPosition, Quaternion.identity, DesktopIconParent);
+                var iconPrefab = FileAssociationConfig.GetMetadataForFile(file).DesktopIconPrefabOverride ?? DesktopIconPrefab;
+                var icon = Instantiate(iconPrefab, file.GuiPosition, Quaternion.identity, DesktopIconParent);
                 icon.File = file;
             }
         }

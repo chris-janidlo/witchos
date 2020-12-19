@@ -17,6 +17,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 4733877152652103527, guid: d9f186f7ac67048fab8f9d04156da221,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 1
       AddButtonToTaskbar: 1
       NameTemplate: '##file##.txt'
@@ -27,6 +28,8 @@ MonoBehaviour:
   - FullNameOfFileDataType: WitchOS.EmailAppExeTag
     Metadata:
       WindowPrefab: {fileID: 8768454285065225573, guid: 93a9e417508d443a980d7ef05cc65e67,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 5647395173004578987, guid: 1e74a7c88bc8c9741bcef60c84fe400e,
         type: 3}
       NewWindowMode: 0
       AddButtonToTaskbar: 1
@@ -39,6 +42,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 7862283573881436165, guid: a70350e3ee7824a778d3b084c39c3f2f,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 0
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -50,6 +54,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 3869046463147635246, guid: eb56c78e8109f4710987a88cccdbbf37,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 2
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -61,6 +66,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 6418634079337448651, guid: 7bcb915036a5b435199ba81153af376d,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 0
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -72,6 +78,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 4474542682243215838, guid: 8b24528d7fde145ee86a032aa4ac025c,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 0
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -83,6 +90,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 2
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -94,6 +102,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 3675863834227289703, guid: ef7be225996684e3e85885cad2822418,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 1
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -104,6 +113,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 1
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
@@ -114,6 +124,7 @@ MonoBehaviour:
     Metadata:
       WindowPrefab: {fileID: 2971220427618671303, guid: 2b19b102a62654d37a616f6490c2d881,
         type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
       NewWindowMode: 0
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
