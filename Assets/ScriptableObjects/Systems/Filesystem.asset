@@ -13,18 +13,17 @@ MonoBehaviour:
   m_Name: Filesystem
   m_EditorClassIdentifier: WitchOS.Main:WitchOS:FileSystem
   PathSeparator: ':'
+  InitialFiles:
+  - {fileID: 11400000, guid: 7598b274ca24bae419ea661bf519ba08, type: 2}
+  - {fileID: 11400000, guid: f8bb37ed62ec9c14aafc6d7e9b558056, type: 2}
+  - {fileID: 11400000, guid: 2c77e358ba2d4fd448827e6da5b550a3, type: 2}
+  - {fileID: 11400000, guid: 4d1b3a895d1aecc43aaea7e8699d2d27, type: 2}
+  - {fileID: 11400000, guid: 8c77f2a8b652cae4c8ccad528107cc35, type: 2}
+  - {fileID: 11400000, guid: 9abd6a95c575d874db5736c930f4c948, type: 2}
+  - {fileID: 11400000, guid: bddfd65c2d3ff404ea4d258ff1c9c6bb, type: 2}
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
   SaveData:
     DeveloperNotes: 
     FileName: filesystem
     value:
       Name: 
-      jsonSerializedData: '[{"__type":"EmailAppExeFile:#WitchOS","GuiPosition":{"x":121,"y":-102,"z":0},"Name":"E-Mail","Data":null},{"__type":"MoonPhaseAppExeFile:#WitchOS","GuiPosition":{"x":190,"y":103,"z":0},"Name":"PhaseVue","Data":null},{"__type":"TerminalAppExeFile:#WitchOS","GuiPosition":{"x":190,"y":-102,"z":0},"Name":"HexTerminal","Data":null},{"__type":"MirrorsAppExeFile:#WitchOS","GuiPosition":{"x":190,"y":53,"z":0},"Name":"Mirrors","Data":null},{"__type":"BankAppExeFile:#WitchOS","GuiPosition":{"x":190,"y":-44,"z":0},"Name":"BankUtil","Data":null},{"__type":"TextPDFFile:#WitchOS","GuiPosition":{"x":0,"y":0,"z":0},"Name":"READ_ME","Data":{"Pages":["As
-        you requested, this is a pretty basic install of WitchOS. I already hooked
-        up your E-Mail account, so you should be getting requests immediately.\n\n   
-        If you need a refresher on spell casting, check out Witchipedia - it''s an
-        incredibly helpful resource if you ever have questions. There''s a list of
-        first level spells that you can get to from the homepage.\n\n    Don''t forget
-        to turn on magic using the menu on the bottom right. You only get 5 minutes
-        of magic a day, so be sure you''re prepared to fulfil your orders before
-        turning it on.\n\n    Enjoy!\n\n    ~Corey Giles"]}}]'

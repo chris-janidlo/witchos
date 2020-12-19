@@ -13,6 +13,12 @@ namespace WitchOS
     public class TextPDFFile : File<TextPDF> { }
 
     [Serializable, DataContract]
+    public class SaveableWikiPageDataReference : SaveableScriptableObjectReference<WikiPageData> { }
+
+    [Serializable, DataContract]
+    public class WikiFile : File<SaveableWikiPageDataReference> { }
+
+    [Serializable, DataContract]
     public class EmailAppExeFile : File<EmailAppExeTag> { }
 
     [Serializable, DataContract]

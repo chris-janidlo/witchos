@@ -14,6 +14,7 @@ namespace WitchOS
         public string RootPath => GetPathOfFile(RootDirectory);
 
         public string PathSeparator;
+        public List<FileSOBase> InitialFiles;
 
         public SaveManager SaveManager;
         public DirectorySaveData SaveData;
@@ -23,6 +24,12 @@ namespace WitchOS
         public void Initialize ()
         {
             SaveManager.Register(SaveData);
+
+            if (RootDirectory.Data == null)
+            {
+                RootDirectory.Data = InitialFiles.Select(so => so.File).ToList();
+            }
+
             buildParentCache();
         }
 

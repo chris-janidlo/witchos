@@ -1,9 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace WitchOS
 {
-    [DataContract]
+    [Serializable, DataContract]
     public struct SaveableVector3
     {
         [DataMember(IsRequired = true)]

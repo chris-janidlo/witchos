@@ -1,0 +1,1 @@
+Would prefer to have a single ConcreteImplementations file for these, but Unity expects every ScriptableObject to live in a file with the same name as the class. If that assumption is not true, editor functionality breaks down

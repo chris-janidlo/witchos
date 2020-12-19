@@ -79,3 +79,14 @@ MonoBehaviour:
         type: 3}
       IconSmall: {fileID: -7400384705122890134, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+  - FullNameOfFileDataType: WitchOS.SaveableWikiPageDataReference
+    Metadata:
+      WindowPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
+        type: 3}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: -1215474006324092412, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: 3156831668386275163, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
