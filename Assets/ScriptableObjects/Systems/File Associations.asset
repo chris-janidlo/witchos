@@ -103,7 +103,7 @@ MonoBehaviour:
       WindowPrefab: {fileID: 3675863834227289703, guid: ef7be225996684e3e85885cad2822418,
         type: 3}
       DesktopIconPrefabOverride: {fileID: 0}
-      NewWindowMode: 1
+      NewWindowMode: 2
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
       IconLarge: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
       WindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
         type: 3}
       DesktopIconPrefabOverride: {fileID: 0}
-      NewWindowMode: 1
+      NewWindowMode: 2
       AddButtonToTaskbar: 1
       NameTemplate: '##file##'
       IconLarge: {fileID: 0}
