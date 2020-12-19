@@ -43,8 +43,15 @@ namespace WitchOS
 
         void onFileDataUpdated ()
         {
+            var metadata = FileAssociationConfig.GetMetadataForFile(File);
+
+            if (metadata == null)
+            {
+                throw new InvalidOperationException($"no association set up for {File.GetTypeOfData().FullName}");
+            }
+
             LabelText.text = File.Name;
-            Icon = FileAssociationConfig.GetMetadataForFile(File).IconLarge;
+            Icon = metadata.IconLarge;
 
             transform.localPosition = File.GuiPosition;
         }
