@@ -121,7 +121,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1780163631643354790}
-        m_MethodName: OpenForUnityEventCallback
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -140,13 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997732964498249045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c536200b29a5e55468ef3caf327b47b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f9893b46760c3e4b8ed28f21bfe6642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplicationPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
-    type: 3}
-  ApplicationData: {fileID: 0}
-  OpenSingleInstance: 0
   Page: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
 --- !u!1 &5076463783276491045
 GameObject:
