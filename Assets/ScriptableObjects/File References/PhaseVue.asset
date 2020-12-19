@@ -15,6 +15,6 @@ MonoBehaviour:
   _file:
     Name: PhaseVue
     GuiPosition:
-      x: 0
-      y: 0
+      x: 190
+      y: 103
       z: 0

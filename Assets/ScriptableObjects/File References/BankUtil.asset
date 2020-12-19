@@ -15,6 +15,6 @@ MonoBehaviour:
   _file:
     Name: BankUtil
     GuiPosition:
-      x: 0
-      y: 0
+      x: 190
+      y: -41
       z: 0
