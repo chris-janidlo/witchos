@@ -7365,9 +7365,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1133548155}
   - component: {fileID: 1133548158}
-  - component: {fileID: 1133548159}
   - component: {fileID: 1133548157}
   - component: {fileID: 1133548156}
+  - component: {fileID: 1133548159}
   m_Layer: 5
   m_Name: System Button
   m_TagString: Untagged
@@ -7440,7 +7440,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1133548159}
-        m_MethodName: OpenForUnityEventCallback
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7496,9 +7496,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1133548154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da692d8b3634e8ab44869f3db9c33b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6474683de1b293644b4a75ddc1da3e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileSO: {fileID: 11400000, guid: 67f74cbef1f0a61498bd9a6fc73ccfa3, type: 2}
 --- !u!1 &1261268449
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,4 +32,7 @@ namespace WitchOS
 
     [Serializable, DataContract]
     public class BankAppExeFile : File<BankAppExeTag> { }
+
+    [Serializable, DataContract]
+    public class SystemAppExeFile : File<SystemAppExeTag> { }
 }

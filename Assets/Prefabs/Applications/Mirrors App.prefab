@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6213331320721158981}
   - component: {fileID: 971061574746722690}
   - component: {fileID: 9083026174228373041}
-  - component: {fileID: 1780163631643354790}
+  - component: {fileID: 4741421178515654815}
   m_Layer: 5
   m_Name: Help Button
   m_TagString: Untagged
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1780163631643354790}
+      - m_Target: {fileID: 4741421178515654815}
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:
@@ -131,7 +131,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1780163631643354790
+--- !u!114 &4741421178515654815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997732964498249045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9893b46760c3e4b8ed28f21bfe6642, type: 3}
+  m_Script: {fileID: 11500000, guid: 6474683de1b293644b4a75ddc1da3e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Page: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
+  FileSO: {fileID: 11400000, guid: 0c2116b9bf353ee49b8ca3b26d793ca1, type: 2}
 --- !u!1 &5076463783276491045
 GameObject:
   m_ObjectHideFlags: 0

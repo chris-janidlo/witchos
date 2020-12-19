@@ -110,3 +110,13 @@ MonoBehaviour:
       IconLarge: {fileID: 0}
       IconSmall: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+  - FullNameOfFileDataType: WitchOS.SystemAppExeTag
+    Metadata:
+      WindowPrefab: {fileID: 2971220427618671303, guid: 2b19b102a62654d37a616f6490c2d881,
+        type: 3}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8282897390233937007, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
