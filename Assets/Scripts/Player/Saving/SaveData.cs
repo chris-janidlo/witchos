@@ -50,6 +50,10 @@ namespace WitchOS
 
         public override void WriteDataToFile ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             if (!dataInitialized) initializeData();
 
             OnBeforeSave?.Invoke();
@@ -62,16 +66,28 @@ namespace WitchOS
 
         public override void DeleteSaveFile ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             File.Delete(FilePath);
         }
 
         public void Initialize ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             dataInitialized = false;
         }
 
         void initializeData ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             serializer = new DataContractJsonSerializer(typeof(T));
 
             using (FileStream file = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.Read))

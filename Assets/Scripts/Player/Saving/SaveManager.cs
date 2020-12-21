@@ -14,6 +14,10 @@ namespace WitchOS
 
         public void Register (SaveData saveData)
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             if (allDataObjects.Contains(saveData)) return;
 
             if (allDataObjects.Any(s => s.FileName == saveData.FileName))
@@ -26,6 +30,10 @@ namespace WitchOS
 
         public void SaveAllData ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             foreach (var dataObject in allDataObjects)
             {
                 dataObject.WriteDataToFile();
@@ -34,6 +42,10 @@ namespace WitchOS
 
         public void DeleteAllSaveData ()
         {
+            #if UNITY_WEBGL
+                return;
+            #endif // UNITY_WEBGL
+
             foreach (var dataObject in allDataObjects)
             {
                 dataObject.DeleteSaveFile();
