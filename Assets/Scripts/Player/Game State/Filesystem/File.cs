@@ -44,7 +44,6 @@ namespace WitchOS
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
     {
-        //[SerializeReference]
         [DataMember(IsRequired = true)]
         public DataType Data;
 
