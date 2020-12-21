@@ -24,7 +24,7 @@ namespace WitchOS
         public bool AddButtonToTaskbar = true;
 
         [Header("Presentation")]
-        public string NameTemplate;
+        public string NameTemplate = FILENAME_PLACEHOLDER;
         public Sprite IconLarge, IconSmall;
 
         public string GetWindowName (string filename)
