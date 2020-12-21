@@ -9,8 +9,6 @@ namespace WitchOS
     [CreateAssetMenu(menuName = "WitchOS/File Association Configuration", fileName = "NewFileAssociation.asset")]
     public class FileAssociationConfig : ScriptableObject
     {
-        // TODO: might need some kind of generic fallback. alternatively, could have one association with type "object"
-
         [Serializable]
         public class FileAssociationData
         {
