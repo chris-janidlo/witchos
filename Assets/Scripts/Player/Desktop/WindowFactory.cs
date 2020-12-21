@@ -34,9 +34,12 @@ namespace WitchOS
                     window = findWindowWithFile(file);
                     break;
 
-                default:
+                case WindowMetadata.NewWindowBehavior.AlwaysOpenNewWindow:
                     window = null;
                     break;
+
+                default:
+                    throw new InvalidOperationException($"file association config {FileAssociationConfig.name} has unsupported window mode {windowMetadata.NewWindowMode} configured for file type {file.GetTypeOfData().Name}");
             }
 
             if (window == null)
