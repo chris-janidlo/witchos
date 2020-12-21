@@ -65,6 +65,11 @@ namespace WitchOS
             File.Delete(FilePath);
         }
 
+        public void Initialize ()
+        {
+            dataInitialized = false;
+        }
+
         void initializeData ()
         {
             serializer = new DataContractJsonSerializer(typeof(T));

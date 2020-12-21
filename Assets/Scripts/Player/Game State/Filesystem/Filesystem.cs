@@ -7,33 +7,39 @@ using UnityEngine;
 
 namespace WitchOS
 {
-    [CreateAssetMenu(menuName = "WitchOS/Filesystem", fileName = "NewFileSystem.asset")]
-    public class FileSystem : ScriptableObject
+    [CreateAssetMenu(menuName = "WitchOS/Filesystem", fileName = "NewFilesystem.asset")]
+    public class Filesystem : ScriptableObject
     {
         public Directory RootDirectory => SaveData.Value;
         public string RootPath => GetPathOfFile(RootDirectory);
 
         public string PathSeparator;
+        public List<FileSOBase> InitialFiles;
 
         public SaveManager SaveManager;
         public DirectorySaveData SaveData;
 
         Dictionary<FileBase, Directory> parentCache;
 
-        bool initialized;
-
-        // initializes the filesystem, if necessary
-        public void Initialize ()
+        void OnEnable ()
         {
-            if (initialized) return;
-
-            SaveManager.Register(SaveData);
-            buildParentCache();
-
-            initialized = true;
+            // since this SaveData is stored in this prefab, the data will believe itself to be initialized between editor runs, despite the fact that the initialization is lost. this manually reinitializes for every editor run
+            SaveData?.Initialize();
         }
 
-        public bool FileExistsInFileSystem (FileBase file)
+        public void Initialize ()
+        {
+            SaveManager.Register(SaveData);
+
+            if (RootDirectory.Data == null)
+            {
+                RootDirectory.Data = InitialFiles.Select(so => so.File).ToList();
+            }
+
+            buildParentCache();
+        }
+
+        public bool FileExistsInFilesystem (FileBase file)
         {
             return parentCache.ContainsKey(file);
         }
@@ -70,29 +76,6 @@ namespace WitchOS
             return file;
         }
 
-        public FileBase GetFileAtPath (string path, out Type fileDataType)
-        {
-            fileDataType = GetTypeOfFileDataAtPath(path);
-            return GetFileAtPath(path);
-        }
-
-        public File<T> GetFileAtPath<T> (string path)
-        {
-            return (File<T>) GetFileAtPath(path, typeof(T));
-        }
-
-        public FileBase GetFileAtPath (string path, Type fileDataType)
-        {
-            Type actualTypeAtPath = GetTypeOfFileDataAtPath(path);
-
-            if (actualTypeAtPath == null || fileDataType != actualTypeAtPath)
-            {
-                return null;
-            }
-
-            return GetFileAtPath(path);
-        }
-
         public Directory GetDirectoryAtPath (string path)
         {
             return GetFileAtPath(path) as Directory;
@@ -103,23 +86,9 @@ namespace WitchOS
             return GetFileAtPath(path) != null;
         }
 
-        public Type GetTypeOfFileDataAtPath (string path)
-        {
-            var file = GetFileAtPath(path);
-
-            if (file == null)
-            {
-                return null;
-            }
-
-            var type = file.GetType().GetField("Data").FieldType;
-
-            return type;
-        }
-
         public string GetPathOfFile (FileBase file)
         {
-            if (!FileExistsInFileSystem(file))
+            if (!FileExistsInFilesystem(file))
             {
                 throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
             }
@@ -149,7 +118,7 @@ namespace WitchOS
         {
             validateFileName(name);
 
-            if (!FileExistsInFileSystem(file))
+            if (!FileExistsInFilesystem(file))
             {
                 throw new FilesystemException("cannot rename file that does not exist");
             }
@@ -191,7 +160,7 @@ namespace WitchOS
         {
             validateFileToBeAdded(file);
 
-            if (!FileExistsInFileSystem(parent))
+            if (!FileExistsInFilesystem(parent))
             {
                 throw new FilesystemException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
             }
@@ -247,7 +216,7 @@ namespace WitchOS
         // assumes file existed to begin with
         public void RemoveFile (FileBase file)
         {
-            if (!FileExistsInFileSystem(file))
+            if (!FileExistsInFilesystem(file))
             {
                 throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
             }
@@ -311,7 +280,7 @@ namespace WitchOS
 
         void validateFileToBeAdded (FileBase file)
         {
-            if (FileExistsInFileSystem(file))
+            if (FileExistsInFilesystem(file))
             {
                 throw new FilesystemException($"cannot add file {file.Name} because it already exists in this filesystem");
             }

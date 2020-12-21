@@ -12,59 +12,59 @@ namespace WitchOS.Tests
     {
         const string PATH_SEP = "/";
 
-        FileSystem fileSystem;
+        Filesystem filesystem;
         static File<string> defaultFile = new File<string> { Name = "test", Data = "" };
 
         [SetUp]
         public void SetUp ()
         {
-            fileSystem = ScriptableObject.CreateInstance<FileSystem>();
+            filesystem = ScriptableObject.CreateInstance<Filesystem>();
 
-            fileSystem.PathSeparator = PATH_SEP;
+            filesystem.PathSeparator = PATH_SEP;
 
-            fileSystem.SaveData = new DirectorySaveData
+            filesystem.SaveData = new DirectorySaveData
             {
                 FileName = "filesystem-tests",
                 Value = new Directory("") { Data = new List<FileBase> { defaultFile } }
             };
 
-            fileSystem.SaveManager = ScriptableObject.CreateInstance<SaveManager>();
+            filesystem.SaveManager = ScriptableObject.CreateInstance<SaveManager>();
 
-            fileSystem.Initialize();
+            filesystem.Initialize();
         }
 
         [TearDown]
         public void TearDown ()
         {
             // should never call save methods during these tests. just in case that does happen though...
-            fileSystem.SaveManager.DeleteAllSaveData();
+            filesystem.SaveManager.DeleteAllSaveData();
         }
 
         [Test]
         public void PathIsCorrect_ForInitialFiles ()
         {
-            var calculatedPath = fileSystem.RootDirectory.Name + PATH_SEP + fileSystem.RootDirectory.Data[0].Name;
+            var calculatedPath = filesystem.RootDirectory.Name + PATH_SEP + filesystem.RootDirectory.Data[0].Name;
 
-            Assert.That(fileSystem.RootPath, Is.EqualTo(fileSystem.RootDirectory.Name + PATH_SEP));
-            Assert.That(fileSystem.GetPathOfFile(defaultFile), Is.EqualTo(calculatedPath));
+            Assert.That(filesystem.RootPath, Is.EqualTo(filesystem.RootDirectory.Name + PATH_SEP));
+            Assert.That(filesystem.GetPathOfFile(defaultFile), Is.EqualTo(calculatedPath));
         }
 
         [TestCase("")]
         [TestCase("root")]
         public void RootPath_IsAlwaysRootNamePlusPathSep (string rootName)
         {
-            fileSystem.RootDirectory.Name = rootName;
-            Assert.That(fileSystem.RootPath, Is.EqualTo(rootName + PATH_SEP));
+            filesystem.RootDirectory.Name = rootName;
+            Assert.That(filesystem.RootPath, Is.EqualTo(rootName + PATH_SEP));
         }
 
         [Test]
         public void FilesWithSameName_ButDifferentLocation_ReturnDifferentPaths ()
         {
             var sameName = new File<string> { Name = defaultFile.Name, Data = "" };
-            fileSystem.AddFile(sameName, "/otherDirectory", true);
+            filesystem.AddFile(sameName, "/otherDirectory", true);
 
-            var pathOne = fileSystem.GetPathOfFile(defaultFile);
-            var pathTwo = fileSystem.GetPathOfFile(sameName);
+            var pathOne = filesystem.GetPathOfFile(defaultFile);
+            var pathTwo = filesystem.GetPathOfFile(sameName);
 
             Assert.That(pathOne, Is.Not.EqualTo(pathTwo));
         }
@@ -74,7 +74,7 @@ namespace WitchOS.Tests
         {
             var fileToAdd = new File<int> { Name = $"totally not {defaultFile.Name}" };
 
-            Assert.That(() => fileSystem.AddFile(fileToAdd, fileSystem.RootPath), Throws.Nothing);
+            Assert.That(() => filesystem.AddFile(fileToAdd, filesystem.RootPath), Throws.Nothing);
         }
 
         static object[] InvalidFileCases =
@@ -91,7 +91,7 @@ namespace WitchOS.Tests
         {
             Assert.That
             (
-                () => fileSystem.AddFile(file, fileSystem.RootPath),
+                () => filesystem.AddFile(file, filesystem.RootPath),
                 Throws.InstanceOf<FilesystemException>(),
                 $"attempting to add {descriptionOfBadFile} should fail"
             );
@@ -101,9 +101,9 @@ namespace WitchOS.Tests
         public void AddDeepFile_Fails_WhenDeepFlagNotSet ()
         {
             var fileToAdd = new File<char>();
-            var path = fileSystem.RootPath + PATH_SEP + "dir" + PATH_SEP + "anotherDir";
+            var path = filesystem.RootPath + PATH_SEP + "dir" + PATH_SEP + "anotherDir";
 
-            Assert.That(() => fileSystem.AddFile(fileToAdd, path), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.AddFile(fileToAdd, path), Throws.InstanceOf<FilesystemException>());
         }
 
         static readonly string[] paths = new string[] { "", "/root", "/a/b/c", "/root/root/root" };
@@ -112,13 +112,13 @@ namespace WitchOS.Tests
         [Test]
         public void AddedPath_AlwaysEquals_RetrievedPath ([ValueSource("paths")] string parentPath, [ValueSource("names")] string fileName)
         {
-            fileSystem.RemoveFile(defaultFile);
+            filesystem.RemoveFile(defaultFile);
 
             var fileToAdd = new File<float> { Name = fileName };
-            fileSystem.AddFile(fileToAdd, parentPath, true);
+            filesystem.AddFile(fileToAdd, parentPath, true);
 
             var calculatedPath = parentPath + PATH_SEP + fileName;
-            var retrievedPath = fileSystem.GetPathOfFile(fileToAdd);
+            var retrievedPath = filesystem.GetPathOfFile(fileToAdd);
 
             Assert.That(retrievedPath, Is.EqualTo(calculatedPath));
         }
@@ -126,21 +126,21 @@ namespace WitchOS.Tests
         [Test]
         public void CanRemoveFile ()
         {
-            string defaultPath = fileSystem.GetPathOfFile(defaultFile);
+            string defaultPath = filesystem.GetPathOfFile(defaultFile);
 
-            Assert.That(() => fileSystem.RemoveFile(defaultPath), Is.True);
+            Assert.That(() => filesystem.RemoveFile(defaultPath), Is.True);
         }
 
         [Test]
         public void CannotRemoveRoot ()
         {
-            Assert.That(() => fileSystem.RemoveFile(fileSystem.RootDirectory), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RemoveFile(filesystem.RootDirectory), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]
         public void UnaddedFile_CantBeRemoved ()
         {
-            Assert.That(() => fileSystem.RemoveFile(new TFile()), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RemoveFile(new TFile()), Throws.InstanceOf<FilesystemException>());
         }
 
         [TestCase("/foo")]
@@ -153,59 +153,56 @@ namespace WitchOS.Tests
         [TestCase("/test/test/")]
         public void GetFileAtPath_ReturnsNull_IfFileDoesNotExist (string path)
         {
-            Assert.That(fileSystem.GetFileAtPath(path), Is.Null, "base type method should return null");
-            Assert.That(fileSystem.GetFileAtPath(path, out _), Is.Null, "out type method should return null");
-            Assert.That(fileSystem.GetFileAtPath(path, typeof(object)), Is.Null, "passed-in type method should return null");
-            Assert.That(fileSystem.GetFileAtPath<object>(path), Is.Null, "generic method should return null");
+            Assert.That(filesystem.GetFileAtPath(path), Is.Null);
         }
 
         [TestCase("foo")]
         [TestCase("test")] // same name -> should do nothing
         public void CanRenameFile (string newName)
         {
-            Assert.That(() => fileSystem.RenameFile(defaultFile, newName), Throws.Nothing);
+            Assert.That(() => filesystem.RenameFile(defaultFile, newName), Throws.Nothing);
         }
 
         [Test]
         public void CannotRenameFile_IfFileWithSamePathAlreadyExists ()
         {
-            fileSystem.AddFile(new TFile { Name = "foo" }, "/bar/", true);
-            fileSystem.MoveFile(defaultFile, "/bar/");
+            filesystem.AddFile(new TFile { Name = "foo" }, "/bar/", true);
+            filesystem.MoveFile(defaultFile, "/bar/");
 
-            Assert.That(() => fileSystem.RenameFile(defaultFile, "foo"), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RenameFile(defaultFile, "foo"), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]
         public void DeepAddFails_WhenDirectoryNameIsEqualToExistingFilename ()
         {
-            Assert.That(() => fileSystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InstanceOf<FilesystemException>());
         }
 
         [Test]
         public void CanGetDirectoryPath_WithAndWithoutPathSeparator ()
         {
             var dir = new Directory("dir");
-            fileSystem.AddFile(dir, fileSystem.RootDirectory);
+            filesystem.AddFile(dir, filesystem.RootDirectory);
 
-            Assert.That(fileSystem.GetFileAtPath("/dir"), Is.EqualTo(dir));
-            Assert.That(fileSystem.GetFileAtPath("/dir/"), Is.EqualTo(dir));
+            Assert.That(filesystem.GetFileAtPath("/dir"), Is.EqualTo(dir));
+            Assert.That(filesystem.GetFileAtPath("/dir/"), Is.EqualTo(dir));
         }
 
         [Test]
         public void CanGetRootPath_WithAndWithoutPathSeparator ()
         {
-            Assert.That(fileSystem.GetFileAtPath(""), Is.EqualTo(fileSystem.RootDirectory));
-            Assert.That(fileSystem.GetFileAtPath("/"), Is.EqualTo(fileSystem.RootDirectory));
+            Assert.That(filesystem.GetFileAtPath(""), Is.EqualTo(filesystem.RootDirectory));
+            Assert.That(filesystem.GetFileAtPath("/"), Is.EqualTo(filesystem.RootDirectory));
         }
 
         [Test]
         public void DeepAdd_DoesNotSkipExistingDirectories ()
         {
-            fileSystem.AddFile(new Directory("subOne"), fileSystem.RootDirectory);
+            filesystem.AddFile(new Directory("subOne"), filesystem.RootDirectory);
             var file = new TFile { Name = "baz" };
 
-            fileSystem.AddFile(file, "/subOne/subTwo", true);
-            Assert.That(fileSystem.GetPathOfFile(file), Is.EqualTo("/subOne/subTwo/baz"));
+            filesystem.AddFile(file, "/subOne/subTwo", true);
+            Assert.That(filesystem.GetPathOfFile(file), Is.EqualTo("/subOne/subTwo/baz"));
         }
 
         [Test]
@@ -223,11 +220,11 @@ namespace WitchOS.Tests
             var dirSub = new Directory("subDirectory") { Data = new List<FileBase> { files[2], dirSubSub } };
             var dirMain = new Directory("fullDirectory") { Data = new List<FileBase> { files[1], files[0], dirSub} };
 
-            fileSystem.AddFile(dirMain, fileSystem.RootDirectory);
+            filesystem.AddFile(dirMain, filesystem.RootDirectory);
 
             foreach (var file in files)
             {
-                Assert.That(fileSystem.FileExistsInFileSystem(file), $"file {file.Name} should exist");
+                Assert.That(filesystem.FileExistsInFilesystem(file), $"file {file.Name} should exist");
             }
         }
 
@@ -237,17 +234,17 @@ namespace WitchOS.Tests
             var fileA = new TFile() { Name = "a" };
             var fileB = new TFile() { Name = "b" };
 
-            fileSystem.AddFile(fileA, "/originalDir", true);
-            fileSystem.AddFile(fileB, "/originalDir/subDir", true);
+            filesystem.AddFile(fileA, "/originalDir", true);
+            filesystem.AddFile(fileB, "/originalDir/subDir", true);
 
-            fileSystem.AddFile(new Directory("newDirectory"), fileSystem.RootDirectory);
+            filesystem.AddFile(new Directory("newDirectory"), filesystem.RootDirectory);
 
-            fileSystem.MoveFile("/originalDir", "/newDirectory");
+            filesystem.MoveFile("/originalDir", "/newDirectory");
 
-            Assert.That(fileSystem.FileExistsAtPath("/newDirectory/originalDir"));
+            Assert.That(filesystem.FileExistsAtPath("/newDirectory/originalDir"));
 
-            Assert.That(fileSystem.GetPathOfFile(fileA), Is.EqualTo("/newDirectory/originalDir/a"));
-            Assert.That(fileSystem.GetPathOfFile(fileB), Is.EqualTo("/newDirectory/originalDir/subDir/b"));
+            Assert.That(filesystem.GetPathOfFile(fileA), Is.EqualTo("/newDirectory/originalDir/a"));
+            Assert.That(filesystem.GetPathOfFile(fileB), Is.EqualTo("/newDirectory/originalDir/subDir/b"));
         }
 
         [Test]
@@ -256,16 +253,16 @@ namespace WitchOS.Tests
             var fileA = new TFile() { Name = "a" };
             var fileB = new TFile() { Name = "b" };
 
-            fileSystem.AddFile(fileA, "/directoryToDelete", true);
-            fileSystem.AddFile(fileB, "/directoryToDelete/subDir", true);
+            filesystem.AddFile(fileA, "/directoryToDelete", true);
+            filesystem.AddFile(fileB, "/directoryToDelete/subDir", true);
 
-            Assert.That(fileSystem.FileExistsInFileSystem(fileA), "file A should exist in the filesystem at this point");
-            Assert.That(fileSystem.FileExistsInFileSystem(fileB), "file B should exist in the filesystem at this point");
+            Assert.That(filesystem.FileExistsInFilesystem(fileA), "file A should exist in the filesystem at this point");
+            Assert.That(filesystem.FileExistsInFilesystem(fileB), "file B should exist in the filesystem at this point");
 
-            fileSystem.RemoveFile("/directoryToDelete");
+            filesystem.RemoveFile("/directoryToDelete");
 
-            Assert.That(fileSystem.FileExistsInFileSystem(fileA), Is.False, "file A should no longer exist in the filesystem");
-            Assert.That(fileSystem.FileExistsInFileSystem(fileB), Is.False, "file B should no longer exist in the filesystem");
+            Assert.That(filesystem.FileExistsInFilesystem(fileA), Is.False, "file A should no longer exist in the filesystem");
+            Assert.That(filesystem.FileExistsInFilesystem(fileB), Is.False, "file B should no longer exist in the filesystem");
         }
     }
 

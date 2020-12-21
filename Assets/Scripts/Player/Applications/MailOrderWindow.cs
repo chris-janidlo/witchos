@@ -19,10 +19,15 @@ namespace WitchOS
         public OrderEvent OrderTurnedIn;
         public SpellDeliverableValueList SpellEther;
 
-        Order order => message as Order;
+        Order order;
 
         void Start ()
         {
+            order = Window.File.GetData<Order>();
+
+            Window.Title = order.AnnotatedSubject;
+            ContentText.text = makeOrderText(order);
+
             SetTurnInButtonState();
         }
 
@@ -40,10 +45,10 @@ namespace WitchOS
             Window.Close();
         }
 
-        protected override string makeContentText ()
+        string makeOrderText (Order order)
         {
             string emailContent =
-                $"{base.makeContentText()}\n\n\nAttachment: Invoice #{order.InvoiceData.Value.OrderNumber}\n{SEPARATOR}";
+                $"{makeEmailText(order)}\n\n\nAttachment: Invoice #{order.InvoiceData.Value.OrderNumber}\n{SEPARATOR}";
 
             if (order.DueDate.Date <= TimeState.FINAL_DATE)
                 emailContent += $"\nDue {order.DueDate.ToString(DateFormat, TimeState.CULTURE_INFO)}";

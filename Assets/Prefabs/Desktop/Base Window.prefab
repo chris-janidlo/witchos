@@ -509,9 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17355803a271e4ed3b04e9925295cbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Title: 
-  Icon: {fileID: 0}
-  AppData: {fileID: 0}
   Minimizable: 1
   Closable: 1
   Minimizer: {fileID: 4962879820087878725}
@@ -529,6 +526,8 @@ MonoBehaviour:
   IconImage: {fileID: 1707194481745357644}
   MinimizeButton: {fileID: 1707194483669770086}
   CloseButton: {fileID: 1707194483545304232}
+  FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
+    type: 2}
 --- !u!114 &4962879820087878725
 MonoBehaviour:
   m_ObjectHideFlags: 0

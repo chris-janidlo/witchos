@@ -14,6 +14,8 @@ namespace WitchOS
 
         public void Register (SaveData saveData)
         {
+            if (allDataObjects.Contains(saveData)) return;
+
             if (allDataObjects.Any(s => s.FileName == saveData.FileName))
             {
                 throw new InvalidOperationException($"cannot register two save files with the same name ({saveData.FileName})");

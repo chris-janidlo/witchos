@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,37 +12,42 @@ namespace WitchOS
         public TaskBarButton TaskBarButtonPrefab;
         public RectTransform WindowParent;
 
-        [Flags]
-        public enum Options
-        {
-            None = 0,
-            Singleton = 1,
-            TaskBarButton = 2
-        }
+        public FileAssociationConfig FileAssociationConfig;
 
         void Awake ()
         {
             SingletonOverwriteInstance(this);
         }
 
-        public Window OpenWindow (Window prefab, ScriptableObject data, string name, Options options = Options.None)
+        public Window OpenWindowWithFile (FileBase file)
         {
-            Window window = null;
+            var windowMetadata = FileAssociationConfig.GetMetadataForFile(file);
 
-            if (options.HasFlag(Options.Singleton))
+            Window window;
+            switch (windowMetadata.NewWindowMode)
             {
-                window = GameObject.Find(name)?.GetComponent<Window>();
+                case WindowMetadata.NewWindowBehavior.FocusOldWindow:
+                    window = findWindowWithMetadata(windowMetadata);
+                    break;
+
+                case WindowMetadata.NewWindowBehavior.OpenOneWindowPerFile:
+                    window = findWindowWithFile(file);
+                    break;
+
+                case WindowMetadata.NewWindowBehavior.AlwaysOpenNewWindow:
+                    window = null;
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"file association config {FileAssociationConfig.name} has unsupported window mode {windowMetadata.NewWindowMode} configured for file type {file.GetTypeOfData().Name}");
             }
 
             if (window == null)
             {
-                // either we're not doing a singleton or a singleton wasn't found
+                window = Instantiate(windowMetadata.WindowPrefab, WindowParent);
+                window.SetFile(file);
 
-                window = Instantiate(prefab, WindowParent);
-                window.name = name;
-                window.AppData = data;
-
-                if (options.HasFlag(Options.TaskBarButton))
+                if (windowMetadata.AddButtonToTaskbar)
                 {
                     var button = Instantiate(TaskBarButtonPrefab);
 
@@ -56,19 +62,14 @@ namespace WitchOS
             return window;
         }
 
-        public Window OpenWindow (Window prefab, ScriptableObject data, Options options = Options.None)
+        Window findWindowWithMetadata (WindowMetadata metadata)
         {
-            return OpenWindow(prefab, data, prefab.name + data?.name ?? "", options);
+            return FindObjectsOfType<Window>().SingleOrDefault(w => FileAssociationConfig.GetMetadataForFile(w.File) == metadata);
         }
 
-        public Window OpenWindow (Window prefab, string name, Options options = Options.None)
+        Window findWindowWithFile (FileBase file)
         {
-            return OpenWindow(prefab, null, name, options);
-        }
-
-        public Window OpenWindow (Window prefab, Options options = Options.None)
-        {
-            return OpenWindow(prefab, null, prefab.name, options);
+            return FindObjectsOfType<Window>().SingleOrDefault(w => w.File == file);
         }
     }
 }

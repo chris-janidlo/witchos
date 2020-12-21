@@ -19,12 +19,21 @@ namespace WitchOS
 
         public bool Focused => FocusedWindow == this;
 
-        int sortingPlane => transform.GetSiblingIndex() * SORTING_PLANE_SIZE;
+        public FileBase File { get; private set; }
+
+        public string Title
+        {
+            get => TitleText.text;
+            set => TitleText.text = value;
+        }
+
+        public Sprite Icon
+        {
+            get => IconImage.sprite;
+            set => IconImage.sprite = value;
+        }
 
         [Header("Data")]
-        public string Title;
-        public Sprite Icon;
-        public ScriptableObject AppData;
         public bool Minimizable = true, Closable = true;
         public Minimizer Minimizer;
 
@@ -37,7 +46,11 @@ namespace WitchOS
         public Image IconImage;
         public Button MinimizeButton, CloseButton;
 
+        public FileAssociationConfig FileAssociationConfig;
+
         TaskBarButton taskBarButton;
+
+        int sortingPlane => transform.GetSiblingIndex() * SORTING_PLANE_SIZE;
 
         void Start ()
         {
@@ -63,13 +76,22 @@ namespace WitchOS
             MinimizeButton.interactable = Minimizable;
             CloseButton.interactable = Closable;
 
-            TitleText.text = Title;
-            IconImage.sprite = Icon;
-
             if (LocalCanvas.sortingOrder != sortingPlane)
             {
                 setSortingPlane();
             }
+        }
+
+        public void SetFile (FileBase file)
+        {
+            File = file;
+
+            var metadata = FileAssociationConfig.GetMetadataForFile(File);
+            var name = metadata.GetWindowName(File.Name);
+
+            gameObject.name = name;
+            Title = name;
+            Icon = metadata.IconSmall;
         }
 
         public void SetTaskBarButton (TaskBarButton taskBarButton)

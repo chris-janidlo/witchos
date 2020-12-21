@@ -28,16 +28,26 @@ namespace WitchOS.Tests
         [Test]
         public void File_HasKnownTypeForEveryFileSubclass ()
         {
-            var knownTypes = getAttributeValues<KnownTypeAttribute>(typeof(File<>))
+            var baseKnownTypes =
+                getAttributeValues<KnownTypeAttribute>(typeof(FileBase))
                 .Select(k => k.Type);
+
+            var genericKnownTypes =
+                getAttributeValues<KnownTypeAttribute>(typeof(File<>))
+                .Select(k => k.Type);
+
+            string errMessage;
 
             foreach (var implementation in Reflection.GetImplementations<FileBase>())
             {
-                // File should already implicitly know itself
-                if (implementation == typeof(File<>)) continue;
+                // bases should already implicitly know themselves
+                if (implementation == typeof(File<>) || implementation == typeof(FileBase)) continue;
 
-                string errMessage = $"main File type doesn't contain KnownType reference for subclass {implementation.Name}";
-                Assert.That(knownTypes, Contains.Item(implementation), errMessage);
+                errMessage = $"main FileBase type doesn't contain KnownType reference for subclass {implementation.Name}";
+                Assert.That(baseKnownTypes, Contains.Item(implementation), errMessage);
+
+                errMessage = $"generic File type doesn't contain KnownType reference for subclass {implementation.Name}";
+                Assert.That(genericKnownTypes, Contains.Item(implementation), errMessage);
             }
         }
 
