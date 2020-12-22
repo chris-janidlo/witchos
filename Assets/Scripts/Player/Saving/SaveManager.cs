@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace WitchOS
 {
+#if !UNITY_WEBGL
     [CreateAssetMenu(menuName = "WitchOS/Save Manager", fileName = "SaveManagerSystem.asset")]
     public class SaveManager : ScriptableObject
     {
@@ -40,4 +41,14 @@ namespace WitchOS
             }
         }
     }
+#elif UNITY_WEBGL
+    public class SaveManager : ScriptableObject
+    {
+        public void Register (SaveData saveData) { }
+
+        public void SaveAllData () { }
+
+        public void DeleteAllSaveData () { }
+    }
+#endif // UNITY_WEBGL
 }
