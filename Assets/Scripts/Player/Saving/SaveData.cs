@@ -27,6 +27,7 @@ namespace WitchOS
         public abstract void DeleteSaveFile ();
     }
 
+#if !UNITY_WEBGL
     [Serializable]
     public class SaveData<T> : SaveData
     // note that T must be serializable by DataContractSerializer. unfortunately there's no way to check that at compile time, and at runtime you'd have to check if the entire object graph can be serialized, so currently it's up to the developer to ensure they follow this
@@ -50,10 +51,6 @@ namespace WitchOS
 
         public override void WriteDataToFile ()
         {
-            #if UNITY_WEBGL
-                return;
-            #endif // UNITY_WEBGL
-
             if (!dataInitialized) initializeData();
 
             OnBeforeSave?.Invoke();
@@ -66,28 +63,16 @@ namespace WitchOS
 
         public override void DeleteSaveFile ()
         {
-            #if UNITY_WEBGL
-                return;
-            #endif // UNITY_WEBGL
-
             File.Delete(FilePath);
         }
 
         public void Initialize ()
         {
-            #if UNITY_WEBGL
-                return;
-            #endif // UNITY_WEBGL
-
             dataInitialized = false;
         }
 
         void initializeData ()
         {
-            #if UNITY_WEBGL
-                return;
-            #endif // UNITY_WEBGL
-
             serializer = new DataContractJsonSerializer(typeof(T));
 
             using (FileStream file = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.Read))
@@ -110,4 +95,23 @@ namespace WitchOS
             dataInitialized = true;
         }
     }
+#elif UNITY_WEBGL
+    [Serializable]
+    public class SaveData<T> : SaveData
+    {
+        [SerializeField]
+        T value;
+        public T Value
+        {
+            get => value;
+            set => this.value = value;
+        }
+
+        public void Initialize () { }
+
+        public override void WriteDataToFile () { }
+
+        public override void DeleteSaveFile () { }
+    }
+#endif // UNITY_WEBGL
 }
