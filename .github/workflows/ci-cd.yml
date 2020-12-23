@@ -12,7 +12,7 @@ on:
     inputs:
       deploy:
         description: 'Set this to true to deploy to the staging environment after running the workflow'
-        required: false
+        required: true
         default: 'false'
 
 
