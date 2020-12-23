@@ -8,6 +8,12 @@ on:
       - develop
       - bug/**
       - feature/**
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Set this to true to deploy to the staging environment after running the workflow'
+        required: false
+        default: false
 
 
 env:
@@ -113,7 +119,7 @@ jobs:
   release:
     # only run if both test and build jobs succeeded, and if the branch is either 'master' or 'develop'
     needs: [test, build]
-    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}
+    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' || github.event.inputs.deploy }}
     runs-on: ubuntu-latest
     env:
       ITCH_USER: crass-sandwich
@@ -138,8 +144,8 @@ jobs:
         if: ${{ github.ref == 'refs/heads/master' }}
         run: echo "ITCH_GAME=witchos" >> $GITHUB_ENV
 
-      - name: Set the name of the itch.io page to deploy to for develop branch
-        if: ${{ github.ref == 'refs/heads/develop' }}
+      - name: Set the name of the itch.io page to deploy to for develop branch / manual deployment
+        if: ${{ github.ref == 'refs/heads/develop' || github.event.inputs.deploy }}
         run: echo "ITCH_GAME=witchos-secret-version" >> $GITHUB_ENV
 
       - name: Push to itch.io
