@@ -11,21 +11,12 @@ namespace WitchOS
 
         public float Delay;
 
-        bool warned;
-
-        public void OnNewDay ()
-        {
 #if UNITY_WEBGL
-            if (warned) return;
-            warned = true;
-            StartCoroutine(warnRoutine());
-        }
-
-        IEnumerator warnRoutine ()
-        { 
+        IEnumerator Start ()
+        {
             yield return new WaitForSeconds(Delay);
             Alert.Instance.ShowMessageImmediately(WarningText);
-#endif // UNITY_WEBGL
         }
+#endif // UNITY_WEBGL
     }
 }
