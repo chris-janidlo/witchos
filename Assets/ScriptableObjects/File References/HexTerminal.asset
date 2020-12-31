@@ -15,6 +15,6 @@ MonoBehaviour:
   _file:
     Name: HexTerminal
     GuiPosition:
-      x: 190
-      y: -90
+      x: 320
+      y: -160
       z: 0
