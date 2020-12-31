@@ -9700,10 +9700,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XOffset:
     value: 0
-    Time: 2
+    Time: 1.25
     Ease: 2
   Origin: {x: 0, y: 0}
-  OffscreenDistance: 500
+  OffscreenDistance: 900
   OffscreenTime: 14
   OnscreenTime: 6
   TrailParticles: {fileID: 4546010567417372527}
