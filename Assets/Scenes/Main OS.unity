@@ -5055,7 +5055,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 53201391}
-  - component: {fileID: 53201393}
   - component: {fileID: 53201392}
   m_Layer: 5
   m_Name: Demo Watermark Spawner
@@ -5097,14 +5096,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WatermarkPrefab: {fileID: 2460744849094694556, guid: d073e82bae97f7b49b2c18b8b8c56c58,
     type: 3}
---- !u!222 &53201393
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53201390}
-  m_CullTransparentMesh: 0
 --- !u!1 &78792650
 GameObject:
   m_ObjectHideFlags: 0
@@ -7839,17 +7830,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1750595020}
         m_MethodName: ResetMirrorStates
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 726058013}
-        m_MethodName: OnNewDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
