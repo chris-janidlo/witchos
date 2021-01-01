@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2a811dcb295ab94494455523010ccee, type: 3}
-  m_Name: PhaseVue
+  m_Name: PhaseView
   m_EditorClassIdentifier: 
   _file:
-    Name: PhaseVue
+    Name: PhaseView
     GuiPosition:
       x: 320
       y: 160
