@@ -57,8 +57,7 @@ namespace WitchOS
             {
                 if (!colorAdded && RandomExtra.Chance(.02f))
                 {
-                    // green to purple (no red or yellow), upper half of saturation, only max lightness
-                    var color = Random.ColorHSV(.25f, .85f, .5f, 1, 1, 1);
+                    var color = MagicColorRamp.GetValue(Random.value);
 
                     sb.Append($"<#{ColorUtility.ToHtmlStringRGB(color)}>");
                     colorAdded = true;

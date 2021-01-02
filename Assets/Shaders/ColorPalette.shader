@@ -5,6 +5,7 @@
         [PerRendererData] _MainTex ("Texture", 2D) = "white" {}
         _BlackColor ("Black Color", Color) = (0, 0, 0, 1)
         _WhiteColor ("White Color", Color) = (1, 1, 1, 1)
+        _RampTex ("Magic Ramp LUT", 2D) = "defaulttexture" {}
     }
 
     SubShader
@@ -40,24 +41,42 @@
                 return o;
             }
 
-            sampler2D _MainTex;
+            sampler2D _MainTex, _RampTex;
             float4 _BlackColor, _WhiteColor;
+
+            inline fixed4 convertBlackAndWhite (fixed4 input)
+            {
+                bool closerToWhite = round(input.r);
+                return closerToWhite ? _WhiteColor : _BlackColor;
+            }
+
+            // input is assumed to be somewhere on a lerp between (0, 1, 0) and (1, 1, 0)
+            // these colors are chosen so that one channel goes from 0 to 1, the other two channels are always the same value, and all three channels are never equal
+            inline fixed4 convertMagicRamp (fixed4 input)
+            {
+                float i = input.r;
+                
+                // for magic pixels that break the g or b assumptions, we can assume they occupy subpixel positions and that the pixel perfect camera averaged their true value with the background pixel. we'll fix that by making the magic effects override the background color
+                if (input.g == 0.5)
+                {
+                    // undo average with black
+                    i *= 2;
+                }
+                else if (input.b == 0.5)
+                {
+                    // undo average with white
+                    i = i * 2 - 1;
+                }
+
+                return tex2D(_RampTex, i);
+            }
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
-                // ignore anything that isn't grayscale
-                if (!(col.r == col.g && col.g == col.b)) return col;
-
-                bool closerToWhite = round(col.r);
-                col.rgb = (closerToWhite ? _WhiteColor : _BlackColor).rgb;
-
-                return col;
+                return (col.r == col.g && col.g == col.b) ? convertBlackAndWhite(col) : convertMagicRamp(col);
             }
-
-            // TODO: transform everything on the magic effect color ramp to arbitrary, user-supplied color ramp
-            // make sure that the transformation includes anything that's been mixed with pure white or pure black, by using the replacement colors
             ENDCG
         }
     }
