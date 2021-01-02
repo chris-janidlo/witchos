@@ -15,8 +15,8 @@ MonoBehaviour:
   _file:
     Name: Witchipedia
     GuiPosition:
-      x: -190
-      y: -90
+      x: -320
+      y: -160
       z: 0
     Data:
       Value: {fileID: 11400000, guid: e36cce8a30286490595585ef69e32aee, type: 2}

@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinSize: {x: 100, y: 100}
-  MaxSize: {x: 480, y: 250}
+  MaxSize: {x: 800, y: 430}
   TargetTransform: {fileID: 1707194482673688325}
   Window: {fileID: 1707194482673688322}
 --- !u!114 &6754924502694709121

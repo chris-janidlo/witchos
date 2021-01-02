@@ -15,8 +15,8 @@ MonoBehaviour:
   NormalSavePrompt: Save Manually
   SaveInProgressMessage: Saving...
   SaveCompletedMessage: Save Completed.
-  NormalDeletePrompt: Delete All Save Data
-  ClickAgainDeletePrompt: Click Again to Delete Save Data
+  NormalDeletePrompt: Permanently Delete All Save Data
+  ClickAgainDeletePrompt: Click Again to Permanently Delete All Save Data
   DeleteCompletedMessage: Save Data Deleted
   ArtificialSaveDelay: 1.5
   ReturnToPreviousMessageDelay: 2
@@ -61,8 +61,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3.5}
-  m_SizeDelta: {x: -8, y: 14}
+  m_AnchoredPosition: {x: 0, y: -18.5}
+  m_SizeDelta: {x: -24, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1710877604296487195
 CanvasRenderer:
@@ -209,7 +209,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AutoSave is enabled. Saves occur on shutdown.
+  m_text: 'AutoSave feature is enabled. WitchOS will automatically save all data
+    to disk on shutdown.
+
+
+    You can also manage your data manually:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e0dafea182fe4a55a47d76ab26510d0, type: 2}
   m_sharedMaterial: {fileID: 6994504606233315000, guid: 4e0dafea182fe4a55a47d76ab26510d0,
@@ -232,7 +236,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -246,7 +250,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
-  m_textAlignment: 257
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -314,7 +318,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -4, y: -4}
+  m_SizeDelta: {x: -8, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4030978506408598900
 CanvasRenderer:
@@ -366,7 +370,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -379,8 +383,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -450,7 +454,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 4}
-  m_SizeDelta: {x: -8, y: 24}
+  m_SizeDelta: {x: -24, y: 28}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2656303690246779427
 CanvasRenderer:
@@ -568,7 +572,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -4, y: -4}
+  m_SizeDelta: {x: -8, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4668818162736133468
 CanvasRenderer:
@@ -620,7 +624,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -633,8 +637,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -809,12 +813,12 @@ PrefabInstance:
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}

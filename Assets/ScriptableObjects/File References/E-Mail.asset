@@ -15,6 +15,6 @@ MonoBehaviour:
   _file:
     Name: E-Mail
     GuiPosition:
-      x: 114
-      y: -90
+      x: 240
+      y: -160
       z: 0

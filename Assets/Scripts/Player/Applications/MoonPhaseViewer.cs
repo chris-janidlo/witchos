@@ -11,7 +11,7 @@ namespace WitchOS
         public List<Sprite> PhaseIcons;
 
         public Image PhaseIconImage;
-        public TextMeshProUGUI WaxingText, WaningText, TodayPhase, TomorrowPhase;
+        public TextMeshProUGUI TodayPhase, TomorrowPhase;
 
         void Update ()
         {
@@ -23,11 +23,6 @@ namespace WitchOS
             TomorrowPhase.text = tomorrow.ToString(true);
 
             PhaseIconImage.sprite = PhaseIcons[(int) today];
-
-            MoonPhaseChange waxWane = today.GetPhaseChange();
-
-            WaxingText.text = (waxWane == MoonPhaseChange.Waxing) ? "yes" : "no";
-            WaningText.text = (waxWane == MoonPhaseChange.Waning) ? "yes" : "no";
         }
     }
 }

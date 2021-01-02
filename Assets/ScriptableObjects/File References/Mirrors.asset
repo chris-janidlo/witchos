@@ -15,6 +15,6 @@ MonoBehaviour:
   _file:
     Name: Mirrors
     GuiPosition:
-      x: 190
-      y: 55
+      x: 320
+      y: 100
       z: 0
