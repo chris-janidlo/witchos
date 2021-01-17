@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb181f16048e64faa97adff46588fabe, type: 3}
   m_Name: Stub Flag Football
   m_EditorClassIdentifier: 
-  SenderAddress: gorka.morales@aol.com
+  SenderAddress: gorka.morales @ EPS Box 7845
   SubjectLine: Make him hurt
   Body: This tryhard asshole ruined flag football fridays

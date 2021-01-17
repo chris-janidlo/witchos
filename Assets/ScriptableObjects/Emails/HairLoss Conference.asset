@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb181f16048e64faa97adff46588fabe, type: 3}
   m_Name: HairLoss Conference
   m_EditorClassIdentifier: 
-  SenderAddress: sebastian.ryanne.oquinn@juno.com
+  SenderAddress: sebastian.ryanne.oquinn @ The Oak Tree on the Hill
   SubjectLine: Curse Request
   Body: 'To Whom It May Concern,
 

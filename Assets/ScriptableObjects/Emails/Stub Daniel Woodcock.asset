@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb181f16048e64faa97adff46588fabe, type: 3}
   m_Name: Stub Daniel Woodcock
   m_EditorClassIdentifier: 
-  SenderAddress: martygibson@hotmail.co.uk
+  SenderAddress: martygibson @ Maco E-Mail Services
   SubjectLine: Daniel Woodcock
   Body: My maths professor is named Daniel Woodcock. This is ridiculous. He can't
     just have a name like that.

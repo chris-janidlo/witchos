@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb181f16048e64faa97adff46588fabe, type: 3}
   m_Name: SocialMedia2
   m_EditorClassIdentifier: 
-  SenderAddress: genie_the_zucchini@aol.com
+  SenderAddress: genie_the_zucchini @ EPS Box 8489
   SubjectLine: Prank time
   Body: ok Maybe this is a little mean but my cousin is so proud of his follower
     count and I just want to see it all come crashing down
