@@ -160,3 +160,17 @@ MonoBehaviour:
     Path: d2/Spells/Borealeo Curse
   - Asset: {fileID: 11400000, guid: 14a4e3fed5107b944a7fbfc7e6992d14, type: 2}
     Path: d2/Spells/Bad Luck Curse
+  - Asset: {fileID: 11400000, guid: 64a9c3c4ff2021d4db82998b7e81ef05, type: 2}
+    Path: d2/E-Mail/Collection Service
+  - Asset: {fileID: 11400000, guid: f84008781c813bd42b71069366884c63, type: 2}
+    Path: d2/E-Mail/E-Mail
+  - Asset: {fileID: 11400000, guid: 36f8a8712e6cf0e47bc789c10cef56f2, type: 2}
+    Path: d2/Exavier/Purveyances
+  - Asset: {fileID: 11400000, guid: d07a13a31ca4a704d979f634e834d6a7, type: 2}
+    Path: d2/Exavier/Emporium
+  - Asset: {fileID: 11400000, guid: a6f3508107638884d88b0a4fe4e9f81a, type: 2}
+    Path: d2/Exavier/Exavier
+  - Asset: {fileID: 11400000, guid: cfe915ce52f2ebc46ac0a7591f1058a7, type: 2}
+    Path: d2/Ether
+  - Asset: {fileID: 11400000, guid: 287c40352f04134449e561cac1ad173a, type: 2}
+    Path: d2/Exavier/Bogart
