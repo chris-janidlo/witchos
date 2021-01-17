@@ -32,14 +32,15 @@ MonoBehaviour:
       * Powerful user interface for managing
       {spell:Spell} aspects and moods
 
-      * Electronic mail with built-in invoicing
-      support
+      * Advanced implementation of the {E-Mail:E-Mail/E-Mail}
+      protocol, with built-in invoicing support
 
       * Banking made fun!
 
 
-      And it all comes with comprehensive
-      documentation. What other operating system can you say that about?'
+      And
+      it all comes with comprehensive documentation. What other operating system
+      can you say that about?'
     Title: Getting Started With WitchOS
   - Content: 'You haven''t finished reading these pages! Shame on you!
 
