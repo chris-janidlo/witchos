@@ -152,7 +152,7 @@ namespace WitchOS
         {
             recordScrollRectPositionToHistory();
 
-            currentPositionInSessionBrowsingHistory = Mathf.Clamp(currentPositionInSessionBrowsingHistory + direction, 0, sessionBrowsingHistory.Count);
+            currentPositionInSessionBrowsingHistory = Mathf.Clamp(currentPositionInSessionBrowsingHistory + direction, 0, sessionBrowsingHistory.Count - 1);
             SessionDataPageSnapshot snapshot = sessionBrowsingHistory[currentPositionInSessionBrowsingHistory];
             
             renderPage(snapshot.Page);
