@@ -53,8 +53,13 @@ namespace WitchOS
         {
             CommandInput.onSubmit.AddListener(s => StartCoroutine(evaluateCommand(s)));
 
-            if (!MagicSource.Instance.On) PrintMultipleLines(NoMagicWarning);
-            else paintOutputHistoryText();
+            if (!MagicSource.Instance.On)
+            {
+                PrintMultipleLines(NoMagicWarning);
+                addVerticalOutputSpacer();
+            }
+
+            paintOutputHistoryText();
         }
 
         void Update ()
@@ -112,6 +117,11 @@ namespace WitchOS
         public void PrintEmptyLine ()
         {
             PrintSingleLine("");
+        }
+
+        void addVerticalOutputSpacer ()
+        {
+            outputHistory.Add("");
         }
 
         void paintOutputHistoryText ()
@@ -181,6 +191,8 @@ namespace WitchOS
 
             Prompt.enabled = true;
             CommandInput.enabled = true;
+
+            addVerticalOutputSpacer();
 
             // restore empty prompt line in history text
             paintOutputHistoryText();
