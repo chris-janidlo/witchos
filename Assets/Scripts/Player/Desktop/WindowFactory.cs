@@ -39,7 +39,7 @@ namespace WitchOS
                     break;
 
                 default:
-                    throw new InvalidOperationException($"file association config {FileAssociationConfig.name} has unsupported window mode {windowMetadata.NewWindowMode} configured for file type {file.GetTypeOfData().Name}");
+                    throw new InvalidOperationException($"file association config {FileAssociationConfig.name} has unsupported window mode {windowMetadata.NewWindowMode} configured for file type {file.GetType().Name}");
             }
 
             if (window == null)

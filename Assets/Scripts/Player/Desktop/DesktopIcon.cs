@@ -47,7 +47,7 @@ namespace WitchOS
 
             if (metadata == null)
             {
-                throw new InvalidOperationException($"no association set up for {File.GetTypeOfData().FullName}");
+                throw new InvalidOperationException($"no association set up for {File.GetType().FullName}");
             }
 
             LabelText.text = File.Name;

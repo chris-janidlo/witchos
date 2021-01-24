@@ -20,7 +20,8 @@ namespace WitchOS
 
         public WindowMetadata GetMetadataForFile (FileBase file)
         {
-            return Config.FirstOrDefault(d => file.GetTypeOfData().FullName == d.FullNameOfFileDataType)?.Metadata;
+            string fileTypeName = file.GetType().FullName;
+            return Config.FirstOrDefault(d => fileTypeName == d.FullNameOfFileDataType)?.Metadata;
         }
     }
 }

@@ -26,8 +26,6 @@ namespace WitchOS
         public SaveableVector3 GuiPosition;
 
         public abstract T GetData<T> () where T : class;
-
-        public abstract Type GetTypeOfData ();
     }
 
     [Serializable, DataContract]
@@ -57,11 +55,6 @@ namespace WitchOS
             }
 
             return Data as T;
-        }
-
-        public override Type GetTypeOfData ()
-        {
-            return typeof(DataType);
         }
     }
 }

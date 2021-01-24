@@ -12,6 +12,7 @@ namespace WitchOS
     [Serializable, DataContract]
     public class TextPDFFile : File<TextPDF> { }
 
+    // need this in order to be able to edit wiki files in inspector
     [Serializable, DataContract]
     public class SaveableWikiPageDataReference : SaveableScriptableObjectReference<WikiPageData> { }
 
@@ -19,20 +20,26 @@ namespace WitchOS
     public class WikiFile : File<SaveableWikiPageDataReference> { }
 
     [Serializable, DataContract]
-    public class EmailAppExeFile : File<EmailAppExeTag> { }
+    public class EmailFile : File<Email> { }
 
     [Serializable, DataContract]
-    public class MoonPhaseAppExeFile : File<MoonPhaseAppExeTag> { }
+    public class OrderFile : File<Order> { }
 
     [Serializable, DataContract]
-    public class TerminalAppExeFile : File<TerminalAppExeTag> { }
+    public class BankAppExeFile : File<ExeFileData> { }
 
     [Serializable, DataContract]
-    public class MirrorsAppExeFile : File<MirrorsAppExeTag> { }
+    public class EmailAppExeFile : File<ExeFileData> { }
 
     [Serializable, DataContract]
-    public class BankAppExeFile : File<BankAppExeTag> { }
+    public class MirrorsAppExeFile : File<ExeFileData> { }
 
     [Serializable, DataContract]
-    public class SystemAppExeFile : File<SystemAppExeTag> { }
+    public class MoonPhaseAppExeFile : File<ExeFileData> { }
+
+    [Serializable, DataContract]
+    public class TerminalAppExeFile : File<ExeFileData> { }
+
+    [Serializable, DataContract]
+    public class SystemAppExeFile : File<ExeFileData> { }
 }
