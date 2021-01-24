@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 namespace WitchOS
 {
     [Serializable, DataContract]
+    #region known types
     [KnownType(typeof(Directory))]
     [KnownType(typeof(TextFile))]
     [KnownType(typeof(TextPDFFile))]
@@ -17,6 +18,9 @@ namespace WitchOS
     [KnownType(typeof(BankAppExeFile))]
     [KnownType(typeof(WikiFile))]
     [KnownType(typeof(SystemAppExeFile))]
+    [KnownType(typeof(EmailFile))]
+    [KnownType(typeof(OrderFile))]
+    #endregion known types
     public abstract class FileBase
     {
         [DataMember(IsRequired = true)]
@@ -29,6 +33,7 @@ namespace WitchOS
     }
 
     [Serializable, DataContract]
+    #region known types
     [KnownType(typeof(Directory))]
     [KnownType(typeof(TextFile))]
     [KnownType(typeof(TextPDFFile))]
@@ -39,6 +44,9 @@ namespace WitchOS
     [KnownType(typeof(BankAppExeFile))]
     [KnownType(typeof(WikiFile))]
     [KnownType(typeof(SystemAppExeFile))]
+    [KnownType(typeof(EmailFile))]
+    [KnownType(typeof(OrderFile))]
+    #endregion known types
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
     {
