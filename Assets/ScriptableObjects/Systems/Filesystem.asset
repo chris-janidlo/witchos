@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: WitchOS.Main:WitchOS:FileSystem
   PathSeparator: ':'
   InitialFiles:
-  - {fileID: 11400000, guid: ee42132da59f96f4ba1bb1171d141ef9, type: 2}
+  - {fileID: 11400000, guid: e79a21358eb2ab741817c556d7c45adf, type: 2}
   - {fileID: 11400000, guid: f8bb37ed62ec9c14aafc6d7e9b558056, type: 2}
-  - {fileID: 11400000, guid: 2c77e358ba2d4fd448827e6da5b550a3, type: 2}
-  - {fileID: 11400000, guid: 4d1b3a895d1aecc43aaea7e8699d2d27, type: 2}
-  - {fileID: 11400000, guid: 8c77f2a8b652cae4c8ccad528107cc35, type: 2}
-  - {fileID: 11400000, guid: 9abd6a95c575d874db5736c930f4c948, type: 2}
+  - {fileID: 11400000, guid: 7598b274ca24bae419ea661bf519ba08, type: 2}
   - {fileID: 11400000, guid: bddfd65c2d3ff404ea4d258ff1c9c6bb, type: 2}
+  - {fileID: 11400000, guid: 9abd6a95c575d874db5736c930f4c948, type: 2}
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
   SaveData:
     DeveloperNotes: 
