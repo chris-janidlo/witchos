@@ -15,7 +15,7 @@ namespace WitchOS
 
         public List<FileSOBase> FileSOs;
 
-        [NonSerialized]
+        [NonSerialized] // if this isn't present, Unity's serialization happily initializes the directory with default fields everywhere, instead of just leaving the reference as null
         Directory _directory = null;
         public override FileBase File => _directory ?? (_directory = createUnderlyingDirectory());
 
