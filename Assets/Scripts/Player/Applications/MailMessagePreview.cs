@@ -35,8 +35,8 @@ namespace WitchOS
             entry.Read = true;
 
             FileBase file = entry.Contents is Order order
-                ? new File<Order> { Data = order } as FileBase
-                : new File<Email> { Data = entry.Contents };
+                ? new OrderFile { Data = order } as FileBase
+                : new EmailFile { Data = entry.Contents };
 
             file.Name = entry.Contents.AnnotatedSubject;
 

@@ -12,7 +12,7 @@ namespace WitchOS
         [Serializable]
         public class FileAssociationData
         {
-            public string FullNameOfFileDataType;
+            public string FullNameOfFileType;
             public WindowMetadata Metadata;
         }
 
@@ -20,7 +20,8 @@ namespace WitchOS
 
         public WindowMetadata GetMetadataForFile (FileBase file)
         {
-            return Config.FirstOrDefault(d => file.GetTypeOfData().FullName == d.FullNameOfFileDataType)?.Metadata;
+            string fileTypeName = file.GetType().FullName;
+            return Config.FirstOrDefault(d => d.FullNameOfFileType == fileTypeName)?.Metadata;
         }
     }
 }
