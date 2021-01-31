@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bubblegum
+  m_Name: Palette Material
   m_Shader: {fileID: 4800000, guid: f0fcf412b88101c47b2209a6b972b8c2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -51,6 +51,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _PaletteTex:
+        m_Texture: {fileID: 2800000, guid: f22a0f4fe50f00e4f87908cb554ab6ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -78,7 +82,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BlackColor: {r: 0, g: 0.405, b: 0.405, a: 1}
+    - _BlackColor: {r: 0, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WhiteColor: {r: 1, g: 0.81229377, b: 0.787, a: 1}
+    - _WhiteColor: {r: 0, g: 1, b: 0, a: 1}

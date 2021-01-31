@@ -2,10 +2,11 @@
 {
     Properties
     {
-        [PerRendererData] _MainTex ("Texture", 2D) = "white" {}
-        _BlackColor ("Black Color", Color) = (0, 0, 0, 1)
-        _WhiteColor ("White Color", Color) = (1, 1, 1, 1)
-        _RampTex ("Magic Ramp LUT", 2D) = "defaulttexture" {}
+        [PerRendererData]
+        _MainTex ("Texture", 2D) = "white" {}
+
+        [NoScaleOffset]
+        _PaletteTex ("Palette", 2D) = "defaulttexture" {} // shader expects the palette to have 7 colors: transparent, black replacement value, white replacement value, then 4 color magic palette from darkest to lightest. see note in palette folder for more details
     }
 
     SubShader
@@ -41,13 +42,12 @@
                 return o;
             }
 
-            sampler2D _MainTex, _RampTex;
-            float4 _BlackColor, _WhiteColor;
+            sampler2D _MainTex, _PaletteTex;
 
             inline fixed4 convertBlackAndWhite (fixed4 input)
             {
-                bool closerToWhite = round(input.r);
-                return closerToWhite ? _WhiteColor : _BlackColor;
+                // if input.r is greater than .5, the pixel is closer to white and we want a "white" output pixel, which will be at index 2/6 in a 0-indexed 7-color palette with the properties we have. otherwise, we want "black," which is at index 1/6
+                return tex2D(_PaletteTex, round(input.r + 1) / 6.0);
             }
 
             // input is assumed to be somewhere on a lerp between (0, 1, 0) and (1, 1, 0)
@@ -60,15 +60,18 @@
                 if (input.g == 0.5)
                 {
                     // undo average with black
-                    i *= 2;
+                    i *= 2.0;
                 }
                 else if (input.b == 0.5)
                 {
                     // undo average with white
-                    i = i * 2 - 1;
+                    i = i * 2.0 - 1.0;
                 }
 
-                return tex2D(_RampTex, i);
+                // map from [0, 1] to [3/6, 1] (location of magic sub-palette in the palette)
+                i = (i + 1.0) / 2.0;
+
+                return tex2D(_PaletteTex, i);
             }
 
             fixed4 frag (v2f i) : SV_Target
