@@ -46,7 +46,7 @@
 
             inline fixed4 convertBlackAndWhite (fixed4 input)
             {
-                // if input.r is greater than .5, the pixel is closer to white and we want a "white" output pixel, which will be at index 2/6 in a 0-indexed 7-color palette with the properties we have. otherwise, we want "black," which is at index 1/6
+                // if input.r is less than .5, the pixel is closer to black and we want a "black" output pixel, which will be at index 1/6 in a 0-indexed 7-color palette with the properties we have. otherwise, we want "white," which is at index 2/6
                 return tex2D(_PaletteTex, round(input.r + 1) / 6.0);
             }
 
