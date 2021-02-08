@@ -44,133 +44,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedTable:
-  - Asset: {fileID: 11400000, guid: 07a808b73d1b941b08dc87b1db4dc324, type: 2}
-    Path: d0/BadLuck Best Friends
-  - Asset: {fileID: 11400000, guid: 8dd36023c619147738456f87ffcce5e0, type: 2}
-    Path: d0/BadLuck Promotion
-  - Asset: {fileID: 11400000, guid: 1bad9fd04a88c4556b9e3ceff2532e39, type: 2}
-    Path: d0/BadLuck1
-  - Asset: {fileID: 11400000, guid: a1001ad59f8ec4e16b51eac63d057895, type: 2}
-    Path: d0/BadLuck2
-  - Asset: {fileID: 11400000, guid: 1602a28a182e5401fb0165b65041b4a5, type: 2}
-    Path: d0/HairLoss Conference
-  - Asset: {fileID: 11400000, guid: 894f1a51f31614b0da5ee9808e55d547, type: 2}
-    Path: d0/HairLoss Westminster
-  - Asset: {fileID: 11400000, guid: ac23282b0c8754790820d6b7a47ddec3, type: 2}
-    Path: d0/HairLoss1
-  - Asset: {fileID: 11400000, guid: bcd026e53af4a4bd2a983007119f7f80, type: 2}
-    Path: d0/HairLoss2
-  - Asset: {fileID: 11400000, guid: 2eef010a51b02459db25508d0075e544, type: 2}
-    Path: d0/Password Corporate Sabotage
-  - Asset: {fileID: 11400000, guid: dc97e46ab531b4b3984c9c0dad15ea08, type: 2}
-    Path: d0/Password Slut
-  - Asset: {fileID: 11400000, guid: f8fa9dbb623cf42968fb7d8c051735fd, type: 2}
-    Path: d0/Password1
-  - Asset: {fileID: 11400000, guid: 1f27f5a0bc99d4a0793e95b3878f5114, type: 2}
-    Path: d0/Password2
-  - Asset: {fileID: 11400000, guid: 918336dd2e6d04707b580c995cb59e45, type: 2}
-    Path: d0/Password3
-  - Asset: {fileID: 11400000, guid: 2fb18607484f94e24a20d9a7d7baff05, type: 2}
-    Path: d0/SocialMedia Gaslight
-  - Asset: {fileID: 11400000, guid: f036a71b565cd4e39b89b4d4bdce05bc, type: 2}
-    Path: d0/SocialMedia MiL
-  - Asset: {fileID: 11400000, guid: cea0699b35f564d4f974cc7bb828d2ef, type: 2}
-    Path: d0/SocialMedia1
-  - Asset: {fileID: 11400000, guid: 5951804ea9df04923bbf99a653294463, type: 2}
-    Path: d0/SocialMedia2
-  - Asset: {fileID: 11400000, guid: ec2ee9e84f6524693b26397be1264a99, type: 2}
-    Path: d0/Stub Daniel Woodcock
-  - Asset: {fileID: 11400000, guid: 4e924829a3f994a69aa1bec04af6cf50, type: 2}
-    Path: d0/Stub Flag Football
-  - Asset: {fileID: 11400000, guid: 44dbdb2c91abe4781aa2b20f3b8f44e0, type: 2}
-    Path: d0/Stub1
-  - Asset: {fileID: 11400000, guid: 559c3867146b342d38b232ed95f6e103, type: 2}
-    Path: d0/Stub2
-  - Asset: {fileID: 11400000, guid: b2d062b76d46f4690bac5429446e3c4e, type: 2}
-    Path: d1/BadLuck Best Friends
-  - Asset: {fileID: 11400000, guid: 16d7fe24dcc734db08b01bddc7e6cf61, type: 2}
-    Path: d1/BadLuck Promotion
-  - Asset: {fileID: 11400000, guid: f966126fa35c24d6baa91136dca70796, type: 2}
-    Path: d1/BadLuck1
-  - Asset: {fileID: 11400000, guid: 7cf817552ef924dfc98cbce966690e42, type: 2}
-    Path: d1/BadLuck2
-  - Asset: {fileID: 11400000, guid: 50308ddeea6df402bab8fd97b49b14db, type: 2}
-    Path: d1/HairLoss Conference
-  - Asset: {fileID: 11400000, guid: 8d9c24cd9a84344ab8e197f9ab8769ae, type: 2}
-    Path: d1/HairLoss Westminster
-  - Asset: {fileID: 11400000, guid: 6371f642ac4204a3294ffcaca52ab051, type: 2}
-    Path: d1/HairLoss1
-  - Asset: {fileID: 11400000, guid: 786b440f4057745718324b2f4a42ada8, type: 2}
-    Path: d1/HairLoss2
-  - Asset: {fileID: 11400000, guid: e531b92344aa54403b355891cc05cfd6, type: 2}
-    Path: d1/Password Corporate Sabotage
-  - Asset: {fileID: 11400000, guid: 73991fee853bd4624aaca715a12b5619, type: 2}
-    Path: d1/Password Slut
-  - Asset: {fileID: 11400000, guid: bcce06bd68f654042b588f4ee185ceb1, type: 2}
-    Path: d1/Password1
-  - Asset: {fileID: 11400000, guid: 5fc18d10d46704ee8babdd0872b85132, type: 2}
-    Path: d1/Password2
-  - Asset: {fileID: 11400000, guid: f96efd138aba44b03bb0d0e35795f971, type: 2}
-    Path: d1/Password3
-  - Asset: {fileID: 11400000, guid: 2bf24138e51e8482cb14105ebb9a718a, type: 2}
-    Path: d1/SocialMedia Gaslight
-  - Asset: {fileID: 11400000, guid: 89f982eb657a0456999697e2833bb63f, type: 2}
-    Path: d1/SocialMedia MiL
-  - Asset: {fileID: 11400000, guid: 04ea74df1452c4179bc5c8be7aff3f08, type: 2}
-    Path: d1/SocialMedia1
-  - Asset: {fileID: 11400000, guid: 87a8b54b8ec6e40789340cff85a89e67, type: 2}
-    Path: d1/SocialMedia2
-  - Asset: {fileID: 11400000, guid: 2a2f00585ef09488cae54ea7f72e9cd1, type: 2}
-    Path: d1/Stub Daniel Woodcock
-  - Asset: {fileID: 11400000, guid: fdf724ad3ea3640129cde4dbd9be2a15, type: 2}
-    Path: d1/Stub Flag Football
-  - Asset: {fileID: 11400000, guid: 9aa0ca130e22a4ac290e81f9692694af, type: 2}
-    Path: d1/Stub1
-  - Asset: {fileID: 11400000, guid: e46cbd62e96d34712a44b41491e804ee, type: 2}
-    Path: d1/Stub2
-  - Asset: {fileID: 11400000, guid: b4fe47f1ca50b46fdb1660a99bbc2131, type: 2}
-    Path: d2/Rune System
-  - Asset: {fileID: 11400000, guid: 56b29451cc6554f4aa8126a286abdd14, type: 2}
-    Path: d2/Spell
-  - Asset: {fileID: 11400000, guid: c0c7a2cee8549436cac67d1a9eff7603, type: 2}
-    Path: d2/Witchipedia
-  - Asset: {fileID: 11400000, guid: 8854e743d751e45f191578bf83cee4c5, type: 2}
-    Path: d2/WitchOS
-  - Asset: {fileID: 11400000, guid: e36cce8a30286490595585ef69e32aee, type: 2}
-    Path: d2/~Home Page
-  - Asset: {fileID: 11400000, guid: c1f9afe2b2e69465b96d8b1e35e80d5d, type: 2}
-    Path: d2/~Page Not Found
-  - Asset: {fileID: 11400000, guid: 819573c2528d54726b56505cfd2a8f81, type: 2}
-    Path: d2/John Maytree
   - Asset: {fileID: 11400000, guid: 88f7359fdf04b42249e0fe3a99ea04b2, type: 2}
-    Path: d2/Astral Weave
-  - Asset: {fileID: 11400000, guid: 4f73bfe0e55f047eebed28e1c4aa4373, type: 2}
-    Path: d2/Odd Sorrow
-  - Asset: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
-    Path: d2/Mirrors App
-  - Asset: {fileID: 11400000, guid: 02896466760c03941b8e5ded4352adb0, type: 2}
-    Path: d2/Spells/Social Media Influence
-  - Asset: {fileID: 11400000, guid: a939a7eae237c16419ff61a2364b3a0c, type: 2}
-    Path: d2/Spells/Password Curse
-  - Asset: {fileID: 11400000, guid: 5f0668ec36155574d8fc05a805640980, type: 2}
-    Path: d2/Spells/Toe Stubber
-  - Asset: {fileID: 11400000, guid: bc70804df74238f49bfc3940bf1753e4, type: 2}
-    Path: d2/List of Level One Spells
-  - Asset: {fileID: 11400000, guid: c9ecd30e9f2ec6a40bc02d51d58c6e23, type: 2}
-    Path: d2/Spells/Borealeo Curse
-  - Asset: {fileID: 11400000, guid: 14a4e3fed5107b944a7fbfc7e6992d14, type: 2}
-    Path: d2/Spells/Bad Luck Curse
+    Path: d0/Astral Weave
   - Asset: {fileID: 11400000, guid: 64a9c3c4ff2021d4db82998b7e81ef05, type: 2}
-    Path: d2/E-Mail/Collection Service
+    Path: d0/E-Mail/Collection Service
   - Asset: {fileID: 11400000, guid: f84008781c813bd42b71069366884c63, type: 2}
-    Path: d2/E-Mail/E-Mail
-  - Asset: {fileID: 11400000, guid: 36f8a8712e6cf0e47bc789c10cef56f2, type: 2}
-    Path: d2/Exavier/Purveyances
-  - Asset: {fileID: 11400000, guid: d07a13a31ca4a704d979f634e834d6a7, type: 2}
-    Path: d2/Exavier/Emporium
-  - Asset: {fileID: 11400000, guid: a6f3508107638884d88b0a4fe4e9f81a, type: 2}
-    Path: d2/Exavier/Exavier
+    Path: d0/E-Mail/E-Mail
   - Asset: {fileID: 11400000, guid: cfe915ce52f2ebc46ac0a7591f1058a7, type: 2}
-    Path: d2/Ether
+    Path: d0/Ether
   - Asset: {fileID: 11400000, guid: 287c40352f04134449e561cac1ad173a, type: 2}
-    Path: d2/Exavier/Bogart
+    Path: d0/Exavier/Bogart
+  - Asset: {fileID: 11400000, guid: d07a13a31ca4a704d979f634e834d6a7, type: 2}
+    Path: d0/Exavier/Emporium
+  - Asset: {fileID: 11400000, guid: a6f3508107638884d88b0a4fe4e9f81a, type: 2}
+    Path: d0/Exavier/Exavier
+  - Asset: {fileID: 11400000, guid: 36f8a8712e6cf0e47bc789c10cef56f2, type: 2}
+    Path: d0/Exavier/Purveyances
+  - Asset: {fileID: 11400000, guid: 819573c2528d54726b56505cfd2a8f81, type: 2}
+    Path: d0/John Maytree
+  - Asset: {fileID: 11400000, guid: bc70804df74238f49bfc3940bf1753e4, type: 2}
+    Path: d0/List of Level One Spells
+  - Asset: {fileID: 11400000, guid: b250ed14857096a459aaedf541442c87, type: 2}
+    Path: d0/Mirrors App
+  - Asset: {fileID: 11400000, guid: 4f73bfe0e55f047eebed28e1c4aa4373, type: 2}
+    Path: d0/Odd Sorrow
+  - Asset: {fileID: 11400000, guid: b4fe47f1ca50b46fdb1660a99bbc2131, type: 2}
+    Path: d0/Rune System
+  - Asset: {fileID: 11400000, guid: 56b29451cc6554f4aa8126a286abdd14, type: 2}
+    Path: d0/Spell
+  - Asset: {fileID: 11400000, guid: 14a4e3fed5107b944a7fbfc7e6992d14, type: 2}
+    Path: d0/Spells/Bad Luck Curse
+  - Asset: {fileID: 11400000, guid: c9ecd30e9f2ec6a40bc02d51d58c6e23, type: 2}
+    Path: d0/Spells/Borealeo Curse
+  - Asset: {fileID: 11400000, guid: a939a7eae237c16419ff61a2364b3a0c, type: 2}
+    Path: d0/Spells/Password Curse
+  - Asset: {fileID: 11400000, guid: 02896466760c03941b8e5ded4352adb0, type: 2}
+    Path: d0/Spells/Social Media Influence
+  - Asset: {fileID: 11400000, guid: 5f0668ec36155574d8fc05a805640980, type: 2}
+    Path: d0/Spells/Toe Stubber
+  - Asset: {fileID: 11400000, guid: c0c7a2cee8549436cac67d1a9eff7603, type: 2}
+    Path: d0/Witchipedia
+  - Asset: {fileID: 11400000, guid: 8854e743d751e45f191578bf83cee4c5, type: 2}
+    Path: d0/WitchOS
+  - Asset: {fileID: 11400000, guid: e36cce8a30286490595585ef69e32aee, type: 2}
+    Path: d0/~Home Page
+  - Asset: {fileID: 11400000, guid: c1f9afe2b2e69465b96d8b1e35e80d5d, type: 2}
+    Path: d0/~Page Not Found
+  - Asset: {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
+    Path: d1/BadLuckSpell
+  - Asset: {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
+    Path: d1/HairLossSpell
+  - Asset: {fileID: 11400000, guid: 086f91b0b6bfd4553b7f548a1d761d81, type: 2}
+    Path: d1/PasswordSpell
+  - Asset: {fileID: 11400000, guid: f107df0718d644f7f934d83a84271486, type: 2}
+    Path: d1/SocialMediaSpell
+  - Asset: {fileID: 11400000, guid: 7db1a7d08b798457e84b2c57bc0b3691, type: 2}
+    Path: d1/StubSpell
