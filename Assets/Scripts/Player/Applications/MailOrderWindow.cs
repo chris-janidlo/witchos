@@ -48,7 +48,7 @@ namespace WitchOS
         string makeOrderText (Order order)
         {
             string emailContent =
-                $"{makeEmailText(order)}\n\n\nAttachment: Invoice #{order.InvoiceData.Value.OrderNumber}\n{SEPARATOR}";
+                $"{makeEmailText(order)}\n\n\nAttachment: Invoice #{order.Invoice.OrderNumber}\n{SEPARATOR}";
 
             if (order.DueDate.Date <= TimeState.FINAL_DATE)
                 emailContent += $"\nDue {order.DueDate.ToString(DateFormat, TimeState.CULTURE_INFO)}";
@@ -57,12 +57,12 @@ namespace WitchOS
 
             emailContent += "\n\nRequested services:";
 
-            foreach (Deliverable lineItem in order.InvoiceData.Value.LineItems)
+            foreach (Deliverable lineItem in order.Invoice.LineItems)
             {
                 emailContent += $"\n\n{lineItem.EmailAttachment()}";
             }
 
-            emailContent += $"\n\nTotal: {order.InvoiceData.Value.TotalPrice} gp";
+            emailContent += $"\n\nTotal: {order.Invoice.TotalPrice} gp";
 
             return emailContent;
         }
@@ -71,7 +71,7 @@ namespace WitchOS
         {
             if (order.State != OrderState.InProgress) return false;
 
-            foreach (var request in order.InvoiceData.Value.LineItems)
+            foreach (var request in order.Invoice.LineItems)
             {
                 if (request is SpellDeliverable)
                 {

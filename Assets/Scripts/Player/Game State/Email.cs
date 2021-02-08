@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace WitchOS
 {
@@ -7,28 +8,22 @@ namespace WitchOS
     [KnownType(typeof(Order))]
     public class Email : IEquatable<Email>
     {
-        [Serializable, DataContract]
-        public class SaveableEmailDataReference : SaveableScriptableObjectReference<EmailData> { }
-
         [DataMember(IsRequired = true)]
-        public SaveableEmailDataReference EmailData;
+        public string SubjectLine, SenderAddress;
+
+        [TextArea(5, 100)]
+        [DataMember(IsRequired = true)]
+        public string Body;
 
         // for times when the subject should be annotated (see: Order)
-        public virtual string AnnotatedSubject => EmailData.Value.SubjectLine;
-
-        public Email (EmailData emailData)
-        {
-            if (EmailData == null)
-            {
-                EmailData = new SaveableEmailDataReference();
-            }
-
-            EmailData.Value = emailData;
-        }
+        public virtual string AnnotatedSubject => SubjectLine;
 
         public bool Equals (Email other)
         {
-            return EmailData.Value == other.EmailData.Value;
+            return
+                SenderAddress == other.SenderAddress &&
+                SubjectLine == other.SubjectLine &&
+                Body == other.Body;
         }
     }
 }

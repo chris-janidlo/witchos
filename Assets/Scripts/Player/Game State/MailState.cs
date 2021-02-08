@@ -53,9 +53,9 @@ namespace WitchOS
 
             var incompleteOrderInvoices = orders
                 .Where(o => o.State == OrderState.InProgress)
-                .Select(o => o.InvoiceData.Value);
+                .Select(o => o.Invoice);
 
-            foreach (InvoiceData invoice in incompleteOrderInvoices)
+            foreach (Invoice invoice in incompleteOrderInvoices)
             {
                 var spells = invoice.LineItems.Where(li => li is SpellDeliverable).Select(li => li as SpellDeliverable).ToList();
 

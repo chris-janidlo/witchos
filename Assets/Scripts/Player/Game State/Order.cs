@@ -6,28 +6,14 @@ namespace WitchOS
     [Serializable, DataContract]
     public class Order : Email, IEquatable<Order>
     {
-        [Serializable, DataContract]
-        public class SaveableInvoiceDataReference : SaveableScriptableObjectReference<InvoiceData> { }
-
         [DataMember(IsRequired = true)]
-        public SaveableInvoiceDataReference InvoiceData;
+        public Invoice Invoice;
 
         [DataMember(IsRequired = true)]
         public DateTime DueDate;
 
         [DataMember(IsRequired = true)]
         public OrderState State;
-
-        public Order (EmailData emailData, InvoiceData invoiceData, DateTime dueDate) : base(emailData)
-        {
-            if (InvoiceData == null)
-            {
-                InvoiceData = new SaveableInvoiceDataReference();
-            }
-
-            InvoiceData.Value = invoiceData;
-            DueDate = dueDate;
-        }
 
         public override string AnnotatedSubject
         {
@@ -52,7 +38,10 @@ namespace WitchOS
 
         public bool Equals (Order other)
         {
-            return base.Equals(other) && InvoiceData.Value == other.InvoiceData.Value && DueDate == other.DueDate;
+            return
+                base.Equals(other) &&
+                Invoice.Equals(other.Invoice) &&
+                DueDate == other.DueDate;
         }
     }
 }
