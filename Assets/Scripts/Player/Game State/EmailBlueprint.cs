@@ -6,7 +6,7 @@ using crass;
 
 namespace WitchOS
 {
-    [CreateAssetMenu(menuName = "WitchOS/Email-Order Data", fileName = "newEmailOrderData.asset")]
+    [CreateAssetMenu(menuName = "WitchOS/Email Blueprint", fileName = "newEmailBlueprint.asset")]
     public class EmailBlueprint : ScriptableObject
     {
         [Serializable]
