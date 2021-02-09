@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe6125eab59e524e82d143f4cb62d09, type: 3}
+  m_Name: HairLossGeneric Female
+  m_EditorClassIdentifier: 
+  PossibleEmails:
+    Items:
+    - SubjectLine: get her :)
+      SenderAddress: bad.leondrea @ EPS Box 5968
+      Body: me and my girl like to prank each other LOL and this seemed really funny
+    - SubjectLine: MORTAL ENEMY
+      SenderAddress: dreamy_stephanie @ Exavier's Excellent E-Mail Emporium
+      Body: my MORTAL ENEMY is dancing for the talent show and THIS TIME I won't
+        lose :)
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  PossibleInvoices:
+    Items:
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
+        TargetName: Robin Andrew
+      FullDaysToComplete: 0
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
+        TargetName: Terri Swift
+      FullDaysToComplete: 0
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0

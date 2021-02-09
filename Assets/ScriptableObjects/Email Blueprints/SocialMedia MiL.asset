@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe6125eab59e524e82d143f4cb62d09, type: 3}
+  m_Name: SocialMedia MiL
+  m_EditorClassIdentifier: 
+  PossibleEmails:
+    Items:
+    - SubjectLine: Mother In Law
+      SenderAddress: concentrated_philip @ Orange County Florida
+      Body: My MiL is always getting on arguments on Firebird. Not only do her opinions
+        suck, but she literally always loses. Maybe if she posts some cringey stuff
+        and loses subscribers she'll stop? Honestly IDK I'm just so done with her
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  PossibleInvoices:
+    Items:
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: f107df0718d644f7f934d83a84271486, type: 2}
+        TargetName: Edith Werner on firebird
+      FullDaysToComplete: 0
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0

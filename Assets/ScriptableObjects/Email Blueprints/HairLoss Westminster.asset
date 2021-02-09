@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe6125eab59e524e82d143f4cb62d09, type: 3}
+  m_Name: HairLoss Westminster
+  m_EditorClassIdentifier: 
+  PossibleEmails:
+    Items:
+    - SubjectLine: Curse Request
+      SenderAddress: mialynch @ The Oak Tree on the Hill
+      Body: Archie thought he could get away with his weird little sabotage at Westminster
+        last year, but boy oh boy did I see right through him. Well, he has a date
+        tonight, his first in years, so let's see how much he likes being humiliated.
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  PossibleInvoices:
+    Items:
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: b21f7c3000f1c41af97a79d1565f185e, type: 2}
+        TargetName: Archie Blake
+      FullDaysToComplete: 0
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0

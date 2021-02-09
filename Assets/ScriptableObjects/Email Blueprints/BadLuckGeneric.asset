@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe6125eab59e524e82d143f4cb62d09, type: 3}
+  m_Name: BadLuckGeneric
+  m_EditorClassIdentifier: 
+  PossibleEmails:
+    Items:
+    - SubjectLine: really annoying
+      SenderAddress: nikos.meyer @ Southgate, Missouri 8758 W. Wrangler Court
+      Body: wanna curse the weird kid in my french class. he's just really annoying.
+        I can't wait to see the look on his face when I tell him what I did
+    - SubjectLine: Revenge
+      SenderAddress: sebastia.likes.art @ 2 Miles Avenue Duluth Georgia
+      Body: This asshole who lives next door to me trashed my yard for no reason.
+        Also I hate his stupid yappy dog.
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  PossibleInvoices:
+    Items:
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
+        TargetName: Drew Guy
+      FullDaysToComplete: 0
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
+        TargetName: Howard Sharples
+      FullDaysToComplete: 0
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
