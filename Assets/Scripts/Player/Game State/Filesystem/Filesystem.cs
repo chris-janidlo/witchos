@@ -8,7 +8,7 @@ using UnityEngine;
 namespace WitchOS
 {
     [CreateAssetMenu(menuName = "WitchOS/Filesystem", fileName = "NewFilesystem.asset")]
-    public class Filesystem : ScriptableObject
+    public class Filesystem : InitializableSO
     {
         public Directory RootDirectory => SaveData.Value;
         public string RootPath => GetPathOfFile(RootDirectory);
@@ -21,7 +21,7 @@ namespace WitchOS
 
         Dictionary<FileBase, Directory> parentCache;
 
-        public void Initialize ()
+        public override void Initialize ()
         {
             SaveManager.Register(SaveData);
 
