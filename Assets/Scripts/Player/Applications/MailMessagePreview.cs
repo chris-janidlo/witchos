@@ -22,7 +22,7 @@ namespace WitchOS
         void Update ()
         {
             // TODO: when moving to atoms implementation, make this not poll-y
-            Label.text = (entry.Read ? "" : "* ") + entry.Contents.AnnotatedSubject + " - " + entry.Contents.EmailData.Value.SenderAddress;
+            Label.text = (entry.Read ? "" : "* ") + entry.Contents.AnnotatedSubject + " - " + entry.Contents.SenderAddress;
         }
 
         public void SetMailEntry (MailState.Entry entry)

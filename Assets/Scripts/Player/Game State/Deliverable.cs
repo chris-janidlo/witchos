@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace WitchOS
 {
-    public abstract class Deliverable : ScriptableObject
+    [Serializable, DataContract]
+    public abstract class Deliverable
     {
         public abstract int AdjustedPrice { get; }
         public abstract string EmailAttachment ();
@@ -15,8 +16,7 @@ namespace WitchOS
     [Serializable, DataContract]
     public abstract class Deliverable<T> : Deliverable, IEquatable<Deliverable<T>> where T : Service
     {
-        [DataMember]
-        public T Service;
+        public abstract T Service { get; }
 
         public override int AdjustedPrice => Service.BasePrice;
 

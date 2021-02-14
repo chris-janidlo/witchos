@@ -25,7 +25,7 @@ namespace WitchOS
 
         protected string makeEmailText (Email email)
         {
-            return $"Subject: {email.EmailData.Value.SubjectLine}\n{SEPARATOR}\n\n{email.EmailData.Value.Body}";
+            return $"Subject: {email.SubjectLine}\n{SEPARATOR}\n\n{email.Body}";
         }
     }
 }

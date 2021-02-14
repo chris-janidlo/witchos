@@ -82,7 +82,7 @@ namespace WitchOS
 
         public void OpenPageID (string pageID)
         {
-            OpenPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d2/{pageID}") ?? PageNotFoundPage);
+            OpenPage(SOLookupTable.Instance.GetAsset<WikiPageData>($"d0/{pageID}") ?? PageNotFoundPage);
         }
 
         public void OpenPage (WikiPageData page)

@@ -32,12 +32,7 @@ namespace WitchOS
 
         protected void castAt (string target)
         {
-            SpellDeliverable spellDeliverable = ScriptableObject.CreateInstance(typeof(SpellDeliverable)) as SpellDeliverable;
-            spellDeliverable.name = $"in-memory cast of {PrettyName} at {target}";
-            spellDeliverable.Service = this;
-            spellDeliverable.TargetName = target;
-
-            SpellEther.Add(spellDeliverable);
+            SpellEther.Add(new SpellDeliverable(this, target));
         }
 
         // for spooky effects

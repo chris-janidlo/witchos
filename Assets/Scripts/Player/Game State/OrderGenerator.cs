@@ -9,7 +9,7 @@ namespace WitchOS
     public class OrderGenerator : MonoBehaviour
     {
         [Serializable]
-        public class OrderBag : BagRandomizer<OrderData> { }
+        public class OrderBag : BagRandomizer<EmailBlueprint> { }
 
         public OrderBag PossibleOrders;
         public List<int> OrdersToSpawnByDifficulty;
@@ -38,7 +38,7 @@ namespace WitchOS
 
             while (MailState.Instance.OrdersInProgress < spawnCount)
             {
-                MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateOrder());
+                MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateEmail());
             }
         }
 
