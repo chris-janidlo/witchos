@@ -28,6 +28,7 @@ namespace WitchOS
         
         public MailSaveData SaveData;
         public SaveManager SaveManager;
+        public TimeState TimeState;
 
         void Awake ()
         {
@@ -70,7 +71,7 @@ namespace WitchOS
         {
             foreach (Order order in SaveData.Value.Select(entry => entry.Contents).Where(e => e is Order))
             {
-                if (order.State == OrderState.InProgress && order.DueDate.Date <= TimeState.Instance.DateTime.Date)
+                if (order.State == OrderState.InProgress && order.DueDate.Date <= TimeState.DateTime.Date)
                     order.State = OrderState.Failed;
             }
         }

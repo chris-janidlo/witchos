@@ -10,8 +10,9 @@ namespace WitchOS
     public class HairLossSpell : Spell
     {
         public EnvironmentVariableState EnvironmentVariableState;
+        public TimeState TimeState;
 
-        int requiredMirrors => TimeState.Instance.GetTodaysMoonPhase().IsWaning()
+        int requiredMirrors => TimeState.GetTodaysMoonPhase().IsWaning()
             ? 2
             : 1;
 

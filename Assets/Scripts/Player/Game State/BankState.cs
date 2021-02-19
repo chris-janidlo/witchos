@@ -19,6 +19,7 @@ namespace WitchOS
         public IReadOnlyList<BankTransaction> Transactions => TransactionData.Value.AsReadOnly();
 
         public SaveManager SaveManager;
+        public TimeState TimeState;
 
         void Awake ()
         {
@@ -49,7 +50,7 @@ namespace WitchOS
                 InitialCurrency = CurrentBalance,
                 DeltaCurrency = cappedDelta,
                 Description = description,
-                Date = new SaveableDate(TimeState.Instance.DateTime.Date)
+                Date = new SaveableDate(TimeState.DateTime.Date)
             };
 
             TransactionData.Value.Add(transaction);

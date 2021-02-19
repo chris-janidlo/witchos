@@ -9,12 +9,14 @@ namespace WitchOS
     {
         public Animator Animator;
         public string HighlightBool, OnBool, OffAnimation;
+        
+        public TimeState TimeState;
 
         bool mouseOver;
 
         void Start ()
         {
-            TimeState.Instance.DayEnded.AddListener(() =>
+            TimeState.DayEnded.AddListener(() =>
             {
                 Animator.Play(OffAnimation);
             });

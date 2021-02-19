@@ -12,10 +12,12 @@ namespace WitchOS
         [TextArea]
         public string Format = "dddd MMMM dd";
         public TextMeshProUGUI Text;
+        
+        public TimeState TimeState;
 
         void Update ()
         {
-            Text.text = TimeState.Instance.DateTime.ToString(Format, TimeState.CULTURE_INFO);
+            Text.text = TimeState.DateTime.ToString(Format, TimeState.CULTURE_INFO);
         }
     }
 }
