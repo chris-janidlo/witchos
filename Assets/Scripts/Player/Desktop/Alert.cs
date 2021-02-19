@@ -15,6 +15,8 @@ namespace WitchOS
         public TextMeshProUGUI Text;
         public CanvasGroup Group;
 
+        public TimeState TimeState;
+
         LinkedList<string> messageQueue = new LinkedList<string>();
 
         float showTimer = -1;
@@ -29,6 +31,8 @@ namespace WitchOS
         {
             FadeoutTransition.AttachMonoBehaviour(this);
             Group.alpha = 0;
+
+            TimeState.DayEnded.AddListener(ClearMessages);
         }
 
         void Update ()

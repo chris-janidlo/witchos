@@ -19,16 +19,19 @@ namespace WitchOS
         {
             idleAnimationNameHash = Animator.StringToHash(IdleStateName);
             shutDownAnimationNameHash = Animator.StringToHash(ShutDownStateName);
+
+            TimeState.DayStarted.AddListener(startUp);
+            TimeState.DayEnded.AddListener(shutDown);
         }
 
-        public void ShutDown ()
-        {
-            StartCoroutine(shutDownRoutine());
-        }
-
-        public void StartUp ()
+        void startUp ()
         {
             StartCoroutine(startUpRoutine());
+        }
+
+        void shutDown ()
+        {
+            StartCoroutine(shutDownRoutine());
         }
 
         IEnumerator shutDownRoutine ()

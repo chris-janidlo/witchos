@@ -33,19 +33,17 @@ namespace WitchOS
 
         public UnityEvent PowerTurnedOn, PowerTurnedDepleted;
 
+        public TimeState TimeState;
+
         void Awake ()
         {
             SingletonOverwriteInstance(this);
         }
 
-        public void StartDay ()
+        void Start ()
         {
-            CurrentState = State.Off;
-        }
-
-        public void EndDay ()
-        {
-            StopAllCoroutines();
+            TimeState.DayStarted.AddListener(() => CurrentState = State.Off);
+            TimeState.DayEnded.AddListener(StopAllCoroutines);
         }
 
         public void TurnOn ()

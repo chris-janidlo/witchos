@@ -41,6 +41,11 @@ namespace WitchOS
             }
         }
 
+        void Start ()
+        {
+            TimeState.DayEnded.AddListener(failOverdueOrders);
+        }
+
         public void AddEmail (Email email)
         {
             SaveData.Value.Add(new Entry { Contents = email, Read = false });
@@ -67,7 +72,7 @@ namespace WitchOS
             }
         }
 
-        public void FailOverdueOrders ()
+        void failOverdueOrders ()
         {
             foreach (Order order in SaveData.Value.Select(entry => entry.Contents).Where(e => e is Order))
             {

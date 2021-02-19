@@ -11,6 +11,13 @@ namespace WitchOS
 
         public IntVariable NumBrokenMirrors, NumIntactMirrors;
 
+        public TimeState TimeState;
+
+        void Start ()
+        {
+            TimeState.DayStarted.AddListener(resetMirrorStates);
+        }
+
         void Update ()
         {
             foreach (var mirror in Mirrors)
@@ -39,17 +46,17 @@ namespace WitchOS
             target.ConsumeMagic();
         }
 
-        public void ResetMirrorStates ()
+        public int NumberInState (Mirror.State state)
+        {
+            return Mirrors.Count(m => m.CurrentState == state);
+        }
+
+        void resetMirrorStates ()
         {
             foreach (var mirror in Mirrors)
             {
                 mirror.CurrentState = Mirror.State.Intact;
             }
-        }
-
-        public int NumberInState (Mirror.State state)
-        {
-            return Mirrors.Count(m => m.CurrentState == state);
         }
     }
 }

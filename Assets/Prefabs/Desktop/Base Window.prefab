@@ -528,6 +528,7 @@ MonoBehaviour:
   CloseButton: {fileID: 1707194483545304232}
   FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
     type: 2}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &4962879820087878725
 MonoBehaviour:
   m_ObjectHideFlags: 0

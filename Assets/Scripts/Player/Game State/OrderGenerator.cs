@@ -17,6 +17,8 @@ namespace WitchOS
         public int TasksCompletedToday;
 
         public IntSaveData DifficultyLevelSaveData;
+
+        public TimeState TimeState;
         public SaveManager SaveManager;
 
         public int CurrentDifficultyLevel
@@ -30,16 +32,7 @@ namespace WitchOS
         void Start ()
         {
             SaveManager.Register(DifficultyLevelSaveData);
-        }
-
-        public void GenerateOrders ()
-        {
-            TasksCompletedToday = 0;
-
-            while (MailState.Instance.OrdersInProgress < spawnCount)
-            {
-                MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateEmail());
-            }
+            TimeState.DayStarted.AddListener(generateOrders);
         }
 
         public void CountCompletedOrder ()
@@ -49,6 +42,16 @@ namespace WitchOS
             if (TasksCompletedToday >= spawnCount && CurrentDifficultyLevel < OrdersToSpawnByDifficulty.Count - 1)
             {
                 CurrentDifficultyLevel++;
+            }
+        }
+
+        void generateOrders ()
+        {
+            TasksCompletedToday = 0;
+
+            while (MailState.Instance.OrdersInProgress < spawnCount)
+            {
+                MailState.Instance.AddEmail(PossibleOrders.GetNext().GenerateEmail());
             }
         }
     }

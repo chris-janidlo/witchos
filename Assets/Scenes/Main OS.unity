@@ -5987,7 +5987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 366452592}
   OpenButton: {fileID: 661162548}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &375469716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,7 +6100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 375469722}
   OpenButton: {fileID: 1770187191}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &375469722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6135,7 +6135,7 @@ MonoBehaviour:
   HighlightBool: Highlighted
   OnBool: On
   OffAnimation: metatron_Off
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &390271307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,7 +6483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 549673969}
   OpenButton: {fileID: 78792651}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &549673971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6499,7 +6499,7 @@ MonoBehaviour:
   Yes: {fileID: 271660762}
   No: {fileID: 194130960}
   Minimizer: {fileID: 549673969}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &552582519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,6 +7036,7 @@ MonoBehaviour:
     Ease: 10
   Text: {fileID: 2005549497}
   Group: {fileID: 928421104}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!225 &928421104
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7311,7 +7312,7 @@ MonoBehaviour:
   AnimatorTrigger: Activate Power Change
   IdleStateName: Idle
   ShutDownStateName: Shut Down
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!223 &958862123
 Canvas:
   m_ObjectHideFlags: 0
@@ -7832,7 +7833,7 @@ MonoBehaviour:
       it to be null
     FileName: mail
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &1352642455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7889,6 +7890,7 @@ MonoBehaviour:
   PowerTurnedDepleted:
     m_PersistentCalls:
       m_Calls: []
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &1352642457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7942,7 +7944,7 @@ MonoBehaviour:
       Date:
         dateString: 10/13/2000 12:00:00 AM
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1398068856
 GameObject:
   m_ObjectHideFlags: 0
@@ -9093,7 +9095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Format: dddd MMMM dd
   Text: {fileID: 1900628309}
-  TimeState: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1902420324
 GameObject:
   m_ObjectHideFlags: 0
