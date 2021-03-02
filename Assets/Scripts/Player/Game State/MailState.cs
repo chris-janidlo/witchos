@@ -39,10 +39,7 @@ namespace WitchOS
             {
                 SaveData.Value = new List<Entry>();
             }
-        }
 
-        void Start ()
-        {
             TimeState.DayEnded.AddListener(failOverdueOrders);
         }
 

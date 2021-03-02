@@ -15,7 +15,7 @@ namespace WitchOS
 
         int idleAnimationNameHash, shutDownAnimationNameHash;
 
-        void Start ()
+        void Awake ()
         {
             idleAnimationNameHash = Animator.StringToHash(IdleStateName);
             shutDownAnimationNameHash = Animator.StringToHash(ShutDownStateName);

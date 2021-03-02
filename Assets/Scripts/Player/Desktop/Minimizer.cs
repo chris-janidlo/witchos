@@ -15,14 +15,16 @@ namespace WitchOS
 
         Vector2 unminimizedLocation;
 
+        void Awake ()
+        {
+            Transition.AttachMonoBehaviour(this);
+            Transition.Value = MinimizedAtStart ? 0 : 1;
+        }
+
         void Start ()
         {
             unminimizedLocation = transform.position;
-
             Minimized = MinimizedAtStart;
-
-            Transition.AttachMonoBehaviour(this);
-            Transition.Value = Minimized ? 0 : 1;
         }
 
         // Update is called once per frame

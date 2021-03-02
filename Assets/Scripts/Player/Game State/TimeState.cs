@@ -33,8 +33,6 @@ namespace WitchOS
 
         public UnityEvent DayStarted, DayEnded;
 
-        public SpellDeliverableValueList SpellEther;
-
         public DateTimeSaveData DateTimeSaveData;
         public SaveManager SaveManager;
 
@@ -48,8 +46,6 @@ namespace WitchOS
         public void EndDay ()
         {
             DayEnded.Invoke();
-
-            SpellEther.Clear();
             DateTime = AddDaysToToday(1);
 
             SaveManager.SaveAllData();

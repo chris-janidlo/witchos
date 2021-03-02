@@ -15,10 +15,14 @@ namespace WitchOS
 
         bool mouseOver;
 
+        void Awake ()
+        {
+            TimeState.DayStarted.AddListener(Minimizer.Minimize);
+        }
+
         void Start ()
         {
             OpenButton.onClick.AddListener(Minimizer.UnMinimize);
-            TimeState.DayStarted.AddListener(Minimizer.Minimize);
         }
 
         void Update ()

@@ -5987,6 +5987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 366452592}
   OpenButton: {fileID: 661162548}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &375469716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,6 +6100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 375469722}
   OpenButton: {fileID: 1770187191}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &375469722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6133,6 +6135,7 @@ MonoBehaviour:
   HighlightBool: Highlighted
   OnBool: On
   OffAnimation: metatron_Off
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &390271307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,6 +6483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Minimizer: {fileID: 549673969}
   OpenButton: {fileID: 78792651}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &549673971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,7 +6499,7 @@ MonoBehaviour:
   Yes: {fileID: 271660762}
   No: {fileID: 194130960}
   Minimizer: {fileID: 549673969}
-  DayEnded: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &552582519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7032,6 +7036,7 @@ MonoBehaviour:
     Ease: 10
   Text: {fileID: 2005549497}
   Group: {fileID: 928421104}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!225 &928421104
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7307,7 +7312,7 @@ MonoBehaviour:
   AnimatorTrigger: Activate Power Change
   IdleStateName: Idle
   ShutDownStateName: Shut Down
-  DayStarted: {fileID: 0}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!223 &958862123
 Canvas:
   m_ObjectHideFlags: 0
@@ -7677,6 +7682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268235164}
+  - component: {fileID: 1268235165}
   m_Layer: 0
   m_Name: Desktop Manager Objects
   m_TagString: Untagged
@@ -7703,6 +7709,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268235165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268235163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76cb75460cdf1b43bf67835e884d12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScriptableObjects:
+  - {fileID: 11400000, guid: 8a43ac4da0e3f164a9cbbb053f8bff31, type: 2}
+  - {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1271401359
 GameObject:
   m_ObjectHideFlags: 0
@@ -7951,7 +7972,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1368076395}
   - component: {fileID: 1368076397}
-  - component: {fileID: 1368076396}
   m_Layer: 0
   m_Name: Spell Ether Initializer
   m_TagString: Untagged
@@ -7973,43 +7993,6 @@ Transform:
   m_Father: {fileID: 1268235164}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1368076396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368076394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _developerDescription: 
-  _unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1368076397}
-        m_MethodName: OnDayEnded
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _actionResponses: []
-  _replayEventBufferOnRegister: 1
-  _eventReference:
-    _usage: 0
-    _event: {fileID: 11400000, guid: 2a2647e0fc751a741b9070b2585dcaa4, type: 2}
-    _eventInstancer: {fileID: 0}
-    _collection: {fileID: 0}
-    _list: {fileID: 0}
-    _collectionInstancer: {fileID: 0}
-    _listInstancer: {fileID: 0}
 --- !u!114 &1368076397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8023,6 +8006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1398068856
 GameObject:
   m_ObjectHideFlags: 0

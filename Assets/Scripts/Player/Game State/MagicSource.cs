@@ -38,10 +38,7 @@ namespace WitchOS
         void Awake ()
         {
             SingletonOverwriteInstance(this);
-        }
 
-        void Start ()
-        {
             TimeState.DayStarted.AddListener(() => CurrentState = State.Off);
             TimeState.DayEnded.AddListener(StopAllCoroutines);
         }

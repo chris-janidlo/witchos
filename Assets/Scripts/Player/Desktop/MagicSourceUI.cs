@@ -14,12 +14,9 @@ namespace WitchOS
 
         bool mouseOver;
 
-        void Start ()
+        void Awake ()
         {
-            TimeState.DayEnded.AddListener(() =>
-            {
-                Animator.Play(OffAnimation);
-            });
+            TimeState.DayEnded.AddListener(() => Animator.Play(OffAnimation));
         }
 
         void Update ()

@@ -9,14 +9,12 @@ namespace WitchOS
     {
         public SpellDeliverableValueList SpellEther;
 
+        public TimeState TimeState;
+
         void Awake ()
         {
             SpellEther.Clear();
-        }
-
-        public void OnDayEnded ()
-        {
-            SpellEther.Clear();
+            TimeState.DayEnded.AddListener(SpellEther.Clear);
         }
     }
 }

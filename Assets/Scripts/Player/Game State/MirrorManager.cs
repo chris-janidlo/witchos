@@ -13,7 +13,7 @@ namespace WitchOS
 
         public TimeState TimeState;
 
-        void Start ()
+        void Awake ()
         {
             TimeState.DayStarted.AddListener(resetMirrorStates);
         }

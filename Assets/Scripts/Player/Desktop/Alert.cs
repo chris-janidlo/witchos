@@ -25,14 +25,13 @@ namespace WitchOS
         void Awake ()
         {
             SingletonOverwriteInstance(this);
+            TimeState.DayEnded.AddListener(ClearMessages);
         }
 
         void Start ()
         {
             FadeoutTransition.AttachMonoBehaviour(this);
             Group.alpha = 0;
-
-            TimeState.DayEnded.AddListener(ClearMessages);
         }
 
         void Update ()

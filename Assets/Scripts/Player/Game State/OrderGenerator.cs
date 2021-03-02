@@ -29,7 +29,7 @@ namespace WitchOS
 
         int spawnCount => OrdersToSpawnByDifficulty[CurrentDifficultyLevel];
 
-        void Start ()
+        void Awake ()
         {
             SaveManager.Register(DifficultyLevelSaveData);
             TimeState.DayStarted.AddListener(generateOrders);
