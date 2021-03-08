@@ -273,6 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IconImage: {fileID: 1637483633571634754}
   LabelText: {fileID: 1637483633865795129}
+  DesktopIconBeganDragging: {fileID: 11400000, guid: e88e4246ce02abb4da6e3461b3c0959b,
+    type: 2}
   FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
     type: 2}
 --- !u!114 &1637483633814612780
