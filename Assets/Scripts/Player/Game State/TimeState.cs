@@ -9,14 +9,9 @@ using crass;
 
 namespace WitchOS
 {
-    public class TimeState : Singleton<TimeState>
+    [CreateAssetMenu(menuName = "WitchOS/Time State", fileName = "newTimeState.asset")]
+    public class TimeState : InitializableSO
     {
-        // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
-        public static readonly DateTime INITIAL_DATE = new DateTime(2000, 10, 13);
-
-        // loop the calendar back to 2000 at the end of 2010, since 01/01/2000 is a Saturday and 12/31/2010 is the first Friday December 31st to occur afterward
-        public static readonly DateTime FINAL_DATE = new DateTime(2010, 12, 31);
-
         // for consistent formatting across the game
         public static readonly CultureInfo CULTURE_INFO = CultureInfo.CreateSpecificCulture("en-US");
 
@@ -26,22 +21,24 @@ namespace WitchOS
             private set => DateTimeSaveData.Value.Value = value;
         }
 
-        public UnityEvent DayStarted, DayEnded;
+        // Friday the 13th in October, also happens to be a full moon, and on the brink of the millennium, pretty neat
+        [SerializeField]
+        SaveableDate _initialDate = new SaveableDate(new DateTime(2000, 10, 13));
+        public DateTime InitialDate => _initialDate.Value;
 
-        public SpellDeliverableValueList SpellEther;
+        // loop the calendar back to 2000 at the end of 2010, since 01/01/2000 is a Saturday and 12/31/2010 is the first Friday December 31st to occur afterward
+        [SerializeField]
+        SaveableDate _finalDate = new SaveableDate(new DateTime(2010, 12, 31));
+        public DateTime FinalDate => _finalDate.Value;
+
+        public UnityEvent DayStarted, DayEnded;
 
         public DateTimeSaveData DateTimeSaveData;
         public SaveManager SaveManager;
 
-        void Awake ()
-        {
-            SingletonSetPersistantInstance(this);
-        }
-
-        void Start ()
+        public override void Initialize ()
         {
             SaveManager.Register(DateTimeSaveData);
-
             StartNewDay();
         }
 
@@ -49,8 +46,6 @@ namespace WitchOS
         public void EndDay ()
         {
             DayEnded.Invoke();
-
-            SpellEther.Clear();
             DateTime = AddDaysToToday(1);
 
             SaveManager.SaveAllData();
@@ -64,16 +59,16 @@ namespace WitchOS
         // yeah yeah smelly I know
         public MoonPhase GetTodaysMoonPhase ()
         {
-            int daysElapsed = (DateTime.Date - INITIAL_DATE.Date).Days;
+            int daysElapsed = (DateTime.Date - InitialDate.Date).Days;
             return (MoonPhase) (daysElapsed % EnumUtil.NameCount<MoonPhase>());
         }
 
         // yeah yeah smelly I know
         public MoonPhase GetTomorrowsMoonPhase ()
         {
-            int daysElapsed = (DateTime.Date == FINAL_DATE.Date)
+            int daysElapsed = (DateTime.Date == FinalDate.Date)
                 ? 1
-                : (DateTime.Date - INITIAL_DATE.Date).Days + 1;
+                : (DateTime.Date - InitialDate.Date).Days + 1;
 
             return (MoonPhase) (daysElapsed % EnumUtil.NameCount<MoonPhase>());
         }
@@ -82,9 +77,14 @@ namespace WitchOS
         {
             var addedRaw = DateTime.AddDays(days).Date;
 
-            return addedRaw.Date > FINAL_DATE.Date
-                ? INITIAL_DATE.AddDays((addedRaw.Date - FINAL_DATE.Date).Days - 1)
+            return addedRaw.Date > FinalDate.Date
+                ? InitialDate.AddDays((addedRaw.Date - FinalDate.Date).Days - 1)
                 : addedRaw.Date;
+        }
+
+        public string PrettyFormatDate (DateTime date)
+        {
+            return date.ToString(CULTURE_INFO);
         }
     }
 }

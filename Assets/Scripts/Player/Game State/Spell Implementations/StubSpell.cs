@@ -10,10 +10,11 @@ namespace WitchOS
     public class StubSpell : Spell
     {
         public EnvironmentVariableState EnvironmentVariableState;
+        public TimeState TimeState;
 
         public override Regex GetRegex ()
         {
-            switch (TimeState.Instance.GetTodaysMoonPhase())
+            switch (TimeState.GetTodaysMoonPhase())
             {
                 case MoonPhase.WaxingGibbous:
                 case MoonPhase.WaningGibbous:
@@ -33,7 +34,7 @@ namespace WitchOS
         {
             string aura = EnvironmentVariableState.GetEnvironmentVariable("aura");
 
-            switch (TimeState.Instance.GetTodaysMoonPhase())
+            switch (TimeState.GetTodaysMoonPhase())
             {
                 case MoonPhase.WaxingGibbous:
                 case MoonPhase.WaningGibbous:
@@ -56,7 +57,7 @@ namespace WitchOS
             string target = EnvironmentVariableState.GetEnvironmentVariable("target");
             string name;
 
-            switch (TimeState.Instance.GetTodaysMoonPhase())
+            switch (TimeState.GetTodaysMoonPhase())
             {
                 case MoonPhase.WaxingGibbous:
                 case MoonPhase.WaningGibbous:

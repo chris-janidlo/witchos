@@ -8,7 +8,7 @@ using UnityEngine;
 namespace WitchOS
 {
     [CreateAssetMenu(menuName = "WitchOS/Filesystem", fileName = "NewFilesystem.asset")]
-    public class Filesystem : ScriptableObject
+    public class Filesystem : InitializableSO
     {
         public Directory RootDirectory => SaveData.Value;
         public string RootPath => GetPathOfFile(RootDirectory);
@@ -21,13 +21,7 @@ namespace WitchOS
 
         Dictionary<FileBase, Directory> parentCache;
 
-        void OnEnable ()
-        {
-            // since this SaveData is stored in this prefab, the data will believe itself to be initialized between editor runs, despite the fact that the initialization is lost. this manually reinitializes for every editor run
-            SaveData?.Initialize();
-        }
-
-        public void Initialize ()
+        public override void Initialize ()
         {
             SaveManager.Register(SaveData);
 

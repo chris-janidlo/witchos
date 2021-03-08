@@ -17,6 +17,8 @@ namespace WitchOS
 
         public EmailDataBag PossibleEmails;
         public InvoiceBag PossibleInvoices;
+        
+        public TimeState TimeState;
 
         void Awake ()
         {
@@ -49,10 +51,9 @@ namespace WitchOS
         {
             var invoice = PossibleInvoices.GetNext();
 
-            // TODO: decouple this
             DateTime dueDate = invoice.FullDaysToComplete < 0
-                ? TimeState.FINAL_DATE.AddDays(7)
-                : TimeState.Instance.AddDaysToToday(invoice.FullDaysToComplete);
+                ? TimeState.FinalDate.AddDays(7)
+                : TimeState.AddDaysToToday(invoice.FullDaysToComplete);
 
             return new Order
             {

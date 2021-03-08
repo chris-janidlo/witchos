@@ -47,7 +47,9 @@ namespace WitchOS
         }
 
         DataContractJsonSerializer serializer;
-        bool dataInitialized;
+
+        [NonSerialized] // fixes issue where ScriptableObjects with SaveData fields persist this field between editor runs, but not the serializer field, which leads to errors when this class assumes there's a serializer but it isn't set
+        bool dataInitialized = false;
 
         public override void WriteDataToFile ()
         {
@@ -64,11 +66,6 @@ namespace WitchOS
         public override void DeleteSaveFile ()
         {
             File.Delete(FilePath);
-        }
-
-        public void Initialize ()
-        {
-            dataInitialized = false;
         }
 
         void initializeData ()

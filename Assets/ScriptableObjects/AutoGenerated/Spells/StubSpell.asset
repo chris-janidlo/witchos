@@ -21,3 +21,4 @@ MonoBehaviour:
     type: 2}
   EnvironmentVariableState: {fileID: 11400000, guid: 7f03f1bbb68d8974daeabf8ee493d456,
     type: 2}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}

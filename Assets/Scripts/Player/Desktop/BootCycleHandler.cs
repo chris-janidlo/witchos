@@ -10,23 +10,28 @@ namespace WitchOS
         public Animator Animator;
         public Image Image;
         public string AnimatorOnStateBool, AnimatorTrigger, IdleStateName, ShutDownStateName;
+        
+        public TimeState TimeState;
 
         int idleAnimationNameHash, shutDownAnimationNameHash;
 
-        void Start ()
+        void Awake ()
         {
             idleAnimationNameHash = Animator.StringToHash(IdleStateName);
             shutDownAnimationNameHash = Animator.StringToHash(ShutDownStateName);
+
+            TimeState.DayStarted.AddListener(startUp);
+            TimeState.DayEnded.AddListener(shutDown);
         }
 
-        public void ShutDown ()
-        {
-            StartCoroutine(shutDownRoutine());
-        }
-
-        public void StartUp ()
+        void startUp ()
         {
             StartCoroutine(startUpRoutine());
+        }
+
+        void shutDown ()
+        {
+            StartCoroutine(shutDownRoutine());
         }
 
         IEnumerator shutDownRoutine ()
@@ -39,7 +44,7 @@ namespace WitchOS
             yield return new WaitUntil(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash == shutDownAnimationNameHash);
             yield return new WaitUntil(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash == idleAnimationNameHash);
 
-            TimeState.Instance.StartNewDay();
+            TimeState.StartNewDay();
         }
 
         IEnumerator startUpRoutine ()

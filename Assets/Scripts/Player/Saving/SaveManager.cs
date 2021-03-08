@@ -13,7 +13,7 @@ namespace WitchOS
     {
         HashSet<SaveData> allDataObjects = new HashSet<SaveData>();
 
-        public void Register (SaveData saveData)
+        public virtual void Register (SaveData saveData)
         {
             if (allDataObjects.Contains(saveData)) return;
 
@@ -25,7 +25,7 @@ namespace WitchOS
             allDataObjects.Add(saveData);
         }
 
-        public void SaveAllData ()
+        public virtual void SaveAllData ()
         {
             foreach (var dataObject in allDataObjects)
             {
@@ -33,7 +33,7 @@ namespace WitchOS
             }
         }
 
-        public void DeleteAllSaveData ()
+        public virtual void DeleteAllSaveData ()
         {
             foreach (var dataObject in allDataObjects)
             {
@@ -44,11 +44,11 @@ namespace WitchOS
 #elif UNITY_WEBGL
     public class SaveManager : ScriptableObject
     {
-        public void Register (SaveData saveData) { }
+        public virtual void Register (SaveData saveData) { }
 
-        public void SaveAllData () { }
+        public virtual void SaveAllData () { }
 
-        public void DeleteAllSaveData () { }
+        public virtual void DeleteAllSaveData () { }
     }
 #endif // UNITY_WEBGL
 }

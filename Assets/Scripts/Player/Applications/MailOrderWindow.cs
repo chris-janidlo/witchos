@@ -18,6 +18,7 @@ namespace WitchOS
 
         public OrderEvent OrderTurnedIn;
         public SpellDeliverableValueList SpellEther;
+        public TimeState TimeState;
 
         Order order;
 
@@ -50,7 +51,7 @@ namespace WitchOS
             string emailContent =
                 $"{makeEmailText(order)}\n\n\nAttachment: Invoice #{order.Invoice.OrderNumber}\n{SEPARATOR}";
 
-            if (order.DueDate.Date <= TimeState.FINAL_DATE)
+            if (order.DueDate.Date <= TimeState.FinalDate)
                 emailContent += $"\nDue {order.DueDate.ToString(DateFormat, TimeState.CULTURE_INFO)}";
             else
                 emailContent += "\nNo Specified Due Date";

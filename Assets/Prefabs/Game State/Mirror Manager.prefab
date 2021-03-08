@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1e63c60e48209a4e97acf0bdd475817, type: 2}
   NumBrokenMirrors: {fileID: 11400000, guid: 4535d5e89dc0642469c9d8b74cab379d, type: 2}
   NumIntactMirrors: {fileID: 11400000, guid: b3b2ddd4f0fda614ba2a25f232460bf1, type: 2}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &4796362446820302530
 MonoBehaviour:
   m_ObjectHideFlags: 0

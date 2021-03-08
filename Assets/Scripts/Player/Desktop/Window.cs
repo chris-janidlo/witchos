@@ -47,6 +47,7 @@ namespace WitchOS
         public Button MinimizeButton, CloseButton;
 
         public FileAssociationConfig FileAssociationConfig;
+        public TimeState TimeState;
 
         TaskBarButton taskBarButton;
 
@@ -102,7 +103,7 @@ namespace WitchOS
 
         public void Close ()
         {
-            TimeState.Instance.DayEnded.RemoveListener(Close);
+            TimeState.DayEnded.RemoveListener(Close);
             Destroy(gameObject);
             if (taskBarButton != null) Destroy(taskBarButton.gameObject);
 

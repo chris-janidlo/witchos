@@ -11,12 +11,18 @@ namespace WitchOS
         public Minimizer Minimizer;
         public Button OpenButton;
 
+        public TimeState TimeState;
+
         bool mouseOver;
+
+        void Awake ()
+        {
+            TimeState.DayStarted.AddListener(Minimizer.Minimize);
+        }
 
         void Start ()
         {
             OpenButton.onClick.AddListener(Minimizer.UnMinimize);
-            TimeState.Instance.DayStarted.AddListener(Minimizer.Minimize);
         }
 
         void Update ()

@@ -9,10 +9,12 @@ namespace WitchOS
     {
         public Button Yes, No;
         public Minimizer Minimizer;
+        
+        public TimeState TimeState;
 
         void Start ()
         {
-            Yes.onClick.AddListener(TimeState.Instance.EndDay);
+            Yes.onClick.AddListener(TimeState.EndDay);
             No.onClick.AddListener(Minimizer.Minimize);
         }
     }

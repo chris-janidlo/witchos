@@ -13,11 +13,13 @@ namespace WitchOS
         public Image PhaseIconImage;
         public TextMeshProUGUI TodayPhase, TomorrowPhase;
 
+        public TimeState TimeState;
+
         void Update ()
         {
             MoonPhase
-                today = TimeState.Instance.GetTodaysMoonPhase(),
-                tomorrow = TimeState.Instance.GetTomorrowsMoonPhase();
+                today = TimeState.GetTodaysMoonPhase(),
+                tomorrow = TimeState.GetTomorrowsMoonPhase();
 
             TodayPhase.text = today.ToString(true);
             TomorrowPhase.text = tomorrow.ToString(true);
