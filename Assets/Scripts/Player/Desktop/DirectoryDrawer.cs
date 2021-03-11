@@ -22,8 +22,8 @@ namespace WitchOS
 
         public void AddIcon (DesktopIcon icon)
         {
+            Filesystem.MoveFile(icon.File, directory); // this should always happen first, so that any exceptions can happen before we change anything else
             icon.transform.SetParent(DesktopIconParent, true);
-            Filesystem.MoveFile(icon.File, directory);
         }
 
         void spawnIcons ()
