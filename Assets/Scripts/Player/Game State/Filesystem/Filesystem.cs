@@ -87,20 +87,10 @@ namespace WitchOS
                 throw new FileDoesNotExistException($"file {file.Name} does not exist in this filesystem");
             }
 
-            string path = file.Name + (file is Directory ? PathSeparator : "");
+            var ancestorNames = traverseAncestors(file).Reverse().Select(f => f.Name);
+            var pathSuffix = file is Directory ? PathSeparator : "";
 
-            if (file == RootDirectory) return path;
-
-            Directory currentDirectory = parentCache[file];
-
-            while (currentDirectory != RootDirectory)
-            {
-                path = currentDirectory.Name + PathSeparator + path;
-                currentDirectory = parentCache[currentDirectory];
-            }
-
-            path = RootDirectory.Name + PathSeparator + path;
-            return path;
+            return string.Join(PathSeparator, ancestorNames) + pathSuffix;
         }
 
         public void RenameFile (string filePath, string name)
@@ -152,6 +142,7 @@ namespace WitchOS
 
         public void AddFile (FileBase file, Directory parent)
         {
+            throwIfWouldCreateCircularStructure(file, parent);
             validateFileToBeAdded(file);
 
             if (!FileExistsInFilesystem(parent))
@@ -168,16 +159,21 @@ namespace WitchOS
             trackFileAndAnyChildren(file, parent);
         }
 
-        public void MoveFile (string fromPath, string toPath, bool deep = false)
+        public void MoveFile (string fromPath, string parentDirectoryPath, bool deep = false)
         {
             var file = GetFileAtPath(fromPath);
-            MoveFile(file, toPath, deep);
+            MoveFile(file, parentDirectoryPath, deep);
         }
 
-        public void MoveFile (FileBase file, string toPath, bool deep = false)
+        public void MoveFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
+            if (GetFileAtPath(parentDirectoryPath) is Directory dir)
+            {
+                throwIfWouldCreateCircularStructure(file, dir);
+            }
+
             RemoveFile(file);
-            AddFile(file, toPath, deep);
+            AddFile(file, parentDirectoryPath, deep);
         }
 
         public void MoveFile (string fromPath, Directory newParent)
@@ -188,6 +184,7 @@ namespace WitchOS
 
         public void MoveFile (FileBase file, Directory newParent)
         {
+            throwIfWouldCreateCircularStructure(file, newParent);
             RemoveFile(file);
             AddFile(file, newParent);
         }
@@ -256,6 +253,20 @@ namespace WitchOS
             }
         }
 
+        // assumes file is in filesystem
+        IEnumerable<FileBase> traverseAncestors (FileBase file)
+        {
+            FileBase currentFile = file;
+
+            while (currentFile != RootDirectory)
+            {
+                yield return currentFile;
+                currentFile = parentCache[currentFile];
+            }
+
+            yield return currentFile; // this should always be the root
+        }
+
         string[] splitPath (string path)
         {
             validatePath(path);
@@ -310,6 +321,23 @@ namespace WitchOS
                 {
                     throw new InvalidPathException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
                 }
+            }
+        }
+
+        void throwIfWouldCreateCircularStructure (FileBase file, Directory targetParent)
+        {
+            // wish I could use pattern matching here but Unity won't let me :(
+            var directory = file as Directory;
+            if (directory == null) return;
+
+            if (directory == targetParent)
+            {
+                throw new CircularDirectoryStructureException($"cannot add directory {directory.Name} to itself");
+            }
+
+            if (traverseAncestors(targetParent).Contains(directory))
+            {
+                throw new CircularDirectoryStructureException($"cannot add {directory.Name} to directory {targetParent.Name} because {targetParent.Name} is a descendant of {directory.Name}");
             }
         }
 

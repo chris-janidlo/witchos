@@ -264,6 +264,30 @@ namespace WitchOS.Tests
             Assert.That(filesystem.FileExistsInFilesystem(fileA), Is.False, "file A should no longer exist in the filesystem");
             Assert.That(filesystem.FileExistsInFilesystem(fileB), Is.False, "file B should no longer exist in the filesystem");
         }
+
+        [Test]
+        public void Cant_AddDirectory_ToItself ()
+        {
+            Assert.That(() => filesystem.AddFile(filesystem.RootDirectory, filesystem.RootDirectory), Throws.InstanceOf<CircularDirectoryStructureException>());
+        }
+
+        [Test]
+        public void Cant_MoveDirectory_ToItself ()
+        {
+            Assert.That(() => filesystem.MoveFile(filesystem.RootDirectory, filesystem.RootDirectory), Throws.InstanceOf<CircularDirectoryStructureException>());
+        }
+
+        [Test]
+        public void Cant_MoveParentDirectory_ToOwnChildDirectory ()
+        {
+            var parentDir = new Directory("parent");
+            var childDir = new Directory("child");
+
+            filesystem.AddFile(parentDir, filesystem.RootDirectory);
+            filesystem.AddFile(childDir, parentDir);
+
+            Assert.That(() => filesystem.MoveFile(parentDir, childDir), Throws.InstanceOf<CircularDirectoryStructureException>());
+        }
     }
 
     [DataContract]
