@@ -102,6 +102,8 @@ namespace WitchOS
 
             eventSystem.RaycastAll(pointerEventData, results);
 
+            if (results.Count == 0) return null;
+
             // raycast is sorted such that objects that are on top are returned first. we only want to check the first result because the desktop is always below everything and the raycast goes straight through everything (also don't want icons to go to folders that are underneath other apps)
             return results[0].gameObject.GetComponent<DirectoryDrawer>();
         }
