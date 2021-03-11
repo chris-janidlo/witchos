@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,6 @@ namespace WitchOS
         {
             set => IconImage.sprite = value;
         }
-
-        public DirectoryDrawer debug;
 
         public Image IconImage;
         public TextMeshProUGUI LabelText;
@@ -69,8 +68,6 @@ namespace WitchOS
             {
                 // could play a sound here
                 sendBackToOldPosition();
-
-                Debug.Log(e.Message);
             }
         }
 
@@ -96,8 +93,17 @@ namespace WitchOS
 
         DirectoryDrawer hoveredDirectoryDrawer ()
         {
-            // todo: raycast for whatever directory drawer layer I end up creating
-            return debug;
+            var eventSystem = EventSystem.current;
+            var pointerEventData = new PointerEventData(eventSystem)
+            {
+                position = Input.mousePosition
+            };
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            eventSystem.RaycastAll(pointerEventData, results);
+
+            // raycast is sorted such that objects that are on top are returned first. we only want to check the first result because the desktop is always below everything and the raycast goes straight through everything (also don't want icons to go to folders that are underneath other apps)
+            return results[0].gameObject.GetComponent<DirectoryDrawer>();
         }
 
         void sendBackToOldPosition ()
