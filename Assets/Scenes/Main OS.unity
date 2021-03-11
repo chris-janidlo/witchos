@@ -8715,6 +8715,7 @@ MonoBehaviour:
   DesktopIconParent: {fileID: 907010138}
   DesktopIconPrefab: {fileID: 9083543981002978778, guid: 00a3e215a50e7459e811c9ef472dadb1,
     type: 3}
+  Filesystem: {fileID: 11400000, guid: 8a43ac4da0e3f164a9cbbb053f8bff31, type: 2}
   FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
     type: 2}
 --- !u!4 &1636945079

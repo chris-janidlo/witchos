@@ -17,6 +17,8 @@ namespace WitchOS
             set => IconImage.sprite = value;
         }
 
+        public DirectoryDrawer debug;
+
         public Image IconImage;
         public TextMeshProUGUI LabelText;
 
@@ -52,14 +54,23 @@ namespace WitchOS
 
         public void OnEndDrag (PointerEventData eventData)
         {
-            if (false) // check for desktop icon renderer under mouse cursor
+            try
             {
-                // add this icon to that desktop icon renderer
+                if (hoveredDirectoryDrawer() is DirectoryDrawer d)
+                {
+                    d.AddIcon(this);
+                }
+                else
+                {
+                    throw new FilesystemException("can't put that icon there");
+                }
             }
-            else
+            catch (FilesystemException e)
             {
-                transform.SetParent(dragStartParent, false);
-                transform.position = dragStartPosition;
+                // could play a sound here
+                sendBackToOldPosition();
+
+                Debug.Log(e.Message);
             }
         }
 
@@ -81,6 +92,18 @@ namespace WitchOS
             Icon = metadata.IconLarge;
 
             transform.localPosition = File.GuiPosition;
+        }
+
+        DirectoryDrawer hoveredDirectoryDrawer ()
+        {
+            // todo: raycast for whatever directory drawer layer I end up creating
+            return debug;
+        }
+
+        void sendBackToOldPosition ()
+        {
+            transform.SetParent(dragStartParent, false);
+            transform.position = dragStartPosition;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WitchOS
 
         void Start ()
         {
-            DesktopDrawer.Draw(Filesystem.RootDirectory);
+            DesktopDrawer.Initialize(Filesystem.RootDirectory);
         }
     }
 }

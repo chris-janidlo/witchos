@@ -9,9 +9,24 @@ namespace WitchOS
         public RectTransform DesktopIconParent;
         public DesktopIcon DesktopIconPrefab;
 
+        public Filesystem Filesystem;
         public FileAssociationConfig FileAssociationConfig;
 
-        public void Draw (Directory directory)
+        Directory directory;
+
+        public void Initialize (Directory directory)
+        {
+            this.directory = directory;
+            spawnIcons();
+        }
+
+        public void AddIcon (DesktopIcon icon)
+        {
+            icon.transform.SetParent(DesktopIconParent, true);
+            Filesystem.MoveFile(icon.File, directory);
+        }
+
+        void spawnIcons ()
         {
             foreach (var file in directory.Data)
             {
