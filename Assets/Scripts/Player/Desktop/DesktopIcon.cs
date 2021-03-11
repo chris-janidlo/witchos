@@ -64,7 +64,7 @@ namespace WitchOS
                     throw new FilesystemException("can't put that icon there");
                 }
             }
-            catch (FilesystemException e)
+            catch (FilesystemException)
             {
                 // could play a sound here
                 sendBackToOldPosition();
