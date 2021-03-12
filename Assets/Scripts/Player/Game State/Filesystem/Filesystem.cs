@@ -84,23 +84,13 @@ namespace WitchOS
         {
             if (!FileExistsInFilesystem(file))
             {
-                throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
+                throw new FileDoesNotExistException($"file {file.Name} does not exist in this filesystem");
             }
 
-            string path = file.Name + (file is Directory ? PathSeparator : "");
+            var ancestorNames = traverseAncestors(file).Reverse().Select(f => f.Name);
+            var pathSuffix = file is Directory ? PathSeparator : "";
 
-            if (file == RootDirectory) return path;
-
-            Directory currentDirectory = parentCache[file];
-
-            while (currentDirectory != RootDirectory)
-            {
-                path = currentDirectory.Name + PathSeparator + path;
-                currentDirectory = parentCache[currentDirectory];
-            }
-
-            path = RootDirectory.Name + PathSeparator + path;
-            return path;
+            return string.Join(PathSeparator, ancestorNames) + pathSuffix;
         }
 
         public void RenameFile (string filePath, string name)
@@ -114,14 +104,14 @@ namespace WitchOS
 
             if (!FileExistsInFilesystem(file))
             {
-                throw new FilesystemException("cannot rename file that does not exist");
+                throw new FileDoesNotExistException("cannot rename file that does not exist");
             }
 
             if (file.Name == name) return;
 
             if (file != RootDirectory && parentCache[file].Data.Any(f => f != file && f.Name == name))
             {
-                throw new FilesystemException($"cannot rename {file.Name} to {name} because its parent directory ({parentCache[file].Name}{PathSeparator}) already contains a file with that name");
+                throw new PathAlreadyExistsException($"cannot rename {file.Name} to {name} because its parent directory ({parentCache[file].Name}{PathSeparator}) already contains a file with that name");
             }
 
             file.Name = name;
@@ -143,7 +133,7 @@ namespace WitchOS
                 }
                 else
                 {
-                    throw new FilesystemException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
+                    throw new PathDoesNotExistException($"one or more directories on the path {parentDirectoryPath} do not exist. either add those directories, or set the deep flag and try again");
                 }
             }
 
@@ -152,32 +142,38 @@ namespace WitchOS
 
         public void AddFile (FileBase file, Directory parent)
         {
+            throwIfWouldCreateCircularStructure(file, parent);
             validateFileToBeAdded(file);
 
             if (!FileExistsInFilesystem(parent))
             {
-                throw new FilesystemException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
+                throw new FileDoesNotExistException($"cannot add file {file.Name} to directory {parent.Name} because that directory does not exist in the filesystem");
             }
 
             if (parent.Data.Any(f => f.Name == file.Name))
             {
-                throw new FilesystemException($"cannot add file {file.Name} to directory {parent.Name} because it already contains a file with that name");
+                throw new PathAlreadyExistsException($"cannot add file {file.Name} to directory {parent.Name} because it already contains a file with that name");
             }
 
             parent.Data.Add(file);
             trackFileAndAnyChildren(file, parent);
         }
 
-        public void MoveFile (string fromPath, string toPath, bool deep = false)
+        public void MoveFile (string fromPath, string parentDirectoryPath, bool deep = false)
         {
             var file = GetFileAtPath(fromPath);
-            MoveFile(file, toPath, deep);
+            MoveFile(file, parentDirectoryPath, deep);
         }
 
-        public void MoveFile (FileBase file, string toPath, bool deep = false)
+        public void MoveFile (FileBase file, string parentDirectoryPath, bool deep = false)
         {
+            if (GetFileAtPath(parentDirectoryPath) is Directory dir)
+            {
+                throwIfWouldCreateCircularStructure(file, dir);
+            }
+
             RemoveFile(file);
-            AddFile(file, toPath, deep);
+            AddFile(file, parentDirectoryPath, deep);
         }
 
         public void MoveFile (string fromPath, Directory newParent)
@@ -188,6 +184,7 @@ namespace WitchOS
 
         public void MoveFile (FileBase file, Directory newParent)
         {
+            throwIfWouldCreateCircularStructure(file, newParent);
             RemoveFile(file);
             AddFile(file, newParent);
         }
@@ -212,12 +209,12 @@ namespace WitchOS
         {
             if (!FileExistsInFilesystem(file))
             {
-                throw new FilesystemException($"file {file.Name} does not exist in this filesystem");
+                throw new FileDoesNotExistException($"file {file.Name} does not exist in this filesystem");
             }
 
             if (file == RootDirectory)
             {
-                throw new FilesystemException("cannot delete the root directory");
+                throw new AttemptedRootDirectoryDeletionException("cannot delete the root directory");
             }
 
             parentCache[file].Data.Remove(file);
@@ -256,6 +253,20 @@ namespace WitchOS
             }
         }
 
+        // assumes file is in filesystem
+        IEnumerable<FileBase> traverseAncestors (FileBase file)
+        {
+            FileBase currentFile = file;
+
+            while (currentFile != RootDirectory)
+            {
+                yield return currentFile;
+                currentFile = parentCache[currentFile];
+            }
+
+            yield return currentFile; // this should always be the root
+        }
+
         string[] splitPath (string path)
         {
             validatePath(path);
@@ -276,7 +287,7 @@ namespace WitchOS
         {
             if (FileExistsInFilesystem(file))
             {
-                throw new FilesystemException($"cannot add file {file.Name} because it already exists in this filesystem");
+                throw new FileAlreadyExistsException($"cannot add file {file.Name} because it already exists in this filesystem");
             }
 
             validateFileName(file.Name);
@@ -286,12 +297,12 @@ namespace WitchOS
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new FilesystemException("file names cannot be null or empty");
+                throw new InvalidPathException("file names cannot be null or empty");
             }
 
             if (name.Contains(PathSeparator))
             {
-                throw new FilesystemException($"filename {name} is invalid because it contains the path separator ({PathSeparator})");
+                throw new InvalidPathException($"filename {name} is invalid because it contains the path separator ({PathSeparator})");
             }
         }
 
@@ -299,7 +310,7 @@ namespace WitchOS
         {
             if (path == null || (path == "" && RootDirectory.Name != ""))
             {
-                throw new FilesystemException("paths cannot be null or empty");
+                throw new InvalidPathException("paths cannot be null or empty");
             }
 
             int pathSepLength = PathSeparator.Length;
@@ -308,8 +319,25 @@ namespace WitchOS
             {
                 if (path.Substring(i, pathSepLength) == PathSeparator && path.Substring(i + pathSepLength, pathSepLength) == PathSeparator)
                 {
-                    throw new FilesystemException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
+                    throw new InvalidPathException($"path {path} contains two or more adjacent path separators ({PathSeparator})");
                 }
+            }
+        }
+
+        void throwIfWouldCreateCircularStructure (FileBase file, Directory targetParent)
+        {
+            // wish I could use pattern matching here but Unity won't let me :(
+            var directory = file as Directory;
+            if (directory == null) return;
+
+            if (directory == targetParent)
+            {
+                throw new CircularDirectoryStructureException($"cannot add directory {directory.Name} to itself");
+            }
+
+            if (traverseAncestors(targetParent).Contains(directory))
+            {
+                throw new CircularDirectoryStructureException($"cannot add {directory.Name} to directory {targetParent.Name} because {targetParent.Name} is a descendant of {directory.Name}");
             }
         }
 
@@ -336,7 +364,7 @@ namespace WitchOS
                 }
                 else if (currentFileThere != null)
                 {
-                    throw new FilesystemException($"unable to create path {pathToCreate} because a non-directory file already exists at {fullDirectoryPaths[i]}");
+                    throw new PathAlreadyExistsException($"unable to create path {pathToCreate} because a non-directory file already exists at {fullDirectoryPaths[i]}");
                 }
 
                 var newDirectory = new Directory(directoryNames[i]);

@@ -134,13 +134,13 @@ namespace WitchOS.Tests
         [Test]
         public void CannotRemoveRoot ()
         {
-            Assert.That(() => filesystem.RemoveFile(filesystem.RootDirectory), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RemoveFile(filesystem.RootDirectory), Throws.InstanceOf<AttemptedRootDirectoryDeletionException>());
         }
 
         [Test]
         public void UnaddedFile_CantBeRemoved ()
         {
-            Assert.That(() => filesystem.RemoveFile(new TFile()), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RemoveFile(new TFile()), Throws.InstanceOf<FileDoesNotExistException>());
         }
 
         [TestCase("/foo")]
@@ -169,13 +169,13 @@ namespace WitchOS.Tests
             filesystem.AddFile(new TFile { Name = "foo" }, "/bar/", true);
             filesystem.MoveFile(defaultFile, "/bar/");
 
-            Assert.That(() => filesystem.RenameFile(defaultFile, "foo"), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.RenameFile(defaultFile, "foo"), Throws.InstanceOf<PathAlreadyExistsException>());
         }
 
         [Test]
         public void DeepAddFails_WhenDirectoryNameIsEqualToExistingFilename ()
         {
-            Assert.That(() => filesystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InstanceOf<FilesystemException>());
+            Assert.That(() => filesystem.AddFile(new TFile { Name = "blah" }, $"/{defaultFile.Name}/", true), Throws.InstanceOf<PathAlreadyExistsException>());
         }
 
         [Test]
@@ -218,7 +218,7 @@ namespace WitchOS.Tests
 
             var dirSubSub = new Directory("subSubDirectory") { Data = new List<FileBase> { files[3] } };
             var dirSub = new Directory("subDirectory") { Data = new List<FileBase> { files[2], dirSubSub } };
-            var dirMain = new Directory("fullDirectory") { Data = new List<FileBase> { files[1], files[0], dirSub} };
+            var dirMain = new Directory("fullDirectory") { Data = new List<FileBase> { files[1], files[0], dirSub } };
 
             filesystem.AddFile(dirMain, filesystem.RootDirectory);
 
@@ -263,6 +263,30 @@ namespace WitchOS.Tests
 
             Assert.That(filesystem.FileExistsInFilesystem(fileA), Is.False, "file A should no longer exist in the filesystem");
             Assert.That(filesystem.FileExistsInFilesystem(fileB), Is.False, "file B should no longer exist in the filesystem");
+        }
+
+        [Test]
+        public void Cant_AddDirectory_ToItself ()
+        {
+            Assert.That(() => filesystem.AddFile(filesystem.RootDirectory, filesystem.RootDirectory), Throws.InstanceOf<CircularDirectoryStructureException>());
+        }
+
+        [Test]
+        public void Cant_MoveDirectory_ToItself ()
+        {
+            Assert.That(() => filesystem.MoveFile(filesystem.RootDirectory, filesystem.RootDirectory), Throws.InstanceOf<CircularDirectoryStructureException>());
+        }
+
+        [Test]
+        public void Cant_MoveParentDirectory_ToOwnChildDirectory ()
+        {
+            var parentDir = new Directory("parent");
+            var childDir = new Directory("child");
+
+            filesystem.AddFile(parentDir, filesystem.RootDirectory);
+            filesystem.AddFile(childDir, parentDir);
+
+            Assert.That(() => filesystem.MoveFile(parentDir, childDir), Throws.InstanceOf<CircularDirectoryStructureException>());
         }
     }
 
