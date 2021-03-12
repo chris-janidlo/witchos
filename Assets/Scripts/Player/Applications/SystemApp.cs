@@ -8,26 +8,40 @@ namespace WitchOS
 {
     public class SystemApp : MonoBehaviour
     {
+        [TextArea(5, 100)]
+        public string NormalSaveInformation, DemoSaveInformation;
         public string NormalSavePrompt, SaveInProgressMessage, SaveCompletedMessage;
         public string NormalDeletePrompt, ClickAgainDeletePrompt, DeleteCompletedMessage;
         public float ArtificialSaveDelay, ReturnToPreviousMessageDelay;
 
         public Button ManualSaveButton, DeleteSaveButton;
-        public TextMeshProUGUI SaveButtonText, DeleteButtonText;
+        public TextMeshProUGUI SaveInformationText, SaveButtonText, DeleteButtonText;
+        public Image DemoSeal;
 
         public SaveManager SaveManager;
 
+#if !UNITY_WEBGL
         bool deletePromptInConfirmation;
+#endif // !UNITY_WEBGL
 
         void Start ()
         {
+            SaveButtonText.text = NormalSavePrompt;
+            DeleteButtonText.text = NormalDeletePrompt;
+
+#if UNITY_WEBGL
+            SaveInformationText.text = DemoSaveInformation;
+#else
+            SaveInformationText.text = NormalSaveInformation;
+
             ManualSaveButton.onClick.AddListener(() => StartCoroutine(saveAnimation()));
             DeleteSaveButton.onClick.AddListener(clickDelete);
 
-            SaveButtonText.text = NormalSavePrompt;
-            DeleteButtonText.text = NormalDeletePrompt;
+            Destroy(DemoSeal.gameObject);
+#endif // UNITY_WEBGL
         }
 
+#if !UNITY_WEBGL
         IEnumerator saveAnimation ()
         {
             resetDeleteButtonState();
@@ -70,5 +84,6 @@ namespace WitchOS
             deletePromptInConfirmation = false;
             DeleteButtonText.text = NormalDeletePrompt;
         }
+#endif // !UNITY_WEBGL
     }
 }
