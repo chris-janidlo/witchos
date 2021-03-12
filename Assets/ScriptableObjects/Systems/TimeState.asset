@@ -22,10 +22,10 @@ MonoBehaviour:
   DayEnded:
     m_PersistentCalls:
       m_Calls: []
-  SpellEther: {fileID: 11400000, guid: d49059a079b864dba97ec04cc86a404d, type: 2}
   DateTimeSaveData:
     DeveloperNotes: The initial date, at midnight
     FileName: date
+    Debug: 0
     value:
       dateString: 10/13/2000 12:00:00 AM
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}

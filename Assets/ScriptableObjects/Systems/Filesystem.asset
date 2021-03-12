@@ -23,6 +23,7 @@ MonoBehaviour:
   SaveData:
     DeveloperNotes: 
     FileName: filesystem
+    Debug: 0
     value:
       Name: 
       GuiPosition:
