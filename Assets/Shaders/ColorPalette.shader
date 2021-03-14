@@ -78,7 +78,7 @@
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
-                return (col.r == col.g && col.g == col.b) ? convertBlackAndWhite(col) : convertMagicRamp(col);
+                return (col.b == 0 && col.g == 1) ? convertMagicRamp(col) : convertBlackAndWhite(col);
             }
             ENDCG
         }
