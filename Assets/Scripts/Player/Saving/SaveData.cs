@@ -32,9 +32,7 @@ namespace WitchOS
     public class SaveData<T> : SaveData
     // note that T must be serializable by DataContractSerializer. unfortunately there's no way to check that at compile time, and at runtime you'd have to check if the entire object graph can be serialized, so currently it's up to the developer to ensure they follow this
     {
-#if UNITY_EDITOR
         public bool Debug = false;
-#endif // UNITY_EDITOR
 
         [SerializeField]
         [Tooltip("The current value of the data. Whatever this is set to in the editor is used as the default value for a fresh save.")]
@@ -102,9 +100,7 @@ namespace WitchOS
     [Serializable]
     public class SaveData<T> : SaveData
     {
-#if UNITY_EDITOR
         public bool Debug = false;
-#endif // UNITY_EDITOR
 
         [SerializeField]
         T value;
