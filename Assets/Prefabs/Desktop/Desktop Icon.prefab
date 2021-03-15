@@ -193,8 +193,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6294277228163364057}
-        m_MethodName: OpenForUnityEventCallback
+      - m_Target: {fileID: 9083543981002978778}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 1637483633814612782}
   - component: {fileID: 1637483633814612781}
   - component: {fileID: 9083543981002978778}
-  - component: {fileID: 6294277228163364057}
   - component: {fileID: 1637483633814612780}
   - component: {fileID: 1637483633814612783}
   m_Layer: 5
@@ -272,25 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7028dad65bfa54957a14f8ecea74bbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Label: 
   IconImage: {fileID: 1637483633571634754}
   LabelText: {fileID: 1637483633865795129}
---- !u!114 &6294277228163364057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637483633814612769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da692d8b3634e8ab44869f3db9c33b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplicationPrefab: {fileID: 0}
-  ApplicationData: {fileID: 0}
-  OpenSingleInstance: 0
+  DesktopIconBeganDragging: {fileID: 11400000, guid: e88e4246ce02abb4da6e3461b3c0959b,
+    type: 2}
+  FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
+    type: 2}
 --- !u!114 &1637483633814612780
 MonoBehaviour:
   m_ObjectHideFlags: 0

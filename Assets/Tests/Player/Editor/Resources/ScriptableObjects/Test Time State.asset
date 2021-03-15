@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b45cc5259a94bb8b3074819067b42e, type: 3}
+  m_Name: Test Time State
+  m_EditorClassIdentifier: 
+  _initialDate:
+    dateString: 10/13/2000 12:00:00 AM
+  _finalDate:
+    dateString: 12/31/2010 12:00:00 AM
+  DayStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  DayEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  DateTimeSaveData:
+    DeveloperNotes: filename here can be empty, since stub save manager is a bunch
+      of noops, but do have to supply a value
+    FileName: 
+    value:
+      dateString: 10/13/2000 12:00:00 AM
+  SaveManager: {fileID: 11400000, guid: 3bd868d615831cf4586a38ec3ac78b0a, type: 2}

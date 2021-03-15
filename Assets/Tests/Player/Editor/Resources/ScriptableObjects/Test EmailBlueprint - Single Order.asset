@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe6125eab59e524e82d143f4cb62d09, type: 3}
+  m_Name: Test EmailBlueprint - Single Order
+  m_EditorClassIdentifier: 
+  PossibleEmails:
+    Items:
+    - SubjectLine: this is a test
+      SenderAddress: test.user @ test address
+      Body: testing testing. except now we have an order hahahaha
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  PossibleInvoices:
+    Items:
+    - LineItems:
+      - _spellReference:
+          Value: {fileID: 11400000, guid: 402ce2aabfd0a4115a3134a9f4f16ac2, type: 2}
+        TargetName: ur mom
+      FullDaysToComplete: 0
+    AvoidRepeats: 0
+    Type: 0
+    LocalSeed: 0
+  TimeState: {fileID: 11400000, guid: c7e38a884a009404f9dd2cd2e88973cc, type: 2}

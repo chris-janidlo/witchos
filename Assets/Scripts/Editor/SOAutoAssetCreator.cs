@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using crass;
 
-namespace WitchOS
+namespace WitchOS.Editor
 {
     public class SOAutoAssetCreator : MonoBehaviour
     {
