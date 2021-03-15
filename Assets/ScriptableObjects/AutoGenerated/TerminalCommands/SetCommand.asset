@@ -22,5 +22,3 @@ MonoBehaviour:
     for
     example, if you enter ''set aura null'', any other command that wants to know
     what the current value of ''aura'' is would see that it is ''null'''
-  EnvironmentVariableState: {fileID: 11400000, guid: 7f03f1bbb68d8974daeabf8ee493d456,
-    type: 2}

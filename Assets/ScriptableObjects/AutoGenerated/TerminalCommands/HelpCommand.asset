@@ -15,4 +15,3 @@ MonoBehaviour:
   Name: help
   ArgumentList: 
   HelpOutput: displays help information for commands
-  Commands: {fileID: 11400000, guid: fe351eeba7079714ebb7a939aaf91d78, type: 2}

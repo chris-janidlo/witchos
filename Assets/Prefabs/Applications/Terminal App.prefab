@@ -124,7 +124,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 0
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 1024
-  m_textAlignment: 65535
+  m_VerticalAlignment: 256
+  m_textAlignment: 1025
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -314,30 +314,6 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &8561278524343188819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3869046463147635240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750f3c3e83eb8400c9df26a178d2aeee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Commands: {fileID: 11400000, guid: fe351eeba7079714ebb7a939aaf91d78, type: 2}
-  BaseTitle: hexterm
-  NoMagicWarning: 'Occuloscope err_5: incompatible source
-
-    This usually means
-    magic is not activated. Make sure to turn it on before attempting to cast any
-    spells.'
-  Window: {fileID: 3869046463147635246}
-  CommandInput: {fileID: 4779047884363211016}
-  Prompt: {fileID: 2046572684048575151}
-  HistoryText: {fileID: 5374819240094728243}
-  ScrollRect: {fileID: 7361186604043467539}
 --- !u!222 &8932672310539410260
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -401,8 +377,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 1024
-  m_textAlignment: 65535
+  m_VerticalAlignment: 256
+  m_textAlignment: 1025
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -435,6 +411,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8561278524343188819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3869046463147635240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750f3c3e83eb8400c9df26a178d2aeee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Commands:
+  - {fileID: 11400000, guid: d164580be966c4a5db8cf71dc9a369cf, type: 2}
+  - {fileID: 11400000, guid: d9c96b63218be43fd88b2f4c92f96482, type: 2}
+  - {fileID: 11400000, guid: dcad8a6fb0cfe4b09b0242cd9f7f3c7d, type: 2}
+  - {fileID: 11400000, guid: a3d6773613b084546b11cbceaad02fce, type: 2}
+  - {fileID: 11400000, guid: bdc634f8d0a78476ea02ec231920407d, type: 2}
+  - {fileID: 11400000, guid: 13ac7d6f72dc44e72b78798b6d0ba5c3, type: 2}
+  - {fileID: 11400000, guid: 177744f67285947daa06d56815273645, type: 2}
+  BaseTitle: hexterm
+  NoMagicWarning: 'Occuloscope err_5: incompatible source
+
+    This usually means
+    magic is not activated. Make sure to turn it on before attempting to cast any
+    spells.'
+  InputHistory: []
+  OutputHistory: []
+  Window: {fileID: 3869046463147635246}
+  CommandInput: {fileID: 4779047884363211016}
+  Prompt: {fileID: 2046572684048575151}
+  HistoryText: {fileID: 5374819240094728243}
+  ScrollRect: {fileID: 7361186604043467539}
 --- !u!1 &5741097047396379719
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &7188818339320948814
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +597,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
-  m_textAlignment: 65535
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -781,7 +792,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 0
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -794,8 +805,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 1024
-  m_textAlignment: 65535
+  m_VerticalAlignment: 256
+  m_textAlignment: 1025
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -985,12 +996,12 @@ PrefabInstance:
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1707194482673688325, guid: 587c7c42945c442eea5e2ea5f06e92b1,
         type: 3}

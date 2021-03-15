@@ -44,9 +44,6 @@ TagManager:
   - name: Windows
     uniqueID: 107192393
     locked: 0
-  - name: Dragged Icons
-    uniqueID: 768052753
-    locked: 0
   - name: Window Overlays
     uniqueID: 3672722047
     locked: 0

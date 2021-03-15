@@ -51,7 +51,7 @@ MonoBehaviour:
       in front of it is moving - faster means closer to the sweetspot.'
     Title: Usage
   - Content: '* Mirrors was the fourth application to be developed for WitchOS, following
-      PhaseView, Mail, and hexterm. This was unintentional, but the added bad luck
+      PhaseVue, Mail, and hexterm. This was unintentional, but the added bad luck
       of the number four (which, in Chinese and other languages, is pronounced similarly
       to the word for "death") has a measurable impact on the quality of the bad
       luck that Mirrors generates.
