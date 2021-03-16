@@ -1,0 +1,9 @@
+this is for palette textures, which contain all the visual data of a palette (the material, in fact, only has one piece of data, which is this palette texture). they are designed so they can be used as aseprite palettes as well.
+
+each palette must be 7x1 pixels, and each pixel has a specific meaning:
+1) leftmost is unused in the game; aseprite uses it as a special index for transparency. should be set to transparent to avoid confusion
+2) second pixel from the left is the color that will replace black pixels when the shader runs
+3) third pixel is the white replacement color
+4-7) the remaining pixels make up the magic effect (sub)palette. these are assumed to be ordered from the darkest on the left to the lightest on the right. the sub-palettes are usually gameboy-like 2-bit ramps, but that assumption can be broken for effect
+
+the ~basis palette is used in aseprite for saving/exporting sprites, and should always be saved as the palette for each sprite. all sprites should be set to indexed color mode, so that you can switch their palettes and see their colors switch too (for testing)

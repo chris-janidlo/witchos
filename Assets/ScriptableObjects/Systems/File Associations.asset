@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ce19d692a522740b4b89c592cba046, type: 3}
+  m_Name: File Associations
+  m_EditorClassIdentifier: 
+  Config:
+  - FullNameOfFileType: WitchOS.TextPDFFile
+    Metadata:
+      WindowPrefab: {fileID: 4733877152652103527, guid: d9f186f7ac67048fab8f9d04156da221,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##.txt'
+      IconLarge: {fileID: 5733582621490860007, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -9146624860600714641, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.EmailAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 8768454285065225573, guid: 93a9e417508d443a980d7ef05cc65e67,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 5647395173004578987, guid: 1e74a7c88bc8c9741bcef60c84fe400e,
+        type: 3}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 7063333095426570485, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -8412338869911505578, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.MoonPhaseAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 7862283573881436165, guid: a70350e3ee7824a778d3b084c39c3f2f,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: -8966291207900065841, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -114862837380195033, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.TerminalAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 3869046463147635246, guid: eb56c78e8109f4710987a88cccdbbf37,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 2
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: -3733317002035555814, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -5469508495120736827, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.MirrorsAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 6418634079337448651, guid: 7bcb915036a5b435199ba81153af376d,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 8683868670794159994, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -737955314123901978, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.BankAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 4474542682243215838, guid: 8b24528d7fde145ee86a032aa4ac025c,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 7036957338511053189, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -7400384705122890134, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.WikiFile
+    Metadata:
+      WindowPrefab: {fileID: 2082357813932443965, guid: 311ae065a1d6d49238382f14537eb4e6,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 2
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: -1215474006324092412, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: 3156831668386275163, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.OrderFile
+    Metadata:
+      WindowPrefab: {fileID: 3675863834227289703, guid: ef7be225996684e3e85885cad2822418,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 2
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.EmailFile
+    Metadata:
+      WindowPrefab: {fileID: 2335441598285829272, guid: 088305cf5fe274fea81dbeeba1477796,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 2
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8257318420006758526, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.SystemAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 2971220427618671303, guid: 2b19b102a62654d37a616f6490c2d881,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 0}
+      IconSmall: {fileID: 8282897390233937007, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
+  - FullNameOfFileType: WitchOS.Directory
+    Metadata:
+      WindowPrefab: {fileID: 8295042457012935589, guid: 3b553ea2c1edfcb418dd316324e7da78,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 5917437092538104043, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: 2178616258850918355, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}

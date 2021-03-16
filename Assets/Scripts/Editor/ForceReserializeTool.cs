@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class ForceReserializeTool : MonoBehaviour
+namespace WitchOS.Editor
 {
-    [MenuItem("Tools/Force reserialize all assets")]
-    public static void Reserialize ()
+    public class ForceReserializeTool : MonoBehaviour
     {
-        AssetDatabase.ForceReserializeAssets();
+        [MenuItem("Tools/Force reserialize all assets")]
+        public static void Reserialize ()
+        {
+            AssetDatabase.ForceReserializeAssets();
+        }
     }
 }

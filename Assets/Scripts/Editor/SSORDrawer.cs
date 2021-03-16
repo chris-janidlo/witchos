@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace WitchOS
+namespace WitchOS.Editor
 {
     [CustomPropertyDrawer(typeof(BaseSaveableScriptableObjectReference), useForChildren: true)]
     public class SSORDrawer : PropertyDrawer

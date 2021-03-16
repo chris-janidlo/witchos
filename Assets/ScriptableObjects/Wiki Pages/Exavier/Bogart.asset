@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c03b54db6de746b899172d4acdca86f, type: 3}
+  m_Name: Bogart
+  m_EditorClassIdentifier: 
+  Title: ~~~bogarts~~~
+  LeadSection:
+    Content: 'dont belivve their LIES
+
+
+      bogarts are REAL and I have PROOF but
+      _they_ silence me with rumors of my death and by calling me crazy haha crazy
+      can you believe that? i _made_ the etherweb im not crazy there the crazy ones
+      because they cant see the TRUTH
+
+
+      to all the shams who are presently
+      occupying the board of directors of my baby===== my precious exavier''s purveyances,
+      hear this you will go down. i will show the world that i am not something to
+      be ignored not someone to be messed with.'
+  BodySections:
+  - Content: 
+    Title: i
+  - Content: 
+    Title: 
+  - Content: 
+    Title: own
+  - Content: 
+    Title: you
+  - Content: 
+    Title: 

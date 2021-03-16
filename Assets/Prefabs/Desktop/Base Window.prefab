@@ -404,8 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
 --- !u!1 &1707194482673688324
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,9 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17355803a271e4ed3b04e9925295cbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Title: 
-  Icon: {fileID: 0}
-  AppData: {fileID: 0}
   Minimizable: 1
   Closable: 1
   Minimizer: {fileID: 4962879820087878725}
@@ -531,6 +526,9 @@ MonoBehaviour:
   IconImage: {fileID: 1707194481745357644}
   MinimizeButton: {fileID: 1707194483669770086}
   CloseButton: {fileID: 1707194483545304232}
+  FileAssociationConfig: {fileID: 11400000, guid: 4978f83a5aaf243489d97c41211f7c85,
+    type: 2}
+  TimeState: {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!114 &4962879820087878725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinSize: {x: 100, y: 100}
-  MaxSize: {x: 480, y: 250}
+  MaxSize: {x: 800, y: 430}
   TargetTransform: {fileID: 1707194482673688325}
   Window: {fileID: 1707194482673688322}
 --- !u!114 &6754924502694709121
