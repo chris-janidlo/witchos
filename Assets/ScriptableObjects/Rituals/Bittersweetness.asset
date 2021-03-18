@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520bca8183cc3f64ebd05b8611dda8af, type: 3}
   m_Name: Bittersweetness
   m_EditorClassIdentifier: 
-  Name: The Burning of the Honey
+  Name: Burning of the Honey
   Product: 0
   RequiredAffects:
   - {fileID: 11400000, guid: 2ad25b5d8ad92ef4e933671f38cae710, type: 2}
