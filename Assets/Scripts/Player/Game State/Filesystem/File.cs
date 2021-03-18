@@ -20,6 +20,7 @@ namespace WitchOS
     [KnownType(typeof(SystemAppExeFile))]
     [KnownType(typeof(EmailFile))]
     [KnownType(typeof(OrderFile))]
+    [KnownType(typeof(EmotionFile))]
     #endregion known types
     public abstract class FileBase
     {
@@ -46,6 +47,7 @@ namespace WitchOS
     [KnownType(typeof(SystemAppExeFile))]
     [KnownType(typeof(EmailFile))]
     [KnownType(typeof(OrderFile))]
+    [KnownType(typeof(EmotionFile))]
     #endregion known types
     public class File<DataType> : FileBase
     // DataType must be DataContract serializable
