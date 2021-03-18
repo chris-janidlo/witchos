@@ -17,6 +17,9 @@ namespace WitchOS
     public class SaveableWikiPageDataReference : SaveableScriptableObjectReference<WikiPageData> { }
 
     [Serializable, DataContract]
+    public class EmotionFile : File<Emotion> { }
+
+    [Serializable, DataContract]
     public class WikiFile : File<SaveableWikiPageDataReference> { }
 
     [Serializable, DataContract]

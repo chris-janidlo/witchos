@@ -143,3 +143,14 @@ MonoBehaviour:
         type: 3}
       IconSmall: {fileID: 2178616258850918355, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+  - FullNameOfFileType: WitchOS.EmotionFile
+    Metadata:
+      WindowPrefab: {fileID: 0}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 1
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 5510163366029949356, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: -3870659263219954144, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}
