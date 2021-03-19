@@ -19,4 +19,7 @@ namespace WitchOS
 
     [Serializable]
     public class MailSaveData : SaveData<List<MailState.Entry>> { }
+
+    [Serializable]
+    public class UnlockedRiteSaveData : SaveData<List<SaveableRiteReference>> { }
 }

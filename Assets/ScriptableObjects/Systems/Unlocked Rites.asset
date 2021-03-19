@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c5d39bdfcfa654aa24d2017975a86b, type: 3}
+  m_Name: Unlocked Rites
+  m_EditorClassIdentifier: 
+  SaveData:
+    DeveloperNotes: 
+    FileName: rites
+    Debug: 0
+    value:
+    - Value: {fileID: 11400000, guid: 071563d35491095479475778cbb5367e, type: 2}
+    - Value: {fileID: 11400000, guid: 870a96d8b00ba0443acdd479edcd2403, type: 2}
+    - Value: {fileID: 11400000, guid: 468d40aadf243ad4a8d159cb6f25345b, type: 2}
+    - Value: {fileID: 11400000, guid: 3dd3302e36d26914cb313638fcb61733, type: 2}
+    - Value: {fileID: 11400000, guid: beb57fe29a6060a48bc543e21748c294, type: 2}
+    - Value: {fileID: 11400000, guid: c14a9d5f31efd524784724fa6420fc48, type: 2}
+    - Value: {fileID: 11400000, guid: e8edac96de6b3054c92abd09c48d5930, type: 2}
+    - Value: {fileID: 11400000, guid: d7209d2dd884ab64f9bd24400bc7a2b7, type: 2}
+    - Value: {fileID: 11400000, guid: c2392aa244dc14f48a6eab82aaca3a0a, type: 2}
+    - Value: {fileID: 11400000, guid: ee9ddf8ac0a62914a9ba67190d218089, type: 2}
+  SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
