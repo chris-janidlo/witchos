@@ -7848,7 +7848,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268235164}
-  - component: {fileID: 1268235165}
   m_Layer: 0
   m_Name: Desktop Manager Objects
   m_TagString: Untagged
@@ -7876,21 +7875,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1268235165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268235163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76cb75460cdf1b43bf67835e884d12a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScriptableObjects:
-  - {fileID: 11400000, guid: 8a43ac4da0e3f164a9cbbb053f8bff31, type: 2}
-  - {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1271401359
 GameObject:
   m_ObjectHideFlags: 0
@@ -9104,6 +9088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScriptableObjects:
   - {fileID: 11400000, guid: 8a43ac4da0e3f164a9cbbb053f8bff31, type: 2}
+  - {fileID: 11400000, guid: bf41fa4d4d5fb5f48ab119fe704d71c9, type: 2}
 --- !u!1 &1794481188
 GameObject:
   m_ObjectHideFlags: 0
