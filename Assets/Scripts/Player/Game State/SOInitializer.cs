@@ -8,7 +8,7 @@ namespace WitchOS
     {
         public List<InitializableSO> ScriptableObjects;
 
-        void Start ()
+        void Awake ()
         {
             ScriptableObjects.ForEach(s => s.Initialize());
         }
