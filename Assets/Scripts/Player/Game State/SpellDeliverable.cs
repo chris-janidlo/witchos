@@ -9,9 +9,6 @@ namespace WitchOS
     [Serializable, DataContract]
     public class SpellDeliverable : Deliverable<Spell>, IEquatable<SpellDeliverable>
     {
-        [Serializable, DataContract]
-        public class SaveableSpellReference : SaveableScriptableObjectReference<Spell> { }
-
         [SerializeField]
         [DataMember(IsRequired = true)]
         private SaveableSpellReference _spellReference;
