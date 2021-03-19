@@ -100,3 +100,23 @@ MonoBehaviour:
     Path: d1/SocialMediaSpell
   - Asset: {fileID: 11400000, guid: 7db1a7d08b798457e84b2c57bc0b3691, type: 2}
     Path: d1/StubSpell
+  - Asset: {fileID: 11400000, guid: 071563d35491095479475778cbb5367e, type: 2}
+    Path: d2/Test Rite 1
+  - Asset: {fileID: 11400000, guid: 870a96d8b00ba0443acdd479edcd2403, type: 2}
+    Path: d2/Test Rite 2
+  - Asset: {fileID: 11400000, guid: 468d40aadf243ad4a8d159cb6f25345b, type: 2}
+    Path: d2/Test Rite 3
+  - Asset: {fileID: 11400000, guid: 3dd3302e36d26914cb313638fcb61733, type: 2}
+    Path: d2/Test Rite 4
+  - Asset: {fileID: 11400000, guid: beb57fe29a6060a48bc543e21748c294, type: 2}
+    Path: d2/Test Rite 5
+  - Asset: {fileID: 11400000, guid: c14a9d5f31efd524784724fa6420fc48, type: 2}
+    Path: d2/Test Rite 6
+  - Asset: {fileID: 11400000, guid: e8edac96de6b3054c92abd09c48d5930, type: 2}
+    Path: d2/Test Rite 7
+  - Asset: {fileID: 11400000, guid: d7209d2dd884ab64f9bd24400bc7a2b7, type: 2}
+    Path: d2/Test Rite 8
+  - Asset: {fileID: 11400000, guid: c2392aa244dc14f48a6eab82aaca3a0a, type: 2}
+    Path: d2/Test Rite 9
+  - Asset: {fileID: 11400000, guid: ee9ddf8ac0a62914a9ba67190d218089, type: 2}
+    Path: d2/Test Rite 10
