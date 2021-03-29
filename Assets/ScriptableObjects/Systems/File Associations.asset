@@ -154,3 +154,15 @@ MonoBehaviour:
         type: 3}
       IconSmall: {fileID: -3870659263219954144, guid: 52ff52adb311e49738fd2294b5b3b8a0,
         type: 3}
+  - FullNameOfFileType: WitchOS.RitualStudioAppExeFile
+    Metadata:
+      WindowPrefab: {fileID: 2738250300388155233, guid: cb28ca55a704f354c8e3df663f555d36,
+        type: 3}
+      DesktopIconPrefabOverride: {fileID: 0}
+      NewWindowMode: 0
+      AddButtonToTaskbar: 1
+      NameTemplate: '##file##'
+      IconLarge: {fileID: 4191981917849398024, guid: dda44003e95174fbbb53b23f194d963d,
+        type: 3}
+      IconSmall: {fileID: 4905731422576430648, guid: 52ff52adb311e49738fd2294b5b3b8a0,
+        type: 3}

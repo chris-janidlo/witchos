@@ -45,4 +45,7 @@ namespace WitchOS
 
     [Serializable, DataContract]
     public class SystemAppExeFile : File<ExeFileData> { }
+
+    [Serializable, DataContract]
+    public class RitualStudioAppExeFile : File<ExeFileData> { }
 }

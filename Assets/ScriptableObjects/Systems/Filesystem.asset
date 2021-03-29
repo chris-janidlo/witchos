@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7598b274ca24bae419ea661bf519ba08, type: 2}
   - {fileID: 11400000, guid: bddfd65c2d3ff404ea4d258ff1c9c6bb, type: 2}
   - {fileID: 11400000, guid: 9abd6a95c575d874db5736c930f4c948, type: 2}
+  - {fileID: 11400000, guid: d95be11788e817a4a9edc9a5bfb34ad9, type: 2}
   SaveManager: {fileID: 11400000, guid: afe7bc2a63e46ce498d4a65ec7b919b2, type: 2}
   SaveData:
     DeveloperNotes: 
